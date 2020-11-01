@@ -7,6 +7,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { PortalLayoutComponent } from './layouts/portal-layout/portal-layout.component';
 import { CatalogoComponent } from './pages/portal/catalogo/catalogo.component';
+import { HomePortalComponent } from './pages/portal/home-portal/home-portal.component';
 
 const routes: Routes = [
   {
@@ -25,7 +26,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: '',
+    path: 'auth',
     component: AuthLayoutComponent,
     children: [
       {
@@ -36,13 +37,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: PortalLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: './layouts/portal-layout/portal-layout.module#PortalLayoutModule'
-      }
-    ]
+    component: HomePortalComponent,
+    children: []
   },
   {
     path: 'catalogo',

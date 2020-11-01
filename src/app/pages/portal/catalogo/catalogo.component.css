@@ -1,5 +1,6 @@
-.font-6{
-    font-weight: 600;
+.product_view1{
+    box-shadow: 0px 0px 3px 0px #7b7b7b;
+    transition: all 0.5s;
 }
 .product_view1_title{
     font-size: 1rem;
@@ -78,6 +79,10 @@
 }
 .product_view1:hover .text-over-product{
     opacity: 1;
+}
+.product_view1:hover{
+    box-shadow: 0 0.25rem 0.5rem rgba(34,34,34,0.27);
+    transition: all ease-in-out 0.3s;
 }
 
 
