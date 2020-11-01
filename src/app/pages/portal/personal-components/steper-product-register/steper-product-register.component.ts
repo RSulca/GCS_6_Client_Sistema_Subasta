@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProductEmiterService } from 'src/app/services/product-emiter.service';
 
 @Component({
   selector: 'app-steper-product-register',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SteperProductRegisterComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private productEmiter: ProductEmiterService) { }
 
   ngOnInit(): void {
   }

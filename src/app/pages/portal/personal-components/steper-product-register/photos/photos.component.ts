@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProductEmiterService } from 'src/app/services/product-emiter.service';
 
 @Component({
   selector: 'app-photos',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PhotosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,private productEmiter: ProductEmiterService) { }
 
   ngOnInit(): void {
+  }
+
+  goToData() {
+    this.router.navigate(['seller/edit/data'])
   }
 
 }

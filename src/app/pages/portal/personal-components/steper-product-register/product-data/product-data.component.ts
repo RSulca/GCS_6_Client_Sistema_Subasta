@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProductEmiterService } from 'src/app/services/product-emiter.service';
 
 @Component({
   selector: 'app-product-data',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDataComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,private productEmiter: ProductEmiterService) { }
 
   ngOnInit(): void {
+  }
+
+  goToShipping() {
+    this.router.navigate(['seller/edit/shipping']);
   }
 
 }

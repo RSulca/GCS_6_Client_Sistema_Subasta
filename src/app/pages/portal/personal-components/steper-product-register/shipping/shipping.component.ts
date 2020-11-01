@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProductEmiterService } from 'src/app/services/product-emiter.service';
 
 @Component({
   selector: 'app-shipping',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShippingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,private productEmiter: ProductEmiterService) { }
 
   ngOnInit(): void {
   }
 
+  goToReview() {
+    this.router.navigate(['seller/edit/reviewer'])
+  }
 }

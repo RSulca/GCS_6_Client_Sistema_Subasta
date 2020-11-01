@@ -1,1 +1,41 @@
-<p>shipping works!</p>
+<div class="container m-4">
+  <div class="titulo">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Envio</h2>
+      </div>
+      <div class="col-md-6" align="end">
+        <button (click)="goToReview()" class="btn btn-primary btn-sm">
+          Siguiente <i class="ni ni-bold-right"></i>
+        </button>
+      </div>
+    </div>
+    <p>En este paso, nos gustaría que definieras tus gastos de envío. Nuestros pujadores provienen de todas partes del
+      mundo, así que es importante rellenar los gastos de envío reales para cada uno de los países. Los gastos de envío
+      justos o el ofrecimiento del envío gratuito conducen a pujas más altas.</p>
+  </div>
+  <div class="custom-control custom-checkbox mb-3">
+    <input class="custom-control-input" id="customCheck2" type="checkbox" checked="">
+    <label class="custom-control-label" for="customCheck2">El comprador tiene que recoger el artículo en persona
+      <i class="fa fa-info-circle"
+        tooltip="Si el artículo es difícil de enviar puedes elegir que el comprador tenga que recogerlo. Una vez que el comprador haya pagado te enviará un mensaje desde su cuenta de Subaston para organizar la recogida."></i>
+    </label>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <div class="input-group input-group-alternative mb-4">
+          <select class="form-control form-control-alternative">
+            <option value="0">Seleccionar...</option>
+            <option value="0">El comprador</option>
+            <option value="0">Yo</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <p> pagará los gastos de envío</p>
+    </div>
+  </div>
+</div>
