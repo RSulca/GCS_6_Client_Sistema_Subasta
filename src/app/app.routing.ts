@@ -33,16 +33,16 @@ const routes: Routes = [
       }
     ]
   },
-  {
-    path: 'home',
-    component: PortalLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: './layouts/portal-layout/portal-layout.module#PortalLayoutModule'
-      }
-    ]
-  },
+  // {
+  //   path: 'home',
+  //   component: PortalLayoutComponent,
+  //   children: [
+  //     {
+  //       path: '',
+  //       loadChildren: './layouts/portal-layout/portal-layout.module#PortalLayoutModule'
+  //     }
+  //   ]
+  // },
   {
     path: '**',
     redirectTo: 'dashboard'

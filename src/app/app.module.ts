@@ -12,6 +12,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { NavbarPortalComponent } from './pages/shared/navbar-portal/navbar-portal.component';
+import { FooterPortalComponent } from './pages/shared/footer-portal/footer-portal.component';
+import { RegistroPortalComponent } from './pages/portal/registro-portal/registro-portal.component';
+import { RegistroModalPortalComponent } from './pages/portal/registro-modal-portal/registro-modal-portal.component';
+import { HomePortalComponent } from './pages/portal/home-portal/home-portal.component';
+import { CategoriaModalComponent } from './pages/portal/categoria-modal/categoria-modal.component';
 
 @NgModule({
   imports: [
@@ -26,7 +32,13 @@ import { ComponentsModule } from './components/components.module';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    NavbarPortalComponent,
+    FooterPortalComponent,
+    RegistroPortalComponent,
+    RegistroModalPortalComponent,
+    HomePortalComponent,
+    CategoriaModalComponent
     
     
   ],

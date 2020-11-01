@@ -1,1 +1,324 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+/* You can add global styles to this file, and also import other style files */
+
+
+/*nav bar*/
+
+.header-nav {
+    background-color: #fff;
+}
+
+.nav-bg {
+    background-color: #fff;
+}
+
+.font-item {
+    color: black;
+}
+
+.search-tam {
+    background-color: #F0F1F5;
+}
+
+.form-search {
+    padding-left: 2rem;
+}
+
+.form-inline .form-control {
+    width: 28rem;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+    font-weight: 500;
+    font-size: 15px;
+    font-family: "basisGrotesque", sans-serif;
+}
+
+.btn {
+    border-radius: 0rem;
+}
+
+.btn-primary {
+    background-color: #0033FF;
+}
+
+.nav-sesion {
+    position: absolute !important;
+    right: 0;
+    margin-right: 1rem;
+}
+
+.form-inline .form-control {
+    width: 23rem !important;
+}
+
+form {
+    padding-right: 19rem;
+}
+
+.form-search {
+    position: absolute;
+    margin-left: 19.2rem;
+}
+
+.form-search-like {
+    position: absolute;
+    right: 0;
+    margin-right: 11.5rem;
+}
+
+.form-search-vender {
+    position: absolute;
+    right: 0;
+    margin-right: 14rem;
+}
+
+
+/*Fin navbar*/
+
+
+/*Login*/
+
+.content-register {
+    background-color: #F0F1F5;
+    padding: 2rem;
+}
+
+.input-group-text {
+    border: none;
+}
+
+.check-contra {
+    text-align: right;
+}
+
+.r-input {
+    width: 21rem;
+    font-size: 1rem;
+    line-height: 1.125;
+    height: 2.5rem;
+}
+
+.form-rec {
+    color: #727272;
+    font-size: 13px;
+}
+
+.r-input {
+    background-color: #f0f1f5;
+    border-radius: 2.5rem;
+    border: 1px solid rgba(34, 34, 34, 0.32);
+    color: #000;
+    padding: 0.43rem 1.333em;
+    margin-left: -0.25rem;
+}
+
+.r-input {
+    margin-bottom: 0.5rem;
+    width: 25rem;
+}
+
+.input-group-text {
+    border: none !important;
+}
+
+.form-register {
+    padding-top: 1.5rem;
+}
+
+.bt-free {
+    width: 370px;
+}
+
+.bt-free {
+    background-color: #ff6969 !important;
+    font-size: 20px;
+    border-radius: 2.5rem;
+    border: 1px solid rgba(34, 34, 34, 0.32);
+    color: white !important;
+    padding: 0.43rem 1.333em;
+    width: calc(100% + 0.5rem);
+    margin-left: -0.25rem;
+}
+
+.btn-inic {
+    border-radius: 2.5rem;
+    font-size: 8px;
+    background-color: #0033FF;
+}
+
+.reg-list {
+    margin-top: 1.5rem;
+}
+
+.i-recordar {
+    padding-left: 0.5rem;
+}
+
+.recordar {
+    text-align: right;
+    position: absolute !important;
+    /* margin-right: 1rem; */
+    padding-right: 2.6rem !important;
+    padding-top: 0.5rem;
+}
+
+
+/* Fin Login */
+
+
+/*Registro modal*/
+
+.bodyRegistro h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.bodyRegistro p,
+.bodyRegistro label,
+.bodyRegistro a {
+    font-size: .9rem;
+}
+
+.bodyRegistro p a {
+    color: #afafaf;
+    text-decoration: underline;
+}
+
+.text-plomo {
+    color: #afafaf;
+}
+
+.separatorRegister {
+    position: relative;
+}
+
+.separatorRegister span {
+    position: relative;
+    z-index: 2;
+}
+
+.separatorRegister::before,
+.separatorRegister::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 400px;
+    height: 2px;
+    background-color: #afafaf;
+}
+
+.separatorRegister::after {
+    right: 0;
+}
+
+.separatorRegister::before {
+    left: 0;
+}
+
+.bodyRegistro {
+    padding: 1rem 1.5rem 1.5rem;
+}
+
+.content-social a {
+    position: relative;
+}
+
+.icon-google {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+/*Fin registro modal*/
+
+
+/* Footer */
+
+.fot-content div ul p {
+    color: black;
+    font-size: 17px;
+}
+
+.fot-content div ul li {
+    color: #727272;
+    list-style: none;
+    font-size: 15px;
+}
+
+.fot-content div ul li {
+    padding-bottom: 0.5rem;
+}
+
+.redes-s ul li {
+    list-style: none;
+}
+
+.redes-s {
+    list-style: none;
+}
+
+.redes-s {
+    display: flex;
+}
+
+.redes-s div {
+    padding-left: 1rem;
+}
+
+.fot-content2 div a li {
+    list-style: none;
+    color: #727272;
+}
+
+.fot-peru {
+    padding-left: 2.5rem;
+}
+
+
+/* Fin Footer */
+
+
+/*INICIO HOME PORTAL */
+
+.grid {
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+    grid-template-rows: 250px 300px;
+    gap: 4px;
+}
+
+.grid2 {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 132px 132px;
+    gap: 1em;
+}
+
+.grid2 div p {
+    padding-left: 1rem;
+    padding-top: 1rem;
+}
+
+.grid2 div p {
+    font-size: 24px;
+    color: black;
+    font-weight: 700;
+    font-family: fangsong;
+}
+
+.grid2 div div img {
+    position: absolute;
+    text-align: end;
+    z-index: 4444;
+    padding-left: 11.8rem;
+    padding-top: 1rem;
+}
+
+
+/*FIN HOME PORTAL*/
