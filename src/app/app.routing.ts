@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { PortalLayoutComponent } from './layouts/portal-layout/portal-layout.component';
+import { CatalogoComponent } from './pages/portal/catalogo/catalogo.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,11 @@ const routes: Routes = [
         loadChildren: './layouts/portal-layout/portal-layout.module#PortalLayoutModule'
       }
     ]
+  },
+  {
+    path: 'catalogo',
+    component: CatalogoComponent,
+    children: []
   },
   {
     path: '**',
