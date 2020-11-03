@@ -10,7 +10,7 @@ import { PortalLayoutComponent } from './layouts/portal-layout/portal-layout.com
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
@@ -25,16 +25,6 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: AuthLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: './layouts/auth-layout/auth-layout.module#AuthLayoutModule'
-      }
-    ]
-  },
-  {
-    path: '',
     component: PortalLayoutComponent,
     children: [
       {
@@ -44,8 +34,18 @@ const routes: Routes = [
     ]
   },
   {
+    path: '',
+    component: AuthLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: './layouts/auth-layout/auth-layout.module#AuthLayoutModule'
+      }
+    ]
+  },
+  {
     path: '**',
-    redirectTo: 'dashboard'
+    redirectTo: 'home'
   }
 ];
 

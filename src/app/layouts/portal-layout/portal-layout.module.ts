@@ -3,25 +3,18 @@ import { CommonModule } from '@angular/common';
 import { PortalLayoutRoutes } from './portal-layout.routing';
 import { RouterModule } from '@angular/router';
 import { PortalLayoutComponent } from './portal-layout.component';
-import { HomeComponent } from 'src/app/pages/portal/home/home.component';
-import { ProductComponent } from 'src/app/pages/portal/product/product.component';
-import { ProductDetailComponent } from 'src/app/pages/portal/product-detail/product-detail.component';
-import { SteperProductRegisterModule } from 'src/app/pages/portal/personal-components/steper-product-register/steper-product-register.module';
+import { PortalModule } from 'src/app/pages/portal/portal.module';
 
 
 
 @NgModule({
   declarations: [
-    PortalLayoutComponent,
-    HomeComponent,
-    ProductComponent,
-    ProductDetailComponent
+    PortalLayoutComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(PortalLayoutRoutes),
-    SteperProductRegisterModule
-
+    PortalModule
   ]
 })
 export class PortalLayoutModule { }

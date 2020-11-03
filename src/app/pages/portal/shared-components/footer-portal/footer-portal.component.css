@@ -1,0 +1,34 @@
+.footer{
+    border-top: 1px solid #9c9c9c;
+}
+.fot-content div ul p {
+    color: black;
+    font-size: 17px;
+}
+
+.fot-content div ul li {
+    color: #727272;
+    list-style: none;
+    font-size: 15px;
+}
+
+.fot-content div ul li {
+    padding-bottom: 0.5rem;
+}
+
+.redes-s {
+    list-style: none;
+}
+
+.redes-s div {
+    padding-left: 1rem;
+}
+
+.fot-content2 div a li {
+    list-style: none;
+    color: #727272;
+}
+
+.fot-peru {
+    padding-left: 2.5rem;
+}

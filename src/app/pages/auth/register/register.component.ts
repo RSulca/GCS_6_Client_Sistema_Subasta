@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
 import { NotifierService } from 'src/app/services/notifier.service';
-import { ClientReq } from '../../models/request/client.model';
+import { ClientReq } from '../../../models/request/client.model';
 
 @Component({
   selector: 'app-register',
