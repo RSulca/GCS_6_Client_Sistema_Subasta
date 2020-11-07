@@ -7,8 +7,8 @@ import { ClipboardModule } from 'ngx-clipboard';
 
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../pages/admin/dashboard/dashboard.component';
-import { IconsComponent } from '../../pages/icons/icons.component';
-import { TablesComponent } from '../../pages/tables/tables.component';
+import { SupervisorComponent } from '../../pages/admin/supervisor/supervisor.component';
+import { ClienteComponent } from '../../pages/admin/cliente/cliente.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -23,8 +23,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   declarations: [
     DashboardComponent,
-    TablesComponent,
-    IconsComponent
+    SupervisorComponent,
+    ClienteComponent
   ]
 })
 
