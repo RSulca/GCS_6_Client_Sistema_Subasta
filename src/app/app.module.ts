@@ -17,7 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 
-
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   imports: [
@@ -29,7 +29,8 @@ import { ComponentsModule } from './components/components.module';
     RouterModule,
     AppRoutingModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(), // ToastrModule added    
+    ToastrModule.forRoot(), // ToastrModule added 
+    NgxDropzoneModule   
   ],
   declarations: [
     AppComponent,
