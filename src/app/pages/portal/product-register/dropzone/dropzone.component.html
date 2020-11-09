@@ -1,5 +1,5 @@
 <ngx-dropzone (change)="onSelect($event)">
-    <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
+    <ngx-dropzone-label>Arrasta las imágenes aquí</ngx-dropzone-label>
     <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
         <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
     </ngx-dropzone-preview>
@@ -8,7 +8,7 @@
 <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
     <ngx-dropzone-label>
         <div>
-            <h2>My custom dropzone</h2>
+            <h2>Vista previa</h2>
         </div>
     </ngx-dropzone-label>
     <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true"

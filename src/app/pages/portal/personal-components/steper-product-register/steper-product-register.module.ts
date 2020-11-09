@@ -13,8 +13,8 @@ import { RouterModule } from '@angular/router';
 import { steperProductRegister } from './steper-product-register-routing.module';
 import { ReviewerComponent } from './reviewer/reviewer.component';
 import { ProductEmiterService } from 'src/app/services/product-emiter.service';
-
-
+import { DropzoneComponent } from '../../product-register/dropzone/dropzone.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [
@@ -23,12 +23,14 @@ import { ProductEmiterService } from 'src/app/services/product-emiter.service';
     PhotosComponent,
     ProductDataComponent,
     ShippingComponent,
-    ReviewerComponent
+    ReviewerComponent,
+    DropzoneComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(steperProductRegister),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    NgxDropzoneModule
   ],
   exports: [
     SteperProductRegisterComponent,
