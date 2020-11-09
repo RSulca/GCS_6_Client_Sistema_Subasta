@@ -16,6 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { SupervisorService } from './services/supervisor.service';
 
 
 
@@ -36,7 +37,9 @@ import { ComponentsModule } from './components/components.module';
     AdminLayoutComponent,
     AuthLayoutComponent
   ],
-  providers: [],
+  providers: [
+    SupervisorService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
