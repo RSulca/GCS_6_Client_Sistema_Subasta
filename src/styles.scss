@@ -6,9 +6,12 @@
 .btn-primary {
     background-color: #0033FF;
 }
-.font-6{
+
+.font-6 {
     font-weight: 600;
 }
+
+
 /*Login*/
 
 .content-register {
@@ -169,41 +172,45 @@
 
 /*INICIO HOME PORTAL */
 
-.grid {
-    display: grid;
-    grid-template-columns: 50% 25% 25%;
-    grid-template-rows: 250px 300px;
-    gap: 4px;
-}
-
-.grid2 {
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 132px 132px;
-    gap: 1em;
-}
-
-.grid2 div p {
-    padding-left: 1rem;
-    padding-top: 1rem;
-}
-
-.grid2 div p {
-    font-size: 24px;
-    color: black;
-    font-weight: 700;
-    font-family: fangsong;
-}
-
-.grid2 div div img {
-    position: absolute;
-    text-align: end;
-    z-index: 4444;
-    padding-left: 11.8rem;
-    padding-top: 1rem;
-}
-
 
 /*FIN HOME PORTAL*/
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+/*Animated*/
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.fast {
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}

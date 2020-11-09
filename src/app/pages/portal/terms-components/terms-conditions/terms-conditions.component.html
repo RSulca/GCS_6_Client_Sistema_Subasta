@@ -1,0 +1,57 @@
+<app-navbar-portal>
+</app-navbar-portal>
+
+<div class="container mt-5 mb-5">
+    <div class="seccionterms">
+        <div class="d-flex flex-row bd-highlight mb-3">
+            <div class="p-2 bd-highlight"><a [routerLink]="['../terms-conditions']">Términos y condiciones</a></div>
+            <div class="p-2 bd-highlight">|</div>
+
+        </div>
+    </div>
+    <h1>Términos y condiciones</h1>
+    <hr>
+
+    <div class="gridterms3">
+        <div>
+            <p> Privacidad </p>
+            <li> <button class="btn_terms" (click)="mostrar = !mostrar">| Condiciones</button>
+            </li>
+            <li><button class="btn_terms" (click)="mostrar2 = !mostrar2">| Términos</button></li>
+        </div>
+        <div>
+            <div class="text-center">
+                <h1>Subastón Plataforma de subastas Online</h1>
+
+            </div>
+            <div *ngIf="mostrar" class="fadeIn fast">
+                <h1>Condiciones</h1>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur enim facere nesciunt ab aut porro deleniti sint rem neque dignissimos reiciendis earum illo, rerum, ullam optio corporis quod velit repellendus!</p>
+                <div class="text-center">
+                    <img src="assets/img/terms/terms3.svg" width="300px" alt="">
+
+                </div>
+            </div>
+            <div *ngIf="mostrar2" class="fadeIn fast">
+                <h1>Terminos de SUBASTÓN</h1>
+                <ul>
+                    <li><a [routerLink]="['../seller-terms']">Términos del vendedor</a></li>
+                    <li><a [routerLink]="['../buyer-terms']">Términos del comprador</a></li>
+                </ul>
+                <div class="text-center">
+                    <img src="assets/img/terms/terms4.svg" width="250px" alt="">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<app-footer-portal></app-footer-portal>

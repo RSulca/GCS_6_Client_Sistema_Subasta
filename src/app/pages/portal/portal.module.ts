@@ -14,6 +14,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterPortalComponent } from './shared-components/footer-portal/footer-portal.component';
 import { NavbarPortalComponent } from './shared-components/navbar-portal/navbar-portal.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BuyerTermsComponent } from './terms-components/buyer-terms/buyer-terms.component';
+import { SellerTermsComponent } from './terms-components/seller-terms/seller-terms.component';
+import { TermsConditionsComponent } from './terms-components/terms-conditions/terms-conditions.component';
+import { TermsModalComponent } from './terms-components/terms-modal/terms-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +28,11 @@ import { NavbarPortalComponent } from './shared-components/navbar-portal/navbar-
     // LoginComponent,
     // RegisterComponent,
     FooterPortalComponent,
-    NavbarPortalComponent
-    
+    NavbarPortalComponent,
+    BuyerTermsComponent,
+    SellerTermsComponent,
+    TermsConditionsComponent,
+    TermsModalComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +40,8 @@ import { NavbarPortalComponent } from './shared-components/navbar-portal/navbar-
     ProductRegisterModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    CarouselModule
   ],
   providers: [
     NotifierService,
