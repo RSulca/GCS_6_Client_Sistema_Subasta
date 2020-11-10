@@ -46,14 +46,6 @@ export class SupervisorComponent implements OnInit {
   }
 
   registrar(){
-   /* 
-    if (this.supervisor.id == null || this.supervisor.id == ''){
-      alert('hola');
-    }else{
-      alert('adios');
-    }*/
-    
-    
     if(confirm('Está seguro de grabar?')){
       console.log(this.supervisor);
       this.supervisorService.registrar(this.supervisor)
