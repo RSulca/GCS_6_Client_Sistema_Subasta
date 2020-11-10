@@ -20,7 +20,8 @@ import { ProductCardComponent } from './shared-components/product-card/product-c
 import { ProductCardListComponent } from './shared-components/product-card-list/product-card-list.component';
 import { TermsComponent } from './terms-components/terms-components.component';
 import { TermsComponentsModule } from './terms-components/terms-components.module';
-import { ClienteCompletarComponent } from './cliente-completar/cliente-completar.component';
+import { AccountComponent } from './account/account.component';
+import { AccountModule } from './account/account.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { ClienteCompletarComponent } from './cliente-completar/cliente-completar
     TermsModalComponent,
     ProductCardComponent,
     ProductCardListComponent,
-    ClienteCompletarComponent
+    AccountComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +46,8 @@ import { ClienteCompletarComponent } from './cliente-completar/cliente-completar
     ReactiveFormsModule,
     FormsModule,
     CarouselModule,
-    TermsComponentsModule
+    TermsComponentsModule,
+    AccountModule
   ],
   providers: [
     NotifierService,

@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AccountComponent } from './account/account.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { ClienteCompletarComponent } from './cliente-completar/cliente-completar.component';
 import { HomePortalComponent } from './home-portal/home-portal.component';
@@ -21,8 +22,14 @@ export const portalRoutes: Routes = [
     component: CatalogoComponent
   },
   {
-    path: 'profile',
-    component: ClienteCompletarComponent
+    path: 'account',
+    component: AccountComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: './account/account.module#AccountModule'
+      }
+    ]
   },
   {
     path: 'terms-conditions',

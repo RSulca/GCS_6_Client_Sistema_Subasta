@@ -12,3 +12,7 @@
     color: #000;
     font-weight: bold;
 }
+
+.menu-tabs .active{
+    font-weight: bold;
+}
