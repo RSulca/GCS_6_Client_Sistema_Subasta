@@ -12,39 +12,44 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form [formGroup]="registroSupervisorForm">
                         <div class="form-row">
+                          <div class="form-group col-md-6" style="display: none;">
+                            <label for="inputEmail4">ID</label>
+                            <input type="_id" class="form-control" id="inputID" [(ngModel)]="supervisor.id" formControlName="id" placeholder="ID">
+                          </div>
                           <div class="form-group col-md-6">
                             <label for="inputEmail4">Correo</label>
-                            <input type="email" class="form-control" id="inputEmail4" placeholder="Correo">
+                            <input type="email" class="form-control" id="inputEmail4"  [(ngModel)]="supervisor.email" formControlName="correo" placeholder="Correo">
                           </div>
                           <div class="form-group col-md-6">
                             <label for="inputPassword4">Password</label>
-                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                            <input type="password" class="form-control" id="inputPassword4"  [(ngModel)]="supervisor.password" formControlName="password" placeholder="Password">
                           </div>
                         </div>
                         <div class="form-group">
                           <label for="inputNombres">Nombres</label>
-                          <input type="text" class="form-control" id="inputNombres" placeholder="Nombres">
+                          <input type="text" class="form-control" id="inputNombres" [(ngModel)]="supervisor.name" formControlName="nombres" placeholder="Nombres">
                         </div>
                         <div class="form-group">
                           <label for="inputApellidos">Apellidos</label>
-                          <input type="text" class="form-control" id="inputApellidos" placeholder="Apellidos">
+                          <input type="text" class="form-control" id="inputApellidos" [(ngModel)]="supervisor.lastname" formControlName="apellidos" placeholder="Apellidos">
                         </div>
                         <div class="form-row">
                           <div class="form-group col-md-6">
                             <label for="inputDNI">DNI</label>
-                            <input type="text" class="form-control" id="inputDNI" placeholder="DNI">
+                            <input type="text" class="form-control" id="inputDNI" [(ngModel)]="supervisor.dni" formControlName="dni" placeholder="DNI">
                           </div>
                           <div class="form-group col-md-6">
                             <label for="inputCategoria">Categoría</label>
-                            <select id="inputCategoria" class="form-control">
+                            <select id="inputCategoria" class="form-control" [(ngModel)]="supervisor.category" formControlName="categoria">
                               <option selected>Escojer...</option>
                               <option>...</option>
                             </select>
                           </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Registrar</button>
+                        <button (click)="registrar()" class="btn btn-primary">Registrar</button>
+                        <button (click)="limpiar()" class="btn btn-info">Limpiar</button>
                       </form>
                 </div>
             </div>
@@ -63,6 +68,7 @@
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
+                  <th style="display: none;" scope="col">ID</th>
                   <th scope="col">Nombres</th>
                   <th scope="col">Apellidos</th>
                   <th scope="col">Categoría</th>
@@ -73,75 +79,15 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">
-                    /argon/
-                  </th>
-                  <td>
-                    4,569
-                  </td>
-                  <td>
-                    340
-                  </td>
-                  <td>
-                    <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    /argon/index.html
-                  </th>
-                  <td>
-                    3,985
-                  </td>
-                  <td>
-                    319
-                  </td>
-                  <td>
-                    <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    /argon/charts.html
-                  </th>
-                  <td>
-                    3,513
-                  </td>
-                  <td>
-                    294
-                  </td>
-                  <td>
-                    <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    /argon/tables.html
-                  </th>
-                  <td>
-                    2,050
-                  </td>
-                  <td>
-                    147
-                  </td>
-                  <td>
-                    <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">
-                    /argon/profile.html
-                  </th>
-                  <td>
-                    1,795
-                  </td>
-                  <td>
-                    190
-                  </td>
-                  <td>
-                    <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-                  </td>
+                <tr *ngFor="let supervisor of supervisores">
+                  <td style="display: none;">{{supervisor._id}}</td>
+                  <td>{{supervisor.name}}</td>
+                  <td>{{supervisor.lastname}}</td>
+                  <td>{{supervisor.category}}</td>
+                  <td>{{supervisor.email}}</td>
+                  <td>{{supervisor.state}}</td>
+                  <td><button (click)="actualizar(supervisor)" class="btn btn-warning">Modificar</button></td>
+                  <td><button (click)="eliminar" class="btn btn-danger">Inhabilitar</button></td>     
                 </tr>
               </tbody>
             </table>

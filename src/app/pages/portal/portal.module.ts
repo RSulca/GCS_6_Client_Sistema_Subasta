@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterPortalComponent } from './shared-components/footer-portal/footer-portal.component';
 import { NavbarPortalComponent } from './shared-components/navbar-portal/navbar-portal.component';
+import { ClienteCompletarComponent } from './cliente-completar/cliente-completar.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NavbarPortalComponent } from './shared-components/navbar-portal/navbar-
     // LoginComponent,
     // RegisterComponent,
     FooterPortalComponent,
-    NavbarPortalComponent
+    NavbarPortalComponent,
+    ClienteCompletarComponent
     
   ],
   imports: [
