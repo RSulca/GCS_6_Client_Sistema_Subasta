@@ -1,8 +1,12 @@
 import { Routes } from '@angular/router';
+import { AccountComponent } from './account/account.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { ClienteCompletarComponent } from './cliente-completar/cliente-completar.component';
 import { HomePortalComponent } from './home-portal/home-portal.component';
 import { ProductRegisterComponent } from './product-register/product-register.component';
+import { TermsComponent } from './terms-components/terms-components.component';
+import { TermsModalComponent } from './terms-components/terms-modal/terms-modal.component';
+
 
 export const portalRoutes: Routes = [
   {
@@ -18,8 +22,28 @@ export const portalRoutes: Routes = [
     component: CatalogoComponent
   },
   {
-    path: 'completar',
-    component: ClienteCompletarComponent
+    path: 'account',
+    component: AccountComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: './account/account.module#AccountModule'
+      }
+    ]
+  },
+  {
+    path: 'terms-conditions',
+    component: TermsComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: './terms-components/terms-components.module#TermsComponentsModule'
+      }
+    ]
+  },
+  {
+    path: 'terms-modal',
+    component: TermsModalComponent
   },
   {
     path: 'seller',

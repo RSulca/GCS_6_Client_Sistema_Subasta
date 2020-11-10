@@ -14,7 +14,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterPortalComponent } from './shared-components/footer-portal/footer-portal.component';
 import { NavbarPortalComponent } from './shared-components/navbar-portal/navbar-portal.component';
-import { ClienteCompletarComponent } from './cliente-completar/cliente-completar.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { TermsModalComponent } from './terms-components/terms-modal/terms-modal.component';
+import { ProductCardComponent } from './shared-components/product-card/product-card.component';
+import { ProductCardListComponent } from './shared-components/product-card-list/product-card-list.component';
+import { TermsComponent } from './terms-components/terms-components.component';
+import { TermsComponentsModule } from './terms-components/terms-components.module';
+import { AccountComponent } from './account/account.component';
+import { AccountModule } from './account/account.module';
 
 @NgModule({
   declarations: [
@@ -25,8 +32,11 @@ import { ClienteCompletarComponent } from './cliente-completar/cliente-completar
     // RegisterComponent,
     FooterPortalComponent,
     NavbarPortalComponent,
-    ClienteCompletarComponent
-    
+    TermsComponent,
+    TermsModalComponent,
+    ProductCardComponent,
+    ProductCardListComponent,
+    AccountComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +44,10 @@ import { ClienteCompletarComponent } from './cliente-completar/cliente-completar
     ProductRegisterModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    CarouselModule,
+    TermsComponentsModule,
+    AccountModule
   ],
   providers: [
     NotifierService,

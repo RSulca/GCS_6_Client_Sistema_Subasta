@@ -1,0 +1,7 @@
+.label-type{
+    cursor: pointer;
+    
+}
+.label-type:hover{
+    text-decoration: underline;
+}

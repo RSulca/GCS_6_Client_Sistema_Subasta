@@ -1,0 +1,43 @@
+.grid {
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+    grid-template-rows: 250px 300px;
+    gap: 4px;
+}
+
+.grid2 {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 132px 132px;
+    gap: 1em;
+}
+
+.grid2 div p {
+    padding-left: 1rem;
+    padding-top: 1rem;
+}
+
+.grid2 div p {
+    font-size: 24px;
+    color: black;
+    font-weight: 700;
+    font-family: fangsong;
+}
+
+.grid2 div div img {
+    position: absolute;
+    text-align: end;
+    z-index: 4444;
+    padding-left: 11.8rem;
+    padding-top: 1rem;
+}
+
+.card-body {
+    padding: 0.5rem !important;
+}
+
+.mat-body p,
+.mat-body-1 p,
+.mat-typography p {
+    margin: 0 0 3px !important;
+}

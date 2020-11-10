@@ -1,0 +1,22 @@
+<app-navbar-portal></app-navbar-portal>
+
+<div class="container mt-5 mb-5">
+    <div class="row mx-0">
+        <div class="col-12 col-md-3">
+            <div class="p-4 bg-white p-3 box-ccc menu-tabs">
+                <p routerLinkActive="active"><a [routerLink]="['./account-profile']" class="text-dark">Cuenta</a></p>
+                <p routerLinkActive="active"><a [routerLink]="['./address']" class="text-dark">Direcciones</a></p>
+                <p routerLinkActive="active"><a [routerLink]="['./payment']" class="text-dark">Pago</a></p>
+            </div>
+        </div>
+        <div class="col-12 col-md-9">
+            <div class="p-4 bg-white box-ccc">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<app-footer-portal></app-footer-portal>

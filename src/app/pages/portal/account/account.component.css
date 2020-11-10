@@ -1,0 +1,6 @@
+.box-ccc{
+    box-shadow: 0 0 2px 0 #ccc;
+}
+.menu-tabs .active{
+    font-weight: bold;
+}
