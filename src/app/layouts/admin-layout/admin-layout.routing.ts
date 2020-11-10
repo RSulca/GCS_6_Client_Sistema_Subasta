@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 
 import { DashboardComponent } from '../../pages/admin/dashboard/dashboard.component';
-import { IconsComponent } from '../../pages/icons/icons.component';
-import { TablesComponent } from '../../pages/tables/tables.component';
+import { SupervisorComponent } from '../../pages/admin/supervisor/supervisor.component';
+import { ClienteComponent } from '../../pages/admin/cliente/cliente.component';
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'tables',         component: TablesComponent },
-    { path: 'icons',          component: IconsComponent }
+    { path: 'admin',      component: DashboardComponent },
+    { path: 'admin/supervisores',         component: SupervisorComponent },
+    { path: 'admin/clientes',          component: ClienteComponent }
 ];

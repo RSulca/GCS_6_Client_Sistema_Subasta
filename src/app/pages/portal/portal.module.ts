@@ -20,6 +20,7 @@ import { ProductCardComponent } from './shared-components/product-card/product-c
 import { ProductCardListComponent } from './shared-components/product-card-list/product-card-list.component';
 import { TermsComponent } from './terms-components/terms-components.component';
 import { TermsComponentsModule } from './terms-components/terms-components.module';
+import { ClienteCompletarComponent } from './cliente-completar/cliente-completar.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { TermsComponentsModule } from './terms-components/terms-components.modul
     TermsComponent,
     TermsModalComponent,
     ProductCardComponent,
-    ProductCardListComponent
+    ProductCardListComponent,
+    ClienteCompletarComponent
   ],
   imports: [
     CommonModule,

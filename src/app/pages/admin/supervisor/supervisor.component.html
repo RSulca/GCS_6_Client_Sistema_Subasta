@@ -1,0 +1,100 @@
+
+<!-- Page content -->
+<div class="container-fluid mt--7">
+    <div class="row mt-5">
+        <div class="col-xl-4">
+            <div class="card shadow">
+                <div class="card-header bg-transparent">
+                    <div class="row align-items-center">
+                      <div class="col">
+                        <h2 class="mb-0">Registro</h2>
+                      </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="registroSupervisorForm">
+                        <div class="form-row">
+                          <div class="form-group col-md-6" style="display: none;">
+                            <label for="inputEmail4">ID</label>
+                            <input type="_id" class="form-control" id="inputID" [(ngModel)]="supervisor.id" formControlName="id" placeholder="ID">
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="inputEmail4">Correo</label>
+                            <input type="email" class="form-control" id="inputEmail4"  [(ngModel)]="supervisor.email" formControlName="correo" placeholder="Correo">
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="inputPassword4">Password</label>
+                            <input type="password" class="form-control" id="inputPassword4"  [(ngModel)]="supervisor.password" formControlName="password" placeholder="Password">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="inputNombres">Nombres</label>
+                          <input type="text" class="form-control" id="inputNombres" [(ngModel)]="supervisor.name" formControlName="nombres" placeholder="Nombres">
+                        </div>
+                        <div class="form-group">
+                          <label for="inputApellidos">Apellidos</label>
+                          <input type="text" class="form-control" id="inputApellidos" [(ngModel)]="supervisor.lastname" formControlName="apellidos" placeholder="Apellidos">
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="inputDNI">DNI</label>
+                            <input type="text" class="form-control" id="inputDNI" [(ngModel)]="supervisor.dni" formControlName="dni" placeholder="DNI">
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="inputCategoria">Categoría</label>
+                            <select id="inputCategoria" class="form-control" [(ngModel)]="supervisor.category" formControlName="categoria">
+                              <option selected>Escojer...</option>
+                              <option>...</option>
+                            </select>
+                          </div>
+                        </div>
+                        <button (click)="registrar()" class="btn btn-primary">Registrar</button>
+                        <button (click)="limpiar()" class="btn btn-info">Limpiar</button>
+                      </form>
+                </div>
+            </div>
+        </div>
+      <div class="col-xl-8 mb-5 mb-xl-0">
+        <div class="card shadow">
+          <div class="card-header border-0">
+            <div class="row align-items-center">
+              <div class="col">
+                <h2 class="mb-0">Supervisores</h2>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <!-- Projects table -->
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th style="display: none;" scope="col">ID</th>
+                  <th scope="col">Nombres</th>
+                  <th scope="col">Apellidos</th>
+                  <th scope="col">Categoría</th>
+                  <th scope="col">Correo</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Modificar</th>
+                  <th scope="col">Inhabilitar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let supervisor of supervisores">
+                  <td style="display: none;">{{supervisor._id}}</td>
+                  <td>{{supervisor.name}}</td>
+                  <td>{{supervisor.lastname}}</td>
+                  <td>{{supervisor.category}}</td>
+                  <td>{{supervisor.email}}</td>
+                  <td>{{supervisor.state}}</td>
+                  <td><button (click)="actualizar(supervisor)" class="btn btn-warning">Modificar</button></td>
+                  <td><button (click)="eliminar" class="btn btn-danger">Inhabilitar</button></td>     
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
