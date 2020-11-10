@@ -11,7 +11,7 @@ export class HomePortalComponent implements OnInit {
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
-    dots: true,
+    dots: false,
     navSpeed: 700,
     navText: ['', ''],
     responsive: {

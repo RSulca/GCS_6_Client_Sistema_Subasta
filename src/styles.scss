@@ -7,8 +7,12 @@
     background-color: #0033FF;
 }
 
+.font-5 {
+    font-weight: 500 !important;
+}
+
 .font-6 {
-    font-weight: 600;
+    font-weight: 600 !important;
 }
 
 
@@ -213,4 +217,20 @@ body {
 
 .fadeIn {
     animation-name: fadeIn;
+}
+
+.owl-theme .owl-nav [class*=owl-]{
+    position: absolute;
+    top: 48%;
+    transform: translateY(-48%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.owl-next {
+    right: -20px;
+}
+
+.owl-prev {
+    left: -20px;
 }

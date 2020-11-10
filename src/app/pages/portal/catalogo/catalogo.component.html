@@ -10,67 +10,39 @@
     <h2 class="title-catalog text-dark">Arte</h2>
     <p class="font-6">Subastas que cierran pronto</p>
 
-    <div class="row row-cols-5 mx-0">
-        <div class="col-12 col-md-3 mb-4">
-            <a href="" class="d-block">
-                <div class="card p-0 product_view1 border-0 rounded overflow-hidden">
-                    <div class="product_view1_img" style="background-image: url('https://i.blogs.es/9638f5/osete/840_560.jpg');">
-                        <span class="text-over-product">Ver detalle</span>
-                    </div>
-                    <div class="card-body py-2 px-3">
-                        <p class="card-text font-6 product_view1_title">Some quick example text to build</p>
-                        <p class="product_view1_subtitle">PUJA ACTUAL</p>
-                        <p class="product_view1_cost">36 €</p>
-                        <p class="product_view1_time">2d 10h:00m:00s</p>
-                    </div>
+    <div class="mx-0">
+        <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide>
+                <div class="col mb-4">
+                    <app-product-card></app-product-card>
                 </div>
-            </a>
-        </div>
-        <div class="col-12 col-md-3 mb-4">
-            <a href="" class="d-block">
-                <div class="card p-0 product_view1 border-0 rounded overflow-hidden">
-                    <div class="product_view1_img" style="background-image: url('https://i.blogs.es/9638f5/osete/840_560.jpg');">
-                        <span class="text-over-product">Ver detalle</span>
-                    </div>
-                    <div class="card-body py-2 px-3">
-                        <p class="card-text font-6 product_view1_title">Some quick example text to build</p>
-                        <p class="product_view1_subtitle">PUJA ACTUAL</p>
-                        <p class="product_view1_cost">36 €</p>
-                        <p class="product_view1_time">2d 10h:00m:00s</p>
-                    </div>
+            </ng-template>
+            <ng-template carouselSlide>
+                <div class="col mb-4">
+                    <app-product-card></app-product-card>
                 </div>
-            </a>
-        </div>
-        <div class="col-12 col-md-3 mb-4">
-            <a href="" class="d-block">
-                <div class="card p-0 product_view1 border-0 rounded overflow-hidden">
-                    <div class="product_view1_img" style="background-image: url('https://i.blogs.es/9638f5/osete/840_560.jpg');">
-                        <span class="text-over-product">Ver detalle</span>
-                    </div>
-                    <div class="card-body py-2 px-3">
-                        <p class="card-text font-6 product_view1_title">Some quick example text to build</p>
-                        <p class="product_view1_subtitle">PUJA ACTUAL</p>
-                        <p class="product_view1_cost">36 €</p>
-                        <p class="product_view1_time">2d 10h:00m:00s</p>
-                    </div>
+            </ng-template>
+            <ng-template carouselSlide>
+                <div class="col mb-4">
+                    <app-product-card></app-product-card>
                 </div>
-            </a>
-        </div>
-        <div class="col-12 col-md-3 mb-4">
-            <a href="" class="d-block">
-                <div class="card p-0 product_view1 border-0 rounded overflow-hidden">
-                    <div class="product_view1_img" style="background-image: url('https://i.blogs.es/9638f5/osete/840_560.jpg');">
-                        <span class="text-over-product">Ver detalle</span>
-                    </div>
-                    <div class="card-body py-2 px-3">
-                        <p class="card-text font-6 product_view1_title">Some quick example text to build</p>
-                        <p class="product_view1_subtitle">PUJA ACTUAL</p>
-                        <p class="product_view1_cost">36 €</p>
-                        <p class="product_view1_time">2d 10h:00m:00s</p>
-                    </div>
+            </ng-template>
+            <ng-template carouselSlide>
+                <div class="col mb-4">
+                    <app-product-card></app-product-card>
                 </div>
-            </a>
-        </div>
+            </ng-template>
+            <ng-template carouselSlide>
+                <div class="col mb-4">
+                    <app-product-card></app-product-card>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide>
+                <div class="col mb-4">
+                    <app-product-card></app-product-card>
+                </div>
+            </ng-template>
+        </owl-carousel-o>
     </div>
 
     <div class="content-catalogue mt-5">
@@ -90,135 +62,19 @@
 
         <div class="row mx-0">
             <div class="col-12 col-md-3 mb-4">
-                <a href="" class="d-block">
-                    <div class="card p-0 product_view1 border-0 rounded overflow-hidden">
-                        <div class="product_view1_img" style="background-image: url('https://i.blogs.es/9638f5/osete/840_560.jpg');">
-                            <span class="text-over-product">Ver detalle</span>
-                        </div>
-                        <div class="card-body py-2 px-3">
-                            <p class="card-text font-6 product_view1_title">Some quick example text to build</p>
-                            <p class="product_view1_subtitle">PUJA ACTUAL</p>
-                            <p class="product_view1_cost">36 €</p>
-                            <p class="product_view1_time">2d 10h:00m:00s</p>
-                        </div>
-                    </div>
-                </a>
+                <app-product-card></app-product-card>
             </div>
             <div class="col-12 col-md-3 mb-4">
-                <a href="" class="d-block">
-                    <div class="card p-0 product_view1 border-0 rounded overflow-hidden">
-                        <div class="product_view1_img" style="background-image: url('https://i.blogs.es/9638f5/osete/840_560.jpg');">
-                            <span class="text-over-product">Ver detalle</span>
-                        </div>
-                        <div class="card-body py-2 px-3">
-                            <p class="card-text font-6 product_view1_title">Some quick example text to build</p>
-                            <p class="product_view1_subtitle">PUJA ACTUAL</p>
-                            <p class="product_view1_cost">36 €</p>
-                            <p class="product_view1_time">2d 10h:00m:00s</p>
-                        </div>
-                    </div>
-                </a>
+                <app-product-card></app-product-card>
             </div>
             <div class="col-12 col-md-3 mb-4">
-                <a href="" class="d-block">
-                    <div class="card p-0 product_view1 border-0 rounded overflow-hidden">
-                        <div class="product_view1_img" style="background-image: url('https://i.blogs.es/9638f5/osete/840_560.jpg');">
-                            <span class="text-over-product">Ver detalle</span>
-                        </div>
-                        <div class="card-body py-2 px-3">
-                            <p class="card-text font-6 product_view1_title">Some quick example text to build</p>
-                            <p class="product_view1_subtitle">PUJA ACTUAL</p>
-                            <p class="product_view1_cost">36 €</p>
-                            <p class="product_view1_time">2d 10h:00m:00s</p>
-                        </div>
-                    </div>
-                </a>
+                <app-product-card></app-product-card>
             </div>
             <div class="col-12 col-md-3 mb-4">
-                <a href="" class="d-block">
-                    <div class="card p-0 product_view1 border-0 rounded overflow-hidden">
-                        <div class="product_view1_img" style="background-image: url('https://i.blogs.es/9638f5/osete/840_560.jpg');">
-                            <span class="text-over-product">Ver detalle</span>
-                        </div>
-                        <div class="card-body py-2 px-3">
-                            <p class="card-text font-6 product_view1_title">Some quick example text to build</p>
-                            <p class="product_view1_subtitle">PUJA ACTUAL</p>
-                            <p class="product_view1_cost">36 €</p>
-                            <p class="product_view1_time">2d 10h:00m:00s</p>
-                        </div>
-                    </div>
-                </a>
+                <app-product-card></app-product-card>
             </div>
             <div class="col-12 col-md-3 mb-4">
-                <a href="" class="d-block">
-                    <div class="card p-0 product_view1 border-0 rounded overflow-hidden">
-                        <div class="product_view1_img" style="background-image: url('https://i.blogs.es/9638f5/osete/840_560.jpg');">
-                            <span class="text-over-product">Ver detalle</span>
-                        </div>
-                        <div class="card-body py-2 px-3">
-                            <p class="card-text font-6 product_view1_title">Some quick example text to build</p>
-                            <p class="product_view1_subtitle">PUJA ACTUAL</p>
-                            <p class="product_view1_cost">36 €</p>
-                            <p class="product_view1_time">2d 10h:00m:00s</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="p-0">
-            <div class="col-12 mb-3">
-                <a href="#" class="d-block">
-                    <div class="card">
-                        <div class="row no-gutters bx">
-                            <div class="col-md-3">
-                                <img src="https://i.blogs.es/9638f5/osete/840_560.jpg" class="card-img pr-4 pl-4 div_img_view2" alt="...">
-                            </div>
-                            <div class="col-md-9">
-                                <div class="card-body pb-2">
-                                    <p class="card-text font-6 product_view1_title">Some quick example text to build</p>
-                                    <p class="product_view2_subtitle pb-3">Óleo sobre lienzo - Sin firmar - c.1580 <a href="#" style="text-decoration: underline;">Más</a></p>
-
-                                    <div class="row pt-4">
-                                        <p class="product_view1_time col-12 col-lg-8">Cierra en 2d 10h:00m:00s</p>
-                                        <div class="col-5 col-lg-2">
-                                            <p class="product_view1_cost text-right">36 €</p>
-                                        </div>
-                                        <div class="col-7 col-lg-2 pl-md-0">
-                                            <button class="btn btn-primary rounded-pill btn-block btn-sm">Ver este lote</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-12 mb-3">
-                <a href="#" class="d-block">
-                    <div class="card">
-                        <div class="row no-gutters bx">
-                            <div class="col-md-3">
-                                <img src="https://i.blogs.es/9638f5/osete/840_560.jpg" class="card-img pr-4 pl-4 div_img_view2" alt="...">
-                            </div>
-                            <div class="col-md-9">
-                                <div class="card-body pb-2">
-                                    <p class="card-text font-6 product_view1_title">Some quick example text to build</p>
-                                    <p class="product_view2_subtitle pb-3">Óleo sobre lienzo - Sin firmar - c.1580 <a href="#" style="text-decoration: underline;">Más</a></p>
-
-                                    <div class="row pt-4">
-                                        <p class="product_view1_time col-12 col-lg-8">Cierra en 2d 10h:00m:00s</p>
-                                        <div class="col-5 col-lg-2">
-                                            <p class="product_view1_cost text-right">36 €</p>
-                                        </div>
-                                        <div class="col-7 col-lg-2 pl-md-0">
-                                            <button class="btn btn-primary rounded-pill btn-block btn-sm">Ver este lote</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                <app-product-card></app-product-card>
             </div>
         </div>
 

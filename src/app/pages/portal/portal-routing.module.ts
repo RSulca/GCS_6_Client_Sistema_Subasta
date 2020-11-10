@@ -2,9 +2,7 @@ import { Routes } from '@angular/router';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { HomePortalComponent } from './home-portal/home-portal.component';
 import { ProductRegisterComponent } from './product-register/product-register.component';
-import { BuyerTermsComponent } from './terms-components/buyer-terms/buyer-terms.component';
-import { SellerTermsComponent } from './terms-components/seller-terms/seller-terms.component';
-import { TermsConditionsComponent } from './terms-components/terms-conditions/terms-conditions.component';
+import { TermsComponent } from './terms-components/terms-components.component';
 import { TermsModalComponent } from './terms-components/terms-modal/terms-modal.component';
 
 
@@ -22,16 +20,14 @@ export const portalRoutes: Routes = [
     component: CatalogoComponent
   },
   {
-    path: 'buyer-terms',
-    component: BuyerTermsComponent
-  },
-  {
-    path: 'seller-terms',
-    component: SellerTermsComponent
-  },
-  {
     path: 'terms-conditions',
-    component: TermsConditionsComponent
+    component: TermsComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: './terms-components/terms-components.module#TermsComponentsModule'
+      }
+    ]
   },
   {
     path: 'terms-modal',

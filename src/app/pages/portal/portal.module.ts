@@ -15,10 +15,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterPortalComponent } from './shared-components/footer-portal/footer-portal.component';
 import { NavbarPortalComponent } from './shared-components/navbar-portal/navbar-portal.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { BuyerTermsComponent } from './terms-components/buyer-terms/buyer-terms.component';
-import { SellerTermsComponent } from './terms-components/seller-terms/seller-terms.component';
-import { TermsConditionsComponent } from './terms-components/terms-conditions/terms-conditions.component';
 import { TermsModalComponent } from './terms-components/terms-modal/terms-modal.component';
+import { ProductCardComponent } from './shared-components/product-card/product-card.component';
+import { ProductCardListComponent } from './shared-components/product-card-list/product-card-list.component';
+import { TermsComponent } from './terms-components/terms-components.component';
+import { TermsComponentsModule } from './terms-components/terms-components.module';
 
 @NgModule({
   declarations: [
@@ -29,10 +30,10 @@ import { TermsModalComponent } from './terms-components/terms-modal/terms-modal.
     // RegisterComponent,
     FooterPortalComponent,
     NavbarPortalComponent,
-    BuyerTermsComponent,
-    SellerTermsComponent,
-    TermsConditionsComponent,
-    TermsModalComponent
+    TermsComponent,
+    TermsModalComponent,
+    ProductCardComponent,
+    ProductCardListComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +42,8 @@ import { TermsModalComponent } from './terms-components/terms-modal/terms-modal.
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    CarouselModule
+    CarouselModule,
+    TermsComponentsModule
   ],
   providers: [
     NotifierService,
