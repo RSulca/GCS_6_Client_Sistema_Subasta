@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { SupervisorService } from './services/supervisor.service';
+import { NotifierService } from 'src/app/services/notifier.service';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
@@ -35,7 +36,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     AuthLayoutComponent
   ],
   providers: [
-    SupervisorService
+    SupervisorService,
+    NotifierService
   ],
   bootstrap: [AppComponent]
 })

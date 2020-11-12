@@ -4,4 +4,5 @@ export class ClientReq {
     dni?: any;
     email?: any;
     password?: any;
+    state?: any;
 }
