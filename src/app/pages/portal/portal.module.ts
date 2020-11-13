@@ -49,6 +49,10 @@ import { AccountModule } from './account/account.module';
     TermsComponentsModule,
     AccountModule
   ],
+  exports:[
+    FooterPortalComponent,
+    NavbarPortalComponent
+  ],
   providers: [
     NotifierService,
     LoginService,

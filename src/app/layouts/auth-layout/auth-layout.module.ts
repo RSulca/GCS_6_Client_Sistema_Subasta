@@ -11,14 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { LoginComponent } from 'src/app/pages/auth/login/login.component';
 import { RegisterComponent } from 'src/app/pages/auth/register/register.component';
+import { PortalModule } from '../../pages/portal/portal.module';
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(AuthLayoutRoutes),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
-
+    HttpClientModule,
+    PortalModule
     // NgbModule
   ],
   declarations: [
