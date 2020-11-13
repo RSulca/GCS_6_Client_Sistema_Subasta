@@ -16,11 +16,11 @@
                         <div class="form-row">
                           <div class="form-group col-md-6" style="display: none;">
                             <label for="inputEmail4">ID</label>
-                            <input type="_id" class="form-control" id="inputID" [(ngModel)]="supervisor.id" formControlName="id" placeholder="ID">
+                            <input type="text" class="form-control" id="inputID" [(ngModel)]="supervisor.id" formControlName="id" placeholder="ID">
                           </div>
                           <div class="form-group col-md-6">
                             <label for="inputEmail4">Correo</label>
-                            <input type="email" class="form-control" id="inputEmail4"  [(ngModel)]="supervisor.email" formControlName="correo" placeholder="Correo">
+                            <input type="email" class="form-control" id="inputEmail4"  [(ngModel)]="supervisor.email" formControlName="correo" placeholder="Correo"> 
                           </div>
                           <div class="form-group col-md-6">
                             <label for="inputPassword4">Password</label>
@@ -43,8 +43,8 @@
                           <div class="form-group col-md-6">
                             <label for="inputCategoria">Categoría</label>
                             <select id="inputCategoria" class="form-control" [(ngModel)]="supervisor.category" formControlName="categoria">
-                              <option selected>Escojer...</option>
-                              <option>...</option>
+                              <option value="" selected disabled hidden>Escoja una...</option>
+                              <option *ngFor="let categoria of categorias">{{categoria.name}}</option>
                             </select>
                           </div>
                         </div>
@@ -75,7 +75,7 @@
                   <th scope="col">Correo</th>
                   <th scope="col">Estado</th>
                   <th scope="col">Modificar</th>
-                  <th scope="col">Inhabilitar</th>
+                  <th scope="col">Acción</th>
                 </tr>
               </thead>
               <tbody>
@@ -87,7 +87,14 @@
                   <td>{{supervisor.email}}</td>
                   <td>{{supervisor.state}}</td>
                   <td><button (click)="actualizar(supervisor)" class="btn btn-warning">Modificar</button></td>
-                  <td><button (click)="eliminar" class="btn btn-danger">Inhabilitar</button></td>     
+                  <div *ngIf="supervisor.state; else eliminado;">
+                    <td><button (click)="inhabilitar(supervisor._id)" class="btn btn-danger">Inhabilitar</button></td>   
+                  </div>
+                  <ng-template #eliminado>
+                    <div>
+                      <td><button (click)="habilitar(supervisor._id)" class="btn btn-success">Habilitar</button></td>   
+                    </div>
+                  </ng-template>
                 </tr>
               </tbody>
             </table>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Supervisor } from '../../app/models/request/supervisor.model';
 import { IfStmt } from '@angular/compiler';
@@ -12,7 +12,6 @@ export class SupervisorService {
   constructor(private http:HttpClient) { }
 
   registrar(supervisor:Supervisor){
-    console.log(supervisor.id + ' ' + supervisor.email);
     if (supervisor.id == null || supervisor.id == ''){
       const url = `${environment.API_SUBASTA}/api/register/supervisor`;
       return this.http.post<Supervisor>(url, supervisor);
@@ -26,5 +25,19 @@ export class SupervisorService {
     const url = `${environment.API_SUBASTA}/api/supervisor/listar`;
     return this.http.get<Supervisor[]>(url);
   } 
+
+  inhabilitar(id2:number){
+    const id = id2;
+    const state = false;
+    const url = `${environment.API_SUBASTA}/api/supervisor/eliminar`;
+    return this.http.put<Supervisor[]>(url, {id, state});
+  }
+
+  habilitar(id2:number){
+    const id = id2;
+    const state = true;
+    const url = `${environment.API_SUBASTA}/api/supervisor/eliminar`;
+    return this.http.put<Supervisor[]>(url, {id, state});
+  }
 
 }
