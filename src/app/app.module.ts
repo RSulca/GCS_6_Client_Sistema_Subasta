@@ -7,12 +7,14 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { SupervisorLayoutComponent } from './layouts/supervisor-layout/supervisor-layout.component';
 
 /*external modules*/
 import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import {SupervisorComponentsModule } from './pages/supervisor/supervisorComponents.module'
 import { SupervisorService } from './services/supervisor.service';
 import { NotifierService } from 'src/app/services/notifier.service';
 import { NgxDropzoneModule } from 'ngx-dropzone';
@@ -23,6 +25,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     FormsModule,
     HttpClientModule,
     ComponentsModule,
+    SupervisorComponentsModule,
     NgbModule,
     RouterModule,
     AppRoutingModule,
@@ -33,7 +36,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    SupervisorLayoutComponent
   ],
   providers: [
     SupervisorService,

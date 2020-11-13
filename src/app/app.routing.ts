@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { PortalLayoutComponent } from './layouts/portal-layout/portal-layout.component';
+import { SupervisorLayoutComponent } from './layouts/supervisor-layout/supervisor-layout.component'
 
 const routes: Routes = [
   {
@@ -40,6 +41,16 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: './layouts/auth-layout/auth-layout.module#AuthLayoutModule'
+      }
+    ]
+  },
+  {
+    path: '',
+    component: SupervisorLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: './layouts/supervisor-layout/supervisor-layout.module#SupervisorLayoutModule'
       }
     ]
   },
