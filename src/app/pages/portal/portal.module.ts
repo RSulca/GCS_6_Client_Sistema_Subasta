@@ -25,6 +25,7 @@ import { AccountModule } from './account/account.module';
 import { ProductRegisterComponent } from './product-register/product-register.component';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { DropzoneComponent } from './shared-components/dropzone/dropzone.component';
+import { HistorialComponent } from './historial/historial.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { DropzoneComponent } from './shared-components/dropzone/dropzone.compone
     ProductCardComponent,
     ProductCardListComponent,
     AccountComponent,
-    DropzoneComponent
+    DropzoneComponent,
+    HistorialComponent
   ],
   imports: [
     CommonModule,

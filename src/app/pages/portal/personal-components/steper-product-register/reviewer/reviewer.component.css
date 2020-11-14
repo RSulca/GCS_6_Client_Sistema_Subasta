@@ -1,6 +1,13 @@
 .card-review .card-body h5{
-    font-size: 1rem;
+    font-size: .9rem;
     font-weight: bold;
+}
+.card-review .card-body p, .card-review .card-body a,
+.card-review .card-body button{
+    font-size: .8rem;
+}
+.card-review .card-body{
+    padding: .5rem 1rem;
 }
 .card-review{
     overflow: hidden;
