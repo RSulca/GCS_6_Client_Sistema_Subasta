@@ -22,6 +22,9 @@ import { TermsComponent } from './terms-components/terms-components.component';
 import { TermsComponentsModule } from './terms-components/terms-components.module';
 import { AccountComponent } from './account/account.component';
 import { AccountModule } from './account/account.module';
+import { ProductRegisterComponent } from './product-register/product-register.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { DropzoneComponent } from './shared-components/dropzone/dropzone.component';
 
 @NgModule({
   declarations: [
@@ -34,9 +37,11 @@ import { AccountModule } from './account/account.module';
     NavbarPortalComponent,
     TermsComponent,
     TermsModalComponent,
+    ProductRegisterComponent,
     ProductCardComponent,
     ProductCardListComponent,
-    AccountComponent
+    AccountComponent,
+    DropzoneComponent
   ],
   imports: [
     CommonModule,
@@ -47,11 +52,13 @@ import { AccountModule } from './account/account.module';
     FormsModule,
     CarouselModule,
     TermsComponentsModule,
-    AccountModule
+    AccountModule,
+    NgxDropzoneModule
   ],
   exports:[
     FooterPortalComponent,
-    NavbarPortalComponent
+    NavbarPortalComponent,
+    DropzoneComponent
   ],
   providers: [
     NotifierService,
