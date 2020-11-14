@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
 import { steperProductRegister } from './steper-product-register-routing.module';
 import { ReviewerComponent } from './reviewer/reviewer.component';
 import { ProductEmiterService } from 'src/app/services/product-emiter.service';
-import { NgxDropzoneModule } from 'ngx-dropzone';
+
 
 @NgModule({
   declarations: [
@@ -27,8 +27,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
   imports: [
     CommonModule,
     RouterModule.forChild(steperProductRegister),
-    TooltipModule.forRoot(),
-    NgxDropzoneModule
+    TooltipModule.forRoot()
   ],
   exports: [
     SteperProductRegisterComponent,
