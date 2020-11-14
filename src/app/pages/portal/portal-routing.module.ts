@@ -20,8 +20,9 @@ export const portalRoutes: Routes = [
   {
     path: 'catalog',
     component: CatalogoComponent
-  },{
-    path:'historial',
+  },
+  {
+    path:'history',
     component: HistorialComponent
   },
   { 
