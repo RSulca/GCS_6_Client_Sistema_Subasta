@@ -23,8 +23,6 @@ import { TermsComponentsModule } from './terms-components/terms-components.modul
 import { AccountComponent } from './account/account.component';
 import { AccountModule } from './account/account.module';
 import { ProductRegisterComponent } from './product-register/product-register.component';
-import { NgxDropzoneModule } from 'ngx-dropzone';
-import { DropzoneComponent } from './shared-components/dropzone/dropzone.component';
 import { HistorialComponent } from './historial/historial.component';
 
 @NgModule({
@@ -42,7 +40,6 @@ import { HistorialComponent } from './historial/historial.component';
     ProductCardComponent,
     ProductCardListComponent,
     AccountComponent,
-    DropzoneComponent,
     HistorialComponent
   ],
   imports: [
@@ -54,13 +51,12 @@ import { HistorialComponent } from './historial/historial.component';
     FormsModule,
     CarouselModule,
     TermsComponentsModule,
-    AccountModule,
-    NgxDropzoneModule
+    AccountModule
   ],
   exports:[
     FooterPortalComponent,
-    NavbarPortalComponent,
-    DropzoneComponent
+    NavbarPortalComponent
+    
   ],
   providers: [
     NotifierService,

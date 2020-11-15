@@ -11,6 +11,18 @@ export class ReviewerComponent implements OnInit {
   constructor(private productEmiter: ProductEmiterService) { }
 
   ngOnInit(): void {
+    this.productEmiter.categorySubjectChanged$.subscribe(data => {
+      console.log("categoria",data);
+    });
+    this.productEmiter.filesSubjectChanged$.subscribe(data => {
+      console.log("fotos",data);
+    });
+    this.productEmiter.descriptionSubjectChanged$.subscribe(data => {
+      console.log("descripcion",data);
+    });
+    this.productEmiter.shippingSubjectChanged$.subscribe(data => {
+      console.log("shipping",data);
+    })
   }
 
 }

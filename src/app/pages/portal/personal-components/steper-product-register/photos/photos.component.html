@@ -12,6 +12,15 @@
     </div>
     <p>Sube fotos que muestren tu lote de la mejor manera posible. Recuerda incluir diferentes ángulos y poner tu mejor
       foto primero.</p>
-    <app-dropzone></app-dropzone>
+    <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+      <ngx-dropzone-label>
+        <div>
+          <h2>Vista previa</h2>
+        </div>
+      </ngx-dropzone-label>
+      <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+        [removable]="true" (removed)="onRemove(f)">
+      </ngx-dropzone-image-preview>
+    </div>
   </div>
 </div>

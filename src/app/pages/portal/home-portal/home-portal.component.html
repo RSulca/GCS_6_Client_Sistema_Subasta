@@ -82,15 +82,15 @@
   </div>
 
   <div class="grid2">
-    <div style="background-color: #AF6663;">
+    <div *ngFor="let cate of categoriesSimple" [ngStyle]="{'background-color': cate.color}">
       <a [routerLink]="['../catalog']">
         <div class="grid2-img">
-          <img src="assets/img/category/vino.jpg" alt="" width="265px" height="120px" class="img-fluid rounded">
+          <img [src]="cate.img" alt="" width="265px" height="120px" class="img-fluid rounded">
         </div>
       </a>
-      <p>Vino y Whisky</p>
+      <p>{{cate.name}}</p>
     </div>
-    <div style="background-color: #F8DE7A;">
+    <!-- <div style="background-color: #F8DE7A;">
       <a [routerLink]="['../catalog']">
         <div class="grid2-img">
           <img src="assets/img/category/comic2.jpg" alt="" width="265px" height="120px" class="img-fluid rounded">
@@ -145,7 +145,7 @@
         </div>
       </a>
       <p>Arqueología</p>
-    </div>
+    </div> -->
   </div>
 
   <div class="section4">

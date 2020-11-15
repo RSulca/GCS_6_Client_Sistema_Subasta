@@ -13,6 +13,9 @@ import { RouterModule } from '@angular/router';
 import { steperProductRegister } from './steper-product-register-routing.module';
 import { ReviewerComponent } from './reviewer/reviewer.component';
 import { ProductEmiterService } from 'src/app/services/product-emiter.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,13 +30,16 @@ import { ProductEmiterService } from 'src/app/services/product-emiter.service';
   imports: [
     CommonModule,
     RouterModule.forChild(steperProductRegister),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    NgxDropzoneModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
     SteperProductRegisterComponent,
   ],
   providers:[
-    ProductEmiterService
+    LocalStorageService
   ]
 })
 export class SteperProductRegisterModule { }
