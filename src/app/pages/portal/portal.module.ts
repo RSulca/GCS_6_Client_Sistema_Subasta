@@ -24,6 +24,8 @@ import { AccountComponent } from './account/account.component';
 import { AccountModule } from './account/account.module';
 import { ProductRegisterComponent } from './product-register/product-register.component';
 import { HistorialComponent } from './historial/historial.component';
+import { ConfirmDialogComponent } from './personal-components/confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { HistorialComponent } from './historial/historial.component';
     ProductCardComponent,
     ProductCardListComponent,
     AccountComponent,
-    HistorialComponent
+    HistorialComponent,
+    ConfirmDialogComponent
+    
   ],
   imports: [
     CommonModule,
@@ -51,7 +55,8 @@ import { HistorialComponent } from './historial/historial.component';
     FormsModule,
     CarouselModule,
     TermsComponentsModule,
-    AccountModule
+    AccountModule,
+    MatDialogModule
   ],
   exports:[
     FooterPortalComponent,
@@ -62,6 +67,9 @@ import { HistorialComponent } from './historial/historial.component';
     NotifierService,
     LoginService,
     LocalStorageService
+  ],
+  entryComponents:[
+    ConfirmDialogComponent
   ]
 })
 export class PortalModule { }

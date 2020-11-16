@@ -37,7 +37,7 @@ export class ProductComponent implements OnInit {
   goToSellerEdit() {
     this.categoryEmitter.addCategory(this.categorySelected)
     console.log(this.categorySelected)
-    this.router.navigate(['seller/edit'])
+    this.router.navigate(['seller/edit/category'])
   }
 
   onChange(e) {
@@ -46,7 +46,7 @@ export class ProductComponent implements OnInit {
 
   selectCategoryByImg(category: any) {
     this.categoryEmitter.addCategory(category.name)
-    this.router.navigate(['seller/edit'])
+    this.router.navigate(['seller/edit/category'])
   }
 
 

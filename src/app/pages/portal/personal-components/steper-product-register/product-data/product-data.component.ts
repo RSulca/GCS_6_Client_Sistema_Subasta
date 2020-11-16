@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotifierService } from 'src/app/services/notifier.service';
 import { ProductEmiterService } from 'src/app/services/product-emiter.service';
 import { CATEGORIES_FORMS } from '../../../../../util/info-category';
 
@@ -17,7 +18,7 @@ export class ProductDataComponent implements OnInit {
   descriptionForm: FormGroup;
 
 
-  constructor(private router: Router, private productEmiter: ProductEmiterService, private fb: FormBuilder) {
+  constructor(private router: Router, private productEmiter: ProductEmiterService, private fb: FormBuilder, private nf: NotifierService) {
     this.initForm();
   }
 
@@ -58,9 +59,16 @@ export class ProductDataComponent implements OnInit {
 
 
   goToShipping() {
-    console.log(this.columns.value)
-    this.productEmiter.addDescription(this.columns.value);
-    this.router.navigate(['seller/edit/shipping']);
+    if (this.columns.invalid) {
+      this.nf.notification("warning", {
+        'title': 'Formulario invalido.',
+        'description': 'Por complete todos los datos de necesarios de su producto.'
+      });
+    } else {
+      this.productEmiter.addDescription(this.columns.value);
+      this.router.navigate(['seller/edit/shipping']);
+    }
+
   }
 
   get columns(): FormArray {

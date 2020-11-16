@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoriaService } from 'src/app/services/categoria.service';
+import { NotifierService } from 'src/app/services/notifier.service';
 import { ProductEmiterService } from 'src/app/services/product-emiter.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class CategoryComponent implements OnInit {
   viewCategories: boolean = false;
 
   constructor(private router: Router, private productEmiter: ProductEmiterService,
-    private categoriesService: CategoriaService) { }
+    private categoriesService: CategoriaService, private nf: NotifierService) { }
 
   ngOnInit(): void {
     this.getCategories();
@@ -29,7 +30,14 @@ export class CategoryComponent implements OnInit {
   }
 
   goToPhotos() {
-    this.router.navigate(['seller/edit/photos'])
+    if (!this.categorySelected) {
+      this.nf.notification("warning", {
+        'title': 'Formulario invalido.',
+        'description': 'Por favor seleccione una categoria.'
+      });
+    } else {
+      this.router.navigate(['seller/edit/photos'])
+    }
   }
 
   getCategories() {

@@ -24,6 +24,10 @@
               <label class="font-6">{{categoryFormSelected.camposPlaceholder[i]}}</label>
               <input type="text" class="form-control" formControlName="{{categoryFormSelected.campos[i]}}">
             </div>
+            <div *ngIf="categoryFormSelected.campos[i]=='resumen'" class="form-group">
+              <label class="font-6">{{categoryFormSelected.camposPlaceholder[i]}}</label>
+              <textarea cols="30" rows="10" class="form-control" formControlName="{{categoryFormSelected.campos[i]}}"></textarea>
+            </div>
           </div>
         </div>
       </form>

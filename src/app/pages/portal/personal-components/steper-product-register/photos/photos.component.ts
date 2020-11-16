@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { NotifierService } from 'src/app/services/notifier.service';
 import { ProductEmiterService } from 'src/app/services/product-emiter.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class PhotosComponent implements OnInit, AfterViewInit {
 
   files: File[] = [];
 
-  constructor(private router: Router, private productEmiter: ProductEmiterService) { }
+  constructor(private router: Router, private productEmiter: ProductEmiterService, private nf: NotifierService) { }
 
   ngOnInit(): void {
   }
@@ -20,9 +21,15 @@ export class PhotosComponent implements OnInit, AfterViewInit {
   }
 
   goToData() {
-    console.log(this.files)
-    this.productEmiter.addFile(this.files);
-    this.router.navigate(['seller/edit/data'])
+    if (this.files.length < 3) {
+      this.nf.notification("warning", {
+        'title': 'Formulario invalido.',
+        'description': 'Por favor seleccione almenos 3 fotos de su producto.'
+      });
+    } else {
+      this.productEmiter.addFile(this.files);
+      this.router.navigate(['seller/edit/data'])
+    }
   }
 
 

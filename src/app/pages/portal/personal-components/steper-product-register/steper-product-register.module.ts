@@ -16,6 +16,7 @@ import { ProductEmiterService } from 'src/app/services/product-emiter.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TooltipModule.forRoot(),
     NgxDropzoneModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
   exports: [
     SteperProductRegisterComponent,

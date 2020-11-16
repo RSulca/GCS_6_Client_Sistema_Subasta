@@ -32,6 +32,9 @@ import { PortalModule } from './pages/portal/portal.module';
     AuthLayoutModule,
     PortalModule
   ],
+  entryComponents: [
+    
+  ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
