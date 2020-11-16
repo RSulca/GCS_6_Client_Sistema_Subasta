@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { CategoriaService } from 'src/app/services/categoria.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-navbar-portal',
@@ -9,13 +11,24 @@ import { CategoriaService } from 'src/app/services/categoria.service';
 export class NavbarPortalComponent implements OnInit {
 
   categories: any[] = [];
+  isLogged = false;
 
 
-  constructor(private categoryService: CategoriaService) { }
+
+  constructor(private categoryService: CategoriaService, public loginService: LoginService) {
+    //console.log(this.loginService.isLogged())
+  }
 
   ngOnInit(): void {
     this.getCategories();
+    this.loginService.isLogged.subscribe(res => {
+      console.log(res);
+      this.isLogged = res
+    });
+  }
 
+  onLogout() {
+    this.loginService.logout();
   }
 
   getCategories() {

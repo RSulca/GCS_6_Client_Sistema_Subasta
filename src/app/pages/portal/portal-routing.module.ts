@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { LoginGuardGuard } from 'src/app/guards/login-guard.guard';
 import { AccountComponent } from './account/account.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { HistorialComponent } from './historial/historial.component';
@@ -52,6 +53,7 @@ export const portalRoutes: Routes = [
   {
     path: 'seller',
     component: ProductRegisterComponent,
+    canActivate: [LoginGuardGuard],
     children: [
       {
         path: '',

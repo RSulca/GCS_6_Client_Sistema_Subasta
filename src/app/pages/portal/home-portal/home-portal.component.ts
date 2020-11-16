@@ -38,7 +38,6 @@ export class HomePortalComponent implements OnInit {
     this.categoryService.obtenerCategoria().subscribe((data: any) => {
       this.categories = data.categories;
       this.categoriesSimple = this.categories.filter(c => c.color)
-      console.log(this.categoriesSimple)
     })
   }
 }

@@ -28,7 +28,21 @@
       <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Ayuda</a>
       <a class="nav-link mr-3 text-primary" href="#" tabindex="-1" aria-disabled="true"><i
           class="fas fa-heart fa-1x"></i></a>
-      <button type="button" class="btn btn-primary" [routerLink]="['../login']">Iniciar sesión</button>
+      <ul class="navbar-nav mr-auto" *ngIf="isLogged ;else bloque">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Categoría
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="">Cuenta</a>
+            <a class="dropdown-item" (click)="onLogout()">Cerrar Sesion</a>
+          </div>
+        </li>
+      </ul>
+      <ng-template #bloque>
+        <button type="button" class="btn btn-primary" [routerLink]="['../login']">Iniciar sesión</button>
+      </ng-template>
     </div>
   </nav>
 </div>

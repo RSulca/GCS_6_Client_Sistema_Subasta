@@ -8,7 +8,6 @@ import { portalRoutes } from './portal-routing.module';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { ProductRegisterModule } from './product-register/product-register.module';
 import { NotifierService } from 'src/app/services/notifier.service';
-import { LoginService } from 'src/app/services/login.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -65,7 +64,6 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   providers: [
     NotifierService,
-    LoginService,
     LocalStorageService
   ],
   entryComponents:[
