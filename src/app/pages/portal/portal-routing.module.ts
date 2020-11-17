@@ -23,12 +23,13 @@ export const portalRoutes: Routes = [
     component: CatalogoComponent
   },
   {
-    path:'history',
+    path: 'history',
     component: HistorialComponent
   },
-  { 
+  {
     path: 'account',
     component: AccountComponent,
+    canActivate: [LoginGuardGuard],
     children: [
       {
         path: '',

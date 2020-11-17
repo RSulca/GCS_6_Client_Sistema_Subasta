@@ -72,10 +72,5 @@ export class ReviewerComponent implements OnInit {
     });
   }
 
-  // updatePhoto(file: File, kind: string, id: String) {
-  //   let formData = new FormData();
-  //   formData.append('photo', file);
-  //   return this.http.put(`${environment.api_base}/${this.api.upload}/${kind}/${id}`, formData, { headers: { 'x-token': localStorage.getItem('token') } });
-  // }
 
 }

@@ -4,3 +4,8 @@
 .menu-tabs .active{
     font-weight: bold;
 }
+
+.back{
+    box-shadow: 0 2px 9px rgba(0,0,0,0.1);
+
+}

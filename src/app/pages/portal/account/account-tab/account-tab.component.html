@@ -1,28 +1,73 @@
-<div class="p-0">
-    <h2 class="row">Cuenta</h2>
-    <div class="row m-2">
-        <h3 class="col-5">Nombre de usuario</h3>
-        <h3 class="col-3">user-39e45ea</h3>
-        <button class="col-4 btn btn-primary">Modificar</button>
+<form [formGroup]="basicForm">
+  <div class="row">
+    <div class="col-md-6">
+      <h4 class="heading-small text-muted mb-4">Informacion basica del usuario</h4>
     </div>
-    <div class="row m-2">
-        <h3 class="col-5">Direcciones de correo electrónico</h3>
-        <h3 class="col-3">user-39e45ea</h3>
-        <button class="col-4 btn btn-primary">Modificar</button>
+    <div class="col-md-6" align="end">
+      <button (click)="goToPhoto()" class="btn btn-primary btn-sm">
+        Siguiente <i class="ni ni-bold-right"></i>
+      </button>
     </div>
-    <div class="row m-2">
-        <h3 class="col-5">Contraseña</h3>
-        <h3 class="col-3">user-39e45ea</h3>
-        <button class="col-4 btn btn-primary">Modificar</button>
+  </div>
+  <div class="pl-lg-4">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label class="form-control-label" for="input-username">Nombres</label>
+          <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username"
+            value="lucky.jesse" formControlName="name">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label class="form-control-label" for="input-email">Correo electronico</label>
+          <input type="email" id="input-email" class="form-control form-control-alternative"
+            placeholder="jesse@example.com" formControlName="email">
+        </div>
+      </div>
     </div>
-    <div class="row m-2">
-        <h3 class="col-5">Idioma</h3>
-        <h3 class="col-3">user-39e45ea</h3>
-        <button class="col-4 btn btn-primary">Modificar</button>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label class="form-control-label" for="input-first-name">Apellidos</label>
+          <input type="text" id="input-first-name" class="form-control form-control-alternative"
+            placeholder="First name" value="Lucky" formControlName="lastname">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label class="form-control-label" for="input-last-name">DNI</label>
+          <input [attr.disabled]="loginService.usuario.dni ? '' : null" type="text" id="input-last-name"
+            class="form-control form-control-alternative" formControlName="dni">
+        </div>
+      </div>
     </div>
-    <div class="row m-2">
-        <h3 class="col-5">Moneda de pujas</h3>
-        <h3 class="col-3">user-39e45ea</h3>
-        <button class="col-4 btn btn-primary">Modificar</button>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label class="form-control-label" for="input-first-name">Numero de telefono</label>
+          <input type="text" id="input-first-name" class="form-control form-control-alternative"
+            placeholder="First name" formControlName="phone">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label class="form-control-label" for="input-last-name">Fecha de nacimiento</label>
+          <input type="date" id="input-last-name" class="form-control form-control-alternative"
+            formControlName="bornDate">
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+  <hr>
+  <h4 class="heading-small text-muted mb-4">Datos de cuenta</h4>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="form-group">
+        <label class="form-control-label" for="input-username">Contraseña</label>
+        <input type="password" id="input-username" class="form-control form-control-alternative" placeholder="Username"
+          formControlName="password">
+      </div>
+    </div>
+  </div>
+</form>

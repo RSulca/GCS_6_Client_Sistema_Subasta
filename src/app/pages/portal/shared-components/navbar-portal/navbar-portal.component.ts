@@ -13,8 +13,6 @@ export class NavbarPortalComponent implements OnInit {
   categories: any[] = [];
   isLogged = false;
 
-
-
   constructor(private categoryService: CategoriaService, public loginService: LoginService) {
     //console.log(this.loginService.isLogged())
   }
@@ -22,7 +20,7 @@ export class NavbarPortalComponent implements OnInit {
   ngOnInit(): void {
     this.getCategories();
     this.loginService.isLogged.subscribe(res => {
-      console.log(res);
+      console.log(this.loginService.usuario)
       this.isLogged = res
     });
   }
