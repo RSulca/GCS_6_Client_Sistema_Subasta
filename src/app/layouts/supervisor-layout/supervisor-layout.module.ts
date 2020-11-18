@@ -9,6 +9,7 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { SupervisorLayoutRoutes } from './supervisor-layout.routing';
 import { SupervisorDashboardComponent } from '../../pages/supervisor/supervisor-dashboard/supervisor-dashboard.component';
 import { SupervisorPerfilComponent } from '../../pages/supervisor/supervisor-perfil/supervisor-perfil.component';
+import { SupervisorProductoComponent } from '../../pages/supervisor/supervisor-producto/supervisor-producto.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -24,7 +25,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   declarations: [
     SupervisorDashboardComponent,
-    SupervisorPerfilComponent
+    SupervisorPerfilComponent,
+    SupervisorProductoComponent
   ]
 })
 export class SupervisorLayoutModule {}

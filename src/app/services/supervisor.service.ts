@@ -42,7 +42,6 @@ export class SupervisorService {
 
   obtener(id2:string){
     const id = id2;
-    console.log(id);
     const url = `${environment.API_SUBASTA}/api/supervisor/obtener/${id}`;
     return this.http.get<Supervisor>(url);
   }

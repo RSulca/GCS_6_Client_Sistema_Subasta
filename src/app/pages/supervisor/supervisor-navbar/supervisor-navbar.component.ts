@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { ROUTES } from '../supervisor-sidebar/supervisor-sidebar.component';
+import { ROUTES3 } from '../supervisor-sidebar/supervisor-sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -18,7 +18,7 @@ export class SupervisorNavbarComponent implements OnInit {
 
 
   ngOnInit() {
-    this.listTitles = ROUTES.filter(listTitle => listTitle);
+    this.listTitles = ROUTES3.filter(listTitle => listTitle);
   }
 
   getTitle(){

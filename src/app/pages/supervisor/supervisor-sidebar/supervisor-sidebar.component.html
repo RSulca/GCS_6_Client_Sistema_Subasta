@@ -47,13 +47,22 @@
         </div>
         <!-- Navigation -->
         <ul class="navbar-nav">
-            <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
-                <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="nav-link">
-                    <i class="ni {{menuItem.icon}}"></i>
-                    {{menuItem.title}}
-                </a>
-            </li>
-        </ul>
+          <li *ngFor="let menuItem1 of menuItems1" class="{{menuItem1.class}} nav-item">
+              <a routerLinkActive="active" [routerLink]="[menuItem1.path]" class="nav-link">
+                  <i class="ni {{menuItem1.icon}}"></i>
+                  {{menuItem1.title}}
+              </a>
+          </li>
+      </ul>
+      <hr class="my-4" />
+      <ul class="navbar-nav">
+        <li *ngFor="let menuItem2 of menuItems2" class="{{menuItem2.class}} nav-item">
+            <a routerLinkActive="active" [routerLink]="[menuItem2.path]" class="nav-link">
+                <i class="ni {{menuItem2.icon}}"></i>
+                {{menuItem2.title}}
+            </a>
+        </li>
+    </ul>
       </div>
     </div>
   </nav>
