@@ -18,6 +18,8 @@ import {SupervisorComponentsModule } from './pages/supervisor/supervisorComponen
 import { SupervisorService } from './services/supervisor.service';
 import { NotifierService } from 'src/app/services/notifier.service';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { AuthLayoutModule } from './layouts/auth-layout/auth-layout.module';
+import { PortalModule } from './pages/portal/portal.module';
 
 @NgModule({
   imports: [
@@ -31,7 +33,9 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     AppRoutingModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added 
-    NgxDropzoneModule   
+    NgxDropzoneModule,
+    AuthLayoutModule,
+    PortalModule
   ],
   declarations: [
     AppComponent,

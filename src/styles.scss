@@ -230,7 +230,27 @@ body {
 .owl-next {
     right: -20px;
 }
-
 .owl-prev {
     left: -20px;
+}
+.owl-next::after, .owl-prev::after{
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 30px;
+    height: 30px;
+    transform: translate(-50%,-50%);
+    opacity: .5;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat !important;
+}
+
+.owl-next::after {
+    background-image: url('../src/assets/img/icons/common/arrow-right.svg') !important;
+}
+
+.owl-prev::after {
+    background-image: url('../src/assets/img/icons/common/arrow-left.svg') !important;
 }
