@@ -26,18 +26,25 @@ export class SupervisorService {
     return this.http.get<Supervisor[]>(url);
   } 
 
-  inhabilitar(id2:number){
+  inhabilitar(id2:string){
     const id = id2;
     const state = false;
     const url = `${environment.API_SUBASTA}/api/supervisor/eliminar`;
     return this.http.put<Supervisor[]>(url, {id, state});
   }
 
-  habilitar(id2:number){
+  habilitar(id2:string){
     const id = id2;
     const state = true;
     const url = `${environment.API_SUBASTA}/api/supervisor/eliminar`;
     return this.http.put<Supervisor[]>(url, {id, state});
+  }
+
+  obtener(id2:string){
+    const id = id2;
+    console.log(id);
+    const url = `${environment.API_SUBASTA}/api/supervisor/obtener/${id}`;
+    return this.http.get<Supervisor>(url);
   }
 
 }

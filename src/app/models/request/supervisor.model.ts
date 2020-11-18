@@ -5,7 +5,7 @@ export class Supervisor{
     lastname:String;
     dni:String;
     email:String;
-    password:String;
-    category:String;
+    password?:String;
+    category?:String;
     state?:boolean;
 }

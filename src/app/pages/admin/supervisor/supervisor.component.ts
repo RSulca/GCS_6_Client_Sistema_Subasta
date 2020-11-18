@@ -72,7 +72,6 @@ export class SupervisorComponent implements OnInit {
   }
 
   actualizar(supervisor: Supervisor){
-    console.log(supervisor._id.toString());
     localStorage.setItem("_id", supervisor._id.toString());
     localStorage.setItem("name", supervisor.name.toString());
     localStorage.setItem("lastname", supervisor.lastname.toString());
@@ -83,7 +82,7 @@ export class SupervisorComponent implements OnInit {
     this.registroSupervisorForm.patchValue({id: localStorage.getItem('_id'), correo: localStorage.getItem('email'), nombres: localStorage.getItem('name'), apellidos: localStorage.getItem('lastname'), dni: localStorage.getItem('dni'), categoria: localStorage.getItem('category')})
   }
 
-  inhabilitar(id: number){
+  inhabilitar(id: string){
     if(confirm('Está seguro de inhabilitar?')){
       this.supervisorService.inhabilitar(id)
       .subscribe(data=>{
@@ -96,7 +95,7 @@ export class SupervisorComponent implements OnInit {
     } 
   }
 
-  habilitar(id: number){
+  habilitar(id: string){
     if(confirm('Está seguro de habilitar?')){
       this.supervisorService.habilitar(id)
       .subscribe(data=>{
@@ -117,7 +116,6 @@ export class SupervisorComponent implements OnInit {
   }
 
   limpiar(){
-    console.log(this);
     this.registroSupervisorForm.setValue({id: '', correo: '', nombres: '', apellidos: '', dni: '', categoria: '', password: ''});
   }
 

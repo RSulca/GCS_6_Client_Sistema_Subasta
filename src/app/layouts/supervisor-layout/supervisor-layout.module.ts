@@ -7,17 +7,24 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClipboardModule } from 'ngx-clipboard';
 
 import { SupervisorLayoutRoutes } from './supervisor-layout.routing';
+import { SupervisorDashboardComponent } from '../../pages/supervisor/supervisor-dashboard/supervisor-dashboard.component';
+import { SupervisorPerfilComponent } from '../../pages/supervisor/supervisor-perfil/supervisor-perfil.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
-  declarations: [],
   imports: [
     CommonModule,
     RouterModule.forChild(SupervisorLayoutRoutes),
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
     ClipboardModule
+  ],
+  declarations: [
+    SupervisorDashboardComponent,
+    SupervisorPerfilComponent
   ]
 })
 export class SupervisorLayoutModule {}
