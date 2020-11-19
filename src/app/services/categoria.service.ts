@@ -12,7 +12,7 @@ export class CategoriaService {
 
   obtenerCategoria(){
     const url = `${environment.API_SUBASTA}/api/category`;
-    return this.http.get<Categoria[]>(url);
+    return this.http.get<Categoria[]>(url).pipe();
   }
 
 }

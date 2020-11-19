@@ -1,20 +1,47 @@
-<div class="p-0">
-    <h2>Ubigeo</h2>
-    <div class="form-group">
-        <label for="">Departamento</label>
-        <input type="text" name="" id="" class="form-control" placeholder="Departamento">
+<form [formGroup]="ubigeoForm">
+  <div class="row">
+    <div class="col-md-6">
+      <h4 class="heading-small text-muted mb-4">Datos de ubigeo</h4>
     </div>
-    <div class="form-group">
-        <label for="">Provincia</label>
-        <input type="text" name="" id="" class="form-control" placeholder="Provincia">
+    <div class="col-md-6" align="end">
+      <button (click)="goToCard()" class="btn btn-primary btn-sm">
+        Siguiente <i class="ni ni-bold-right"></i>
+      </button>
     </div>
-    <div class="form-group">
-        <label for="">Distrito</label>
-        <input type="text" name="" id="" class="form-control" placeholder="Distrito">
+  </div>
+  <div class="pl-lg-4">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label class="form-control-label" for="input-address">Direccion</label>
+          <input id="input-address" class="form-control form-control-alternative" placeholder="Direccion..."
+            formControlName="direction" type="text">
+        </div>
+      </div>
     </div>
-    <div class="form-group">
-        <label for="">Dirección</label>
-        <input type="text" name="" id="" class="form-control" placeholder="Dirección">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label class="form-control-label" for="input-city">Departamento</label>
+          <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="Departamento"
+            formControlName="department">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label class="form-control-label" for="input-country">Provincia</label>
+          <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Provincia..."
+            formControlName="province">
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="form-group">
+          <label class="form-control-label" for="input-country">Distrito</label>
+          <input type="text" id="input-postal-code" class="form-control form-control-alternative"
+            placeholder="Distrito" formControlName="district">
+        </div>
+      </div>
     </div>
-    <button class="btn btn-primary">Guardar</button>
-</div>
+  </div>
+
+</form>

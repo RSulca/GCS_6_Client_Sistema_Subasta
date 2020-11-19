@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductEmiterService } from 'src/app/services/product-emiter.service';
+
 
 @Component({
   selector: 'app-steper-product-register',
@@ -9,10 +10,37 @@ import { ProductEmiterService } from 'src/app/services/product-emiter.service';
 })
 export class SteperProductRegisterComponent implements OnInit {
 
-  constructor(private router: Router, private productEmiter: ProductEmiterService) { }
+  categorySelected: any = ''
+
+  //---Emitter
+  previweImages: any[] = [];
+  imagenTemp: any;
+  categoryTemp: any = '';
+  descripctionData: any = '';
+  shippingData: any = '';
+
+
+  constructor(private router: Router, private categoryEmitter: ProductEmiterService) { }
 
   ngOnInit(): void {
+    this.categoryEmitter.categorySubjectChanged$.subscribe(data => {
+      this.categorySelected = data;
+    })
+
+    this.categoryEmitter.categorySubjectChanged$.subscribe(data => {
+      this.categoryTemp = data;
+    });
+    this.categoryEmitter.filesSubjectChanged$.subscribe(data => {
+      this.previweImages = data;
+    });
+    this.categoryEmitter.descriptionSubjectChanged$.subscribe(data => {
+      this.descripctionData = data;
+    });
+    this.categoryEmitter.shippingSubjectChanged$.subscribe(data => {
+      this.shippingData = data;
+    })
   }
+
 
   goToCategory() {
     this.router.navigate(['seller/edit/category'])
@@ -32,5 +60,6 @@ export class SteperProductRegisterComponent implements OnInit {
     this.router.navigate(['seller/edit/shipping'])
 
   }
+
 
 }

@@ -19,7 +19,7 @@
         <div class="card" style="cursor: pointer;">
           <div class="card-img-container">
             <div class="card-img">
-              <span class="date fade-out">Guitarras</span>
+              <span class="date fade-out">{{categorySelected}}</span>
             </div>
           </div>
         </div>
@@ -36,11 +36,10 @@
         <div class="col-md-6">
           <div class="form-group">
             <div class="input-group input-group-alternative mb-4">
-              <select class="form-control form-control-alternative">
+              <select class="form-control form-control-alternative" (change)="onChange($event.target.value)">
                 <option value="0">Seleccionar...</option>
-                <option value="asd">Guitarras</option>
-                <option value="asd">Bicicletas</option>
-                <option value="asd">sulkbro</option>
+                <option *ngFor="let c of categories" [value]="c.name">{{c.name}}</option>
+
               </select>
             </div>
           </div>
@@ -50,7 +49,8 @@
         <div class="col-md-6" [ngStyle]="{'display': viewCategories ? 'none' : '' }">
           <p>¿No encuentras lo que buscas? <a class="text-primary" style="cursor: pointer;"
               (click)="seeCategories()"><strong>Explora todas las
-                categorías</strong></a>
+                categorías</strong>
+            </a>
           </p>
         </div>
       </div>
@@ -67,56 +67,11 @@
         </div>
       </div>
       <div class="row row-cols-1 row-cols-md-3">
-        <div class="col mb-4">
-          <div class="card" style="cursor: pointer;">
+        <div class="col mb-4" *ngFor="let c of categories">
+          <div class="card" style="cursor: pointer;" (click)="selectCategoryByImg(c)">
             <div class="card-img-container">
               <div class="card-img">
-                <span class="date fade-out">Guitarras</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card" style="cursor: pointer;">
-            <div class="card-img-container">
-              <div class="card-img">
-                <span class="date fade-out">Guitarras</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card" style="cursor: pointer;">
-            <div class="card-img-container">
-              <div class="card-img">
-                <span class="date fade-out">Guitarras</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card" style="cursor: pointer;">
-            <div class="card-img-container">
-              <div class="card-img">
-                <span class="date fade-out">Guitarras</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card" style="cursor: pointer;">
-            <div class="card-img-container">
-              <div class="card-img">
-                <span class="date fade-out">Guitarras</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card" style="cursor: pointer;">
-            <div class="card-img-container">
-              <div class="card-img">
-                <span class="date fade-out">Guitarras</span>
+                <span class="date fade-out">{{c.name}}</span>
               </div>
             </div>
           </div>

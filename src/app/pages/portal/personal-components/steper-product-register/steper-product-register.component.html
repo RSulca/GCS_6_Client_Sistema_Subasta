@@ -2,15 +2,15 @@
   <div class="col-md-3 px-0">
     <div class="steps">
       <ul class="list-group mydiv">
-        <li (click)="goToCategory()" class="list-group-item" style="cursor: pointer;">
+        <li class="list-group-item">
           <div class="row">
-            <div class="col-md-2 check">
-              <i class="ni ni-check-bold"></i>
+            <div class="dot" [ngStyle]="{'background-color': categoryTemp ? '#2ecc71' : '#dbe6df'}">
+              <i class="ni ni-check-bold icon"></i>
             </div>
             <div class="col-md-8">
               <span>Categoria</span>
               <div>
-                <span class="text-success">Guitarra</span>
+                <span class="text-success">{{categorySelected}}</span>
               </div>
             </div>
             <div class="col-md-2 check">
@@ -18,10 +18,10 @@
             </div>
           </div>
         </li>
-        <li (click)="goToPhotos()" class="list-group-item" style="cursor: pointer;">
+        <li class="list-group-item">
           <div class="row">
-            <div class="col-md-2 check">
-              <i class="ni ni-check-bold"></i>
+            <div class="dot" [ngStyle]="{'background-color': previweImages ? '#2ecc71' : '#dbe6df'}">
+              <i class="ni ni-check-bold icon"></i>
             </div>
             <div class="col-md-8">
               <span>Fotos</span>
@@ -34,10 +34,10 @@
             </div>
           </div>
         </li>
-        <li (click)="goToData()" class="list-group-item" style="cursor: pointer;">
+        <li class="list-group-item">
           <div class="row">
-            <div class="col-md-2 check">
-              <i class="ni ni-check-bold"></i>
+            <div class="dot"  [ngStyle]="{'background-color': descripctionData!==null ? '#2ecc71' : '#dbe6df'}">
+              <i class="ni ni-check-bold icon"></i>
             </div>
             <div class="col-md-8">
               <span>Datos</span>
@@ -50,10 +50,10 @@
             </div>
           </div>
         </li>
-        <li (click)="goToShipping()" class="list-group-item" style="cursor: pointer;">
+        <li class="list-group-item">
           <div class="row">
-            <div class="col-md-2 check">
-              <i class="ni ni-check-bold"></i>
+            <div class="dot" [ngStyle]="{'background-color': shippingData!==null ? '#2ecc71' : '#dbe6df'}">
+              <i class="ni ni-check-bold icon"></i>
             </div>
             <div class="col-md-8">
               <span>Envio</span>

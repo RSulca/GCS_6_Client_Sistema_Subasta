@@ -1,19 +1,31 @@
-.card-review .card-body h5{
-    font-size: .9rem;
-    font-weight: bold;
+.card-review .card-body h5 {
+  font-size: .9rem;
+  font-weight: bold;
 }
-.card-review .card-body p, .card-review .card-body a,
-.card-review .card-body button{
-    font-size: .8rem;
+
+.card-review .card-body p,
+.card-review .card-body a,
+.card-review .card-body button {
+  font-size: .8rem;
 }
-.card-review .card-body{
-    padding: .5rem 1rem;
+
+.card-review .card-body {
+  padding: .5rem 1rem;
 }
-.card-review{
-    overflow: hidden;
+
+.card-review {
+  overflow: hidden;
 }
-.img-preview{
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+
+.img-preview {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
+.noImg {
+  position: relative;
+  left: 30px;
+  top: 40px;
+}
+

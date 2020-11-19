@@ -8,7 +8,6 @@ import { portalRoutes } from './portal-routing.module';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { ProductRegisterModule } from './product-register/product-register.module';
 import { NotifierService } from 'src/app/services/notifier.service';
-import { LoginService } from 'src/app/services/login.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,9 +22,9 @@ import { TermsComponentsModule } from './terms-components/terms-components.modul
 import { AccountComponent } from './account/account.component';
 import { AccountModule } from './account/account.module';
 import { ProductRegisterComponent } from './product-register/product-register.component';
-import { NgxDropzoneModule } from 'ngx-dropzone';
-import { DropzoneComponent } from './shared-components/dropzone/dropzone.component';
 import { HistorialComponent } from './historial/historial.component';
+import { ConfirmDialogComponent } from './personal-components/confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -42,8 +41,9 @@ import { HistorialComponent } from './historial/historial.component';
     ProductCardComponent,
     ProductCardListComponent,
     AccountComponent,
-    DropzoneComponent,
-    HistorialComponent
+    HistorialComponent,
+    ConfirmDialogComponent
+    
   ],
   imports: [
     CommonModule,
@@ -55,17 +55,19 @@ import { HistorialComponent } from './historial/historial.component';
     CarouselModule,
     TermsComponentsModule,
     AccountModule,
-    NgxDropzoneModule
+    MatDialogModule
   ],
   exports:[
     FooterPortalComponent,
-    NavbarPortalComponent,
-    DropzoneComponent
+    NavbarPortalComponent
+    
   ],
   providers: [
     NotifierService,
-    LoginService,
     LocalStorageService
+  ],
+  entryComponents:[
+    ConfirmDialogComponent
   ]
 })
 export class PortalModule { }
