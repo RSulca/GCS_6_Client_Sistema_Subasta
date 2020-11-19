@@ -16,4 +16,9 @@ export class ProductoService {
     return this.http.get<Producto[]>(url);
   } 
 
+  cantidadProductos(){
+    const url = `${environment.API_SUBASTA}/api/product/cantidad`;
+    return this.http.get<number>(url);
+  }
+
 }

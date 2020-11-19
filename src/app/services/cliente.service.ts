@@ -29,4 +29,9 @@ export class ClienteService {
     return this.http.put<ClientReq[]>(url, {id, state});
   }
 
+  cantidadClientes(){
+    const url = `${environment.API_SUBASTA}/api/cliente/cantidad`;
+    return this.http.get<number>(url);
+  }
+
 }

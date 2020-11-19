@@ -46,4 +46,9 @@ export class SupervisorService {
     return this.http.get<Supervisor>(url);
   }
 
+  cantidadSupervisores(){
+    const url = `${environment.API_SUBASTA}/api/supervisor/cantidad`;
+    return this.http.get<number>(url);
+  }
+
 }

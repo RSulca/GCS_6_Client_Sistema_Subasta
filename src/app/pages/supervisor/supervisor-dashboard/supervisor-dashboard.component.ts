@@ -14,6 +14,7 @@ export class SupervisorDashboardComponent implements OnInit {
   nombres: string;
   apellidos: string;
   categoria: string;
+  img: string;
 
   supervisor:Supervisor = {
     id:'',
@@ -36,10 +37,10 @@ export class SupervisorDashboardComponent implements OnInit {
     console.log(id);
     this.supervisorService.obtener(id)
       .subscribe(data => {
-        console.log(data['user']);
         this.nombres = data['user'].name;
         this.apellidos = data['user'].lastname;
         this.categoria = data['user'].category;
+        this.img = data['user'].img;
       })
   }
 
