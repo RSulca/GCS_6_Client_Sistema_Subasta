@@ -4,6 +4,7 @@ import { NotifierService } from 'src/app/services/notifier.service';
 import { Router } from '@angular/router';
 import { Supervisor } from 'src/app/models/request/supervisor.model';
 import { SupervisorService } from 'src/app/services/supervisor.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-supervisor-perfil',
@@ -22,13 +23,14 @@ export class SupervisorPerfilComponent implements OnInit {
     email:'',
     password:''
   };
-
-  constructor(private fb: FormBuilder, private nf: NotifierService, private router:Router, private supervisorService:SupervisorService) {
+  
+  constructor(private fb: FormBuilder, private nf: NotifierService, private router:Router, private supervisorService:SupervisorService, private ls: LocalStorageService) {
     this.initForm();
    }
 
   ngOnInit(): void {
-    this.obtener('5fab5ab8df12676a8c90d22c');
+    let usuario = JSON.parse(this.ls.getData('user'));
+    this.obtener(usuario._id);
   }
 
   initForm() {
@@ -61,6 +63,9 @@ export class SupervisorPerfilComponent implements OnInit {
       });
     }
   }
+
+
+
 
   limpiar(){
     this.actualizaSupervisorForm.setValue({id: '', correo: '', nombres: '', apellidos: '', dni: '', password: ''});

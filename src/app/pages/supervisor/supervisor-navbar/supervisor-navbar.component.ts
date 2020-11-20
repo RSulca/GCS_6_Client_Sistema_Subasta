@@ -4,6 +4,7 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 import { Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { ProductoService } from 'src/app/services/producto.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-supervisor-navbar',
@@ -18,7 +19,7 @@ export class SupervisorNavbarComponent implements OnInit {
   numeroClientes: number;
   numeroProductos: number;
 
-  constructor(location: Location,  private element: ElementRef, private router: Router, private clienteService: ClienteService, private productoService: ProductoService) {
+  constructor(location: Location,  private element: ElementRef, private router: Router, private clienteService: ClienteService, private productoService: ProductoService, private loginService: LoginService) {
     this.location = location;
     this.cantidadClientes();
     this.cantidadProductos();
@@ -40,7 +41,7 @@ export class SupervisorNavbarComponent implements OnInit {
             return this.listTitles[item].title;
         }
     }
-    return 'Dashboard';
+    return '/supervisor';
   }
 
   cantidadClientes(){
@@ -56,5 +57,9 @@ export class SupervisorNavbarComponent implements OnInit {
         this.numeroProductos = data['cantidad'];
       })
   }
+
+  onLogout() {
+    this.loginService.logout();
+   }
 
 }

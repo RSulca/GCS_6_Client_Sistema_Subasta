@@ -3,6 +3,7 @@ import { NotifierService } from 'src/app/services/notifier.service';
 import { Router } from '@angular/router';
 import { Supervisor } from 'src/app/models/request/supervisor.model';
 import { SupervisorService } from 'src/app/services/supervisor.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-supervisor-dashboard',
@@ -27,10 +28,11 @@ export class SupervisorDashboardComponent implements OnInit {
   };
 
 
-  constructor(private nf: NotifierService, private router:Router, private supervisorService:SupervisorService) { }
+  constructor(private nf: NotifierService, private router:Router, private supervisorService:SupervisorService, private ls: LocalStorageService) { }
 
   ngOnInit(): void {
-    this.obtener('5fada9b9d2a3d857c483cdf9');
+    let usuario = JSON.parse(this.ls.getData('user'));
+    this.obtener(usuario._id);
   }
 
   obtener(id: string){

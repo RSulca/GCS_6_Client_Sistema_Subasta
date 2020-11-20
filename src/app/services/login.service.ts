@@ -14,6 +14,7 @@ export class LoginService {
 
   usuario: any = {};
   token: any = {};
+  rol: any = {};
 
   constructor(private http: HttpClient, private router: Router, private ls: LocalStorageService) {
     this.loadStorage();
@@ -31,9 +32,11 @@ export class LoginService {
     if (this.ls.getData('token')) {
       this.token = this.ls.getData('token');
       this.usuario = JSON.parse(this.ls.getData('user'));
+      this.rol = this.ls.getData('rol');
     } else {
       this.token = '';
       this.usuario = null;
+      this.rol = '';
     }
   }
 
@@ -89,6 +92,7 @@ export class LoginService {
 
     this.ls.removeData('token');
     this.ls.removeData('user');
+    this.ls.removeData('rol');
 
     this.router.navigate(['/login']);
     this.loggedIn.next(false);
@@ -98,10 +102,12 @@ export class LoginService {
 
   saveStorage(data: any) {
     this.ls.setData('token', data.token);
+    this.ls.setData('rol', data.role);
     this.ls.setData('user', JSON.stringify(data.user))
 
     this.usuario = data.user;
     this.token = data.token;
+    this.rol = data.role;
   }
 
 

@@ -1,10 +1,11 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { SupervisorService } from 'src/app/services/supervisor.service';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { ProductoService } from 'src/app/services/producto.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-navbar',
@@ -20,7 +21,7 @@ export class NavbarComponent implements OnInit {
   numeroClientes: number;
   numeroProductos: number;
 
-  constructor(location: Location,  private element: ElementRef, private router: Router, private supervisorService: SupervisorService, private clienteService: ClienteService, private productoService: ProductoService) {
+  constructor(location: Location,  private element: ElementRef, private router: Router, private supervisorService: SupervisorService, private clienteService: ClienteService, private productoService: ProductoService, private loginService: LoginService) {
     this.location = location;
   }
 
@@ -41,7 +42,7 @@ export class NavbarComponent implements OnInit {
             return this.listTitles[item].title;
         }
     }
-    return 'Dashboard';
+    return '/admin';
   }
 
   cantidadSupervisores(){
@@ -63,6 +64,10 @@ export class NavbarComponent implements OnInit {
       .subscribe(data => {
         this.numeroProductos = data['cantidad'];
       })
+  }
+
+  onLogout() {
+   this.loginService.logout();
   }
 
 }
