@@ -1,0 +1,65 @@
+<div class="bloque animate__animated animate__fadeIn m-4">
+  <div class="buttons row">
+    <div class="col-md-6">
+      <button class="btn btn-primary btn-sm">
+        <i class="ni ni-bold-left"></i> Atrás
+      </button>
+    </div>
+    <div class="col-md-6" align="end">
+      <button class="btn btn-primary btn-sm" (click)="goToSellerEdit()">
+        Siguiente <i class="ni ni-bold-right"></i>
+      </button>
+    </div>
+  </div>
+  <div class="title mt-4">
+    <h2><strong>Selecciona una categoría</strong></h2>
+    <p>Selecciona una categoría que se ajuste a tu lote. ¿No estás seguro de qué elegir? Elige la mejor opción y nuestro
+      experto se asegurará de que sea la correcta.</p>
+  </div>
+  <div class="subtitle">
+    <h4><strong>Busca una categoría</strong></h4>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <div class="input-group input-group-alternative mb-4">
+            <select class="form-control form-control-alternative" (change)="onChange($event.target.value)">
+              <option value="0">Seleccionar...</option>
+              <option *ngFor="let c of categories" [value]="c.name">{{c.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6" [ngStyle]="{'display': viewCategories ? 'none' : '' }">
+        <p>¿No encuentras lo que buscas? <a class="text-primary" style="cursor: pointer;"
+            (click)="seeCategories()"><strong>Explora todas las
+              categorías</strong></a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="categories animate__animated animate__bounceInUp" [ngStyle]="{'display':viewCategories ? '' : 'none' }">
+    <div class="row">
+      <div class="col-md-6">
+        <p><strong>Explora todas las categorías</strong></p>
+      </div>
+      <div class="col-md-6" align="end">
+        <span>
+          <i class="ni ni-fat-remove" (click)="viewCategories=false" style="cursor: pointer;"></i>
+        </span>
+      </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-4">
+      <div class="col mb-4" *ngFor="let c of categories">
+        <div class="card" style="cursor: pointer;" (click)="selectCategoryByImg(c)">
+          <div class="card-img-container">
+            <div class="card-img">
+              <span class="date fade-out">{{c.name}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="container py-4">
+  <div class="titulo">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Datos</h2>
+      </div>
+      <div class="col-md-6" align="end">
+        <button (click)="goToShipping()" class="btn btn-primary btn-sm">
+          Siguiente <i class="ni ni-bold-right"></i>
+        </button>
+      </div>
+    </div>
+    <p>Para que podamos hacernos una idea de tu lote, introduce todos los datos necesarios con la mayor precisión
+      posible. De esta manera, agilizarás la revisión del experto y aumentarás las probabilidades de búsqueda de tu
+      lote, atrayendo así a más pujadores.</p>
+  </div>
+
+  <div class="datosProducto col-12 col-md-6 px-0">
+    <span *ngIf="descriptionForm.get('columns').value.length > 0; else bloque3">
+      <form [formGroup]="descriptionForm">
+        <div formArrayName="columns">
+          <div *ngFor="let column of columns.controls; let i = index;" [formGroupName]="i">
+            <div class="form-group">
+              <label class="font-6">{{categoryFormSelected.camposPlaceholder[i]}}</label>
+              <input type="text" class="form-control" formControlName="{{categoryFormSelected.campos[i]}}">
+            </div>
+            <div *ngIf="categoryFormSelected.campos[i]=='resumen'" class="form-group">
+              <label class="font-6">{{categoryFormSelected.camposPlaceholder[i]}}</label>
+              <textarea cols="30" rows="10" class="form-control" formControlName="{{categoryFormSelected.campos[i]}}"></textarea>
+            </div>
+          </div>
+        </div>
+      </form>
+    </span>
+  </div>
+</div>

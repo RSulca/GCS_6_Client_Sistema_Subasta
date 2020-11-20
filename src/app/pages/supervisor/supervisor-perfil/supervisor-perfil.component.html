@@ -1,0 +1,71 @@
+  <div class="container-fluid mt--7">
+    <div class="row">
+      <div class="col-xl-8 order-xl-1">
+        <div class="card bg-secondary shadow">
+          <div class="card-header bg-white border-0">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h3 class="mb-0">Mi Cuenta</h3>
+              </div>
+              <div class="col-4 text-right">
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="actualizaSupervisorForm">
+              <h6 class="heading-small text-muted mb-4">Información Personal</h6>
+              <div class="pl-lg-4">
+                <div class="form-group col-md-6" style="display: none;">
+                  <label for="inputEmail4">ID</label>
+                  <input type="text" class="form-control" id="inputID" [(ngModel)]="supervisor.id" formControlName="id"  placeholder="ID">
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-first-name">Nombres</label>
+                      <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Nombres" [(ngModel)]="supervisor.name" formControlName="nombres" value="{{nombres}}">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-last-name">Apellidos</label>
+                      <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Apellidos" [(ngModel)]="supervisor.lastname" formControlName="apellidos" value="{{apellidos}}">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-first-name">DNI</label>
+                      <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="DNI" [(ngModel)]="supervisor.dni" formControlName="dni" value="{{dni}}">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="my-4" />
+              <h6 class="heading-small text-muted mb-4">Información de la cuenta</h6>
+              <div class="pl-lg-4">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-email">Correo</label>
+                      <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Correo" [(ngModel)]="supervisor.email" formControlName="correo" value="{{correo}}">
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-username">Password</label>
+                      <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Password" [(ngModel)]="supervisor.password" formControlName="password">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button (click)="actualizar()" class="btn btn-primary">Actualizar</button>
+              <button (click)="limpiar()" class="btn btn-info">Limpiar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,11 @@
+.box-ccc{
+    box-shadow: 0 0 2px 0 #ccc;
+}
+.menu-tabs .active{
+    font-weight: bold;
+}
+
+.back{
+    box-shadow: 0 2px 9px rgba(0,0,0,0.1);
+
+}

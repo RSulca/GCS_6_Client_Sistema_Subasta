@@ -1,0 +1,82 @@
+<div class="container py-4">
+  <div class="titulo">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Categoría</h2>
+      </div>
+      <div class="col-md-6" align="end">
+        <button (click)="goToPhotos()" class="btn btn-primary btn-sm">
+          Siguiente <i class="ni ni-bold-right"></i>
+        </button>
+      </div>
+    </div>
+    <p>Selecciona una categoría que se ajuste a tu lote. ¿No estás seguro de qué elegir? Elige la mejor opción y nuestro
+      experto se asegurará de que sea la correcta.</p>
+  </div>
+  <div class="category-selected" *ngIf="!viewCategories ; else bloque">
+    <div class="row">
+      <div class="col-sm-4 mb-4">
+        <div class="card" style="cursor: pointer;">
+          <div class="card-img-container">
+            <div class="card-img">
+              <span class="date fade-out">{{categorySelected}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <button class="btn btn-info" (click)="viewCategories=true"><i class="ni ni-archive-2"></i>Cambiar</button>
+      </div>
+    </div>
+  </div>
+  <ng-template class="select-category" #bloque>
+    <div class="subtitle">
+      <h4><strong>Busca una categoría</strong></h4>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="input-group input-group-alternative mb-4">
+              <select class="form-control form-control-alternative" (change)="onChange($event.target.value)">
+                <option value="0">Seleccionar...</option>
+                <option *ngFor="let c of categories" [value]="c.name">{{c.name}}</option>
+
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6" [ngStyle]="{'display': viewCategories ? 'none' : '' }">
+          <p>¿No encuentras lo que buscas? <a class="text-primary" style="cursor: pointer;"
+              (click)="seeCategories()"><strong>Explora todas las
+                categorías</strong>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="categories animate__animated animate__bounceInUp" [ngStyle]="{'display':viewCategories ? '' : 'none' }">
+      <div class="row">
+        <div class="col-md-6">
+          <p><strong>Explora todas las categorías</strong></p>
+        </div>
+        <div class="col-md-6" align="end">
+          <span>
+            <i class="ni ni-fat-remove" (click)="viewCategories=false" style="cursor: pointer;"></i>
+          </span>
+        </div>
+      </div>
+      <div class="row row-cols-1 row-cols-md-3">
+        <div class="col mb-4" *ngFor="let c of categories">
+          <div class="card" style="cursor: pointer;" (click)="selectCategoryByImg(c)">
+            <div class="card-img-container">
+              <div class="card-img">
+                <span class="date fade-out">{{c.name}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

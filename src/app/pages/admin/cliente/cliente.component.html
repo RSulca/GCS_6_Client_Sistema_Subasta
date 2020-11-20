@@ -1,0 +1,52 @@
+
+<!-- Page content -->
+<div class="container-fluid mt--7">
+    <div class="row mt-5">
+      <div class="col-xl-10 mb-5 mb-xl-0">
+        <div class="card shadow">
+          <div class="card-header border-0">
+            <div class="row align-items-center">
+              <div class="col">
+                <h2 class="mb-0">Clientes Reportados</h2>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <!-- Projects table -->
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th style="display: none;" scope="col">ID</th>
+                  <th scope="col">Nombres</th>
+                  <th scope="col">Apellidos</th>
+                  <th scope="col">DNI</th>
+                  <th scope="col">Correo</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let client of clientes">
+                  <td style="display: none;">{{client._id}}</td>
+                  <td>{{client.name}}</td>
+                  <td>{{client.lastname}}</td>
+                  <td>{{client.dni}}</td>
+                  <td>{{client.email}}</td>
+                  <td>{{client.state}}</td>
+                  <div *ngIf="client.state; else eliminado;">
+                    <td><button (click)="inhabilitar(client._id)" class="btn btn-danger">Inhabilitar</button></td>   
+                  </div>
+                  <ng-template #eliminado>
+                    <div>
+                      <td><button (click)="habilitar(client._id)" class="btn btn-success">Habilitar</button></td>   
+                    </div>
+                  </ng-template>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

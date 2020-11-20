@@ -1,0 +1,75 @@
+<div class="row mx-0">
+  <div class="col-md-3 px-0">
+    <div class="steps">
+      <ul class="list-group mydiv">
+        <li class="list-group-item">
+          <div class="row">
+            <div class="dot" [ngStyle]="{'background-color': categoryTemp ? '#2ecc71' : '#dbe6df'}">
+              <i class="ni ni-check-bold icon"></i>
+            </div>
+            <div class="col-md-8">
+              <span>Categoria</span>
+              <div>
+                <span class="text-success">{{categorySelected}}</span>
+              </div>
+            </div>
+            <div class="col-md-2 check">
+              <i class="ni ni-bold-right"></i>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="dot" [ngStyle]="{'background-color': previweImages ? '#2ecc71' : '#dbe6df'}">
+              <i class="ni ni-check-bold icon"></i>
+            </div>
+            <div class="col-md-8">
+              <span>Fotos</span>
+              <div>
+                <span class="text-success">Seleccionar un minimo de 3 fotos</span>
+              </div>
+            </div>
+            <div class="col-md-2 check">
+              <i class="ni ni-bold-right"></i>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="dot"  [ngStyle]="{'background-color': descripctionData!==null ? '#2ecc71' : '#dbe6df'}">
+              <i class="ni ni-check-bold icon"></i>
+            </div>
+            <div class="col-md-8">
+              <span>Datos</span>
+              <div>
+                <span class="text-success">Completa los campos requeridos</span>
+              </div>
+            </div>
+            <div class="col-md-2 check">
+              <i class="ni ni-bold-right"></i>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="dot" [ngStyle]="{'background-color': shippingData!==null ? '#2ecc71' : '#dbe6df'}">
+              <i class="ni ni-check-bold icon"></i>
+            </div>
+            <div class="col-md-8">
+              <span>Envio</span>
+              <div>
+                <span class="text-success">Introduce los gastos de envio</span>
+              </div>
+            </div>
+            <div class="col-md-2 check">
+              <i class="ni ni-bold-right"></i>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-9 border border-left-0">
+    <router-outlet></router-outlet>
+  </div>
+</div>
