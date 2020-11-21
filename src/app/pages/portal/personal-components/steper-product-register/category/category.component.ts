@@ -30,7 +30,7 @@ export class CategoryComponent implements OnInit {
   }
 
   goToPhotos() {
-    if (!this.categorySelected) {
+    if (!this.categorySelected || this.categorySelected === 0) {
       this.nf.notification("warning", {
         'title': 'Formulario invalido.',
         'description': 'Por favor seleccione una categoria.'
