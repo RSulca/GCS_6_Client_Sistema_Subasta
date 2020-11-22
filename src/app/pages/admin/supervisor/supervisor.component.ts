@@ -15,20 +15,13 @@ import { CategoriaService } from 'src/app/services/categoria.service';
 export class SupervisorComponent implements OnInit {
 
   registroSupervisorForm: FormGroup;
-
-  supervisor:Supervisor = {
-    id:'',
-    name:'',
-    lastname:'',
-    dni:'',
-    email:'',
-    password:'',
-    category:''
-  };
+  supervisor: Supervisor = new Supervisor();
 
   supervisores: Supervisor[];
   categorias: Categoria[];
 
+  isReadonly: boolean;
+  
   constructor(private fb: FormBuilder, private nf: NotifierService, private router:Router, private supervisorService:SupervisorService, private categoriaService:CategoriaService) {
     this.initForm();
    }
@@ -38,21 +31,57 @@ export class SupervisorComponent implements OnInit {
     this.obtenerCategoria();
   }
 
+  get email(){
+    return this.registroSupervisorForm.get('email');
+  }
+
+  get password(){
+    return this.registroSupervisorForm.get('password');
+  }
+
+  get name(){
+    return this.registroSupervisorForm.get('name');
+  }
+
+  get lastname(){
+    return this.registroSupervisorForm.get('lastname');
+  }
+
+  get dni(){
+    return this.registroSupervisorForm.get('dni');
+  }
+
+  get category(){
+    return this.registroSupervisorForm.get('category');
+  }
+
   initForm() {
     this.registroSupervisorForm = this.fb.group({
       id: [''],
-      correo: ['', [Validators.required]],
-      nombres: ['', [Validators.required]],
-      apellidos: ['', [Validators.required]],
-      dni: ['', [Validators.required]],
-      categoria: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      name: ['', [Validators.required]],
+      lastname: ['', [Validators.required]],
+      dni: ['', [Validators.required, Validators.maxLength(8)]],
+      category: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
   }
 
-  registrar(){
+  validaPasswordCondicional1(){
+    this.isReadonly =true;
+    this.password.setValidators(null);
+    this.password.updateValueAndValidity();
+  }
+
+  validaPasswordCondicional2(){
+    this.isReadonly =false;
+    this.password.setValidators(Validators.required);
+    this.password.updateValueAndValidity();
+  }
+
+  submit(){
     if(confirm('Está seguro de grabar?')){
-      this.supervisorService.registrar(this.supervisor)
+      this.supervisorService.registrar(this.registroSupervisorForm.value)
       .subscribe(data=>{
         this.nf.notification("success", {
           'title': 'Registro exitoso.',
@@ -60,6 +89,7 @@ export class SupervisorComponent implements OnInit {
         });
         this.listar();
         this.limpiar();
+        this.validaPasswordCondicional2();
       })
     }
   }
@@ -72,14 +102,9 @@ export class SupervisorComponent implements OnInit {
   }
 
   actualizar(supervisor: Supervisor){
-    localStorage.setItem("_id", supervisor._id.toString());
-    localStorage.setItem("name", supervisor.name.toString());
-    localStorage.setItem("lastname", supervisor.lastname.toString());
-    localStorage.setItem("email", supervisor.email.toString());
-    localStorage.setItem("dni", supervisor.dni.toString());
-    localStorage.setItem("category", supervisor.category.toString());
-
-    this.registroSupervisorForm.patchValue({id: localStorage.getItem('_id'), correo: localStorage.getItem('email'), nombres: localStorage.getItem('name'), apellidos: localStorage.getItem('lastname'), dni: localStorage.getItem('dni'), categoria: localStorage.getItem('category')})
+    this.validaPasswordCondicional1();
+    this.registroSupervisorForm.patchValue({id: supervisor._id.toString(), email: supervisor.email.toString(), name: supervisor.name.toString(),
+     lastname: supervisor.lastname.toString(), dni: supervisor.dni.toString(), category: supervisor.category.toString()})
   }
 
   inhabilitar(id: string){
@@ -116,7 +141,7 @@ export class SupervisorComponent implements OnInit {
   }
 
   limpiar(){
-    this.registroSupervisorForm.setValue({id: '', correo: '', nombres: '', apellidos: '', dni: '', categoria: '', password: ''});
+    this.registroSupervisorForm.patchValue({id: '', email: '', name: '', lastname: '', dni: '', category: '', password: ''});
   }
 
 }

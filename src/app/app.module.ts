@@ -19,6 +19,7 @@ import { SupervisorService } from './services/supervisor.service';
 import { NotifierService } from 'src/app/services/notifier.service';
 import { AuthLayoutModule } from './layouts/auth-layout/auth-layout.module';
 import { PortalModule } from './pages/portal/portal.module';
+import { DatePipe } from 'src/app/util/dateFormatPipe';
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import { PortalModule } from './pages/portal/portal.module';
   ],
   providers: [
     SupervisorService,
-    NotifierService
+    NotifierService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
