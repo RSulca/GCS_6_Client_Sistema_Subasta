@@ -16,7 +16,7 @@ export class AddressTabComponent implements OnInit {
   user: any = {};
 
   constructor(private userInfoEmitter: UserEmiterService, private loginService: LoginService, private fb: FormBuilder,
-     private router: Router, private userService: UserService) {
+    private router: Router, private userService: UserService) {
     this.initForm();
   }
 
@@ -27,12 +27,14 @@ export class AddressTabComponent implements OnInit {
   getUser(id) {
     this.userService.getUserById(id).subscribe((data: any) => {
       this.user = data.user;
-      this.ubigeoForm.patchValue({
-        department: this.user.ubigeo.department,//probar
-        province: this.user.ubigeo.province,//probar
-        district: this.user.ubigeo.district,//probar
-        direction: this.user.ubigeo.direction,//probar
-      })
+      if (this.user.ubigeo) {
+        this.ubigeoForm.patchValue({
+          department: this.user.ubigeo.department,//probar
+          province: this.user.ubigeo.province,//probar
+          district: this.user.ubigeo.district,//probar
+          direction: this.user.ubigeo.direction,//probar
+        })
+      }
     })
   }
 

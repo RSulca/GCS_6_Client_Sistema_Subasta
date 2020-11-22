@@ -1,8 +1,9 @@
-export class Producto{
-    id?:String;
-    _id?:String;
-    name:String;
-    description:String;
-    category?:String;
-    state?:boolean;
+export class Producto {
+    id?: string;
+    _id?: string;
+    name: string;
+    description: string;
+    category?: string;
+    state?: boolean;
+    imgs?: string[] = [];
 }

@@ -20,7 +20,7 @@ export class ShippingComponent implements OnInit {
 
   goToReview() {
     console.log(this.shippingData)
-    if (this.shippingData === '0' || this.shippingData === null || this.shippingData === '') {
+    if ((this.shippingData === '0' || this.shippingData === null || this.shippingData === '') && !this.recoger) {
       this.nf.notification("warning", {
         'title': 'Formulario invalido.',
         'description': 'Por favor seleccione la persona responsable del pago del envio del producto.'

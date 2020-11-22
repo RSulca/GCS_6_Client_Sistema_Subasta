@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -8,7 +9,9 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-account-tab',
   templateUrl: './account-tab.component.html',
-  styleUrls: ['./account-tab.component.css']
+  styleUrls: ['./account-tab.component.css'],
+  providers: [DatePipe]
+
 })
 export class AccountTabComponent implements OnInit {
 
@@ -16,7 +19,7 @@ export class AccountTabComponent implements OnInit {
   basicForm: FormGroup;
 
 
-  constructor(private userService: UserService, private loginService: LoginService,
+  constructor(private userService: UserService, public loginService: LoginService, private datePipe: DatePipe,
     private userInfoEmitter: UserEmiterService, private fb: FormBuilder, private router: Router) {
     this.initForm();
   }
@@ -28,13 +31,14 @@ export class AccountTabComponent implements OnInit {
   getUser(id) {
     this.userService.getUserById(id).subscribe((data: any) => {
       this.user = data.user;
+      const datePipe = this.datePipe.transform(this.user.bornDate, 'yyyy-MM-dd')
       this.basicForm.patchValue({
         name: this.user.name,
         lastname: this.user.lastname,
         dni: this.user.dni,
         password: this.user.password,
-        phone: this.user.phone,
-        bornDate: this.user.bornDate,
+        phone: this.user.phoneNumber,
+        bornDate: datePipe,
         email: this.user.email,
       })
     })

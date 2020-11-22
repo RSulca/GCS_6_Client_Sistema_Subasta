@@ -17,6 +17,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ProductoService } from 'src/app/services/producto.service';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     SteperProductRegisterComponent,
   ],
   providers:[
-    LocalStorageService
+    LocalStorageService,
+    ProductoService
   ]
 })
 export class SteperProductRegisterModule { }
