@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoriaService } from 'src/app/services/categoria.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { NotifierService } from 'src/app/services/notifier.service';
 import { ProductEmiterService } from 'src/app/services/product-emiter.service';
 
@@ -18,11 +19,14 @@ export class CategoryComponent implements OnInit {
   viewCategories: boolean = false;
 
   constructor(private router: Router, private productEmiter: ProductEmiterService,
-    private categoriesService: CategoriaService, private nf: NotifierService) { }
+    private categoriesService: CategoriaService, private nf: NotifierService, private ls: LocalStorageService) {
+  }
 
   ngOnInit(): void {
     this.getCategories();
-    this.productEmiter.categorySubjectChanged$.subscribe(data => this.categorySelected = data)
+    this.productEmiter.categorySubjectChanged$.subscribe(data => {
+      this.categorySelected = data;
+    })
   }
 
   seeCategories() {

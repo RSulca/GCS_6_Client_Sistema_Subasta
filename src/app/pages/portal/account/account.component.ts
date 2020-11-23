@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Ubigeo } from 'src/app/models/request/ubigeo.model';
 import { User } from 'src/app/models/request/user.model';
@@ -8,6 +9,7 @@ import { LoginService } from 'src/app/services/login.service';
 import { NotifierService } from 'src/app/services/notifier.service';
 import { UserEmiterService } from 'src/app/services/user-emiter.service';
 import { UserService } from 'src/app/services/user.service';
+import { ConfirmDialogComponent } from '../personal-components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-account',
@@ -25,7 +27,7 @@ export class AccountComponent implements OnInit {
 
   request: User = new User();
 
-  constructor(private userInfoEmitter: UserEmiterService, private loginService: LoginService,
+  constructor(private userInfoEmitter: UserEmiterService, private loginService: LoginService, public dialog: MatDialog,
     private nf: NotifierService, private userService: UserService, private router: Router, private ls: LocalStorageService) { }
 
   ngOnInit(): void {
@@ -53,16 +55,25 @@ export class AccountComponent implements OnInit {
 
   saveData() {
     if (this.basicForm.valid) {
-      this.populateData(this.basicForm.value, this.file, this.ubigeoForm, this.cardForm);
-      this.userService.editUser(this.request, this.loginService.usuario._id).subscribe(data => {
-        this.ls.setData('user', JSON.stringify(data.user))
-        this.loginService.usuario = data.user;
-        this.router.navigate(['account/account-profile'])
-        this.nf.notification("success", {
-          'title': 'Datos actualizados.',
-          'description': 'Sus datos han sido actualizados correctamente.'
-        });
-      })
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        width: '400px',
+        data: '¿Está seguro desea actualizar sus datos?',
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.populateData(this.basicForm.value, this.file, this.ubigeoForm, this.cardForm);
+          this.userService.editUser(this.request, this.loginService.usuario._id).subscribe(data => {
+            this.ls.setData('user', JSON.stringify(data.user))
+            this.loginService.usuario = data.user;
+            this.router.navigate(['account/account-profile'])
+            this.nf.notification("success", {
+              'title': 'Datos actualizados.',
+              'description': 'Sus datos han sido actualizados correctamente.'
+            });
+          })
+        }
+      });
+
     } else {
       this.nf.notification("warning", {
         'title': 'Formulario invalido.',

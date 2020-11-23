@@ -54,4 +54,10 @@ export class ProductoService {
       )
     }
   }
+
+  getProductByUser() {
+    const url = `${environment.API_SUBASTA}/api/product`;
+    return this.http.get(url, { headers: { 'x-token': this.ls.getData('token') } }).pipe();
+
+  }
 }

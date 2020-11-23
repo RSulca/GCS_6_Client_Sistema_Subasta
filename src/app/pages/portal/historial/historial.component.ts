@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductoService } from 'src/app/services/producto.service';
 
 @Component({
   selector: 'app-historial',
@@ -6,26 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./historial.component.css']
 })
 export class HistorialComponent implements OnInit {
-  page = 1;
-  customOptions: any = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: true,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: { items: 1 },
-      400: { items: 2 },
-      740: { items: 3 },
-      940: { items: 4 }
-    },
-    nav: true
-  }
-  constructor() { }
+
+  products: any[] = [];
+
+  constructor(private productService: ProductoService) { }
 
   ngOnInit(): void {
+    this.getProductosByUser();
   }
 
+  getProductosByUser() {
+    this.productService.getProductByUser().subscribe((data: any) => {
+      this.products = data.products;
+      console.log(data);
+    })
+  }
 }

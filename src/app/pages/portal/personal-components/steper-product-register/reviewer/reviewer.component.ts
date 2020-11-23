@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Producto } from 'src/app/models/request/producto.model';
+import { NotifierService } from 'src/app/services/notifier.service';
 import { ProductEmiterService } from 'src/app/services/product-emiter.service';
 import { ProductoService } from 'src/app/services/producto.service';
 import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
@@ -26,7 +27,7 @@ export class ReviewerComponent implements OnInit {
   request: Producto = new Producto();
 
   constructor(private productEmiter: ProductEmiterService, private router: Router, public dialog: MatDialog,
-    private productoService: ProductoService) { }
+    private productoService: ProductoService, private nf: NotifierService) { }
 
   ngOnInit(): void {
     this.productEmiter.categorySubjectChanged$.subscribe(data => {
@@ -78,7 +79,11 @@ export class ReviewerComponent implements OnInit {
       if (result) {
         this.pupulateData();
         this.productoService.saveProduct(this.request, this.files).subscribe(data => {
-          console.log(data);
+          this.router.navigate(['/home'])
+          this.nf.notification("success", {
+            'title': 'Producto enviado con exito.',
+            'description': 'Su producto fue enviado a revision. Para consultar el estado de su producto puede ir al modulo de productos enviados a revision.'
+          });
         })
       }
     });

@@ -24,6 +24,7 @@ export const portalRoutes: Routes = [
   },
   {
     path: 'history',
+    canActivate: [LoginGuardGuard],
     component: HistorialComponent
   },
   {
