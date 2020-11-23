@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  API_SUBASTA:'http://localhost:3555'
+  //API_SUBASTA:'http://localhost:3555'
+  API_SUBASTA:'https://subastaonline.herokuapp.com'
 };
 
 /*
