@@ -61,7 +61,7 @@ export class SupervisorComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       name: ['', [Validators.required]],
       lastname: ['', [Validators.required]],
-      dni: ['', [Validators.required, Validators.maxLength(8)]],
+      dni: ['', Validators.compose([ Validators.required, Validators.pattern('[0-9]{8}')])],
       category: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });

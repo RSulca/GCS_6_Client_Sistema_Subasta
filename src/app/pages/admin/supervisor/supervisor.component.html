@@ -85,7 +85,9 @@
                   <td>{{supervisor.lastname}}</td>
                   <td>{{supervisor.category}}</td>
                   <td>{{supervisor.email}}</td>
-                  <td>{{supervisor.state}}</td>
+                  <!-- <td>{{supervisor.state}}</td> -->
+                  <td *ngIf="supervisor.state">Habilitado</td>
+                  <td *ngIf="!supervisor.state">Inhabilitado</td>
                   <td><button (click)="actualizar(supervisor)" class="btn btn-warning">Modificar</button></td>
                   <div *ngIf="supervisor.state; else eliminado;">
                     <td><button (click)="inhabilitar(supervisor._id)" class="btn btn-danger">Inhabilitar</button></td>   

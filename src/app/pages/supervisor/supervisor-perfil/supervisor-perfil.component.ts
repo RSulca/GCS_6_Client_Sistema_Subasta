@@ -86,7 +86,7 @@ export class SupervisorPerfilComponent implements OnInit {
       dni: ['', [Validators.required]],
       address: ['', [Validators.required]],
       bornDate: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required]],
+      phoneNumber: ['', Validators.compose([ Validators.required, Validators.pattern('[0-9]{9}')])],
       college: ['', [Validators.required]],
       studies: ['', [Validators.required]],
       password: [''],

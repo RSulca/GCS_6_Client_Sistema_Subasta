@@ -32,7 +32,9 @@
                   <td>{{client.lastname}}</td>
                   <td>{{client.dni}}</td>
                   <td>{{client.email}}</td>
-                  <td>{{client.state}}</td>
+                  <!-- <td>{{client.state}}</td> -->
+                  <td *ngIf="client.state">Habilitado</td>
+                  <td *ngIf="!client.state">Inhabilitado</td>
                   <div *ngIf="client.state; else eliminado;">
                     <td><button (click)="inhabilitar(client._id)" class="btn btn-danger">Inhabilitar</button></td>   
                   </div>
