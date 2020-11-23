@@ -16,7 +16,8 @@
   </div>
 
   <div class="datosProducto col-12 col-md-6 px-0">
-    <span *ngIf="descriptionForm.get('columns').value.length > 0; else bloque3">
+    <!-- <span *ngIf="descriptionForm.get('columns').value.length > 0; else bloque3"> -->
+    <span *ngIf="descriptionForm.get('columns').value.length > 0">
       <form [formGroup]="descriptionForm">
         <div formArrayName="columns">
           <div *ngFor="let column of columns.controls; let i = index;" [formGroupName]="i">
