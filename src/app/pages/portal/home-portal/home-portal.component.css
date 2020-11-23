@@ -5,31 +5,28 @@
     gap: 4px;
 }
 
-.grid2 {
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 132px 132px;
-    gap: 1em;
+.grid2 > div{
+    height: 135px;
+    padding: 1rem;
 }
-
 .grid2 div p {
-    padding-left: 1rem;
-    padding-top: 1rem;
-}
-
-.grid2 div p {
-    font-size: 24px;
-    color: black;
+    font-size: 1.2rem;
+    color: #000;
     font-weight: 700;
     font-family: fangsong;
 }
 
-.grid2 div div img {
-    position: absolute;
-    text-align: end;
-    z-index: 4444;
-    padding-left: 11.8rem;
-    padding-top: 1rem;
+.grid2-item{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.grid2-img{
+    height: 100px;
+    overflow: hidden;
+}
+.grid2-item img {
+    width: 100px;
 }
 
 .card-body {
