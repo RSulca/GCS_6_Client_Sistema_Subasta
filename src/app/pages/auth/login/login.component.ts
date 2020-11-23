@@ -59,6 +59,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.nf.notification("success", {
           'title': `Bienvenido ${data.user.name}`
         });
+      }, e => {
+        this.nf.notification("error2", {
+          'title': `Error `,
+          'description': e
+        });
       })
     });
   }
@@ -106,12 +111,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loginForm.get('email').setValue(this.email);
   }
 
-  authenticateUser(rol:string){
-    if(rol == 'ADMIN_ROLE'){
+  authenticateUser(rol: string) {
+    if (rol == 'ADMIN_ROLE') {
       this.router.navigate(['/admin']);
-    }else if(rol == 'SUPERVISOR_ROLE'){
+    } else if (rol == 'SUPERVISOR_ROLE') {
       this.router.navigate(['/supervisor'])
-    }else if(rol == 'CLIENT_ROLE'){
+    } else if (rol == 'CLIENT_ROLE') {
       this.router.navigate(['/home'])
     }
   }

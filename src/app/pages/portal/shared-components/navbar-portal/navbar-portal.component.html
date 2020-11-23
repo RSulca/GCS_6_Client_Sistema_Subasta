@@ -45,7 +45,16 @@
             </h3>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" [routerLink]="['../account']">Cuenta</a>
+            <a class="dropdown-item" [routerLink]="['../account']">
+              <div *ngIf="!loginService.usuario.firstEntry ;else bloque3">
+                Cuenta
+              </div>
+              <ng-template #bloque3>
+                <div>
+                  <span class="badge badge-primary">Completar datos de la cuenta</span>
+                </div>
+              </ng-template>
+            </a>
             <a class="dropdown-item" [routerLink]="['../history']">
               <div>
                 Historial de productos

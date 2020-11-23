@@ -48,7 +48,11 @@ export class LoginService {
         this.saveStorage(data);
         this.loggedIn.next(true);
         return data;
+      }),
+      catchError(err => {
+        return throwError(err.error.message);
       })
+
     );
   }
 
