@@ -82,7 +82,7 @@
   </div>
 
   <div class="grid2 row mx-0">
-    <div *ngFor="let cate of categoriesSimple" [ngStyle]="{'background-color': cate.color}">
+    <div *ngFor="let cate of categoriesSimple" class="col-12 col-md-3" [ngStyle]="{'background-color': cate.color}">
       <a [routerLink]="['../catalog']" class="grid2-item">
         <p>{{cate.name}}</p>
         <div class="grid2-img rounded">
