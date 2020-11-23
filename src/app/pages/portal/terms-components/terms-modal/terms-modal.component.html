@@ -1,0 +1,95 @@
+<p>terms-modal works!</p>
+<!-- Scrollable modal -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button>
+
+<a data-toggle="modal" data-target="#termsModal"> Terminos y condiciones</a>
+
+<!-- Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Términos de uso y políticas de privacidad</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <div class="grid2">
+
+                    <div style="background-color: #AF6663;">
+                        <a [routerLink]="['../catalog']">
+                            <div class="grid2-img">
+                                <img src="assets/img/category/vino.jpg" alt="" width="265px" height="120px" class="img-fluid rounded">
+                            </div>
+                        </a>
+                        <p>Vino y Whisky</p>
+                    </div>
+                    <div style="background-color: #F8DE7A;">
+                        <a [routerLink]="['../catalog']">
+                            <div class="grid2-img">
+                                <img src="assets/img/category/comic2.jpg" alt="" width="265px" height="120px" class="img-fluid rounded">
+                            </div>
+                        </a>
+                        <p>Libros y cómics</p>
+                    </div>
+                    <div style="background-color: #AF6663;">
+                        <a [routerLink]="['../catalog']">
+                            <div class="grid2-img">
+                                <img src="assets/img/category/guitar.jpg" alt="" width="265px" height="120px" class="img-fluid rounded">
+                            </div>
+                        </a>
+                        <p>Música</p>
+                    </div>
+                    <div style="background-color: #D5D3E1;">
+                        <a [routerLink]="['../catalog']">
+                            <div class="grid2-img">
+                                <img src="assets/img/category/diamante.jpg" alt="" width="265px" height="120px" class="img-fluid rounded">
+                            </div>
+                        </a>
+                        <p>Diamantes y <br>piedras</p>
+                    </div>
+                    <div style="background-color: #B0EADF;">
+                        <a [routerLink]="['../catalog']">
+                            <div class="grid2-img">
+                                <img src="assets/img/category/arteasia.jpg" alt="" width="265px" height="120px" class="img-fluid rounded">
+                            </div>
+                        </a>
+                        <p>Arte asiático</p>
+                    </div>
+                    <div style="background-color: #7faf63;">
+                        <a [routerLink]="['../catalog']">
+                            <div class="grid2-img">
+                                <img src="assets/img/category/reloj.jpg" alt="" width="265px" height="120px" class="img-fluid rounded">
+                            </div>
+                        </a>
+                        <p>Joyería y relojes</p>
+                    </div>
+                    <div style="background-color: #D5D3E1;">
+                        <a [routerLink]="['../catalog']">
+                            <div class="grid2-img">
+                                <img src="assets/img/category/jean.jpg" alt="" width="265px" height="120px" class="img-fluid rounded">
+                            </div>
+                        </a>
+                        <p>Moda</p>
+                    </div>
+                    <div style="background-color: #AF6663;">
+                        <a [routerLink]="['../catalog']">
+                            <div class="grid2-img">
+                                <img src="assets/img/category/fosil4.jpg" alt="" width="265px" height="120px" class="img-fluid rounded">
+                            </div>
+                        </a>
+                        <p>Arqueología</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>

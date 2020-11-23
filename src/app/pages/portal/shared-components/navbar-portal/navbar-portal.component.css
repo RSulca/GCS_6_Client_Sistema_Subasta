@@ -1,0 +1,44 @@
+.header-nav {
+    background-color: #fff;
+}
+
+.nav-bg {
+    background-color: #fff;
+}
+
+.font-item {
+    color: black;
+}
+
+.search-tam {
+    background-color: #F0F1F5;
+}
+
+.form-search {
+    padding-left: 2rem;
+}
+
+.form-inline .form-control {
+    width: 28rem;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+    font-weight: 500;
+    font-size: 15px;
+    font-family: "basisGrotesque", sans-serif;
+}
+.nav-search{
+    position: relative;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+.nav-search input{
+    width: 100% !important;
+}
+.form-search {
+    position: absolute;
+    right: 20px;
+}

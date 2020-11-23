@@ -1,0 +1,92 @@
+.personal-card{
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.2);
+}
+
+div.card {
+   height: 110px;
+   width: 345px;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(black, .45);
+    
+    div.card-img-container {
+       overflow: hidden;
+       position: relative;
+       background-color: #262626;
+    }
+    
+    div.card-img {
+       transition: .45s ease all;
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
+       background: url("https://images.unsplash.com/photo-1441205188609-b875e92a9807?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2700&q=80");
+       background-position: center;
+       background-size: 150%;
+       height: 420px;
+       width: 420px;
+       padding: 30px;
+       color: white;
+       
+       span {
+          -webkit-font-smoothing: antialiased;
+          text-transform: uppercase;
+          font-weight: 700;
+          font-size: 14px;
+          position: relative;
+       }      
+       
+       h1 {
+          -webkit-font-smoothing: antialiased;
+          font-family: "bodoni-urw";
+          font-weight: normal;
+          font-size: 36px;
+          margin: 0;
+          position: relative;
+       }
+    }
+    
+    div.card-body {
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
+       height: 220px;
+       
+       p {
+          color: #262626;
+          padding: 30px;
+          margin: 0;
+          font-weight: 300;
+          line-height: 24px;
+       }
+       
+       p > b {
+          font-weight: 600;
+          display: block;
+          margin-bottom: 15px;
+       }
+       
+       div.card-link {
+          // border-top: 1px solid #cdcdcd;
+          padding: 0 0 30px;
+          
+          a {
+             -webkit-font-smoothing: antialiased;
+             display: block;
+             padding: 0 30px;
+             text-decoration: none;
+             text-transform: uppercase;
+             color: #2D58C4;
+             font-weight: bold;
+             font-size: 14px;
+          }
+          
+          a:hover {
+             color: darken(#2D58C4, 20%);
+          }
+       }
+    }
+ }
+ 
+ .card-img-container:hover .card-img {
+    background-size: 175%;
+ }

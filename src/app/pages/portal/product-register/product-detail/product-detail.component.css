@@ -1,0 +1,10 @@
+.personal-card{
+    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.2);
+}
+
+.mydiv li:hover{background-color:rgba(206, 206, 206, 0.2);}
+
+.check{
+    display: flex;
+    align-items: center;
+}

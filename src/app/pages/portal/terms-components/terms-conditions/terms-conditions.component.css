@@ -1,0 +1,14 @@
+.gridterms3 {
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+.btn_terms {
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.ul-items{
+    font-size: 1rem;
+}
