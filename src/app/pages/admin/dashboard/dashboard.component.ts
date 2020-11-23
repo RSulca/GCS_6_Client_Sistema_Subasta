@@ -21,6 +21,8 @@ export class DashboardComponent implements OnInit {
   public clicked1: boolean = false;
   nombres: string;
   apellidos: string;
+  universidad: string;
+  estudios: string;
   img: string;
 
   constructor(private router:Router, private adminService:AdminService, private ls: LocalStorageService) { }
@@ -61,6 +63,8 @@ export class DashboardComponent implements OnInit {
       .subscribe(data => {
         this.nombres = data['user'].name;
         this.apellidos = data['user'].lastname;
+        this.universidad = data['user'].college;
+        this.estudios = data['user'].studies;
         this.img = data['user'].img;
       })
   }

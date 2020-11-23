@@ -15,6 +15,8 @@ export class SupervisorDashboardComponent implements OnInit {
   nombres: string;
   apellidos: string;
   categoria: string;
+  universidad: string;
+  estudios: string;
   img: string;
 
   supervisor:Supervisor = {
@@ -42,6 +44,8 @@ export class SupervisorDashboardComponent implements OnInit {
         this.nombres = data['user'].name;
         this.apellidos = data['user'].lastname;
         this.categoria = data['user'].category;
+        this.universidad = data['user'].college;
+        this.estudios = data['user'].studies;
         this.img = data['user'].img;
       })
   }

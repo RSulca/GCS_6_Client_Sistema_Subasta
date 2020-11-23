@@ -105,9 +105,6 @@ export class SupervisorPerfilComponent implements OnInit {
   }
 
   submit(){
-    console.log(this.actualizaSupervisorForm.value);
-    console.log(this.name.value);
-    
     if(confirm('Está seguro de grabar?')){
       this.supervisorService.registrar(this.actualizaSupervisorForm.value)
       .subscribe(data=>{
