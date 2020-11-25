@@ -110,6 +110,22 @@
           </div>
         </div>
       </div>
+      <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+        <form>
+          <div class="card card-profile shadow">
+            <div class="col-md-6">
+              <span>Nueva foto de perfil</span>
+              <input type="file" (change)="seleccionImage($event.target.files[0])">
+            </div>
+            <hr class="my-4" />
+              <div class="mt-4">
+                <img *ngIf="imagenTemp != ''" [src]="imagenTemp" class="w150 rounded-circle">
+                <img *ngIf="imagenTemp == ''" [src]="imagenActualizada" class="w150 rounded-circle">
+              </div>
+          </div>
+          <button type="button" class="btn btn-primary"  (click)="actualizarImagen()">Actualizar imagen</button>
+        </form>
+    </div>
     </div>
   </div>
   

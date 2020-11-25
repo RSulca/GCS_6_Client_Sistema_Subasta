@@ -19,6 +19,10 @@ export class SupervisorPerfilComponent implements OnInit {
 
   isReadonly: boolean;
 
+  imagenTemp: string = '';
+  imagenSubir: File;
+  imagenActualizada: string = '';
+
   constructor(private fb: FormBuilder, private nf: NotifierService, private router:Router, private supervisorService:SupervisorService, private ls: LocalStorageService, private datePipe: DatePipe) {
     this.initForm();
    }
@@ -97,6 +101,8 @@ export class SupervisorPerfilComponent implements OnInit {
   obtener(id: string){
     this.supervisorService.obtener(id)
       .subscribe(data => {
+        this.imagenActualizada = data['user'].img;
+        this.ls.setData('imagenSupervisor', data['user'].img);
         this.actualizaSupervisorForm.patchValue({id: data['user']._id, email: data['user'].email,
          name: data['user'].name, lastname: data['user'].lastname, dni: data['user'].dni,
          address: data['user'].address, bornDate: this.datePipe.transform(data['user'].bornDate),
@@ -116,22 +122,34 @@ export class SupervisorPerfilComponent implements OnInit {
     }
   }
 
-  
-  confirmaPassword(){
-    if(true){
-      console.log('hola');
-      this.password.setValidators(Validators.required);
-      this.cpassword.setValidators(Validators.required);
-      this.password.updateValueAndValidity();
-      this.cpassword.updateValueAndValidity();
-    }else{
-      console.log('adios');
-      this.password.setValidators(null);
-      this.cpassword.setValidators(null);
-      this.password.updateValueAndValidity();
-      this.cpassword.updateValueAndValidity();
+  seleccionImage(file: File) {
+    if (!file) {
+      this.imagenSubir = null;
+      return;
     }
-    
+    if (file.type.indexOf('image') < 0) {
+      this.nf.notification("warning", {
+        'title': 'Archivo invalido.',
+        'description': 'Por favor sube una imagen valida.'
+      });
+      return;
+    }
+    this.imagenSubir = file;
+
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => this.imagenTemp = reader.result as string;
   }
+
+  actualizarImagen(){
+    const _id = this.actualizaSupervisorForm.get('id').value;
+    this.supervisorService.subirImagen(this.imagenSubir, _id).subscribe(data=>{
+      this.nf.notification("success", {
+        'title': 'Actualización exitosa.',
+        'description': 'Se ha Actualizado la foto correctamente.'
+      });
+    })
+  }
+
 
 }

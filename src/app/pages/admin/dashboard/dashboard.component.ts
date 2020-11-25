@@ -66,6 +66,7 @@ export class DashboardComponent implements OnInit {
         this.universidad = data['user'].college;
         this.estudios = data['user'].studies;
         this.img = data['user'].img;
+        this.ls.setData('imagenAdministrador', data['user'].img);
       })
   }
 

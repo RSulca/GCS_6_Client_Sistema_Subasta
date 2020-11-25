@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 declare interface RouteInfo {
   path: string;
@@ -37,11 +38,14 @@ export class SupervisorSidebarComponent implements OnInit {
   public menuItems2: any[];
   public isCollapsed = true;
 
-  constructor(private router: Router, private loginService: LoginService) { }
+  imgSupervisor: string;
+
+  constructor(private router: Router, private loginService: LoginService, private ls: LocalStorageService) { }
 
   ngOnInit() {
     this.menu1();
     this.menu2();
+    this.imgSupervisor = this.ls.getData('imagenSupervisor');
   }
 
   menu1(){

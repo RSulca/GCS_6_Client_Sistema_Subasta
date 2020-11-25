@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 declare interface RouteInfo {
     path: string;
@@ -25,13 +26,16 @@ export class SidebarComponent implements OnInit {
   public menuItems: any[];
   public isCollapsed = true;
 
-  constructor(private router: Router, private loginService: LoginService) { }
+  imgAdministrador: string;
+
+  constructor(private router: Router, private loginService: LoginService, private ls: LocalStorageService) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
    });
+   this.imgAdministrador = this.ls.getData('imagenAdministrador');
   }
 
   onLogout() {

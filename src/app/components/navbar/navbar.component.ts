@@ -6,6 +6,7 @@ import { SupervisorService } from 'src/app/services/supervisor.service';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { ProductoService } from 'src/app/services/producto.service';
 import { LoginService } from 'src/app/services/login.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-navbar',
@@ -20,8 +21,9 @@ export class NavbarComponent implements OnInit {
   numeroSupervisores: number;
   numeroClientes: number;
   numeroProductos: number;
+  imgAdministrador: string;
 
-  constructor(location: Location,  private element: ElementRef, private router: Router, private supervisorService: SupervisorService, private clienteService: ClienteService, private productoService: ProductoService, private loginService: LoginService) {
+  constructor(location: Location,  private element: ElementRef, private router: Router, private supervisorService: SupervisorService, private clienteService: ClienteService, private productoService: ProductoService, private loginService: LoginService, private ls: LocalStorageService) {
     this.location = location;
   }
 
@@ -30,6 +32,7 @@ export class NavbarComponent implements OnInit {
     this.cantidadSupervisores();
     this.cantidadClientes();
     this.cantidadProductos();
+    this.imgAdministrador = this.ls.getData('imagenAdministrador');
   }
   getTitle(){
     var titlee = this.location.prepareExternalUrl(this.location.path());

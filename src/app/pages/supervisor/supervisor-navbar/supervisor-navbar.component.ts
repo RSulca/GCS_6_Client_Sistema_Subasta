@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { ProductoService } from 'src/app/services/producto.service';
 import { LoginService } from 'src/app/services/login.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-supervisor-navbar',
@@ -18,11 +19,13 @@ export class SupervisorNavbarComponent implements OnInit {
 
   numeroClientes: number;
   numeroProductos: number;
+  imgSupervisor: string;
 
-  constructor(location: Location,  private element: ElementRef, private router: Router, private clienteService: ClienteService, private productoService: ProductoService, private loginService: LoginService) {
+  constructor(location: Location,  private element: ElementRef, private router: Router, private clienteService: ClienteService, private productoService: ProductoService, private loginService: LoginService, private ls: LocalStorageService) {
     this.location = location;
     this.cantidadClientes();
     this.cantidadProductos();
+    this.imgSupervisor = this.ls.getData('imagenSupervisor');
   }
 
 
