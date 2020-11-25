@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import { SupervisorService } from 'src/app/services/supervisor.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 declare interface RouteInfo {
@@ -40,12 +41,13 @@ export class SupervisorSidebarComponent implements OnInit {
 
   imgSupervisor: string;
 
-  constructor(private router: Router, private loginService: LoginService, private ls: LocalStorageService) { }
+  constructor(private router: Router, private loginService: LoginService, private supervisorService:SupervisorService, private ls: LocalStorageService) { }
 
   ngOnInit() {
     this.menu1();
     this.menu2();
-    this.imgSupervisor = this.ls.getData('imagenSupervisor');
+    let usuario = JSON.parse(this.ls.getData('user'));
+    this.obtener(usuario._id);
   }
 
   menu1(){
@@ -60,6 +62,13 @@ export class SupervisorSidebarComponent implements OnInit {
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
    });
+  }
+
+  obtener(id: string){
+    this.supervisorService.obtener(id)
+      .subscribe(data => {
+        this.imgSupervisor = data['user'].img;
+      })
   }
 
   onLogout() {

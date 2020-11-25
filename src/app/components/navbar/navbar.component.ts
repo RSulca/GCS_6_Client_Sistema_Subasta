@@ -7,6 +7,7 @@ import { ClienteService } from 'src/app/services/cliente.service';
 import { ProductoService } from 'src/app/services/producto.service';
 import { LoginService } from 'src/app/services/login.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-navbar',
@@ -23,7 +24,7 @@ export class NavbarComponent implements OnInit {
   numeroProductos: number;
   imgAdministrador: string;
 
-  constructor(location: Location,  private element: ElementRef, private router: Router, private supervisorService: SupervisorService, private clienteService: ClienteService, private productoService: ProductoService, private loginService: LoginService, private ls: LocalStorageService) {
+  constructor(location: Location,  private element: ElementRef, private router: Router, private supervisorService: SupervisorService, private clienteService: ClienteService, private productoService: ProductoService, private loginService: LoginService, private adminService:AdminService, private ls: LocalStorageService) {
     this.location = location;
   }
 
@@ -32,7 +33,8 @@ export class NavbarComponent implements OnInit {
     this.cantidadSupervisores();
     this.cantidadClientes();
     this.cantidadProductos();
-    this.imgAdministrador = this.ls.getData('imagenAdministrador');
+    let usuario = JSON.parse(this.ls.getData('user'));
+    this.obtener(usuario._id);
   }
   getTitle(){
     var titlee = this.location.prepareExternalUrl(this.location.path());
@@ -66,6 +68,14 @@ export class NavbarComponent implements OnInit {
     this.productoService.cantidadProductos()
       .subscribe(data => {
         this.numeroProductos = data['cantidad'];
+      })
+  }
+
+  obtener(id: string){
+    console.log(id);
+    this.adminService.obtener(id)
+      .subscribe(data => {
+        this.imgAdministrador = data['user'].img;
       })
   }
 

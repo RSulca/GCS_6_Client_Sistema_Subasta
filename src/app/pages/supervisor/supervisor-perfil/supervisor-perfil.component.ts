@@ -102,7 +102,6 @@ export class SupervisorPerfilComponent implements OnInit {
     this.supervisorService.obtener(id)
       .subscribe(data => {
         this.imagenActualizada = data['user'].img;
-        this.ls.setData('imagenSupervisor', data['user'].img);
         this.actualizaSupervisorForm.patchValue({id: data['user']._id, email: data['user'].email,
          name: data['user'].name, lastname: data['user'].lastname, dni: data['user'].dni,
          address: data['user'].address, bornDate: this.datePipe.transform(data['user'].bornDate),

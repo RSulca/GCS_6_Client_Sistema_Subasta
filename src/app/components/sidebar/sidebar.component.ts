@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { AdminService } from 'src/app/services/admin.service';
 
 declare interface RouteInfo {
     path: string;
@@ -28,14 +29,23 @@ export class SidebarComponent implements OnInit {
 
   imgAdministrador: string;
 
-  constructor(private router: Router, private loginService: LoginService, private ls: LocalStorageService) { }
+  constructor(private router: Router, private loginService: LoginService, private adminService:AdminService, private ls: LocalStorageService) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
    });
-   this.imgAdministrador = this.ls.getData('imagenAdministrador');
+   let usuario = JSON.parse(this.ls.getData('user'));
+   this.obtener(usuario._id);
+  }
+
+  obtener(id: string){
+    console.log(id);
+    this.adminService.obtener(id)
+      .subscribe(data => {
+        this.imgAdministrador = data['user'].img;
+      })
   }
 
   onLogout() {
