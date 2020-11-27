@@ -18,7 +18,6 @@
                 <tr>
                   <th style="display: none;" scope="col">ID</th>
                   <th scope="col">Nombre</th>
-                  <th scope="col">Descripción</th>
                   <th scope="col">Categoría</th>
                   <th scope="col">Imagen</th>
                   <th scope="col">Detalles</th>
@@ -32,10 +31,9 @@
                 <tr *ngFor="let producto of productos">
                   <td style="display: none;">{{producto._id}}</td>
                   <td>{{producto.name}}</td>
-                  <td>{{producto.description}}</td>
                   <td>{{producto.category}}</td>
-                  <td>----</td>
-                  <td><button class="btn btn-light">ver Detalles</button></td>   
+                  <td><img src="{{producto.imgs[0]}}"></td>
+                  <td><button class="btn btn-light" (click)="verDetalles(producto._id)">ver Detalles</button></td>   
                   <td>{{producto.state}}</td>
                   <td><button class="btn btn-success">Aprobar</button></td> 
                   <td><button class="btn btn-danger">Rechazar</button></td>   

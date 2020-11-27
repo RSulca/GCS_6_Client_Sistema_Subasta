@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="card-header border-0">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <h2 class="mb-0">Detalles</h2>
+          </div>
+        </div>
+    </div>
+    <hr class="my-4" />
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+            <div >
+                <div *ngFor="let dato1 of array1">
+                    <strong><label for="campo">{{dato1}}</label></strong>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-7"> 
+            <div >
+                <div *ngFor="let dato2 of array2">
+                    <label for="valor">{{dato2}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="my-4" />
+    <div class="row justify-content-center">
+        <div>
+            <!-- <div class="card">
+                <div *ngFor="let imagen of imagenes1">
+                    <img src="{{imagen}}" alt="" class="zoom">
+                </div>
+            </div> -->
+            <div style="width: 400px; height: 500px; text-align:center;margin:0; padding:0;">
+                <ng-image-slider #nav
+                  [images]="imageObject"
+                  [infinite]="false"
+                  [autoSlide]="1"
+                  [imageSize]="{width: '25%', height: 200}"
+                  slideImage="1"></ng-image-slider>
+            </div>
+        </div>
+    </div>
+</div>
+
+

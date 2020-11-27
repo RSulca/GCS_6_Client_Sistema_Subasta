@@ -58,7 +58,6 @@ export class DashboardComponent implements OnInit {
   }
 
   obtener(id: string){
-    console.log(id);
     this.adminService.obtener(id)
       .subscribe(data => {
         this.nombres = data['user'].name;

@@ -13,12 +13,17 @@ export class ProductoService {
   listarPorCategoria(category2: string) {
     const category = category2
     const url = `${environment.API_SUBASTA}/api/product/listarPorCategoria/${category}`;
-    return this.http.get<Producto[]>(url);
+    return this.http.get<Producto[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
   }
 
   cantidadProductos() {
     const url = `${environment.API_SUBASTA}/api/product/cantidad`;
-    return this.http.get<number>(url);
+    return this.http.get<number>(url, { headers: { 'x-token': this.ls.getData('token') } });
+  }
+
+  obtenerProducto(id: string){
+    const url = `${environment.API_SUBASTA}/api/product/obtener/${id}`;
+    return this.http.get<Producto>(url, { headers: { 'x-token': this.ls.getData('token') } });
   }
 
   /**Este servicio registra las fotos de un producto  para luego ser revisado por el supervisor*/

@@ -38,7 +38,6 @@ export class SupervisorDashboardComponent implements OnInit {
   }
 
   obtener(id: string){
-    console.log(id);
     this.supervisorService.obtener(id)
       .subscribe(data => {
         this.nombres = data['user'].name;

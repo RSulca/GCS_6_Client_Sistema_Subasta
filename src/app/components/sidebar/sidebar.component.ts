@@ -41,7 +41,6 @@ export class SidebarComponent implements OnInit {
   }
 
   obtener(id: string){
-    console.log(id);
     this.adminService.obtener(id)
       .subscribe(data => {
         this.imgAdministrador = data['user'].img;
