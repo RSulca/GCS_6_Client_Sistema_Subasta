@@ -9,11 +9,11 @@ import { LocalStorageService } from './local-storage.service';
 })
 export class CategoriaService {
 
-  constructor(private http:HttpClient, private ls: LocalStorageService) { }
+  constructor(private http:HttpClient) { }
 
   obtenerCategoria(){
     const url = `${environment.API_SUBASTA}/api/category`;
-    return this.http.get<Categoria[]>(url, { headers: { 'x-token': this.ls.getData('token') } }).pipe();
+    return this.http.get<Categoria[]>(url).pipe();
   }
 
 }
