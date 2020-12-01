@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductoService } from 'src/app/services/producto.service';
-import { Producto } from 'src/app/models/request/producto.model';
-import { jsonpFactory } from '@angular/http/src/http_module';
+import { CATEGORIES_FORMS } from '../../../util/info-category';
 
 
 @Component({
@@ -28,21 +27,27 @@ export class SupervisorProductoDetalleComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerProducto(this.idProducto);
-    console.log(this.imageObject);
   }
 
   obtenerProducto(id:string){
     this.productoService.obtenerProducto(id)
       .subscribe(data => {
         var descripcion = JSON.parse(data['product'].description);
-        for(var obj in descripcion){
-          if(descripcion.hasOwnProperty(obj)){  
-          for(var prop in descripcion[obj])
-              if(descripcion[obj].hasOwnProperty(prop)){
-                this.array1.push(prop);
-                this.array2.push(descripcion[obj][prop]);
+
+        CATEGORIES_FORMS.forEach(c =>{
+          if(c.nombre == data['product'].category){
+              for(var t in c.camposPlaceholder){
+                this.array1.push(c.camposPlaceholder[t]);
               }
           }
+        });
+        for(var obj in descripcion){
+          if(descripcion.hasOwnProperty(obj)){  
+            for(var prop in descripcion[obj])
+                if(descripcion[obj].hasOwnProperty(prop)){
+                  this.array2.push(descripcion[obj][prop]);
+                }
+            }
         }
         var imagenes = data['product'].imgs;
         if(imagenes.length > 0){

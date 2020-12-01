@@ -44,4 +44,9 @@ export class SupervisorProductoComponent implements OnInit {
    // alert('se ha cerrado el modal');
  }
 
+ aprobar(){
+   alert('aprobado');
+ }
+
+
 }
