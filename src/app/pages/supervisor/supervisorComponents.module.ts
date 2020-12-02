@@ -16,7 +16,7 @@ import { ProductoService } from 'src/app/services/producto.service';
   declarations: [
     SupervisorNavbarComponent,
     SupervisorSidebarComponent,
-    SupervisorFooterComponent
+    SupervisorFooterComponent,
   ],
   exports: [
     SupervisorNavbarComponent,

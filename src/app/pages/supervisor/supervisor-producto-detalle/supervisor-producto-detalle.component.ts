@@ -23,7 +23,7 @@ export class SupervisorProductoDetalleComponent implements OnInit {
   imageObject = [];
 
 
-  constructor(private productoService:ProductoService,) { }
+  constructor(private productoService:ProductoService) { }
 
   ngOnInit(): void {
     this.obtenerProducto(this.idProducto);

@@ -5,6 +5,8 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProductoService } from 'src/app/services/producto.service';
 import { Producto } from 'src/app/models/request/producto.model';
 import { SupervisorProductoDetalleComponent } from 'src/app/pages/supervisor/supervisor-producto-detalle/supervisor-producto-detalle.component';
+import { SupervisorProductoRechazoDetalleComponent } from 'src/app/pages/supervisor/supervisor-producto-rechazo-detalle/supervisor-producto-rechazo-detalle.component';
+import { SupervisorProductoSubsanarDetalleComponent } from 'src/app/pages/supervisor/supervisor-producto-subsanar-detalle/supervisor-producto-subsanar-detalle.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -44,8 +46,36 @@ export class SupervisorProductoComponent implements OnInit {
    // alert('se ha cerrado el modal');
  }
 
- aprobar(){
-   alert('aprobado');
+ aprobar(id:string){
+  if(confirm('Está seguro de aprobar?')){
+    this.productoService.aprobar(id)
+    .subscribe(data=>{
+      this.nf.notification("success", {
+        'title': 'Aprobación exitosa.',
+        'description': 'Se ha aprobado correctamente.'
+      });
+    })
+  } 
+ }
+
+ rechazarDetalle(id:string){
+  const modal =  this.modalService.open(SupervisorProductoRechazoDetalleComponent);
+
+  const modalInstance = modal.componentInstance;
+
+  modalInstance.idProducto = id;
+
+  modal.result.then(this.handleModalTodoFormClose.bind(this), this.handleModalTodoFormClose.bind(this));
+ }
+
+ subsanarDetalle(id:string){
+  const modal =  this.modalService.open(SupervisorProductoSubsanarDetalleComponent);
+
+  const modalInstance = modal.componentInstance;
+
+  modalInstance.idProducto = id;
+
+  modal.result.then(this.handleModalTodoFormClose.bind(this), this.handleModalTodoFormClose.bind(this));
  }
 
 

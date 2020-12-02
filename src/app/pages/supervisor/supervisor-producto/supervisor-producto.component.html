@@ -35,9 +35,9 @@
                   <td><img src="{{producto.imgs[0]}}"></td>
                   <td><button class="btn btn-light" (click)="verDetalles(producto._id)">ver Detalles</button></td>   
                   <td>{{producto.state}}</td>
-                  <td><button class="btn btn-success" (click)="aprobar()">Aprobar</button></td> 
-                  <td><button class="btn btn-danger" (click)="rechazar()">Rechazar</button></td>   
-                  <td><button class="btn btn-warning" (click)="subsanar()">Subsanar</button></td> 
+                  <td><button class="btn btn-success" (click)="aprobar(producto._id)">Aprobar</button></td> 
+                  <td><button class="btn btn-danger" (click)="rechazarDetalle(producto._id)">Rechazar</button></td>   
+                  <td><button class="btn btn-warning" (click)="subsanarDetalle(producto._id)">Subsanar</button></td> 
                 </tr>
               </tbody>
             </table>

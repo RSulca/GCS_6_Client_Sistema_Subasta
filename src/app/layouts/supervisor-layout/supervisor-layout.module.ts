@@ -11,6 +11,8 @@ import { SupervisorDashboardComponent } from '../../pages/supervisor/supervisor-
 import { SupervisorPerfilComponent } from '../../pages/supervisor/supervisor-perfil/supervisor-perfil.component';
 import { SupervisorProductoComponent } from '../../pages/supervisor/supervisor-producto/supervisor-producto.component';
 import { SupervisorProductoDetalleComponent } from '../../pages/supervisor/supervisor-producto-detalle/supervisor-producto-detalle.component';
+import { SupervisorProductoRechazoDetalleComponent } from '../../pages/supervisor/supervisor-producto-rechazo-detalle/supervisor-producto-rechazo-detalle.component';
+import { SupervisorProductoSubsanarDetalleComponent } from '../../pages/supervisor/supervisor-producto-subsanar-detalle/supervisor-producto-subsanar-detalle.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgImageSliderModule } from 'ng-image-slider';
 
@@ -30,8 +32,14 @@ import { NgImageSliderModule } from 'ng-image-slider';
     SupervisorDashboardComponent,
     SupervisorPerfilComponent,
     SupervisorProductoComponent,
-    SupervisorProductoDetalleComponent
+    SupervisorProductoDetalleComponent,
+    SupervisorProductoRechazoDetalleComponent,
+    SupervisorProductoSubsanarDetalleComponent
   ],
-  entryComponents: [SupervisorProductoDetalleComponent]
+  entryComponents: [
+    SupervisorProductoDetalleComponent, 
+    SupervisorProductoRechazoDetalleComponent, 
+    SupervisorProductoSubsanarDetalleComponent
+  ]
 })
 export class SupervisorLayoutModule {}

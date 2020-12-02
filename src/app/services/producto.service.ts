@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { Producto } from '../models/request/producto.model';
 import { LocalStorageService } from './local-storage.service';
 import { map, mergeMap } from 'rxjs/operators';
+import { ESTADOS_PRODUCTO } from '../util/estados';
 
 @Injectable()
 export class ProductoService {
@@ -65,4 +66,28 @@ export class ProductoService {
     return this.http.get(url, { headers: { 'x-token': this.ls.getData('token') } }).pipe();
 
   }
+
+  aprobar(id2: string){
+    const id = id2;
+    const state = ESTADOS_PRODUCTO[1];
+    const url = `${environment.API_SUBASTA}/api/product/actualizarEstado`;
+    return this.http.put(url, { id, state }, { headers: { 'x-token': this.ls.getData('token') } })
+  }
+
+  rechazar(id2: string, motivoRechazo: string){
+    const id = id2;
+    const motivo_rechazo = motivoRechazo;
+    const state = ESTADOS_PRODUCTO[2];
+    const url = `${environment.API_SUBASTA}/api/product/actualizarEstado`;
+    return this.http.put(url, { id, motivo_rechazo, state }, { headers: { 'x-token': this.ls.getData('token') } })
+  }
+
+  subsanar(id2: string, motivoSubsanacion: string){
+    const id = id2;
+    const motivo_subsanacion = motivoSubsanacion;
+    const state = ESTADOS_PRODUCTO[3];
+    const url = `${environment.API_SUBASTA}/api/product/actualizarEstado`;
+    return this.http.put(url, { id, motivo_subsanacion, state }, { headers: { 'x-token': this.ls.getData('token') } })
+  }
+
 }
