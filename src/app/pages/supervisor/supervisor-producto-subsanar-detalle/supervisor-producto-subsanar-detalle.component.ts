@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NotifierService } from 'src/app/services/notifier.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductoService } from 'src/app/services/producto.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class SupervisorProductoSubsanarDetalleComponent implements OnInit {
   
   idProducto: string;
 
-  constructor(private fb: FormBuilder, private nf: NotifierService, private productoService:ProductoService) { 
+  constructor(private fb: FormBuilder, private nf: NotifierService, private productoService:ProductoService, private modalService: NgbModal) { 
     this.initForm();
   }
 
@@ -40,6 +41,7 @@ export class SupervisorProductoSubsanarDetalleComponent implements OnInit {
           'description': 'Se ha pedido la subsanación correctamente.'
         });
       })
+      this.modalService.dismissAll();
     } 
   }
 

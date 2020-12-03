@@ -8,6 +8,8 @@ import { SupervisorProductoDetalleComponent } from 'src/app/pages/supervisor/sup
 import { SupervisorProductoRechazoDetalleComponent } from 'src/app/pages/supervisor/supervisor-producto-rechazo-detalle/supervisor-producto-rechazo-detalle.component';
 import { SupervisorProductoSubsanarDetalleComponent } from 'src/app/pages/supervisor/supervisor-producto-subsanar-detalle/supervisor-producto-subsanar-detalle.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { WebSocketService } from 'src/app/services/web-socket.service';
+import { ESTADOS_PRODUCTO } from 'src/app/util/estados';
 
 @Component({
   selector: 'app-supervisor-producto',
@@ -18,11 +20,14 @@ export class SupervisorProductoComponent implements OnInit {
 
   productos: Producto[];
 
-  constructor(private nf: NotifierService, private router:Router, private productoService:ProductoService, private ls: LocalStorageService, private modalService: NgbModal) { }
+  constructor(private nf: NotifierService, private router:Router, private productoService:ProductoService, private ls: LocalStorageService, private modalService: NgbModal, private webSocketService: WebSocketService) { }
 
   ngOnInit(): void {
     let usuario = JSON.parse(this.ls.getData('user'));
     this.listarPorCategoria(usuario.category);
+    this.webSocketService.listen('actualiza').subscribe((data)=>{
+      console.log(data);
+    })
   }
 
   listarPorCategoria(category:string){
@@ -46,16 +51,21 @@ export class SupervisorProductoComponent implements OnInit {
    // alert('se ha cerrado el modal');
  }
 
- aprobar(id:string){
-  if(confirm('Está seguro de aprobar?')){
-    this.productoService.aprobar(id)
-    .subscribe(data=>{
-      this.nf.notification("success", {
-        'title': 'Aprobación exitosa.',
-        'description': 'Se ha aprobado correctamente.'
-      });
-    })
-  } 
+ aprobar(id:string, state: string){
+   if(state == ESTADOS_PRODUCTO[3]){
+    alert('Tiene un producto en subsanación')
+   }else{
+    if(confirm('Está seguro de aprobar?')){
+      this.productoService.aprobar(id)
+      .subscribe(data=>{
+        this.nf.notification("success", {
+          'title': 'Aprobación exitosa.',
+          'description': 'Se ha aprobado correctamente.'
+        });
+      })
+      this.modalService.dismissAll();
+    } 
+   }
  }
 
  rechazarDetalle(id:string){
@@ -68,14 +78,18 @@ export class SupervisorProductoComponent implements OnInit {
   modal.result.then(this.handleModalTodoFormClose.bind(this), this.handleModalTodoFormClose.bind(this));
  }
 
- subsanarDetalle(id:string){
-  const modal =  this.modalService.open(SupervisorProductoSubsanarDetalleComponent);
+ subsanarDetalle(id:string, state: string){
+  if(state == ESTADOS_PRODUCTO[3]){
+    alert('Tiene un producto en subsanación')
+  }else{
+    const modal =  this.modalService.open(SupervisorProductoSubsanarDetalleComponent);
 
-  const modalInstance = modal.componentInstance;
-
-  modalInstance.idProducto = id;
-
-  modal.result.then(this.handleModalTodoFormClose.bind(this), this.handleModalTodoFormClose.bind(this));
+    const modalInstance = modal.componentInstance;
+  
+    modalInstance.idProducto = id;
+  
+    modal.result.then(this.handleModalTodoFormClose.bind(this), this.handleModalTodoFormClose.bind(this));
+  }
  }
 
 
