@@ -5,7 +5,7 @@ import { SupervisorNavbarComponent } from './supervisor-navbar/supervisor-navbar
 import { SupervisorFooterComponent} from './supervisor-footer/supervisor-footer.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ProductoService } from 'src/app/services/producto.service';
+import { ProductoService } from 'src/app/services/producto.service'
 
 @NgModule({
   imports: [
@@ -16,7 +16,7 @@ import { ProductoService } from 'src/app/services/producto.service';
   declarations: [
     SupervisorNavbarComponent,
     SupervisorSidebarComponent,
-    SupervisorFooterComponent,
+    SupervisorFooterComponent
   ],
   exports: [
     SupervisorNavbarComponent,

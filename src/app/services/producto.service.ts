@@ -17,6 +17,11 @@ export class ProductoService {
     return this.http.get<Producto[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
   }
 
+  listarProductosYUsuarios(){
+    const url = `${environment.API_SUBASTA}/api/product/listarProductosyClientes`;
+    return this.http.get<Producto[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
+  }
+
   cantidadProductos() {
     const url = `${environment.API_SUBASTA}/api/product/cantidad`;
     return this.http.get<number>(url, { headers: { 'x-token': this.ls.getData('token') } });

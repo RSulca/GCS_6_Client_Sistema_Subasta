@@ -32,7 +32,7 @@
                   <td style="display: none;">{{producto._id}}</td>
                   <td>{{producto.name}}</td>
                   <td>{{producto.category}}</td>
-                  <td><img src="{{producto.imgs[0]}}"></td>
+                  <td><img src="{{producto.imgs[0]}}" class="img"></td>
                   <td><button class="btn btn-light" (click)="verDetalles(producto._id)">ver Detalles</button></td>   
                   <td>{{producto.state}}</td>
                   <td><button class="btn btn-success"  (click)="aprobar(producto._id, producto.state)">Aprobar</button></td>

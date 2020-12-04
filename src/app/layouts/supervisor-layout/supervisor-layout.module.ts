@@ -14,6 +14,7 @@ import { SupervisorProductoDetalleComponent } from '../../pages/supervisor/super
 import { SupervisorProductoRechazoDetalleComponent } from '../../pages/supervisor/supervisor-producto-rechazo-detalle/supervisor-producto-rechazo-detalle.component';
 import { SupervisorProductoSubsanarDetalleComponent } from '../../pages/supervisor/supervisor-producto-subsanar-detalle/supervisor-producto-subsanar-detalle.component';
 import { SupervisorProductoHistorialComponent } from '../../pages/supervisor/supervisor-producto-historial/supervisor-producto-historial.component';
+import { SupervisorProductoHistorialDetalleComponent } from '../../pages/supervisor/supervisor-producto-historial-detalle/supervisor-producto-historial-detalle.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgImageSliderModule } from 'ng-image-slider';
 
@@ -36,7 +37,8 @@ import { NgImageSliderModule } from 'ng-image-slider';
     SupervisorProductoDetalleComponent,
     SupervisorProductoRechazoDetalleComponent,
     SupervisorProductoSubsanarDetalleComponent,
-    SupervisorProductoHistorialComponent
+    SupervisorProductoHistorialComponent,
+    SupervisorProductoHistorialDetalleComponent,
   ],
   entryComponents: [
     SupervisorProductoDetalleComponent, 

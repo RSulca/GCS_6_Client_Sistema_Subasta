@@ -33,6 +33,7 @@ export class SupervisorProductoComponent implements OnInit {
   listarPorCategoria(category:string){
     this.productoService.listarPorCategoria(category)
       .subscribe(data => {
+      console.log(data);
        this.productos = data['categoria'];
       })
   }
