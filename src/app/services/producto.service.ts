@@ -11,14 +11,18 @@ export class ProductoService {
 
   constructor(private http: HttpClient, private ls: LocalStorageService) { }
 
-  listarPorCategoria(category2: string) {
-    const category = category2
+  listarPorCategoria(category: string) {
     const url = `${environment.API_SUBASTA}/api/product/listarPorCategoria/${category}`;
     return this.http.get<Producto[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
   }
 
-  listarProductosYUsuarios(){
-    const url = `${environment.API_SUBASTA}/api/product/listarProductosyClientes`;
+  listarProductosYUsuarios(category: string){
+    const url = `${environment.API_SUBASTA}/api/product/listarProductosyClientes/${category}`;
+    return this.http.get<Producto[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
+  }
+
+  obtenerHistorialProducto(id: string){
+    const url = `${environment.API_SUBASTA}/api/product/historial/${id}`;
     return this.http.get<Producto[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
   }
 
@@ -35,7 +39,7 @@ export class ProductoService {
   /**Este servicio registra las fotos de un producto  para luego ser revisado por el supervisor*/
   saveProductPaso1(files: File[]) {
     const url = `${environment.API_SUBASTA}/api/upload/product`;
-    const formData: FormData = new FormData();
+    const formData: FormData = new FormData(); 
     if (files.length > 0) {
       formData.append('img1', files[0]);
       formData.append('img2', files[1]);

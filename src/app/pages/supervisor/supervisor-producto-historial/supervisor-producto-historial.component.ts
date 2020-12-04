@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductoService } from 'src/app/services/producto.service';
 import { SupervisorProductoHistorialDetalleComponent } from 'src/app/pages/supervisor/supervisor-producto-historial-detalle/supervisor-producto-historial-detalle.component';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Producto } from 'src/app/models/request/producto.model';
 
@@ -13,14 +14,15 @@ export class SupervisorProductoHistorialComponent implements OnInit {
 
   productos : Producto[];
 
-  constructor(private productoService:ProductoService, private modalService: NgbModal) {  }
+  constructor(private ls: LocalStorageService, private productoService:ProductoService, private modalService: NgbModal) {  }
 
   ngOnInit(): void {
-    this.listarProductoYUsuario();
+    let usuario = JSON.parse(this.ls.getData('user'));
+    this.listarProductoYUsuario(usuario.category);
   }
 
-  listarProductoYUsuario(){
-    this.productoService.listarProductosYUsuarios()
+  listarProductoYUsuario(category:string){
+    this.productoService.listarProductosYUsuarios(category)
       .subscribe(data => {
        this.productos = data['products'];
        console.log(this.productos);
