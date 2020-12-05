@@ -6,9 +6,30 @@
         <div class="card shadow">
           <div class="card-header border-0">
             <div class="row align-items-center">
-              <div class="col">
-                <h2 class="mb-0">Productos</h2>
-                <input type="text" name="" id="">
+              <div>
+                <div class="row">
+                  <div class="col">
+                    <h2 class="mb-0">Historial de Productos</h2>
+                  </div>
+                </div>
+                <form [formGroup]="filtroProductoForm" (submit)="filtrar()">
+                    <div class="row">
+                      <div class="col-sm">
+                        <label class="form-control-label" for="input-first-name" style="padding-left: 20px; padding-top: 20px;">Buscar por DNI</label>
+                      </div>
+                      <div class="col">
+                        <div class="form-group" style="padding-top: 15px;" [ngClass]="{'has-danger' : dni.errors,'has-success': !dni.errors}">
+                          <input type="text" class="form-control form-control-alternative" formControlName="dni">
+                        </div>
+                      </div>
+                      <div class="col" style="padding-top: 15px;">
+                        <button type="submit" class="btn btn-success" [disabled]="filtroProductoForm.invalid">Buscar</button>
+                      </div>
+                      <div class="col" style="padding-top: 15px;">
+                        <button type="button" class="btn btn-primary" (click)="limpiar()">Limpiar</button>
+                      </div>
+                    </div>
+                </form>
               </div>
             </div>
           </div>

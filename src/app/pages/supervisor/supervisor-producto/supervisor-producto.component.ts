@@ -20,11 +20,13 @@ export class SupervisorProductoComponent implements OnInit {
 
   productos: Producto[];
 
+  usuario: any;
+
   constructor(private nf: NotifierService, private router:Router, private productoService:ProductoService, private ls: LocalStorageService, private modalService: NgbModal, private webSocketService: WebSocketService) { }
 
   ngOnInit(): void {
-    let usuario = JSON.parse(this.ls.getData('user'));
-    this.listarPorCategoria(usuario.category);
+    this.usuario = JSON.parse(this.ls.getData('user'));
+    this.listarPorCategoria(this.usuario.category);
     this.webSocketService.listen('actualiza').subscribe((data)=>{
       console.log(data);
     })
@@ -48,10 +50,6 @@ export class SupervisorProductoComponent implements OnInit {
     modal.result.then(this.handleModalTodoFormClose.bind(this), this.handleModalTodoFormClose.bind(this));
   }
 
-  handleModalTodoFormClose(){
-   // alert('se ha cerrado el modal');
- }
-
  aprobar(id:string, state: string){
    if(state == ESTADOS_PRODUCTO[3]){
     alert('Tiene un producto en subsanación')
@@ -63,8 +61,8 @@ export class SupervisorProductoComponent implements OnInit {
           'title': 'Aprobación exitosa.',
           'description': 'Se ha aprobado correctamente.'
         });
+        this.listarPorCategoria(this.usuario.category);
       })
-      this.modalService.dismissAll();
     } 
    }
  }
@@ -89,9 +87,12 @@ export class SupervisorProductoComponent implements OnInit {
   
     modalInstance.idProducto = id;
   
-    modal.result.then(this.handleModalTodoFormClose.bind(this), this.handleModalTodoFormClose.bind(this));
+   modal.result.then(this.handleModalTodoFormClose.bind(this),this.handleModalTodoFormClose.bind(this));
   }
  }
-
+ 
+  handleModalTodoFormClose(){
+    this.listarPorCategoria(this.usuario.category);
+  }
 
 }
