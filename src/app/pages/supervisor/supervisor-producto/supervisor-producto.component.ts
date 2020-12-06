@@ -8,8 +8,8 @@ import { SupervisorProductoDetalleComponent } from 'src/app/pages/supervisor/sup
 import { SupervisorProductoRechazoDetalleComponent } from 'src/app/pages/supervisor/supervisor-producto-rechazo-detalle/supervisor-producto-rechazo-detalle.component';
 import { SupervisorProductoSubsanarDetalleComponent } from 'src/app/pages/supervisor/supervisor-producto-subsanar-detalle/supervisor-producto-subsanar-detalle.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { WebSocketService } from 'src/app/services/web-socket.service';
 import { ESTADOS_PRODUCTO } from 'src/app/util/estados';
+import { WebSocketService } from 'src/app/services/web-socket.service';
 
 @Component({
   selector: 'app-supervisor-producto',
@@ -27,15 +27,18 @@ export class SupervisorProductoComponent implements OnInit {
   ngOnInit(): void {
     this.usuario = JSON.parse(this.ls.getData('user'));
     this.listarPorCategoria(this.usuario.category);
-    this.webSocketService.listen('actualiza').subscribe((data)=>{
-      console.log(data);
+    this.webSocketService.listen('producto_nuevo').subscribe((data)=>{
+      this.nf.notification("success", {
+        'title': 'Alerta',
+        'description': 'Tiene nuevos artículos por revisar.'
+      });
+      this.listarPorCategoria(data['product'].category);
     })
   }
 
   listarPorCategoria(category:string){
     this.productoService.listarPorCategoria(category)
       .subscribe(data => {
-      console.log(data);
        this.productos = data['categoria'];
       })
   }
@@ -87,7 +90,7 @@ export class SupervisorProductoComponent implements OnInit {
   
     modalInstance.idProducto = id;
   
-   modal.result.then(this.handleModalTodoFormClose.bind(this),this.handleModalTodoFormClose.bind(this));
+    modal.result.then(this.handleModalTodoFormClose.bind(this),this.handleModalTodoFormClose.bind(this));
   }
  }
  

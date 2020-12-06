@@ -40,8 +40,8 @@ export class SupervisorProductoRechazoDetalleComponent implements OnInit {
           'title': 'Rechazo exitoso.',
           'description': 'Se ha rechazado correctamente.'
         });
+        this.modalService.dismissAll();
       })
-      this.modalService.dismissAll();
     } 
   }
 
