@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="19px" width="22px" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 22 19">
+ <g id="Symbols" fill-rule="evenodd" fill="none">
+  <g id="warning-icon" transform="translate(-1 -2)">
+   <g id="ic_warning_black_24px">
+    <polygon id="Shape" points="0 0 24 0 24 24 0 24"/>
+    <path id="Shape" fill="#d67500" d="m1 21h22l-11-19-11 19zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+   </g>
+  </g>
+ </g>
+</svg>

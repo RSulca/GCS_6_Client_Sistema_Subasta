@@ -25,6 +25,7 @@ import { ProductRegisterComponent } from './product-register/product-register.co
 import { HistorialComponent } from './historial/historial.component';
 import { ConfirmDialogComponent } from './personal-components/confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DetailProductComponent } from './detail-product/detail-product.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ProductCardListComponent,
     AccountComponent,
     HistorialComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    DetailProductComponent
     
   ],
   imports: [
