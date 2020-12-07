@@ -16,8 +16,8 @@ export class ProductoService {
     return this.http.get<Producto[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
   }
 
-  listarProductosYUsuarios(category: string){
-    const url = `${environment.API_SUBASTA}/api/product/listarProductosyClientes/${category}`;
+  listarProductosYUsuarios(category: string, filter: string){
+    const url = `${environment.API_SUBASTA}/api/product/listarProductosyClientes/${category}/${filter}`;
     return this.http.get<Producto[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
   }
 

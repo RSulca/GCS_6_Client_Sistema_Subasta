@@ -40,8 +40,8 @@ export class SupervisorProductoSubsanarDetalleComponent implements OnInit {
           'title': 'Petición de subsanación exitosa.',
           'description': 'Se ha pedido la subsanación correctamente.'
         });
+        this.modalService.dismissAll();
       })
-      this.modalService.dismissAll();
     } 
   }
 
