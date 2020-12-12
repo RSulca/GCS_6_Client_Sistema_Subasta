@@ -20,7 +20,8 @@ export class SupervisorProductoComponent implements OnInit {
 
   productos: Producto[];
 
-  constructor(private nf: NotifierService, private router:Router, private productoService:ProductoService, private ls: LocalStorageService, private modalService: NgbModal, private webSocketService: WebSocketService) { }
+  constructor(private nf: NotifierService, private router:Router, private productoService:ProductoService, 
+    private ls: LocalStorageService,private modalService: NgbModal, private webSocketService: WebSocketService) { }
 
   ngOnInit(): void {
     let usuario = JSON.parse(this.ls.getData('user'));
