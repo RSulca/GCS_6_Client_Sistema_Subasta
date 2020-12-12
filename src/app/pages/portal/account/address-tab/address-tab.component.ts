@@ -39,6 +39,7 @@ export class AddressTabComponent implements OnInit {
       console.log(this.user)
       this.getDepartaments(this.user.ubigeo);
       this.getProvince(15, this.user.ubigeo);
+      this.f.direction.setValue(this.user.ubigeo.direction)
     })
   }
 
@@ -60,7 +61,7 @@ export class AddressTabComponent implements OnInit {
     this.ubigeoService.getDepartment().subscribe((data: any) => {
       this.departaments = data.departaments;
       if (userUbigeo) {
-        this.f.department.setValue(this.departaments.find(dep => dep.departamento === userUbigeo.department))
+        this.f.department.setValue(this.departaments.find(dep => dep._id === userUbigeo.department))
       } else {
         this.f.department.setValue(this.departaments.find(dep => dep.departamento === '15'))
       } 
@@ -71,7 +72,7 @@ export class AddressTabComponent implements OnInit {
     this.ubigeoService.getProvince(idDepartment).subscribe((data: any) => {
       this.provinces = data.province;
       if (userUbigeo) {
-        this.f.province.setValue(this.provinces.find(prov => prov.provincia === userUbigeo.province))
+        this.f.province.setValue(this.provinces.find(prov => prov._id === userUbigeo.province))
       } else {
         this.f.province.setValue(this.provinces.find(prov => prov.provincia === '01'))
       }
@@ -83,7 +84,7 @@ export class AddressTabComponent implements OnInit {
     this.ubigeoService.getDistrict(idDepartment, idProvince).subscribe((data: any) => {
       this.disctrits = data.disctrit;
       if (userUbigeo) {
-        this.f.district.setValue(this.disctrits.find(dis => dis.distrito === userUbigeo.district))
+        this.f.district.setValue(this.disctrits.find(dis => dis._id === userUbigeo.district))
       } else {
         this.f.district.setValue(this.disctrits.find(dis => dis.distrito === '01'))
       }

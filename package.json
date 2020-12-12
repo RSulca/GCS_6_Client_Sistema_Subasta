@@ -35,6 +35,7 @@
     "ngx-clipboard": "13.0.1",
     "ngx-dropzone": "^2.2.2",
     "ngx-owl-carousel-o": "^4.0.0",
+    "ngx-pagination": "^5.0.0",
     "ngx-toastr": "^13.0.0",
     "nouislider": "14.6.2",
     "rxjs": "6.6.3",
