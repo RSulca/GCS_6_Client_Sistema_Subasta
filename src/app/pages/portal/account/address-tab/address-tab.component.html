@@ -23,22 +23,28 @@
       <div class="col-lg-4">
         <div class="form-group">
           <label class="form-control-label" for="input-city">Departamento</label>
-          <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="Departamento"
-            formControlName="department">
+          <select type="text" id="input-city" class="form-control form-control-alternative" placeholder="Departamento"
+            class="form-control" formControlName="department" (change)="changeDepartamento()">
+            <option *ngFor="let item of departaments" [ngValue]="item">{{item.nombre}}</option>
+          </select>
         </div>
       </div>
       <div class="col-lg-4">
         <div class="form-group">
           <label class="form-control-label" for="input-country">Provincia</label>
-          <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Provincia..."
-            formControlName="province">
+          <select type="text" id="input-country" class="form-control form-control-alternative"
+            placeholder="Provincia..." formControlName="province" (change)="changeProvincia()">
+            <option *ngFor="let item of provinces" [ngValue]="item">{{item.nombre}}</option>
+          </select>
         </div>
       </div>
       <div class="col-lg-4">
         <div class="form-group">
           <label class="form-control-label" for="input-country">Distrito</label>
-          <input type="text" id="input-postal-code" class="form-control form-control-alternative"
+          <select type="text" id="input-postal-code" class="form-control form-control-alternative"
             placeholder="Distrito" formControlName="district">
+            <option *ngFor="let item of disctrits" [ngValue]="item">{{item.nombre}}</option>
+          </select>
         </div>
       </div>
     </div>

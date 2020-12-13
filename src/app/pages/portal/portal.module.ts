@@ -25,6 +25,11 @@ import { ProductRegisterComponent } from './product-register/product-register.co
 import { HistorialComponent } from './historial/historial.component';
 import { ConfirmDialogComponent } from './personal-components/confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DetailProductComponent } from './detail-product/detail-product.component';
+
+//modulos de terceros
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -42,7 +47,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ProductCardListComponent,
     AccountComponent,
     HistorialComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    DetailProductComponent
     
   ],
   imports: [
@@ -55,7 +61,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     CarouselModule,
     TermsComponentsModule,
     AccountModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxPaginationModule,
+    ModalModule.forRoot()
   ],
   exports:[
     FooterPortalComponent,

@@ -10,6 +10,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { NotifierService } from 'src/app/services/notifier.service';
 import { UserService } from 'src/app/services/user.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UbigeoService } from 'src/app/services/ubigeo.service';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [
     NotifierService,
-    UserService
+    UserService,
+    UbigeoService
   ]
 })
 export class AccountModule { }

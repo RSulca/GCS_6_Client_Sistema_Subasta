@@ -4,21 +4,36 @@ import { environment } from '../../environments/environment';
 import { Producto } from '../models/request/producto.model';
 import { LocalStorageService } from './local-storage.service';
 import { map, mergeMap } from 'rxjs/operators';
+import { ESTADOS_PRODUCTO } from '../util/estados';
 
 @Injectable()
 export class ProductoService {
 
   constructor(private http: HttpClient, private ls: LocalStorageService) { }
 
-  listarPorCategoria(category2: string) {
-    const category = category2
+  listarPorCategoria(category: string) {
     const url = `${environment.API_SUBASTA}/api/product/listarPorCategoria/${category}`;
-    return this.http.get<Producto[]>(url);
+    return this.http.get<Producto[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
+  }
+
+  listarProductosYUsuarios(category: string, filter: string){
+    const url = `${environment.API_SUBASTA}/api/product/listarProductosyClientes/${category}/${filter}`;
+    return this.http.get<Producto[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
+  }
+
+  obtenerHistorialProducto(id: string) {
+    const url = `${environment.API_SUBASTA}/api/product/historial/${id}`;
+    return this.http.get<Producto[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
   }
 
   cantidadProductos() {
     const url = `${environment.API_SUBASTA}/api/product/cantidad`;
-    return this.http.get<number>(url);
+    return this.http.get<number>(url, { headers: { 'x-token': this.ls.getData('token') } });
+  }
+
+  obtenerProducto(id: string) {
+    const url = `${environment.API_SUBASTA}/api/product/obtener/${id}`;
+    return this.http.get<Producto>(url, { headers: { 'x-token': this.ls.getData('token') } });
   }
 
   /**Este servicio registra las fotos de un producto  para luego ser revisado por el supervisor*/
@@ -57,7 +72,39 @@ export class ProductoService {
 
   getProductByUser() {
     const url = `${environment.API_SUBASTA}/api/product`;
-    return this.http.get(url, { headers: { 'x-token': this.ls.getData('token') } }).pipe();
+    return this.http.get(url, { headers: { 'x-token': this.ls.getData('token') } }).pipe(
+      map((res: any) => {
+        res.products.map(p => {
+          const descJson=JSON.parse(p.description);
+          p.description=descJson;
+        })
+        return res;
+      })
+    );
 
   }
+
+  aprobar(id2: string) {
+    const id = id2;
+    const state = ESTADOS_PRODUCTO[1];
+    const url = `${environment.API_SUBASTA}/api/product/actualizarEstado`;
+    return this.http.put(url, { id, state }, { headers: { 'x-token': this.ls.getData('token') } })
+  }
+
+  rechazar(id2: string, motivoRechazo: string) {
+    const id = id2;
+    const motivo_rechazo = motivoRechazo;
+    const state = ESTADOS_PRODUCTO[2];
+    const url = `${environment.API_SUBASTA}/api/product/actualizarEstado`;
+    return this.http.put(url, { id, motivo_rechazo, state }, { headers: { 'x-token': this.ls.getData('token') } })
+  }
+
+  subsanar(id2: string, motivoSubsanacion: string) {
+    const id = id2;
+    const motivo_subsanacion = motivoSubsanacion;
+    const state = ESTADOS_PRODUCTO[3];
+    const url = `${environment.API_SUBASTA}/api/product/actualizarEstado`;
+    return this.http.put(url, { id, motivo_subsanacion, state }, { headers: { 'x-token': this.ls.getData('token') } })
+  }
+
 }

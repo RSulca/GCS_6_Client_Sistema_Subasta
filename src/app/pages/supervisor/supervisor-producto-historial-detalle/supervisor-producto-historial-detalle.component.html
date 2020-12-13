@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="card-header border-0">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <h1 class="mb-0">Detalles</h1>
+          </div>
+        </div>
+    </div>
+    <hr class="my-4" />
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="list-group">
+                <table border="1px">
+                    <th></th>
+                    <th>Datos</th>
+                    <th>Fecha</th>
+                    <th>Estado</th>
+                    <th>Observación</th>
+                    <tr *ngFor="let producto of productos; let i = index">
+                        <td>
+                            <h1>{{i + 1}}</h1>
+                        </td>
+                        <td>
+                            {{producto.producto.name}} - {{producto.user.name}}, {{producto.user.lastname}}
+                        </td>
+                        <td>
+                            4/12/2020 10:00 AM
+                        </td>
+                        <td>
+                            {{producto.state}}
+                        </td>
+                        <td>
+                            {{producto.accion}}
+                        </td>
+                    </tr>
+                </table>
+            </ul>
+        </div>
+    </div>
+    <hr class="my-4" />
+</div>
