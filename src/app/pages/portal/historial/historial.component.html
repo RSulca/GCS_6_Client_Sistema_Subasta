@@ -17,7 +17,8 @@
         </div>
         <div class="products mt-4">
           <div class="review">
-            <div class="card card-review col-12 px-0 mb-3 back" *ngFor="let p of products">
+            <div class="card card-review col-12 px-0 mb-3 back"
+              *ngFor="let p of products | paginate: { itemsPerPage: 5, currentPage: p }">
               <div class="row no-gutters">
                 <div class="col-md-3">
                   <img [src]="p.imgs[0]" alt="" class="my-image">
@@ -37,8 +38,9 @@
                             <span><strong>Descripcion</strong></span>
                           </div>
                           <div class="description2" style="text-align: justify;">
-                            <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas consequatur a alias
-                              maiores dolorum. Sit exercitationem magni praesentium quaerat ipsum.</span>
+                            <span>
+                              {{p.description[p.description.length-2].resumen | json}}
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -47,16 +49,26 @@
                           <span><strong>Estado</strong></span>
                         </div>
                         <div class="status2 ">
-                          <span class="badge badge-primary" [ngClass]="{'badge-primary':p.state==='ENVIADO', 'badge-danger': p.state==='DENEGADO', 
-                            'badge-success': p.state==='ACEPTADO'}" style="width: 150px;">{{p.state}}</span>
+                          <span class="badge badge-primary" [ngClass]="{'badge-primary':p.state==='ENVIADO', 'badge-danger': p.state==='RECHAZADO', 
+                            'badge-success': p.state==='APROBADO'}" style="width: 150px;">{{p.state}}</span>
                         </div>
                       </div>
                       <div class="col-sm-3 ml-3" align="end">
                         <div class="status">
                           <span><strong>Acciones</strong></span>
                         </div>
-                        <div class="status2">
-                          <button class="btn btn-info btn-sm">Acciones</button>
+                        <div class="status2" style="position: relative;left: 20px;">
+                          <!-- <button class="btn btn-info btn-sm">Acciones</button> -->
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle btn btn-info btn-sm" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                              aria-haspopup="true" aria-expanded="false" >
+                              Acciones
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a *ngIf="p.motivo_rechazo" type="button" (click)="openModal(template,p)" class="dropdown-item">Motivo de rechazo</a>
+                              <!--Debe redirigir al catalogo pero con productos de la categoria seleccionada-->
+                            </div>
+                          </li>
                         </div>
                       </div>
                     </div>
@@ -66,6 +78,9 @@
             </div>
           </div>
         </div>
+        <div class="text-center">
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
       </div>
     </div>
   </div>
@@ -74,3 +89,17 @@
 
 
 <app-footer-portal></app-footer-portal>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left"><b>Motivo de rechazo del producto</b></h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="alert alert-danger" role="alert">
+       {{productShow.motivo_rechazo}}
+  </div>
+  </div>
+</ng-template>
