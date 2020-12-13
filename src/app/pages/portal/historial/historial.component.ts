@@ -27,6 +27,7 @@ export class HistorialComponent implements OnInit {
           'title': `Producto revisado `,
           'description': `Tu producto con nombre ${data.product.name} ha sido revisado, dirigete al panel de tus productos para saber en que estado se encuentra.`
         });
+        this.getProductosByUser();
       }
     })
 
@@ -39,11 +40,23 @@ export class HistorialComponent implements OnInit {
     })
   }
 
+  buscarPorNombreEstado(filter: string) {
+    this.productService.buscarPorUsuarioYNombreEstado(filter).subscribe((data: any) => {
+      this.products = data.products;
+    })
+  }
 
-
+  filtrar(event: any){
+    if(event.target.value == ''){
+      this.buscarPorNombreEstado('all')
+    }else{
+      this.buscarPorNombreEstado(event.target.value);
+    }
+  }
+  
   openModal(template: TemplateRef<any>,producto:any) {
     this.modalRef = this.modalService.show(template);
-    this.productShow=producto
+    this.productShow=producto;
   }
 
 }
