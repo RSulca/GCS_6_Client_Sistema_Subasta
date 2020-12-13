@@ -50,7 +50,7 @@
                         </div>
                         <div class="status2 ">
                           <span class="badge badge-primary" [ngClass]="{'badge-primary':p.state==='ENVIADO', 'badge-danger': p.state==='RECHAZADO', 
-                            'badge-success': p.state==='APROBADO'}" style="width: 150px;">{{p.state}}</span>
+                            'badge-success': p.state==='APROBADO', 'badge-dark': p.state==='POR SUBSANAR'}" style="width: 150px;">{{p.state}}</span>
                         </div>
                       </div>
                       <div class="col-sm-3 ml-3" align="end">
@@ -66,6 +66,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                               <a *ngIf="p.motivo_rechazo" type="button" (click)="openModal(template,p)" class="dropdown-item">Motivo de rechazo</a>
+                              <a *ngIf="p.motivo_subsanacion" type="button" (click)="openModal(template,p)" class="dropdown-item">Motivo de subsanación</a>
                               <!--Debe redirigir al catalogo pero con productos de la categoria seleccionada-->
                             </div>
                           </li>
@@ -92,14 +93,18 @@
 
 <ng-template #template>
   <div class="modal-header">
-    <h4 class="modal-title pull-left"><b>Motivo de rechazo del producto</b></h4>
+    <h4 *ngIf="productShow.state==='RECHAZADO'" class="modal-title pull-left"><b>Motivo de rechazo del producto</b></h4>
+    <h4 *ngIf="productShow.state==='POR SUBSANAR'" class="modal-title pull-left"><b>Motivo de subsanación del producto</b></h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <div class="alert alert-danger" role="alert">
-       {{productShow.motivo_rechazo}}
-  </div>
+    <div *ngIf="productShow.state==='RECHAZADO'" class="alert alert-danger" role="alert">
+      <p >{{productShow.motivo_rechazo}}</p>
+    </div>
+    <div *ngIf="productShow.state==='POR SUBSANAR'" class="alert alert-warning" role="alert">
+      <p >{{productShow.motivo_subsanacion}}</p>
+    </div>
   </div>
 </ng-template>
