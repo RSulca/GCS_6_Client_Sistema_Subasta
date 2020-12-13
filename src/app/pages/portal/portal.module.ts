@@ -22,6 +22,7 @@ import { TermsComponent } from './terms-components/terms-components.component';
 import { TermsComponentsModule } from './terms-components/terms-components.module';
 import { AccountComponent } from './account/account.component';
 import { AccountModule } from './account/account.module';
+import { AyudaComponent } from './ayuda/ayuda.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AccountModule } from './account/account.module';
     TermsModalComponent,
     ProductCardComponent,
     ProductCardListComponent,
-    AccountComponent
+    AccountComponent,
+    AyudaComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AccountComponent } from './account/account.component';
+import { AyudaComponent } from './ayuda/ayuda.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { HomePortalComponent } from './home-portal/home-portal.component';
 import { ProductRegisterComponent } from './product-register/product-register.component';
@@ -15,6 +16,10 @@ export const portalRoutes: Routes = [
   {
     path: 'home',
     component: HomePortalComponent
+  },
+  {
+    path: 'ayuda',
+    component: AyudaComponent
   },
   {
     path: 'catalog',
