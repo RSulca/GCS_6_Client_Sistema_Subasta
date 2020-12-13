@@ -22,4 +22,19 @@ export class HistorialComponent implements OnInit {
       console.log(data);
     })
   }
+
+  buscarPorNombreEstado(filter: string) {
+    this.productService.buscarPorUsuarioYNombreEstado(filter).subscribe((data: any) => {
+      this.products = data.products;
+    })
+  }
+
+  filtrar(event: any){
+    if(event.target.value == ''){
+      this.buscarPorNombreEstado('all')
+    }else{
+      this.buscarPorNombreEstado(event.target.value);
+    }
+  }
+
 }

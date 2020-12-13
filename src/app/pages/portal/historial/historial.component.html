@@ -11,7 +11,7 @@
           <div class="form-group mb-0">
             <div class="input-group input-group-alternative input-group-merge">
               <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-search"></i></span></div>
-              <input class="form-control" placeholder="Search" type="text">
+              <input class="form-control" placeholder="Search" type="text" (keyup)="filtrar($event)">
             </div>
           </div>
         </div>

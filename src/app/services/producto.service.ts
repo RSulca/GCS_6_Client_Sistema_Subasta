@@ -21,6 +21,11 @@ export class ProductoService {
     return this.http.get<Producto[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
   }
 
+  buscarPorUsuarioYNombreEstado(filter: string){
+    const url = `${environment.API_SUBASTA}/api/product/buscarPorUsuarioYNombreEstado/${filter}`;
+    return this.http.get<Producto[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
+  }
+
   obtenerHistorialProducto(id: string){
     const url = `${environment.API_SUBASTA}/api/product/historial/${id}`;
     return this.http.get<Producto[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
