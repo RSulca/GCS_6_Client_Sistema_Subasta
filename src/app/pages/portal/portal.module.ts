@@ -27,6 +27,10 @@ import { ConfirmDialogComponent } from './personal-components/confirm-dialog/con
 import { MatDialogModule } from '@angular/material/dialog';
 import { DetailProductComponent } from './detail-product/detail-product.component';
 
+//modulos de terceros
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 @NgModule({
   declarations: [
     PortalComponent,
@@ -57,7 +61,9 @@ import { DetailProductComponent } from './detail-product/detail-product.componen
     CarouselModule,
     TermsComponentsModule,
     AccountModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxPaginationModule,
+    ModalModule.forRoot()
   ],
   exports:[
     FooterPortalComponent,

@@ -36,7 +36,7 @@ export class ProductoService {
     return this.http.get<number>(url, { headers: { 'x-token': this.ls.getData('token') } });
   }
 
-  obtenerProducto(id: string){
+  obtenerProducto(id: string) {
     const url = `${environment.API_SUBASTA}/api/product/obtener/${id}`;
     return this.http.get<Producto>(url, { headers: { 'x-token': this.ls.getData('token') } });
   }
@@ -44,7 +44,7 @@ export class ProductoService {
   /**Este servicio registra las fotos de un producto  para luego ser revisado por el supervisor*/
   saveProductPaso1(files: File[]) {
     const url = `${environment.API_SUBASTA}/api/upload/product`;
-    const formData: FormData = new FormData(); 
+    const formData: FormData = new FormData();
     if (files.length > 0) {
       formData.append('img1', files[0]);
       formData.append('img2', files[1]);
@@ -77,18 +77,26 @@ export class ProductoService {
 
   getProductByUser() {
     const url = `${environment.API_SUBASTA}/api/product`;
-    return this.http.get(url, { headers: { 'x-token': this.ls.getData('token') } }).pipe();
+    return this.http.get(url, { headers: { 'x-token': this.ls.getData('token') } }).pipe(
+      map((res: any) => {
+        res.products.map(p => {
+          const descJson=JSON.parse(p.description);
+          p.description=descJson;
+        })
+        return res;
+      })
+    );
 
   }
 
-  aprobar(id2: string){
+  aprobar(id2: string) {
     const id = id2;
     const state = ESTADOS_PRODUCTO[1];
     const url = `${environment.API_SUBASTA}/api/product/actualizarEstado`;
     return this.http.put(url, { id, state }, { headers: { 'x-token': this.ls.getData('token') } })
   }
 
-  rechazar(id2: string, motivoRechazo: string){
+  rechazar(id2: string, motivoRechazo: string) {
     const id = id2;
     const motivo_rechazo = motivoRechazo;
     const state = ESTADOS_PRODUCTO[2];
@@ -96,7 +104,7 @@ export class ProductoService {
     return this.http.put(url, { id, motivo_rechazo, state }, { headers: { 'x-token': this.ls.getData('token') } })
   }
 
-  subsanar(id2: string, motivoSubsanacion: string){
+  subsanar(id2: string, motivoSubsanacion: string) {
     const id = id2;
     const motivo_subsanacion = motivoSubsanacion;
     const state = ESTADOS_PRODUCTO[3];
