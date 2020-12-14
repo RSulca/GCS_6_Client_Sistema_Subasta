@@ -17,7 +17,8 @@ import { WebSocketService } from 'src/app/services/web-socket.service';
   styleUrls: ['./supervisor-producto.component.css']
 })
 export class SupervisorProductoComponent implements OnInit {
-
+  usuario:any;
+  
   productos: Producto[];
 
   constructor(private nf: NotifierService, private router:Router, private productoService:ProductoService, 
