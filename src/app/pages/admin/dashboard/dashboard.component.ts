@@ -58,7 +58,6 @@ export class DashboardComponent implements OnInit {
   }
 
   obtener(id: string){
-    console.log(id);
     this.adminService.obtener(id)
       .subscribe(data => {
         this.nombres = data['user'].name;
@@ -66,6 +65,7 @@ export class DashboardComponent implements OnInit {
         this.universidad = data['user'].college;
         this.estudios = data['user'].studies;
         this.img = data['user'].img;
+        this.ls.setData('imagenAdministrador', data['user'].img);
       })
   }
 

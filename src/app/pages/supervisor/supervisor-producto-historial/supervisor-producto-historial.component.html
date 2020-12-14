@@ -1,0 +1,67 @@
+
+<!-- Page content -->
+<div class="container-fluid mt--7">
+    <div class="row mt-5">
+      <div class="col-xl mb-5 mb-xl-0">
+        <div class="card shadow">
+          <div class="card-header border-0">
+            <div class="row align-items-center">
+              <div>
+                <div class="row">
+                  <div class="col">
+                    <h2 class="mb-0">Historial de Productos</h2>
+                  </div>
+                </div>
+                <form [formGroup]="filtroProductoForm" (submit)="filtrar()">
+                    <div class="row">
+                      <div class="col-sm">
+                        <label class="form-control-label" for="input-first-name" style="padding-left: 20px; padding-top: 20px;">Buscar por DNI</label>
+                      </div>
+                      <div class="col">
+                        <div class="form-group" style="padding-top: 15px;" [ngClass]="{'has-danger' : dni.errors,'has-success': !dni.errors}">
+                          <input type="text" class="form-control form-control-alternative" formControlName="dni">
+                        </div>
+                      </div>
+                      <div class="col" style="padding-top: 15px;">
+                        <button type="submit" class="btn btn-success" [disabled]="filtroProductoForm.invalid">Buscar</button>
+                      </div>
+                      <div class="col" style="padding-top: 15px;">
+                        <button type="button" class="btn btn-primary" (click)="limpiar()">Limpiar</button>
+                      </div>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <!-- Projects table -->
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th style="display: none;" scope="col">ID</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Cliente</th>
+                  <th scope="col">DNI</th>
+                  <th scope="col">Fecha de registro</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Acción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let producto of productos">
+                  <td style="display: none;">{{producto._id}}</td>
+                  <td style="display: none;">{{producto.user._id}}</td>
+                  <td>{{producto.name}}</td>
+                  <td>{{producto.user.name}}</td>
+                  <td>{{producto.user.dni}}</td>
+                  <td>3/12/2020</td>
+                  <td>{{producto.state}}</td>
+                  <td><button class="btn btn-light" (click)="verHistorialDetalle(producto._id)">ver Historial</button></td>   
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
