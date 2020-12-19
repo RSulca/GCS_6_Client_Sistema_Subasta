@@ -14,6 +14,8 @@ export class SupervisorProductoRechazoDetalleComponent implements OnInit {
   registroRechazoDetalleForm: FormGroup;
   
   idProducto: string;
+  name: string;
+  lastname: string;
 
   constructor(private fb: FormBuilder, private nf: NotifierService, private productoService:ProductoService, private modalService: NgbModal) {
     this.initForm();
@@ -34,7 +36,7 @@ export class SupervisorProductoRechazoDetalleComponent implements OnInit {
 
   submit(){
     if(confirm('Está seguro de rechazar?')){
-      this.productoService.rechazar(this.idProducto, this.motivoRechazo.value)
+      this.productoService.rechazar(this.idProducto, this.motivoRechazo.value, this.name, this.lastname)
       .subscribe(data=>{
         this.nf.notification("success", {
           'title': 'Rechazo exitoso.',
