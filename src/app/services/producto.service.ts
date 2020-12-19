@@ -89,27 +89,27 @@ export class ProductoService {
 
   }
 
-  aprobar(id2: string) {
+  aprobar(id2: string, name: string, lastname: string) {
     const id = id2;
     const state = ESTADOS_PRODUCTO[1];
     const url = `${environment.API_SUBASTA}/api/product/actualizarEstado`;
-    return this.http.put(url, { id, state }, { headers: { 'x-token': this.ls.getData('token') } })
+    return this.http.put(url, { id, state, name, lastname }, { headers: { 'x-token': this.ls.getData('token') } })
   }
 
-  rechazar(id2: string, motivoRechazo: string) {
+  rechazar(id2: string, motivoRechazo: string, name: string, lastname: string) {
     const id = id2;
     const motivo_rechazo = motivoRechazo;
     const state = ESTADOS_PRODUCTO[2];
     const url = `${environment.API_SUBASTA}/api/product/actualizarEstado`;
-    return this.http.put(url, { id, motivo_rechazo, state }, { headers: { 'x-token': this.ls.getData('token') } })
+    return this.http.put(url, { id, motivo_rechazo, state, name, lastname }, { headers: { 'x-token': this.ls.getData('token') } })
   }
 
-  subsanar(id2: string, motivoSubsanacion: string) {
+  subsanar(id2: string, motivoSubsanacion: string, name: string, lastname: string) {
     const id = id2;
     const motivo_subsanacion = motivoSubsanacion;
     const state = ESTADOS_PRODUCTO[3];
     const url = `${environment.API_SUBASTA}/api/product/actualizarEstado`;
-    return this.http.put(url, { id, motivo_subsanacion, state }, { headers: { 'x-token': this.ls.getData('token') } })
+    return this.http.put(url, { id, motivo_subsanacion, state, name, lastname }, { headers: { 'x-token': this.ls.getData('token') } })
   }
 
 }

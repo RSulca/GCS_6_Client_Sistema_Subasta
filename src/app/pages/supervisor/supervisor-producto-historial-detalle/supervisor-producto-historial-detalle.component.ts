@@ -26,8 +26,6 @@ export class SupervisorProductoHistorialDetalleComponent implements OnInit {
       .subscribe(data => {
         console.log(data['historial_producto']);
        this.productos = data['historial_producto'];
-      // console.log(this.productos);
-      // console.log(this.productos);
       })
   }
 
