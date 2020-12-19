@@ -16,17 +16,28 @@
   </div>
 
   <div class="datosProducto col-12 col-md-6 px-0">
-    <span *ngIf="descriptionForm.get('columns').value.length > 0; else bloque3">
+    <!-- <span *ngIf="descriptionForm.get('columns').value.length > 0; else bloque3"> -->
+    <span *ngIf="descriptionForm.get('columns').value.length > 0">
       <form [formGroup]="descriptionForm">
         <div formArrayName="columns">
           <div *ngFor="let column of columns.controls; let i = index;" [formGroupName]="i">
             <div class="form-group">
-              <label class="font-6">{{categoryFormSelected.camposPlaceholder[i]}}</label>
-              <input type="text" class="form-control" formControlName="{{categoryFormSelected.campos[i]}}">
-            </div>
-            <div *ngIf="categoryFormSelected.campos[i]=='resumen'" class="form-group">
-              <label class="font-6">{{categoryFormSelected.camposPlaceholder[i]}}</label>
-              <textarea cols="30" rows="10" class="form-control" formControlName="{{categoryFormSelected.campos[i]}}"></textarea>
+              <div *ngIf="categoryFormSelected.campos[i]=='fechaCreacion', else inputProducto1">
+                <label class="font-6">{{categoryFormSelected.camposPlaceholder[i]}}</label>
+                <input type="date" class="form-control" formControlName="{{categoryFormSelected.campos[i]}}">
+              </div>
+              <ng-template #inputProducto1>
+                <div *ngIf="categoryFormSelected.campos[i]=='resumen', else inputProducto2">
+                  <label class="font-6">{{categoryFormSelected.camposPlaceholder[i]}}</label>
+                  <textarea cols="30" rows="10" class="form-control" formControlName="{{categoryFormSelected.campos[i]}}"></textarea>
+                </div>
+              </ng-template>
+              <ng-template #inputProducto2>
+                <div>
+                  <label class="font-6">{{categoryFormSelected.camposPlaceholder[i]}}</label>
+                  <input type="text" class="form-control" formControlName="{{categoryFormSelected.campos[i]}}">
+                </div>
+              </ng-template>
             </div>
           </div>
         </div>

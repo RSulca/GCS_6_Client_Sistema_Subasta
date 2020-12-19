@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
+import { SupervisorService } from 'src/app/services/supervisor.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 declare interface RouteInfo {
   path: string;
@@ -9,20 +12,19 @@ declare interface RouteInfo {
 }
 export const ROUTES1: RouteInfo[] = [
   { path: '/supervisor', title: 'Supervisor',  icon: 'ni-tv-2 text-primary', class: '' },
-  { path: '/supervisor/perfil', title: 'Perfil',  icon:'ni-single-02 text-green', class: '' },
-//  { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' }
+  { path: '/supervisor/perfil', title: 'Perfil',  icon:'ni-single-02 text-green', class: '' }
 ];
 
 export const ROUTES2: RouteInfo[] = [
-  { path: '/supervisor/productos', title: 'Productos',  icon:'ni-money-coins text-blue', class: '' }
-//  { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' }
+  { path: '/supervisor/productos', title: 'Productos',  icon:'ni-money-coins text-blue', class: '' },
+  { path: '/supervisor/productos/historial', title: 'Historial',  icon:'fa fa-book text-yellow', class: '' }
 ];
 
 export const ROUTES3: RouteInfo[] = [
   { path: '/supervisor', title: 'Supervisor',  icon: 'ni-tv-2 text-primary', class: '' },
   { path: '/supervisor/perfil', title: 'Perfil',  icon:'ni-single-02 text-green', class: '' },
-  { path: '/supervisor/productos', title: 'Productos',  icon:'ni-money-coins text-blue', class: '' }
-//  { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' }
+  { path: '/supervisor/productos', title: 'Productos',  icon:'ni-money-coins text-blue', class: '' },
+  { path: '/supervisor/productos/historial', title: 'Historial de Productos',  icon:'fa fa-book text-yellow', class: '' }
 ];
 
 @Component({
@@ -36,11 +38,15 @@ export class SupervisorSidebarComponent implements OnInit {
   public menuItems2: any[];
   public isCollapsed = true;
 
-  constructor(private router: Router) { }
+  imgSupervisor: string;
+
+  constructor(private router: Router, private loginService: LoginService, private supervisorService:SupervisorService, private ls: LocalStorageService) { }
 
   ngOnInit() {
     this.menu1();
     this.menu2();
+    let usuario = JSON.parse(this.ls.getData('user'));
+    this.obtener(usuario._id);
   }
 
   menu1(){
@@ -56,4 +62,16 @@ export class SupervisorSidebarComponent implements OnInit {
       this.isCollapsed = true;
    });
   }
+
+  obtener(id: string){
+    this.supervisorService.obtener(id)
+      .subscribe(data => {
+        this.imgSupervisor = data['user'].img;
+      })
+  }
+
+  onLogout() {
+    this.loginService.logout();
+   }
+
 }

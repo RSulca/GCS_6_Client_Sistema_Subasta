@@ -41,7 +41,6 @@ export class ProductDataComponent implements OnInit {
       }
     });
     this.generateCategoryForm(this.categoryFormSelected);
-    console.log(this.categoryFormSelected)
 
   }
 
@@ -54,7 +53,6 @@ export class ProductDataComponent implements OnInit {
       })
       this.columns.push(field);
     })
-    console.log(this.columns.value)
   }
 
 

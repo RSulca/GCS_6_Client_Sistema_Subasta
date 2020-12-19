@@ -6,8 +6,8 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- Brand -->
-      <a class="navbar-brand pt-0" routerLinkActive="active" [routerLink]="['/dashboard']">
-        <img src="./assets/img/brand/red.png" class="navbar-brand-img" alt="...">
+      <a class="navbar-brand pt-0" routerLinkActive="active" [routerLink]="['/supervisor']">
+        <img src="./assets/img/home/logo-subaston3.png" class="navbar-brand-img" alt="...">
       </a>
       <!-- User -->
       <ul class="nav align-items-center d-md-none">
@@ -15,14 +15,14 @@
           <a class="nav-link" role="button" ngbDropdownToggle>
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="./assets/img/theme/team-1-800x800.jpg">
+                <img alt="Image placeholder" src="{{imgSupervisor}}">
               </span>
             </div>
           </a>
           <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
-            <a href="#!" class="dropdown-item">
+            <a (click)="onLogout()" class="dropdown-item">
               <i class="ni ni-user-run"></i>
-              <span>Logout</span>
+              <span>Cerrar Sesión</span>
             </a>
           </div>
         </li>
@@ -33,8 +33,8 @@
         <div class="navbar-collapse-header d-md-none">
           <div class="row">
             <div class="col-6 collapse-brand">
-              <a  routerLinkActive="active" [routerLink]="['/dashboard']">
-                <img src="./assets/img/brand/blue.png">
+              <a  routerLinkActive="active" [routerLink]="['/supervisor']">
+                <img src="./assets/img/home/logo-subaston3.png">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -62,7 +62,11 @@
                 {{menuItem2.title}}
             </a>
         </li>
-    </ul>
+      </ul>
+      <hr class="my-4" />
+      <h1><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></h1>
+      <p>Cuando ingresa por primera vez su datos registrados por el administrador se muestran en la pestaña de perfil con excepción de la contraseña.</p>
+      <p>Si desea completar su perfil, debe llenar todos los datos: Dirección, Fecha de Nacimiento, Número de Teléfono, Universidad y Estudios. La contraseña es opcional y la puede cambiar o dejarla con el valor que fue registrada.</p>
       </div>
     </div>
   </nav>

@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { LoginGuardGuard } from 'src/app/guards/login-guard.guard';
 import { AccountComponent } from './account/account.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
+import { DetailProductComponent } from './detail-product/detail-product.component';
 import { HistorialComponent } from './historial/historial.component';
 import { HomePortalComponent } from './home-portal/home-portal.component';
 import { ProductRegisterComponent } from './product-register/product-register.component';
@@ -23,7 +24,12 @@ export const portalRoutes: Routes = [
     component: CatalogoComponent
   },
   {
+    path: 'detail',
+    component: DetailProductComponent
+  },
+  {
     path: 'history',
+    canActivate: [LoginGuardGuard],
     component: HistorialComponent
   },
   {

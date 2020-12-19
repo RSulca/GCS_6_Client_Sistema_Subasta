@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { LocalStorageService } from './local-storage.service';
 
 
 @Injectable({ providedIn: 'root' })
 export class ProductEmiterService {
+
+
 
   categorySelected: any = '';
 
@@ -19,15 +22,19 @@ export class ProductEmiterService {
   private shippingSubject$ = new BehaviorSubject<any>(null);
   shippingSubjectChanged$ = this.shippingSubject$.asObservable();
 
-  constructor() { }
+  constructor(private ls: LocalStorageService) {
+    this.categorySubject$.next(this.categoryAvailable())
+  }
 
   addCategory(category: any) {
     this.categorySelected = category;
     this.categorySubject$.next(category);
+    this.ls.setData('categorySelected', category);
   }
 
-  addFile(file: any) {
-    this.filesSubject$.next(file);
+  addFile(files: any) {
+    this.filesSubject$.next(files);
+    this.ls.setData('productFiles', files);
   }
 
   addDescription(data: any) {
@@ -36,6 +43,15 @@ export class ProductEmiterService {
 
   addShiping(data: any) {
     this.shippingSubject$.next(data);
+  }
+
+  private categoryAvailable(): any {
+    const category = this.ls.getData('categorySelected');
+    if (category) {
+      return category;
+    } else {
+      return null;
+    }
   }
 
 }

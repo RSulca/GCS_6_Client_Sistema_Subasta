@@ -8,4 +8,10 @@ export class Supervisor{
     password?:String;
     category?:String;
     state?:boolean;
+    bornDate?:String;
+    phoneNumber?:String;
+    address?:String;
+    college?:String;
+    studies?:String;
+
 }
