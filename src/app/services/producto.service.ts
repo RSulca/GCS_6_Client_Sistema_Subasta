@@ -64,12 +64,10 @@ export class ProductoService {
     if (files) {
       return this.saveProductPaso1(files).pipe(
         map((response: any) => {
-          console.log(response);
           return response;
         }),
         mergeMap((response2): any => {
           data.imgs = response2.urls;
-          console.log("antes de enviar", data)
           return this.saveProductPaso2(data).pipe();
         })
       )
