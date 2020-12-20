@@ -5,6 +5,7 @@ import { Producto } from '../models/request/producto.model';
 import { LocalStorageService } from './local-storage.service';
 import { map, mergeMap } from 'rxjs/operators';
 import { ESTADOS_PRODUCTO } from '../util/estados';
+import { Products } from '../models/request/products.model';
 
 @Injectable()
 export class ProductoService {
@@ -110,6 +111,18 @@ export class ProductoService {
     const state = ESTADOS_PRODUCTO[3];
     const url = `${environment.API_SUBASTA}/api/product/actualizarEstado`;
     return this.http.put(url, { id, motivo_subsanacion, state, name, lastname }, { headers: { 'x-token': this.ls.getData('token') } })
+  }
+  
+  getProductsByState(state:string){
+    const url = `${environment.API_SUBASTA}/api/product/state/${state}`;
+    return this.http.get<Products>(url, { headers: { 'x-token': this.ls.getData('token') } }).pipe(
+      map((res: any) => {
+        if(res.ok){
+          return res.products
+        }
+        return res.message;
+      })
+    );
   }
 
 }
