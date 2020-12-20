@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Producto } from '../models/request/producto.model';
 import { LocalStorageService } from './local-storage.service';
-import { map, mergeMap } from 'rxjs/operators';
+import { map, mergeMap, tap } from 'rxjs/operators';
 import { ESTADOS_PRODUCTO } from '../util/estados';
 import { Products } from '../models/request/products.model';
 
@@ -61,7 +61,7 @@ export class ProductoService {
   }
 
   saveProduct(data: Producto, files: File[]) {
-    if (files) {
+    if (files && files.length>=3) {
       return this.saveProductPaso1(files).pipe(
         map((response: any) => {
           return response;
@@ -72,6 +72,32 @@ export class ProductoService {
         })
       )
     }
+  }
+
+  updateProduct(data: Producto, files: File[]) {
+    if (files && files.length>=3) {
+      return this.saveProductPaso1(files).pipe(
+        map((response: any) => {
+          return response;
+        }),
+        mergeMap((response2): any => {
+          data.imgs = response2.urls;
+          return this.updateProductPaso2(data).pipe(
+            tap(d=>console.log(d))
+          );
+        })
+      )
+    }else{
+      return this.updateProductPaso2(data).pipe(
+        tap(d=>console.log(d))
+      );
+    }
+  }
+
+
+  updateProductPaso2(data: any){
+    const url = `${environment.API_SUBASTA}/api/product/update`;
+    return this.http.put(url, data, { headers: { 'x-token': this.ls.getData('token') } }).pipe();
   }
 
   getProductByUser() {

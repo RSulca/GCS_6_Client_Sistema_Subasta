@@ -52,7 +52,7 @@
                           </div>
                           <div class="status2 ">
                             <span class="badge badge-primary" [ngClass]="{'badge-primary':p.state==='ENVIADO', 'badge-danger': p.state==='RECHAZADO', 
-                              'badge-success': p.state==='APROBADO', 'badge-dark': p.state==='POR SUBSANAR'}" style="width: 150px;">{{p.state}}</span>
+                              'badge-success': p.state==='APROBADO','badge-warning': p.state==='SUBSANADO', 'badge-dark': p.state==='POR SUBSANAR'}" style="width: 150px;">{{p.state}}</span>
                           </div>
                         </div>
                         <div class="col-sm-3 ml-3" align="end">
@@ -67,9 +67,10 @@
                                 Acciones
                               </a>
                               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a *ngIf="p.motivo_rechazo" type="button" (click)="openModal(template,p)" class="dropdown-item">Motivo de rechazo</a>
-                                <a *ngIf="p.motivo_subsanacion" type="button" (click)="openModal(template,p)" class="dropdown-item">Motivo de subsanación</a>
-                                <!--Debe redirigir al catalogo pero con productos de la categoria seleccionada-->
+                                <a *ngIf="p.state==='RECHAZADO'" type="button" (click)="openModal(template,p)" class="dropdown-item">Motivo de rechazo</a>
+                                <a *ngIf="p.state==='POR SUBSANAR'" type="button" (click)="openModal(template,p)" class="dropdown-item">Motivo de subsanación</a>
+                                <a *ngIf="p.state==='POR SUBSANAR'" type="button" (click)="goToProduct(p)" class="dropdown-item">Subsanar producto</a>
+
                               </div>
                             </li>
                           </div>

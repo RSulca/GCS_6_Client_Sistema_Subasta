@@ -4,6 +4,6 @@ export class Producto {
     name: string;
     description: string;
     category?: string;
-    state?: boolean;
+    state?: any;
     imgs?: string[] = [];
 }

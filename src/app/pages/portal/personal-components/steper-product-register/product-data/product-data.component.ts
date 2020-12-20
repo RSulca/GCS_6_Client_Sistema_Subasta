@@ -26,6 +26,13 @@ export class ProductDataComponent implements OnInit {
     this.productEmiter.categorySubjectChanged$.subscribe(data => this.categorySelected = data);
     this.getCategoryForm(this.categorySelected);
 
+    if(localStorage.getItem('productoMod')){
+      this.productEmiter.descriptionSubjectChanged$.subscribe(data=>{
+        this.columns.patchValue(data)
+      });
+      
+    }
+
   }
 
   initForm() {

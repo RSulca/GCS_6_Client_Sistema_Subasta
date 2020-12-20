@@ -16,10 +16,20 @@ export class ShippingComponent implements OnInit {
   constructor(private router: Router, private productEmiter: ProductEmiterService, private nf: NotifierService) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('productoMod')) {
+      this.productEmiter.shippingSubjectChanged$.subscribe(data => {
+      const shipping = data[0].shipping;
+      console.log(shipping)
+        if (shipping.pagaEnvio === "" || shipping.pagaEnvio === null) {
+          this.shippingData = '0';
+        }
+        this.recoger = shipping.recoger;
+      });
+
+    }
   }
 
   goToReview() {
-    console.log(this.shippingData)
     if ((this.shippingData === '0' || this.shippingData === null || this.shippingData === '') && !this.recoger) {
       this.nf.notification("warning", {
         'title': 'Formulario invalido.',
