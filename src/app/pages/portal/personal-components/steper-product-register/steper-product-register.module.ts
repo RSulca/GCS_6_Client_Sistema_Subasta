@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 //ngx-bootstrap
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { SteperProductRegisterComponent } from './steper-product-register.component';
 import { CategoryComponent } from './category/category.component';
@@ -33,6 +35,8 @@ import { ProductoService } from 'src/app/services/producto.service';
     CommonModule,
     RouterModule.forChild(steperProductRegister),
     TooltipModule.forRoot(),
+    CarouselModule.forRoot(),
+    ModalModule.forRoot(),
     NgxDropzoneModule,
     ReactiveFormsModule,
     FormsModule,

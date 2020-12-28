@@ -33,6 +33,7 @@ export class HomePortalComponent implements OnInit {
   constructor(private categoryService: CategoriaService, private webSocketService: WebSocketService, private nf: NotifierService) { }
 
   ngOnInit(): void {
+    localStorage.removeItem('productoMod');
     this.getCategories();
     this.webSocketService.listen('estado_actualizado').subscribe((data: any) => {
       if (data) {

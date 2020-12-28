@@ -3,8 +3,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Producto } from '../models/request/producto.model';
 import { LocalStorageService } from './local-storage.service';
-import { map, mergeMap } from 'rxjs/operators';
+import { map, mergeMap, tap } from 'rxjs/operators';
 import { ESTADOS_PRODUCTO } from '../util/estados';
+import { Products } from '../models/request/products.model';
 
 @Injectable()
 export class ProductoService {
@@ -60,19 +61,43 @@ export class ProductoService {
   }
 
   saveProduct(data: Producto, files: File[]) {
-    if (files) {
+    if (files && files.length>=3) {
       return this.saveProductPaso1(files).pipe(
         map((response: any) => {
-          console.log(response);
           return response;
         }),
         mergeMap((response2): any => {
           data.imgs = response2.urls;
-          console.log("antes de enviar", data)
           return this.saveProductPaso2(data).pipe();
         })
       )
     }
+  }
+
+  updateProduct(data: Producto, files: File[]) {
+    if (files && files.length>=3) {
+      return this.saveProductPaso1(files).pipe(
+        map((response: any) => {
+          return response;
+        }),
+        mergeMap((response2): any => {
+          data.imgs = response2.urls;
+          return this.updateProductPaso2(data).pipe(
+            tap(d=>console.log(d))
+          );
+        })
+      )
+    }else{
+      return this.updateProductPaso2(data).pipe(
+        tap(d=>console.log(d))
+      );
+    }
+  }
+
+
+  updateProductPaso2(data: any){
+    const url = `${environment.API_SUBASTA}/api/product/update`;
+    return this.http.put(url, data, { headers: { 'x-token': this.ls.getData('token') } }).pipe();
   }
 
   getProductByUser() {
@@ -89,27 +114,39 @@ export class ProductoService {
 
   }
 
-  aprobar(id2: string) {
+  aprobar(id2: string, name: string, lastname: string) {
     const id = id2;
     const state = ESTADOS_PRODUCTO[1];
     const url = `${environment.API_SUBASTA}/api/product/actualizarEstado`;
-    return this.http.put(url, { id, state }, { headers: { 'x-token': this.ls.getData('token') } })
+    return this.http.put(url, { id, state, name, lastname }, { headers: { 'x-token': this.ls.getData('token') } })
   }
 
-  rechazar(id2: string, motivoRechazo: string) {
+  rechazar(id2: string, motivoRechazo: string, name: string, lastname: string) {
     const id = id2;
     const motivo_rechazo = motivoRechazo;
     const state = ESTADOS_PRODUCTO[2];
     const url = `${environment.API_SUBASTA}/api/product/actualizarEstado`;
-    return this.http.put(url, { id, motivo_rechazo, state }, { headers: { 'x-token': this.ls.getData('token') } })
+    return this.http.put(url, { id, motivo_rechazo, state, name, lastname }, { headers: { 'x-token': this.ls.getData('token') } })
   }
 
-  subsanar(id2: string, motivoSubsanacion: string) {
+  subsanar(id2: string, motivoSubsanacion: string, name: string, lastname: string) {
     const id = id2;
     const motivo_subsanacion = motivoSubsanacion;
     const state = ESTADOS_PRODUCTO[3];
     const url = `${environment.API_SUBASTA}/api/product/actualizarEstado`;
-    return this.http.put(url, { id, motivo_subsanacion, state }, { headers: { 'x-token': this.ls.getData('token') } })
+    return this.http.put(url, { id, motivo_subsanacion, state, name, lastname }, { headers: { 'x-token': this.ls.getData('token') } })
+  }
+  
+  getProductsByState(state:string){
+    const url = `${environment.API_SUBASTA}/api/product/state/${state}`;
+    return this.http.get<Products>(url, { headers: { 'x-token': this.ls.getData('token') } }).pipe(
+      map((res: any) => {
+        if(res.ok){
+          return res.products
+        }
+        return res.message;
+      })
+    );
   }
 
 }

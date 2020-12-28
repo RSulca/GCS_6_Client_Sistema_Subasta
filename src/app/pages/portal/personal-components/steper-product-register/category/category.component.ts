@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
@@ -26,7 +26,7 @@ export class CategoryComponent implements OnInit {
     this.getCategories();
     this.productEmiter.categorySubjectChanged$.subscribe(data => {
       this.categorySelected = data;
-    })
+    });
   }
 
   seeCategories() {
