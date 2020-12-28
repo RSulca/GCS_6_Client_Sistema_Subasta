@@ -14,6 +14,8 @@ export class SupervisorProductoSubsanarDetalleComponent implements OnInit {
   registroSubsanarDetalleForm: FormGroup;
   
   idProducto: string;
+  name: string;
+  lastname: string;
 
   constructor(private fb: FormBuilder, private nf: NotifierService, private productoService:ProductoService, private modalService: NgbModal) { 
     this.initForm();
@@ -34,7 +36,7 @@ export class SupervisorProductoSubsanarDetalleComponent implements OnInit {
 
   submit(){
     if(confirm('Está seguro de pedir la subsanación?')){
-      this.productoService.subsanar(this.idProducto, this.motivoSubsanar.value)
+      this.productoService.subsanar(this.idProducto, this.motivoSubsanar.value, this.name, this.lastname)
       .subscribe(data=>{
         this.nf.notification("success", {
           'title': 'Petición de subsanación exitosa.',

@@ -16,6 +16,7 @@
                     <th>Fecha</th>
                     <th>Estado</th>
                     <th>Observación</th>
+                    <th>Supervisor</th>
                     <tr *ngFor="let producto of productos; let i = index">
                         <td>
                             <h1>{{i + 1}}</h1>
@@ -24,13 +25,16 @@
                             {{producto.producto.name}} - {{producto.user.name}}, {{producto.user.lastname}}
                         </td>
                         <td>
-                            4/12/2020 10:00 AM
+                            {{producto.fecha_accion | date:'medium'}} 
                         </td>
                         <td>
                             {{producto.state}}
                         </td>
                         <td>
                             {{producto.accion}}
+                        </td>
+                        <td>
+                            {{producto.supervisor_name}} {{producto.supervisor_lastname}}
                         </td>
                     </tr>
                 </table>

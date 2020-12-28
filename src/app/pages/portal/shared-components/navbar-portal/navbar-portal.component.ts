@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { LoginService } from 'src/app/services/login.service';
@@ -13,7 +14,7 @@ export class NavbarPortalComponent implements OnInit {
   categories: any[] = [];
   isLogged = false;
 
-  constructor(private categoryService: CategoriaService, public loginService: LoginService) {
+  constructor(private categoryService: CategoriaService,private router:Router, public loginService: LoginService) {
     //console.log(this.loginService.isLogged())
   }
 
@@ -32,6 +33,11 @@ export class NavbarPortalComponent implements OnInit {
     this.categoryService.obtenerCategoria().subscribe((data: any) => {
       this.categories = data.categories;
     })
+  }
+
+  goToSeller(){
+    this.router.navigate(['seller'])
+    localStorage.removeItem('productoMod')
   }
 
 }
