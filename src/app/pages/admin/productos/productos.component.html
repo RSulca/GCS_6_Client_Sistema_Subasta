@@ -1,0 +1,150 @@
+<div class="container-fluid mt--7">
+    <div class="row mt-5">
+        <div class="col-xl-12 mb-5 mb-xl-0">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h2 class="mb-0">Productos</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <div class="aprobado mt-4">
+                        <div class="h4 ml-4">Productos Aprobados <i class="text-success fas fa-check"></i> </div>
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Categoria</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Fotos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let product of productsAprobado;let i = index">
+                                    <td>{{i}}</td>
+                                    <td>{{product.category}}</td>
+                                    <td>{{product.name}}</td>
+                                    <td>{{product.fecha_registro | slice:0:10 }}</td>
+                                    <td class="text-left">
+                                        <div *ngFor="let img of product.imgs" class="img-desc d-inline mx-0">
+                                            <button (click)="catchImageUrl(img)" type="button" class="btn px-1" data-toggle="modal" data-target="#staticBackdrop">
+                                                <i style="cursor: pointer;" class="fas fa-image fa-2x"></i>
+                                            </button>
+                                            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header p-1">
+                                                            <button type="button" class="close pb-2" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body p-1 w-100">
+                                                            <img class="img-fluid" [src]="linkImage" alt="Error">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="porSubsanar mt-4">
+                        <div class="h4 ml-4">Productos por subsanar <i style="color: yellow;" class="fas fa-exclamation"></i> </div>
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Categoria</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Motivo</th>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Fotos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let product of productsPorSubsanar;let i = index">
+                                    <td>{{i}}</td>
+                                    <td>{{product.category}}</td>
+                                    <td>{{product.name}}</td>
+                                    <td>{{product.motivo_subsanacion}}</td>
+                                    <td>{{product.fecha_registro | slice:0:10 }}</td>
+                                    <td class="text-left">
+                                        <div *ngFor="let img of product.imgs" class="img-desc d-inline mx-0">
+                                            <button (click)="catchImageUrl(img)" type="button" class="btn px-1" data-toggle="modal" data-target="#staticBackdrop">
+                                                <i style="cursor: pointer;" class="fas fa-image fa-2x"></i>
+                                            </button>
+                                            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header p-1">
+                                                            <button type="button" class="close pb-2" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body p-1 w-100">
+                                                            <img class="img-fluid" [src]="linkImage" alt="Error">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="rechazado mt-4">
+                        <div class="h4 ml-4">Productos Rechazados <i class="text-danger far fa-times-circle"></i> </div>
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Categoria</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Motivo</th>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Fotos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let product of productsRechazado;let i = index">
+                                    <td>{{i}}</td>
+                                    <td>{{product.category}}</td>
+                                    <td>{{product.name}}</td>
+                                    <td>{{product.motivo_rechazo}}</td>
+                                    <td>{{product.fecha_registro | slice:0:10 }}</td>
+                                    <td class="text-left">
+                                        <div *ngFor="let img of product.imgs" class="img-desc d-inline mx-0">
+                                            <button (click)="catchImageUrl(img)" type="button" class="btn px-1" data-toggle="modal" data-target="#staticBackdrop">
+                                                <i style="cursor: pointer;" class="fas fa-image fa-2x"></i>
+                                            </button>
+                                            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header p-1">
+                                                            <button type="button" class="close pb-2" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body p-1 w-100">
+                                                            <img class="img-fluid" [src]="linkImage" alt="Error">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

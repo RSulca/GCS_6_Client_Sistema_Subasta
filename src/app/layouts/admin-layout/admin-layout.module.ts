@@ -12,6 +12,7 @@ import { SupervisorComponent } from '../../pages/admin/supervisor/supervisor.com
 import { ClienteComponent } from '../../pages/admin/cliente/cliente.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { ToastrModule } from 'ngx-toastr';
+import { ProductosComponent } from '../../pages/admin/productos/productos.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     DashboardComponent,
     SupervisorComponent,
-    ClienteComponent
+    ClienteComponent,
+    ProductosComponent
   ]
 })
 

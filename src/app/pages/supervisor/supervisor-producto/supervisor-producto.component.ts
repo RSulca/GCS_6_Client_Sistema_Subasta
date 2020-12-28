@@ -21,6 +21,8 @@ export class SupervisorProductoComponent implements OnInit {
   
   productos: Producto[];
 
+  usuario: any;
+
   constructor(private nf: NotifierService, private router:Router, private productoService:ProductoService, 
     private ls: LocalStorageService,private modalService: NgbModal, private webSocketService: WebSocketService) { }
 
@@ -58,7 +60,7 @@ export class SupervisorProductoComponent implements OnInit {
     alert('Tiene un producto en subsanación')
    }else{
     if(confirm('Está seguro de aprobar?')){
-      this.productoService.aprobar(id)
+      this.productoService.aprobar(id, this.usuario.name, this.usuario.lastname)
       .subscribe(data=>{
         this.nf.notification("success", {
           'title': 'Aprobación exitosa.',
@@ -76,6 +78,8 @@ export class SupervisorProductoComponent implements OnInit {
   const modalInstance = modal.componentInstance;
 
   modalInstance.idProducto = id;
+  modalInstance.name = this.usuario.name;
+  modalInstance.lastname = this.usuario.lastname;
 
   modal.result.then(this.handleModalTodoFormClose.bind(this), this.handleModalTodoFormClose.bind(this));
  }
@@ -89,6 +93,8 @@ export class SupervisorProductoComponent implements OnInit {
     const modalInstance = modal.componentInstance;
   
     modalInstance.idProducto = id;
+    modalInstance.name = this.usuario.name;
+    modalInstance.lastname = this.usuario.lastname;
   
     modal.result.then(this.handleModalTodoFormClose.bind(this),this.handleModalTodoFormClose.bind(this));
   }
