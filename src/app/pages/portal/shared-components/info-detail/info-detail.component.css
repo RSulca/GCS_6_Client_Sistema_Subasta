@@ -1,0 +1,25 @@
+.card-titulo{
+    font-size: 1.3rem;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 0;
+}
+.card-subtitulo{
+    color: #fff;
+    font-size: .9rem;
+    text-align: center;
+    margin-bottom: 0;
+}
+.card-detalle .card-body{
+    border: 1px solid #f5365c;
+}
+.card-body-title{
+    font-size: 1rem;
+    font-weight: 500;
+}
+.card-detalle .card-body p{
+    font-size: .9rem;
+}
+.tabla-pujas td{
+    padding: 5px 10px;
+}

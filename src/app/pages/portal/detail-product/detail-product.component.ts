@@ -36,6 +36,10 @@ export class DetailProductComponent implements OnInit {
     nav: true
   }
   
+  infoAuction: object = {
+    endAuction: '2020-12-31 05:00:00'
+  };
+
   constructor() { }
 
   ngOnInit(): void {
