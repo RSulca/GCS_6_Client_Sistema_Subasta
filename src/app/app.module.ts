@@ -21,6 +21,7 @@ import { AuthLayoutModule } from './layouts/auth-layout/auth-layout.module';
 import { PortalModule } from './pages/portal/portal.module';
 import { DatePipe } from 'src/app/util/dateFormatPipe';
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -43,6 +44,7 @@ import { DatePipe } from 'src/app/util/dateFormatPipe';
     AdminLayoutComponent,
     AuthLayoutComponent,
     SupervisorLayoutComponent
+    
   ],
   providers: [
     SupervisorService,

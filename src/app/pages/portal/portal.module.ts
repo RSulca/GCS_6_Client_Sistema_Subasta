@@ -30,6 +30,7 @@ import { DetailProductComponent } from './detail-product/detail-product.componen
 //modulos de terceros
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { MyProductsComponent } from './my-products/my-products.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AccountComponent,
     HistorialComponent,
     ConfirmDialogComponent,
-    DetailProductComponent
+    DetailProductComponent,
+    MyProductsComponent
     
   ],
   imports: [

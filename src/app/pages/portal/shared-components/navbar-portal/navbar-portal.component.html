@@ -1,73 +1,74 @@
 <div class="container-fluid px-0">
-  <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-5">
-    <a class="navbar-brand" href="#"><img src="assets/img/home/logo-subaston3.png" width="100px" alt=""></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-5">
+        <a class="navbar-brand" href="#"><img src="assets/img/home/logo-subaston3.png" width="100px" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Categoría
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a *ngFor="let cat of categories" class="dropdown-item" href="#">{{cat.name}}</a>
-            <!--Debe redirigir al catalogo pero con productos de la categoria seleccionada-->
-          </div>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0 nav-search mx-lg-4">
-        <input class="form-control mr-sm-2 int-wh" type="search" placeholder="Buscar por marca, modelo, artista..."
-          aria-label="Search">
-        <a href="#" class="form-search"><i class="fas fa-search"></i></a>
-      </form>
-      <a class="nav-link" href="#" tabindex="-1" aria-disabled="true" [routerLink]="['../seller']" (click)="goToSeller()">Vender</a>
-      <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Ayuda</a>
-      <a class="nav-link mr-3 text-primary" href="#" tabindex="-1" aria-disabled="true"><i
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a *ngFor="let cat of categories" class="dropdown-item" href="#">{{cat.name}}</a>
+                        <!--Debe redirigir al catalogo pero con productos de la categoria seleccionada-->
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0 nav-search mx-lg-4">
+                <input class="form-control mr-sm-2 int-wh" type="search" placeholder="Buscar por marca, modelo, artista..." aria-label="Search">
+                <a href="#" class="form-search"><i class="fas fa-search"></i></a>
+            </form>
+            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true" [routerLink]="['../seller']" (click)="goToSeller()">Vender</a>
+            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Ayuda</a>
+            <a class="nav-link mr-3 text-primary" href="#" tabindex="-1" aria-disabled="true"><i
           class="fas fa-heart fa-1x"></i></a>
-      <ul class="navbar-nav mr-auto" *ngIf="isLogged ;else bloque">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            <h3 class="mt-3">
-              <div class="media align-items-center">
-                <span class="avatar avatar-sm rounded-circle">
+            <ul class="navbar-nav mr-auto" *ngIf="isLogged ;else bloque">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <h3 class="mt-3">
+                            <div class="media align-items-center">
+                                <span class="avatar avatar-sm rounded-circle">
                   <img [src]="loginService.usuario.img" style="width: 100%;">
                 </span>
-                <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold"> {{loginService.usuario.name}}</span>
-                </div>
-              </div>
+                                <div class="media-body ml-2 d-none d-lg-block">
+                                    <span class="mb-0 text-sm  font-weight-bold"> {{loginService.usuario.name}}</span>
+                                </div>
+                            </div>
 
-            </h3>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" [routerLink]="['../account']">
-              <div *ngIf="!loginService.usuario.firstEntry ;else bloque3">
-                Cuenta
-              </div>
-              <ng-template #bloque3>
-                <div>
-                  <span class="badge badge-primary">Completar datos de la cuenta</span>
-                </div>
-              </ng-template>
-            </a>
-            <a class="dropdown-item" [routerLink]="['../history']">
-              <div>
-                Historial de productos
-              </div>
-              <div>en revision</div>
-            </a>
-            <a class="dropdown-item" (click)="onLogout()">Cerrar Sesion</a>
-          </div>
-        </li>
-      </ul>
-      <ng-template #bloque>
-        <button type="button" class="btn btn-primary" [routerLink]="['../login']">Iniciar sesión</button>
-      </ng-template>
-    </div>
-  </nav>
+                        </h3>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" [routerLink]="['../account']">
+                            <div *ngIf="!loginService.usuario.firstEntry ;else bloque3">
+                                Cuenta
+                            </div>
+                            <ng-template #bloque3>
+                                <div>
+                                    <span class="badge badge-primary">Completar datos de la cuenta</span>
+                                </div>
+                            </ng-template>
+                        </a>
+                        <a class="dropdown-item" [routerLink]="['../history']">
+                            <div>
+                                Historial de productos
+                            </div>
+                            <div>en revision</div>
+                        </a>
+                        <a class="dropdown-item" [routerLink]="['../myproducts']">
+                            <div>
+                                Mis Productos
+                            </div>
+                        </a>
+                        <a class="dropdown-item" (click)="onLogout()">Cerrar Sesion</a>
+                    </div>
+                </li>
+            </ul>
+            <ng-template #bloque>
+                <button type="button" class="btn btn-primary" [routerLink]="['../login']">Iniciar sesión</button>
+            </ng-template>
+        </div>
+    </nav>
 </div>

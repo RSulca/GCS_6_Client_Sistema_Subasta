@@ -21,7 +21,6 @@ export class SupervisorProductoComponent implements OnInit {
   
   productos: Producto[];
 
-  usuario: any;
 
   constructor(private nf: NotifierService, private router:Router, private productoService:ProductoService, 
     private ls: LocalStorageService,private modalService: NgbModal, private webSocketService: WebSocketService) { }
