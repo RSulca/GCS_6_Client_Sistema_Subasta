@@ -1,0 +1,61 @@
+<div class="">
+    <div class="card card-detalle mb-3">
+        <div class="card-header bg-warning">
+            <h4 class="card-titulo">Cierra en <app-timer-component [endDate]="infoAuction.endAuction"></app-timer-component></h4>
+            <p class="card-subtitulo">Todavía no has pujado por este lote.</p>
+        </div>
+        <div class="card-body py-3">
+            <h4 class="card-body-title mb-0">Puja actual S/ 50.00</h4>
+            <p class="mb-0">Sin precio de reserva</p>
+        </div>
+        <div class="card-body py-3">
+            <h4 class="card-body-title mb-0">Siguiente puja mínima S/150</h4>
+            <p class="mb-2">Las pujas excluyen la comisión de la subasta y los gastos (de envío).</p>
+            <p class="mb-0"><small>Ubicación del vendedor: <b>Lima</b></small></p>
+            <p class="mb-0"><small>Comisión de subasta: 9 % de la puja ganadora</small></p>
+        </div>
+        <div class="card-body py-3">
+            <h4 class="card-body-title mb-1">Puja rápida</h4>
+            <div class="row mx-0 mb-3">
+                <button class="btn btn-primary font-5 col">S/50</button>
+                <button class="btn btn-primary font-5 col">S/55</button>
+                <button class="btn btn-primary font-5 col">S/60</button>
+            </div>
+            <h4 class="card-body-title mb-1">Pujar directamente</h4>
+            <div class="d-flex mx-0">
+                <input type="text" name="" id="" class="form-control mr-2" placeholder="S/">
+                <button class="btn btn-primary font-5 col">Pujar</button>
+            </div>
+        </div>
+        <div class="card-body py-3">
+            <table class="table tabla-pujas">
+                <tbody>
+                    <tr>
+                        <td><b>Pujador 3</b></td>
+                        <td><b>	04-12-2020 16:15:40</b></td>
+                        <td><b>S/50</b></td>
+                    </tr>
+                    <tr>
+                        <td>Pujador 2</td>
+                        <td>03-12-2020 16:15:40</td>
+                        <td>S/45</td>
+                    </tr>
+                    <tr>
+                        <td>Pujador 1</td>
+                        <td>01-12-2020 16:15:40</td>
+                        <td>S/40</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card card-detalle">
+        <div class="card-body py-3">
+            <h4 class="card-body-title mb-2">Compras seguras</h4>
+            <ul class="mb-0 pl-3">
+                <li>Retendremos tu pago hasta que el vendedor haya enviado el artículo o lo haya preparado para su recogida.</li>
+                <li>Todas nuestras subastas están sometidas a supervisión notarial.</li>
+            </ul>
+        </div>
+    </div>
+</div>
