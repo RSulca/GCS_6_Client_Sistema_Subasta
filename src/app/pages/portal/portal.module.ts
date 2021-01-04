@@ -30,6 +30,8 @@ import { DetailProductComponent } from './detail-product/detail-product.componen
 //modulos de terceros
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { InfoDetailComponent } from './shared-components/info-detail/info-detail.component';
+import { TimerComponentComponent } from './shared-components/timer-component/timer-component.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AccountComponent,
     HistorialComponent,
     ConfirmDialogComponent,
-    DetailProductComponent
+    DetailProductComponent,
+    InfoDetailComponent,
+    TimerComponentComponent
     
   ],
   imports: [
