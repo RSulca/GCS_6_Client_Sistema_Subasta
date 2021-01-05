@@ -31,6 +31,9 @@ import { DetailProductComponent } from './detail-product/detail-product.componen
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { MyProductsComponent } from './my-products/my-products.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+
+
 
 @NgModule({
   declarations: [
@@ -64,6 +67,7 @@ import { MyProductsComponent } from './my-products/my-products.component';
     TermsComponentsModule,
     AccountModule,
     MatDialogModule,
+    NgxMaterialTimepickerModule,
     NgxPaginationModule,
     ModalModule.forRoot()
   ],

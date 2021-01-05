@@ -36,6 +36,7 @@ import { DatePipe } from 'src/app/util/dateFormatPipe';
     ToastrModule.forRoot(), /* ToastrModule added */
     AuthLayoutModule,
     PortalModule
+    
   ],
   entryComponents: [
   ],
