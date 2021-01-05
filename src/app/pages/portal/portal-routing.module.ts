@@ -5,6 +5,7 @@ import { AyudaComponent } from './ayuda/ayuda.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { DetailProductComponent } from './detail-product/detail-product.component';
 import { HistorialComponent } from './historial/historial.component';
+import { HistorialComprasComponent } from './historial-Compras/historial-Compras.component';
 import { HomePortalComponent } from './home-portal/home-portal.component';
 import { ProductRegisterComponent } from './product-register/product-register.component';
 import { TermsComponent } from './terms-components/terms-components.component';
@@ -41,6 +42,11 @@ export const portalRoutes: Routes = [
     path: 'history',
     canActivate: [LoginGuardGuard],
     component: HistorialComponent
+  },
+  {
+    path: 'historial-compras',
+    canActivate: [LoginGuardGuard],
+    component: HistorialComprasComponent
   },
   {
     path: 'account',
