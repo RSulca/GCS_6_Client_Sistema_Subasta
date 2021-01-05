@@ -23,6 +23,7 @@ import { AccountComponent } from './account/account.component';
 import { AccountModule } from './account/account.module';
 import { ProductRegisterComponent } from './product-register/product-register.component';
 import { HistorialComponent } from './historial/historial.component';
+import { HistorialComprasComponent } from './historial-Compras/historial-Compras.component'
 import { ConfirmDialogComponent } from './personal-components/confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DetailProductComponent } from './detail-product/detail-product.component';
@@ -48,7 +49,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AccountComponent,
     HistorialComponent,
     ConfirmDialogComponent,
-    DetailProductComponent
+    DetailProductComponent,
+    HistorialComprasComponent
     
   ],
   imports: [
