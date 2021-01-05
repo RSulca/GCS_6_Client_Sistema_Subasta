@@ -56,8 +56,8 @@ import { InfoDetailComponent } from './shared-components/info-detail/info-detail
     ConfirmDialogComponent,
     InfoDetailComponent,
     DetailProductComponent,
-    MyProductsComponent
-    
+    MyProductsComponent,
+    HistorialComprasComponent
   ],
   imports: [
     CommonModule,
