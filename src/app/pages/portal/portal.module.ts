@@ -33,6 +33,7 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { MyProductsComponent } from './my-products/my-products.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { InfoDetailComponent } from './shared-components/info-detail/info-detail.component';
 
 
 
@@ -53,6 +54,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     AccountComponent,
     HistorialComponent,
     ConfirmDialogComponent,
+    InfoDetailComponent,
     DetailProductComponent,
     MyProductsComponent
     
