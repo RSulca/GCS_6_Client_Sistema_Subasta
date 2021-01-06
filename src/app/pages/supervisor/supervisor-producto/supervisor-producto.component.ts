@@ -17,10 +17,10 @@ import { WebSocketService } from 'src/app/services/web-socket.service';
   styleUrls: ['./supervisor-producto.component.css']
 })
 export class SupervisorProductoComponent implements OnInit {
-
+  usuario:any;
+  
   productos: Producto[];
 
-  usuario: any;
 
   constructor(private nf: NotifierService, private router:Router, private productoService:ProductoService, 
     private ls: LocalStorageService,private modalService: NgbModal, private webSocketService: WebSocketService) { }
