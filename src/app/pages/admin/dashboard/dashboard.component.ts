@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js';
+import { Router } from '@angular/router';
+import { AdminService } from 'src/app/services/admin.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 // core components
 
@@ -16,9 +19,17 @@ export class DashboardComponent implements OnInit {
   public salesChart;
   public clicked: boolean = true;
   public clicked1: boolean = false;
+  nombres: string;
+  apellidos: string;
+  universidad: string;
+  estudios: string;
+  img: string;
+
+  constructor(private router:Router, private adminService:AdminService, private ls: LocalStorageService) { }
 
   ngOnInit() {
-
+    let usuario = JSON.parse(this.ls.getData('user'));
+    this.obtener(usuario._id);
     // this.datasets = [
     //   [0, 20, 10, 30, 15, 40, 20, 60, 60],
     //   [0, 20, 5, 25, 10, 30, 15, 40, 40]
@@ -44,6 +55,18 @@ export class DashboardComponent implements OnInit {
 		// 	options: chartExample1.options,
 		// 	data: chartExample1.data
 		// });
+  }
+
+  obtener(id: string){
+    this.adminService.obtener(id)
+      .subscribe(data => {
+        this.nombres = data['user'].name;
+        this.apellidos = data['user'].lastname;
+        this.universidad = data['user'].college;
+        this.estudios = data['user'].studies;
+        this.img = data['user'].img;
+        this.ls.setData('imagenAdministrador', data['user'].img);
+      })
   }
 
 

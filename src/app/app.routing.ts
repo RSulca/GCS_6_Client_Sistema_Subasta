@@ -6,6 +6,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { PortalLayoutComponent } from './layouts/portal-layout/portal-layout.component';
+import { SupervisorLayoutComponent } from './layouts/supervisor-layout/supervisor-layout.component'
+import { AdminGuardGuard } from './guards/admin-guard.guard';
+import { SupervisorGuardGuard } from './guards/supervisor-guard.guard';
 
 const routes: Routes = [
   {
@@ -19,6 +22,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        canActivate: [AdminGuardGuard],
         loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
       }
     ]
@@ -40,6 +44,17 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: './layouts/auth-layout/auth-layout.module#AuthLayoutModule'
+      }
+    ]
+  },
+  {
+    path: '',
+    component: SupervisorLayoutComponent,
+    children: [
+      {
+        path: '',
+        canActivate: [SupervisorGuardGuard],
+        loadChildren: './layouts/supervisor-layout/supervisor-layout.module#SupervisorLayoutModule'
       }
     ]
   },

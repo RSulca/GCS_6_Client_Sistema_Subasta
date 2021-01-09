@@ -1,0 +1,6 @@
+<span>
+    <span *ngIf="time.days != 0">{{time.days}}d </span>
+    <span *ngIf="time.hours < 10">0</span>{{time.hours}}h
+    <span *ngIf="time.minutes < 10">0</span>{{time.minutes}}m
+    <span *ngIf="time.seconds < 10">0</span>{{time.seconds}}s
+</span>

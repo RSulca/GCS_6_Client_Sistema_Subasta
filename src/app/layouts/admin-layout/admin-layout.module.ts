@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -11,6 +12,7 @@ import { SupervisorComponent } from '../../pages/admin/supervisor/supervisor.com
 import { ClienteComponent } from '../../pages/admin/cliente/cliente.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { ToastrModule } from 'ngx-toastr';
+import { ProductosComponent } from '../../pages/admin/productos/productos.component';
 
 @NgModule({
   imports: [
@@ -25,7 +27,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     DashboardComponent,
     SupervisorComponent,
-    ClienteComponent
+    ClienteComponent,
+    ProductosComponent
   ]
 })
 

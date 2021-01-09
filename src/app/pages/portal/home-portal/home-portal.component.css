@@ -1,13 +1,6 @@
 .grid {
     display: grid;
-    grid-template-columns: 50% 25% 25%;
-}
-
-.grid2 {
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 132px 132px;
-    gap: 1em;
+    grid-template-columns: 70% 0% 30%;
 }
 
 .grid5 {
@@ -15,24 +8,28 @@
     grid-template-columns: 70% 30%;
 }
 
-.grid2 div p {
-    padding-left: 1rem;
-    padding-top: 1rem;
+.grid2 > div{
+    height: 135px;
+    padding: 1rem;
 }
-
 .grid2 div p {
-    font-size: 24px;
-    color: black;
+    font-size: 1.2rem;
+    color: #000;
     font-weight: 700;
     font-family: fangsong;
 }
 
-.grid2 div div img {
-    position: absolute;
-    text-align: end;
-    z-index: 4444;
-    padding-left: 11.8rem;
-    padding-top: 1rem;
+.grid2-item{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.grid2-img{
+    height: 100px;
+    overflow: hidden;
+}
+.grid2-item img {
+    width: 100px;
 }
 
 .card-body {
@@ -46,15 +43,15 @@
 }
 
 .ini-item1 {
-    background: url(../../../../assets/img/home/home-slider13.jpg);
+    background: url(../../../../assets/img/home/home1.jpg);
 }
 
 .ini-item2 {
-    background: url(../../../../assets/img/home/home-slider5_5.jpg);
+    background: url(../../../../assets/img/home/home2.jpg);
 }
 
 .ini-item3 {
-    background: url(../../../../assets/img/home/home-slider1_1.jpg);
+    background: url(../../../../assets/img/home/home3.jpg);
 }
 
 .ini-item1,
@@ -62,6 +59,8 @@
 .ini-item3 {
     width: 100%;
     height: 300px;
+    background-size: cover;
+    background-position: center;
 }
 
 .ini-item5 {
