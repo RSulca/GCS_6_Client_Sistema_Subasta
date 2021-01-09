@@ -5,10 +5,12 @@ import { AyudaComponent } from './ayuda/ayuda.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { DetailProductComponent } from './detail-product/detail-product.component';
 import { HistorialComponent } from './historial/historial.component';
+import { HistorialComprasComponent } from './historial-Compras/historial-Compras.component';
 import { HomePortalComponent } from './home-portal/home-portal.component';
 import { ProductRegisterComponent } from './product-register/product-register.component';
 import { TermsComponent } from './terms-components/terms-components.component';
 import { TermsModalComponent } from './terms-components/terms-modal/terms-modal.component';
+import { MyProductsComponent } from './my-products/my-products.component';
 
 
 export const portalRoutes: Routes = [
@@ -21,7 +23,7 @@ export const portalRoutes: Routes = [
     component: HomePortalComponent
   },
   {
-    path: 'ayuda',
+    path: 'help',
     component: AyudaComponent
   },
   {
@@ -33,9 +35,18 @@ export const portalRoutes: Routes = [
     component: DetailProductComponent
   },
   {
+    path: 'myproducts',
+    component: MyProductsComponent
+  },
+  {
     path: 'history',
     canActivate: [LoginGuardGuard],
     component: HistorialComponent
+  },
+  {
+    path: 'historial-compras',
+    canActivate: [LoginGuardGuard],
+    component: HistorialComprasComponent
   },
   {
     path: 'account',

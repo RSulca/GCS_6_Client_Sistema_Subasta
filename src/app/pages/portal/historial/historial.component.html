@@ -2,93 +2,94 @@
 
 <div class="container-fluid px-lg-8 py-4">
 
-  <h1 class="text-dark">Productos Enviados</h1>
+    <h1 class="text-dark">Productos Enviados</h1>
 
-  <div class="my-container">
-    <div class="row">
-      <div class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
-        <div class="form-group mb-0">
-          <div class="input-group input-group-alternative input-group-merge">
-            <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-search"></i></span></div>
-            <input class="form-control" placeholder="Search" type="text" (keyup)="filtrar($event)">
-          </div>
-        </div>
-      </div>
-      <div *ngIf="products == ''; else templateProducto"><p style="padding-left: 15px;">NO TIENE PRODUCTOS</p></div>
-      <ng-template #templateProducto>
-        <div class="col-md-12" style="width: 100%;">
+    <div class="my-container">
+        <div class="row">
+            <div class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
+                <div class="form-group mb-0">
+                    <div class="input-group input-group-alternative input-group-merge">
+                        <div class="input-group-prepend"><span class="input-group-text"><i class="fas fa-search"></i></span></div>
+                        <input class="form-control" placeholder="Search" type="text" (keyup)="filtrar($event)">
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="products == ''; else templateProducto">
+                <p style="padding-left: 15px;">NO TIENE PRODUCTOS</p>
+            </div>
+            <ng-template #templateProducto>
+                <div class="col-md-12" style="width: 100%;">
 
-          <div class="products mt-4">
-            <div class="review">
-              <div class="card card-review col-12 px-0 mb-3 back" *ngFor="let p of products | paginate: { itemsPerPage: 5, currentPage: p }">
-                <div class="row no-gutters">
-                  <div class="col-md-3">
-                    <img [src]="p.imgs[0]" alt="" class="my-image">
-                  </div>
-                  <div class="col-md-9">
-                    <div class="card-body">
-                      <div class="row">
-                        <div class="col-sm-7">
-                          <div class="detail">
-                            <div class="title">
-                              <span><strong>Titulo</strong></span>
-                            </div>
-                            <div class="title2">
-                              <span>{{p.name}}</span>
-                            </div>
-                            <div class="description mt-2">
-                              <span><strong>Descripcion</strong></span>
-                            </div>
-                            <div class="description2" style="text-align: justify;">
-                              <span>
+                    <div class="products mt-4">
+                        <div class="review">
+                            <div class="card card-review col-12 px-0 mb-3 back" *ngFor="let p of products | paginate: { itemsPerPage: 5, currentPage: p }">
+                                <div class="row no-gutters">
+                                    <div class="col-md-3">
+                                        <img [src]="p.imgs[0]" alt="" class="my-image img-fluid">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-sm-7">
+                                                    <div class="detail">
+                                                        <div class="title">
+                                                            <span><strong>Titulo</strong></span>
+                                                        </div>
+                                                        <div class="title2">
+                                                            <span>{{p.name}}</span>
+                                                        </div>
+                                                        <div class="description mt-2">
+                                                            <span><strong>Descripcion</strong></span>
+                                                        </div>
+                                                        <div class="description2" style="text-align: justify;">
+                                                            <span>
                                 {{p.description[p.description.length-2].resumen | json}} 
                               </span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-sm-1 ml-2">
-                          <div class="status ">
-                            <span><strong>Estado</strong></span>
-                          </div>
-                          <div class="status2 ">
-                            <span class="badge badge-primary" [ngClass]="{'badge-primary':p.state==='ENVIADO', 'badge-danger': p.state==='RECHAZADO', 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-1 ml-2">
+                                                    <div class="status ">
+                                                        <span><strong>Estado</strong></span>
+                                                    </div>
+                                                    <div class="status2 ">
+                                                        <span class="badge badge-primary" [ngClass]="{'badge-primary':p.state==='ENVIADO', 'badge-danger': p.state==='RECHAZADO', 
                               'badge-success': p.state==='APROBADO','badge-warning': p.state==='SUBSANADO', 'badge-dark': p.state==='POR SUBSANAR'}" style="width: 150px;">{{p.state}}</span>
-                          </div>
-                        </div>
-                        <div class="col-sm-3 ml-3" align="end">
-                          <div class="status">
-                            <span><strong>Acciones</strong></span>
-                          </div>
-                          <div class="status2" style="position: relative;left: 20px;">
-                            <!-- <button class="btn btn-info btn-sm">Acciones</button> -->
-                            <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle btn btn-info btn-sm" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3 ml-3" align="end">
+                                                    <div class="status">
+                                                        <span><strong>Acciones</strong></span>
+                                                    </div>
+                                                    <div class="status2" style="position: relative;left: 20px;">
+                                                        <!-- <button class="btn btn-info btn-sm">Acciones</button> -->
+                                                        <li class="nav-item dropdown">
+                                                            <a class="nav-link dropdown-toggle btn btn-info btn-sm" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Acciones
                               </a>
-                              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a *ngIf="p.state==='RECHAZADO'" type="button" (click)="openModal(template,p)" class="dropdown-item">Motivo de rechazo</a>
-                                <a *ngIf="p.state==='POR SUBSANAR'" type="button" (click)="openModal(template,p)" class="dropdown-item">Motivo de subsanación</a>
-                                <a *ngIf="p.state==='POR SUBSANAR'" type="button" (click)="goToProduct(p)" class="dropdown-item">Subsanar producto</a>
+                                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                                <a *ngIf="p.state==='RECHAZADO'" type="button" (click)="openModal(template,p)" class="dropdown-item">Motivo de rechazo</a>
+                                                                <a *ngIf="p.state==='POR SUBSANAR'" type="button" (click)="openModal(template,p)" class="dropdown-item">Motivo de subsanación</a>
+                                                                <a *ngIf="p.state==='POR SUBSANAR'" type="button" (click)="goToProduct(p)" class="dropdown-item">Subsanar producto</a>
 
-                              </div>
-                            </li>
-                          </div>
+                                                            </div>
+                                                        </li>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
+                    <div class="text-center">
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="text-center">
-            <pagination-controls (pageChange)="p = $event"></pagination-controls>
-          </div>
+            </ng-template>
         </div>
-      </ng-template>
     </div>
-  </div>
 </div>
 
 
@@ -96,19 +97,19 @@
 <app-footer-portal></app-footer-portal>
 
 <ng-template #template>
-  <div class="modal-header">
-    <h4 *ngIf="productShow.state==='RECHAZADO'" class="modal-title pull-left"><b>Motivo de rechazo del producto</b></h4>
-    <h4 *ngIf="productShow.state==='POR SUBSANAR'" class="modal-title pull-left"><b>Motivo de subsanación del producto</b></h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <div class="modal-header">
+        <h4 *ngIf="productShow.state==='RECHAZADO'" class="modal-title pull-left"><b>Motivo de rechazo del producto</b></h4>
+        <h4 *ngIf="productShow.state==='POR SUBSANAR'" class="modal-title pull-left"><b>Motivo de subsanación del producto</b></h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
-  </div>
-  <div class="modal-body">
-    <div *ngIf="productShow.state==='RECHAZADO'" class="alert alert-danger" role="alert">
-      <p >{{productShow.motivo_rechazo}}</p>
     </div>
-    <div *ngIf="productShow.state==='POR SUBSANAR'" class="alert alert-warning" role="alert">
-      <p >{{productShow.motivo_subsanacion}}</p>
+    <div class="modal-body">
+        <div *ngIf="productShow.state==='RECHAZADO'" class="alert alert-danger" role="alert">
+            <p>{{productShow.motivo_rechazo}}</p>
+        </div>
+        <div *ngIf="productShow.state==='POR SUBSANAR'" class="alert alert-warning" role="alert">
+            <p>{{productShow.motivo_subsanacion}}</p>
+        </div>
     </div>
-  </div>
 </ng-template>

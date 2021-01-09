@@ -35,6 +35,7 @@
     "ngx-bootstrap": "^6.1.0",
     "ngx-clipboard": "13.0.1",
     "ngx-dropzone": "^2.2.2",
+    "ngx-material-timepicker": "^5.5.3",
     "ngx-owl-carousel-o": "^4.0.0",
     "ngx-pagination": "^5.0.0",
     "ngx-toastr": "^13.0.0",
@@ -45,7 +46,7 @@
     "zone.js": "0.11.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.1001.4",
+    "@angular-devkit/build-angular": "^0.1100.4",
     "@angular/cli": "10.1.4",
     "@angular/compiler-cli": "10.1.4",
     "@angular/language-service": "10.1.4",
