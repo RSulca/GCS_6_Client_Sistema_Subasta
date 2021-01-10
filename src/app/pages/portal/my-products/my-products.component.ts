@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subasta } from 'src/app/models/request/subasta.model';
 import { NotifierService } from 'src/app/services/notifier.service';
 import { ProductoService } from 'src/app/services/producto.service';
 import { SubastaService } from 'src/app/services/subasta.service';
@@ -42,9 +41,11 @@ export class MyProductsComponent implements OnInit {
       moneda: ['', [Validators.required]],
       modo: ['', [Validators.required]],
       precio_minimo: [null, []],
-      tipo: ['INGLESA', [Validators.required]],
+      tipo: ['', [Validators.required]],
       fecha_inicio: ['', [Validators.required]],
       fecha_fin: ['', [Validators.required]],
+      hora_inicio: ['', [Validators.required]],
+      hora_fin: ['', [Validators.required]],
       precio_base: [null, [Validators.required]]
     });
 
@@ -71,7 +72,7 @@ export class MyProductsComponent implements OnInit {
                 'title': 'Subasta creada con exito.',
                 'description': 'Su producto ahora esta en subasta!!'
               });
-              this.router.navigate(['/home'])
+              this.router.navigate(['/seller-product', data['subasta']._id]);
             }
           }, e => {
             console.log(e);
@@ -90,7 +91,5 @@ export class MyProductsComponent implements OnInit {
     const sellerTemp = localStorage.getItem('user');
     this.seller = JSON.parse(sellerTemp);
   }
-
-
 
 }

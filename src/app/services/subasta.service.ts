@@ -27,4 +27,9 @@ export class SubastaService {
 
   }
 
+  obtenerSubasta(id: string){
+    const url = `${environment.API_SUBASTA}/api/subasta/${id}`;
+    return this.http.get<Subasta[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
+  }
+
 }

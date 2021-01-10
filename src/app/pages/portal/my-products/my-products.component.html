@@ -68,7 +68,7 @@
               <div class="form-group">
                 <label for="tiposubasta">Tipo de Subasta</label>
                 <select name="tiposubasta" id="tiposubasta" class="form-control" formControlName="tipo">
-                  <option disabled selected hidden>Selecciona</option>
+                  <option value="" disabled selected hidden>Selecciona</option>
                   <option value="INGLESA">Inglesa</option>
                   <option value="HOLANDESA">Holandesa</option>
                 </select>
@@ -76,7 +76,7 @@
               <div class="form-group">
                 <label for="modosubasta ">Modo de Subasta</label>
                 <select name="modosubasta" id="modosubasta" class="form-control" formControlName="modo">
-                  <option disabled selected hidden>Selecciona</option>
+                  <option value="" disabled selected hidden>Selecciona</option>
                   <option value="SINC">Síncrono</option>
                   <option value="ASYNC">Asíncrono</option>
                 </select>
@@ -86,7 +86,7 @@
               <div class="form-group">
                 <label for="moneda">Moneda</label>
                 <select name="moneda" id="moneda" class="form-control" formControlName="moneda">
-                  <option disabled selected hidden>Selecciona</option>
+                  <option value="" disabled selected hidden>Selecciona</option>
                   <option value="Soles">Soles</option>
                   <option value="Dolares">Dólares</option>
                   <option value="Euros">Euros</option>
@@ -129,12 +129,12 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label class="form-control-label" for="input-last-name">Hora de inicio</label>
-                <input class="form-control" [ngxTimepicker]="picker" placeholder="- - : - -  AM/PM">
+                <input class="form-control" [ngxTimepicker]="picker" placeholder="- - : - -  AM/PM" formControlName="hora_inicio">
                 <ngx-material-timepicker #picker></ngx-material-timepicker>
               </div>
               <div class="form-group">
                 <label class="form-control-label" for="input-last-name">Hora de fin</label>
-                <input class="form-control" [ngxTimepicker]="picker2" placeholder="- - : - -  AM/PM">
+                <input class="form-control" [ngxTimepicker]="picker2" placeholder="- - : - -  AM/PM" formControlName="hora_fin">
                 <ngx-material-timepicker #picker2></ngx-material-timepicker>
               </div>
             </div>
