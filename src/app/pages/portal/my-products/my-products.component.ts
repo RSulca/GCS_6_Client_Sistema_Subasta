@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subasta } from 'src/app/models/request/subasta.model';
 import { NotifierService } from 'src/app/services/notifier.service';
 import { ProductoService } from 'src/app/services/producto.service';
 import { SubastaService } from 'src/app/services/subasta.service';
+import { ConfirmDialogComponent } from '../personal-components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-my-products',
@@ -18,7 +20,7 @@ export class MyProductsComponent implements OnInit {
   seller: any = {};
   holandesa: boolean = false;
 
-  constructor(private activatedRoute: ActivatedRoute, private fb: FormBuilder, private router: Router,
+  constructor(private activatedRoute: ActivatedRoute, private fb: FormBuilder, private router: Router, public dialog: MatDialog,
     private productService: ProductoService, private nf: NotifierService, private auctionService: SubastaService) {
     this.initForm();
     this.getSeller();
@@ -57,17 +59,25 @@ export class MyProductsComponent implements OnInit {
 
   createAuction() {
     if (this.auctionForm.valid) {
-      this.auctionService.crearSubasta(this.product._id, this.seller._id, this.auctionForm.value).subscribe(data => {
-        if (data) {
-          this.nf.notification("success", {
-            'title': 'Subasta creada con exito.',
-            'description': 'Su producto ahora esta en subasta!!'
-          });
-          this.router.navigate(['/home'])
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        width: '400px',
+        data: '¿Esta seguro de proceder con la subasta?',
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.auctionService.crearSubasta(this.product._id, this.seller._id, this.auctionForm.value).subscribe(data => {
+            if (data) {
+              this.nf.notification("success", {
+                'title': 'Subasta creada con exito.',
+                'description': 'Su producto ahora esta en subasta!!'
+              });
+              this.router.navigate(['/home'])
+            }
+          }, e => {
+            console.log(e);
+          })
         }
-      }, e => {
-        console.log(e);
-      })
+      });
     } else {
       this.nf.notification("warning", {
         'title': 'Formulario invalido.',
