@@ -28,7 +28,7 @@ export class MyProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(data => {
-      const idProducto = data['idProducto'];
+      const idProducto = data['idProducto']; 
 
       this.productService.obtenerProducto(idProducto).subscribe((data: any) => {
         this.product = data.product;
