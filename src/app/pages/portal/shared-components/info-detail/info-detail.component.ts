@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class InfoDetailComponent implements OnInit {
   @Input() infoAuction: any;
+  @Input() typeUser: string;
 
   constructor() { }
 
