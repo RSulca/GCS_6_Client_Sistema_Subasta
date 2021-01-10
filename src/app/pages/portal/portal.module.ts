@@ -23,16 +23,20 @@ import { AccountComponent } from './account/account.component';
 import { AccountModule } from './account/account.module';
 import { ProductRegisterComponent } from './product-register/product-register.component';
 import { HistorialComponent } from './historial/historial.component';
+import { HistorialComprasComponent } from './historial-Compras/historial-Compras.component';
 import { ConfirmDialogComponent } from './personal-components/confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { InfoDetailComponent } from './shared-components/info-detail/info-detail.component';
+import { TimerComponentComponent } from './shared-components/timer-component/timer-component.component';
+import { SellerDetailProductComponent } from './seller-detail-product/seller-detail-product.component';
 import { DetailProductComponent } from './detail-product/detail-product.component';
 
 //modulos de terceros
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { InfoDetailComponent } from './shared-components/info-detail/info-detail.component';
-import { TimerComponentComponent } from './shared-components/timer-component/timer-component.component';
-import { SellerDetailProductComponent } from './seller-detail-product/seller-detail-product.component';
+import { MyProductsComponent } from './my-products/my-products.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+
 
 @NgModule({
   declarations: [
@@ -51,11 +55,12 @@ import { SellerDetailProductComponent } from './seller-detail-product/seller-det
     AccountComponent,
     HistorialComponent,
     ConfirmDialogComponent,
-    DetailProductComponent,
     InfoDetailComponent,
     TimerComponentComponent,
-    SellerDetailProductComponent
-    
+    SellerDetailProductComponent,
+    DetailProductComponent,
+    MyProductsComponent,
+    HistorialComprasComponent
   ],
   imports: [
     CommonModule,
@@ -68,6 +73,7 @@ import { SellerDetailProductComponent } from './seller-detail-product/seller-det
     TermsComponentsModule,
     AccountModule,
     MatDialogModule,
+    NgxMaterialTimepickerModule,
     NgxPaginationModule,
     ModalModule.forRoot()
   ],
