@@ -21,4 +21,13 @@ export class SubastaService {
     return this.http.put<Subasta[]>(url, { idSubasta, calificacion, mensajeCalificacion }, { headers: { 'x-token': this.ls.getData('token') } });
   }
 
+  crearSubasta(idProducto: string, data: any){
+    console.log(idProducto);
+    console.log(data);
+    /*
+    const url = `${environment.API_SUBASTA}/api/subasta/${idProducto}`;
+    return this.http.post<Subasta[]>(url, data, { headers: { 'x-token': this.ls.getData('token') } });
+    */
+  }
+
 }

@@ -66,7 +66,7 @@
                                                         <li class="nav-item dropdown">
                                                             <a class="nav-link dropdown-toggle btn btn-info btn-sm" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Acciones</a>
                                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                                <a *ngIf="p.state==='APROBADO'" type="button" routerLinkActive="active" [routerLink]="['/myproducts']" class="dropdown-item">Crear Subasta</a>
+                                                                <a *ngIf="p.state==='APROBADO'" type="button" routerLinkActive="active" [routerLink]="['/myproducts', p._id]" class="dropdown-item">Crear Subasta</a>
                                                                 <a *ngIf="p.state==='RECHAZADO'" type="button" (click)="openModal(template,p)" class="dropdown-item">Motivo de rechazo</a>
                                                                 <a *ngIf="p.state==='POR SUBSANAR'" type="button" (click)="openModal(template,p)" class="dropdown-item">Motivo de subsanación</a>
                                                                 <a *ngIf="p.state==='POR SUBSANAR'" type="button" (click)="goToProduct(p)" class="dropdown-item">Subsanar producto</a>

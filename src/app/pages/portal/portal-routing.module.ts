@@ -35,7 +35,7 @@ export const portalRoutes: Routes = [
     component: DetailProductComponent
   },
   {
-    path: 'myproducts',
+    path: 'myproducts/:idProducto',
     component: MyProductsComponent
   },
   {

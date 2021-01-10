@@ -49,114 +49,106 @@
         </div>
     </div>
 
-
-    <div class="my_products mb-5">
-        <div class="row">
-            <div class="col-md-6 col-xl-6">
-                <div class="cat-prod">
-                    <div class="">
-                        <h2 class="cat-prod-h3">Categoría:</h2>
-                    </div>
-                    <div class="row">
-
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <div class="">
-                                    <label for="">Título</label>
-                                    <input type="text" class="form-control" name="" id="" placeholder="Título para subasta">
+    <form [formGroup]="registrarSubastaForm" (submit)="submit()">
+        <div class="my_products mb-5">
+            <div class="row">
+                <div class="col-md-6 col-xl-6">
+                    <div class="cat-prod">
+                        <div class="">
+                            <h2 class="cat-prod-h3">Categoría:</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="">
+                                        <label for="">Título</label>
+                                        <input type="text" class="form-control" id="titulo" placeholder="Título para subasta" formControlName="titulo">
+                                    </div>
                                 </div>
+                                <h5>Descripción</h5>
                             </div>
-                            <h5>Descripción</h5>
+                            <div class="col-md-12 align-self-center">
+                                <p>imagen</p>
+                            </div>
                         </div>
-
-                        <div class="col-md-12 align-self-center">
-                            <p>imagen</p>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-right">
+                                <button type="button" class="btn-send btn btn_enlace hvr-grow" id="">Detalles</button>
+                            </div>
                         </div>
-
+                    </div>
+                </div>
+                <div class="col-md-2 col-xl-2">
+    
+                    <div class="form-group">
+                        <label for="tiposubasta">Tipo de Subasta</label>
+                        <select id="tiposubasta" class="form-control" formControlName="tipoSubasta">
+                            <option value="" disabled selected hidden>Selecciona</option>
+                            <!-- <option value="" selected disabled hidden>Escoja una...</option> -->
+                            <option value="Inglesa">Inglesa</option>
+                            <option value="Holandesa">Holandesa</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="modosubasta ">Modo de Subasta</label>
+                        <select id="modosubasta" class="form-control" formControlName="modoSubasta">
+                            <option value="" disabled selected hidden>Selecciona</option>
+                            <option value="Síncrono">Síncrono</option>
+                            <option value="Asíncrono">Asíncrono</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="moneda">Moneda</label>
+                        <select id="moneda" class="form-control" formControlName="moneda">
+                            <option value="" disabled selected hidden>Selecciona</option>
+                            <option value="Soles">Soles</option>
+                            <option value="Dólares">Dólares</option>
+                            <option value="Euros">Euros</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xl-2">
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-last-name">Fecha de inicio</label>
+                        <input type="date" class="form-control form-control-alternative" formControlName="fechaInicio">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-last-name">Fecha de fin</label>
+                        <input type="date" class="form-control form-control-alternative" formControlName="fechaFin">
+                    </div>
+                    <div class="form-group">
+                        <div class="">
+                            <label for="">Precio mínimo</label>
+                            <input type="text" class="form-control" name="" id="" placeholder="Precio base: dolares, soles o euros" formControlName="precioMinimo">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-xl-2">
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-last-name">Hora de inicio</label>
+                        <input class="form-control" [ngxTimepicker]="picker" placeholder="- - : - -  AM/PM" formControlName="horaInicio">
+                        <ngx-material-timepicker #picker></ngx-material-timepicker>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label" for="input-last-name">Hora de fin</label>
+                        <input class="form-control" [ngxTimepicker]="picker2" placeholder="- - : - -  AM/PM" formControlName="horaFin">
+                        <ngx-material-timepicker #picker2></ngx-material-timepicker>
+                    </div>
+                    <div class="form-group">
+                        <div class="">
+                            <label for="">Precio base</label>
+                            <input type="text" class="form-control" name="" id="" placeholder="Precio base: dolares, soles o euros" formControlName="precioBase">
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12 text-right">
-                            <button type="button" class="btn-send btn btn_enlace hvr-grow" id="">Detalles</button>
+                            <button type="submit" class="btn btn-primary btn_enlace hvr-grow">Subastar</button>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 col-xl-2">
-
-                <div class="form-group">
-                    <label for="tiposubasta">Tipo de Subasta</label>
-                    <select name="tiposubasta" id="tiposubasta" class="form-control">
-                        <option disabled selected hidden>Selecciona</option>
-                        <option value="">Inglesa</option>
-                        <option value="">Holandesa</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="modosubasta ">Modo de Subasta</label>
-                    <select name="modosubasta" id="modosubasta" class="form-control">
-                        <option disabled selected hidden>Selecciona</option>
-                        <option value="">Síncrono</option>
-                        <option value="">Asíncrono</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="moneda">Moneda</label>
-                    <select name="moneda" id="moneda" class="form-control">
-                        <option disabled selected hidden>Selecciona</option>
-                        <option value="">Soles</option>
-                        <option value="">Dólares</option>
-                        <option value="">Euros</option>
-                    </select>
-                </div>
-
-
-            </div>
-            <div class="col-md-2 col-xl-2">
-                <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Fecha de inicio</label>
-                    <input type="date" class="form-control form-control-alternative">
-
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Fecha de fin</label>
-                    <input type="date" class="form-control form-control-alternative">
-                </div>
-                <div class="form-group">
-                    <div class="">
-                        <label for="">Precio mínimo</label>
-                        <input type="text" class="form-control" name="" id="" placeholder="Precio base: dolares, soles o euros">
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-2 col-xl-2">
-                <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Hora de inicio</label>
-                    <input class="form-control" [ngxTimepicker]="picker" placeholder="- - : - -  AM/PM">
-                    <ngx-material-timepicker #picker></ngx-material-timepicker>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Hora de fin</label>
-                    <input class="form-control" [ngxTimepicker]="picker2" placeholder="- - : - -  AM/PM">
-                    <ngx-material-timepicker #picker2></ngx-material-timepicker>
-                </div>
-                <div class="form-group">
-                    <div class="">
-                        <label for="">Precio base</label>
-                        <input type="text" class="form-control" name="" id="" placeholder="Precio base: dolares, soles o euros">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-xs-12 text-right">
-                        <button type="button" class="btn-send btn btn_enlace hvr-grow" id="">Subastar</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-
+    </form>
 
 
 </div>
