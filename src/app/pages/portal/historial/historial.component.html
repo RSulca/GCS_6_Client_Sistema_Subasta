@@ -56,7 +56,8 @@
                           <div class="status2 ">
                             <span class="badge badge-primary"
                               [ngClass]="{'badge-primary':p.state==='ENVIADO', 'badge-danger': p.state==='RECHAZADO', 
-                              'badge-success': p.state==='APROBADO','badge-warning': p.state==='SUBSANADO', 'badge-dark': p.state==='POR SUBSANAR'}"
+                              'badge-success': p.state==='APROBADO','badge-warning': p.state==='SUBSANADO', 
+                              'badge-dark': p.state==='POR SUBSANAR','badge-default': p.state==='EN SUBASTA'}"
                               style="width: 150px;">{{p.state}}</span>
                           </div>
                         </div>

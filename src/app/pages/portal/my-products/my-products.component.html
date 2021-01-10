@@ -31,114 +31,120 @@
 
 
   <div class="my_products mb-5">
-    <div class="row">
-      <div class="col-md-6 col-xl-6">
-        <div class="cat-prod">
-          <div class="">
-            <h2 class="cat-prod-h3">Categoría: {{product.category}}</h2>
+    <form [formGroup]="auctionForm" (ngSubmit)="createAuction()">
+
+      <div class="row">
+        <div class="col-md-6 col-xl-6">
+          <div class="cat-prod">
+            <div class="">
+              <h2 class="cat-prod-h3">Categoría: {{product.category}}</h2>
+            </div>
+            <div class="row">
+
+              <div class="col-md-12">
+                <div class="form-group">
+                  <div class="">
+                    <label for="">Título</label>
+                    <input type="text" class="form-control" name="" id="" placeholder="Título para subasta"
+                      formControlName="titulo">
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 align-self-center">
+                <h6>Imagen destacada</h6>
+                <img *ngIf="product.imgs" [src]="product.imgs[0]" style="width: 620px;">
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <p>Informacion básica de la subasta</p>
           </div>
           <div class="row">
-
-            <div class="col-md-12">
+            <div class="col-md-6">
               <div class="form-group">
+                <label for="tiposubasta">Tipo de Subasta</label>
+                <select name="tiposubasta" id="tiposubasta" class="form-control" formControlName="tipo">
+                  <option disabled selected hidden>Selecciona</option>
+                  <option value="INGLESA">Inglesa</option>
+                  <option value="HOLANDESA">Holandesa</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="modosubasta ">Modo de Subasta</label>
+                <select name="modosubasta" id="modosubasta" class="form-control" formControlName="modo">
+                  <option disabled selected hidden>Selecciona</option>
+                  <option value="SINC">Síncrono</option>
+                  <option value="ASYNC">Asíncrono</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="moneda">Moneda</label>
+                <select name="moneda" id="moneda" class="form-control" formControlName="moneda">
+                  <option disabled selected hidden>Selecciona</option>
+                  <option value="Soles">Soles</option>
+                  <option value="Dolares">Dólares</option>
+                  <option value="Euros">Euros</option>
+                </select>
+              </div>
+              <div class="form-group" *ngIf="holandesa">
                 <div class="">
-                  <label for="">Título</label>
-                  <input type="text" class="form-control" name="" id="" placeholder="Título para subasta">
+                  <label for="">Precio mínimo</label>
+                  <input type="number" class="form-control" name="" id=""
+                    placeholder="Precio base: dolares, soles o euros" formControlName="precio_minimo">
                 </div>
               </div>
             </div>
-
-            <div class="col-md-12 align-self-center">
-              <h6>Imagen destacada</h6>
-              <img *ngIf="product.imgs" [src]="product.imgs[0]" style="width: 620px;">
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="">
+                  <label for="">Precio base</label>
+                  <input type="number" class="form-control" name="" id=""
+                    placeholder="Precio base: dolares, soles o euros" formControlName="precio_base">
+                </div>
+              </div>
             </div>
-
+            <hr>
           </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="row">
-          <p>Informacion básica de la subasta</p>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="tiposubasta">Tipo de Subasta</label>
-              <select name="tiposubasta" id="tiposubasta" class="form-control">
-                <option disabled selected hidden>Selecciona</option>
-                <option value="">Inglesa</option>
-                <option value="">Holandesa</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="modosubasta ">Modo de Subasta</label>
-              <select name="modosubasta" id="modosubasta" class="form-control">
-                <option disabled selected hidden>Selecciona</option>
-                <option value="">Síncrono</option>
-                <option value="">Asíncrono</option>
-              </select>
-            </div>
+          <div class="row">
+            <p>Horario de la subasta</p>
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="moneda">Moneda</label>
-              <select name="moneda" id="moneda" class="form-control">
-                <option disabled selected hidden>Selecciona</option>
-                <option value="">Soles</option>
-                <option value="">Dólares</option>
-                <option value="">Euros</option>
-              </select>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-last-name">Fecha de inicio</label>
+                <input type="date" class="form-control form-control-alternative" formControlName="fecha_inicio">
+
+              </div>
+              <div class="form-group">
+                <label class="form-control-label" for="input-last-name">Fecha de fin</label>
+                <input type="date" class="form-control form-control-alternative" formControlName="fecha_fin">
+              </div>
             </div>
-            <div class="form-group">
-              <div class="">
-                <label for="">Precio mínimo</label>
-                <input type="text" class="form-control" name="" id="" placeholder="Precio base: dolares, soles o euros">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="form-control-label" for="input-last-name">Hora de inicio</label>
+                <input class="form-control" [ngxTimepicker]="picker" placeholder="- - : - -  AM/PM">
+                <ngx-material-timepicker #picker></ngx-material-timepicker>
+              </div>
+              <div class="form-group">
+                <label class="form-control-label" for="input-last-name">Hora de fin</label>
+                <input class="form-control" [ngxTimepicker]="picker2" placeholder="- - : - -  AM/PM">
+                <ngx-material-timepicker #picker2></ngx-material-timepicker>
               </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <div class="">
-                <label for="">Precio base</label>
-                <input type="text" class="form-control" name="" id="" placeholder="Precio base: dolares, soles o euros">
-              </div>
-            </div>
+          <div class="row">
+            <button type="submit" class="btn btn-success btn-lg btn-block">Subastar</button>
           </div>
-          <hr>
-        </div>
-        <div class="row">
-          <p>Horario de la subasta</p>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label class="form-control-label" for="input-last-name">Fecha de inicio</label>
-              <input type="date" class="form-control form-control-alternative">
-
-            </div>
-            <div class="form-group">
-              <label class="form-control-label" for="input-last-name">Fecha de fin</label>
-              <input type="date" class="form-control form-control-alternative">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label class="form-control-label" for="input-last-name">Hora de inicio</label>
-              <input class="form-control" [ngxTimepicker]="picker" placeholder="- - : - -  AM/PM">
-              <ngx-material-timepicker #picker></ngx-material-timepicker>
-            </div>
-            <div class="form-group">
-              <label class="form-control-label" for="input-last-name">Hora de fin</label>
-              <input class="form-control" [ngxTimepicker]="picker2" placeholder="- - : - -  AM/PM">
-              <ngx-material-timepicker #picker2></ngx-material-timepicker>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <button type="button" class="btn btn-success btn-lg btn-block">Subastar</button>
         </div>
       </div>
-    </div>
+    </form>
 
   </div>
 

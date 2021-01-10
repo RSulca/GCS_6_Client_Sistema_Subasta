@@ -11,14 +11,20 @@ export class SubastaService {
 
   constructor(private http: HttpClient, private ls: LocalStorageService) { }
 
-  listarHistorialCompras(idComprador: string){
+  listarHistorialCompras(idComprador: string) {
     const url = `${environment.API_SUBASTA}/api/subasta/getSubastasByIdComprador/${idComprador}`;
     return this.http.get<Subasta[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
   }
 
-  calificarSubasta(idSubasta: string, calificacion: number, mensajeCalificacion: string){
+  calificarSubasta(idSubasta: string, calificacion: number, mensajeCalificacion: string) {
     const url = `${environment.API_SUBASTA}/api/subasta/calificar`;
     return this.http.put<Subasta[]>(url, { idSubasta, calificacion, mensajeCalificacion }, { headers: { 'x-token': this.ls.getData('token') } });
+  }
+
+  crearSubasta(idProducto: any, idVendedor: any, subasta: any) {
+    const url = `${environment.API_SUBASTA}/api/subasta/${idProducto}/vendedor/${idVendedor}`;
+    return this.http.post(url, subasta, { headers: { 'x-token': this.ls.getData('token') } });
+
   }
 
 }
