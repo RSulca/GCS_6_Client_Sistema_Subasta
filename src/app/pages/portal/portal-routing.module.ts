@@ -8,6 +8,7 @@ import { HistorialComponent } from './historial/historial.component';
 import { HistorialComprasComponent } from './historial-Compras/historial-Compras.component';
 import { HomePortalComponent } from './home-portal/home-portal.component';
 import { ProductRegisterComponent } from './product-register/product-register.component';
+import { SellerDetailProductComponent } from './seller-detail-product/seller-detail-product.component';
 import { TermsComponent } from './terms-components/terms-components.component';
 import { TermsModalComponent } from './terms-components/terms-modal/terms-modal.component';
 import { MyProductsComponent } from './my-products/my-products.component';
@@ -31,8 +32,12 @@ export const portalRoutes: Routes = [
     component: CatalogoComponent
   },
   {
-    path: 'detail',
+    path: 'buyer',
     component: DetailProductComponent
+  },
+  {
+    path: 'seller-product/:idSubasta',
+    component: SellerDetailProductComponent
   },
   {
     path: 'myproducts/:idProducto',
