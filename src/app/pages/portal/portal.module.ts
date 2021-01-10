@@ -34,6 +34,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { MyProductsComponent } from './my-products/my-products.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { InfoDetailComponent } from './shared-components/info-detail/info-detail.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { HelpComponent } from './help/help.component';
 
 
 
@@ -56,7 +58,9 @@ import { InfoDetailComponent } from './shared-components/info-detail/info-detail
     ConfirmDialogComponent,
     InfoDetailComponent,
     DetailProductComponent,
-    MyProductsComponent
+    MyProductsComponent,
+    FavoritesComponent,
+    HelpComponent
     
   ],
   imports: [
