@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subasta } from 'src/app/models/request/subasta.model';
+import { NotifierService } from 'src/app/services/notifier.service';
+import { ProductoService } from 'src/app/services/producto.service';
 import { SubastaService } from 'src/app/services/subasta.service';
+import { ConfirmDialogComponent } from '../personal-components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-my-products',
@@ -10,91 +15,82 @@ import { SubastaService } from 'src/app/services/subasta.service';
 })
 export class MyProductsComponent implements OnInit {
 
-  registrarSubastaForm: FormGroup;
-  idProducto: string;
+  product: any = {};
+  auctionForm: FormGroup;
+  seller: any = {};
+  holandesa: boolean = false;
 
-  constructor(private fb: FormBuilder, private subastaService: SubastaService, private _route: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private fb: FormBuilder, private router: Router, public dialog: MatDialog,
+    private productService: ProductoService, private nf: NotifierService, private auctionService: SubastaService) {
     this.initForm();
-    this.idProducto = this._route.snapshot.paramMap.get('idProducto');
+    this.getSeller();
   }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(data => {
+      const idProducto = data['idProducto']; 
 
-  }
-
-  get titulo(){
-    return this.registrarSubastaForm.get('titulo');
-  }
-
-  get tipoSubasta(){
-    return this.registrarSubastaForm.get('tipoSubasta');
-  }
-
-  get modoSubasta(){
-    return this.registrarSubastaForm.get('modoSubasta');
-  }
-
-  get fechaInicio(){
-    return this.registrarSubastaForm.get('fechaInicio');
-  }
-
-  get fechaFin(){
-    return this.registrarSubastaForm.get('fechaFin');
-  }
-
-  get horaInicio(){
-    return this.registrarSubastaForm.get('horaInicio');
-  }
-
-  get horaFin(){
-    return this.registrarSubastaForm.get('horaFin');
-  }
-
-  get moneda(){
-    return this.registrarSubastaForm.get('moneda');
-  }
-
-  get precioMinimo(){
-    return this.registrarSubastaForm.get('precioMinimo');
-  }
-
-  get precioBase(){
-    return this.registrarSubastaForm.get('precioBase');
+      this.productService.obtenerProducto(idProducto).subscribe((data: any) => {
+        this.product = data.product;
+      });
+    });
   }
 
   initForm() {
-    this.registrarSubastaForm = this.fb.group({
-      titulo: [''],
-      tipoSubasta: [''],
-      modoSubasta: [''],
-      fechaInicio: [''],
-      fechaFin: [''],
-      horaInicio: [''],
-      horaFin: [''],
-      moneda: [''],
-      precioMinimo: [''],
-      precioBase: ['']
+    this.auctionForm = this.fb.group({
+      titulo: ['', [Validators.required]],
+      moneda: ['', [Validators.required]],
+      modo: ['', [Validators.required]],
+      precio_minimo: [null, []],
+      tipo: ['INGLESA', [Validators.required]],
+      fecha_inicio: ['', [Validators.required]],
+      fecha_fin: ['', [Validators.required]],
+      precio_base: [null, [Validators.required]]
+    });
+
+    this.auctionForm.valueChanges.subscribe(data => {
+      if (data['tipo'] == 'HOLANDESA') {
+        this.holandesa = true;
+      } else {
+        this.holandesa = false;
+      }
     })
-  };
-
-
-  submit(){
-
-    // if(confirm('Está seguro de grabar?')){
-    //   this.subastaService.crearSubasta(this.idProducto, this.registrarSubastaForm.value)
-    //   .subscribe(data=>{
-
-        
-
-
-
-    //     /*
-    //     this.nf.notification("success", {
-    //       'title': 'Registro exitoso.',
-    //       'description': 'Se ha registrado correctamente.'
-    //     });*/
-    //   });
-    // }
   }
+
+  createAuction() {
+    if (this.auctionForm.valid) {
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        width: '400px',
+        data: '¿Esta seguro de proceder con la subasta?',
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.auctionService.crearSubasta(this.product._id, this.seller._id, this.auctionForm.value).subscribe(data => {
+            if (data) {
+              this.nf.notification("success", {
+                'title': 'Subasta creada con exito.',
+                'description': 'Su producto ahora esta en subasta!!'
+              });
+              this.router.navigate(['/home'])
+            }
+          }, e => {
+            console.log(e);
+          })
+        }
+      });
+    } else {
+      this.nf.notification("warning", {
+        'title': 'Formulario invalido.',
+        'description': 'Por complete todos los datos necesarios de la subasta.'
+      });
+    }
+  }
+
+  getSeller() {
+    const sellerTemp = localStorage.getItem('user');
+    this.seller = JSON.parse(sellerTemp);
+  }
+
+
 
 }

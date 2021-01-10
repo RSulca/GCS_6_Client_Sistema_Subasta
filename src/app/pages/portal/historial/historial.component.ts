@@ -16,10 +16,10 @@ export class HistorialComponent implements OnInit {
   products: any[] = [];
   p: number = 1;
   modalRef: BsModalRef;
-  productShow:any={};
+  productShow: any = {};
 
-  constructor(private productService: ProductoService, private modalService: BsModalService,private productEmitter:ProductEmiterService,
-    private webSocketService: WebSocketService, private nf: NotifierService,private router:Router) { }
+  constructor(private productService: ProductoService, private modalService: BsModalService, private productEmitter: ProductEmiterService,
+    private webSocketService: WebSocketService, private nf: NotifierService, private router: Router) { }
 
   ngOnInit(): void {
     this.getProductosByUser();
@@ -48,22 +48,22 @@ export class HistorialComponent implements OnInit {
     })
   }
 
-  filtrar(event: any){
-    if(event.target.value == ''){
+  filtrar(event: any) {
+    if (event.target.value == '') {
       this.buscarPorNombreEstado('all')
-    }else{
+    } else {
       this.buscarPorNombreEstado(event.target.value);
     }
   }
-  
-  openModal(template: TemplateRef<any>,producto:any) {
+
+  openModal(template: TemplateRef<any>, producto: any) {
     this.modalRef = this.modalService.show(template);
-    this.productShow=producto;
+    this.productShow = producto;
   }
 
-  goToProduct(product:any){
-    const tempArray=product.description.slice(0,product.description.length-1)
-    const shipping=product.description.slice(product.description.length-1,product.description.length)
+  goToProduct(product: any) {
+    const tempArray = product.description.slice(0, product.description.length - 1)
+    const shipping = product.description.slice(product.description.length - 1, product.description.length)
 
     this.router.navigate(['seller/edit/photos'])
     //usar preductEmitter
@@ -72,8 +72,12 @@ export class HistorialComponent implements OnInit {
     this.productEmitter.addDescription(tempArray);
     this.productEmitter.addShiping(shipping);
 
-    localStorage.setItem('productoMod',JSON.stringify(product));
+    localStorage.setItem('productoMod', JSON.stringify(product));
 
+  }
+
+  goToSubasta(product: any) {
+    this.router.navigate(['auction-create', product._id]);
   }
 
 }
