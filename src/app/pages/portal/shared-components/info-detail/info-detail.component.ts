@@ -15,4 +15,11 @@ export class InfoDetailComponent implements OnInit {
     
   }
 
+
+  finalizarSubasta(){
+    
+  }
+
+
+
 }

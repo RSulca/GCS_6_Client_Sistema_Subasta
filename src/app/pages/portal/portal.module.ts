@@ -57,6 +57,7 @@ import { HelpComponent } from './help/help.component';
     ProductCardListComponent,
     AccountComponent,
     HistorialComponent,
+    HistorialComprasComponent,
     ConfirmDialogComponent,
     InfoDetailComponent,
     TimerComponentComponent,

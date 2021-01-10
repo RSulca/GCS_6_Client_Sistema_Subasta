@@ -8,11 +8,16 @@
 
     <div class="row mx-0 mx-md-2">
         <div class="col-12 col-md-8">
-            <h2 class="titulo-producto">Nombre del producto en subasta</h2>
+            <h2 class="titulo-producto">{{nombreProducto}}</h2>
             <!-- Carousel de imagenes -->
             <div class="p-1">
                 <owl-carousel-o [options]="customOptions">
-                    <ng-template carouselSlide>
+                    <ng-template carouselSlide *ngFor="let imagen of imagenesProducto">
+                        <div class="col">
+                            <img src="{{imagen}}" class="img-fluid">
+                        </div>
+                    </ng-template>
+                    <!-- <ng-template carouselSlide>
                         <div class="col">
                             <img src="https://i.blogs.es/9638f5/osete/840_560.jpg" class="img-fluid">
                         </div>
@@ -21,20 +26,21 @@
                         <div class="col">
                             <img src="https://i.blogs.es/9638f5/osete/840_560.jpg" class="img-fluid">
                         </div>
-                    </ng-template>
-                    <ng-template carouselSlide>
-                        <div class="col">
-                            <img src="https://i.blogs.es/9638f5/osete/840_560.jpg" class="img-fluid">
-                        </div>
-                    </ng-template>
+                    </ng-template> -->
                 </owl-carousel-o>
             </div>
 
             <!-- Usuario -->
             <div class="p-3">
                 <p class="mb-0"><small>VENDEDOR</small></p>
-                <div><a href="" class="link-underline">Usuario123</a></div>
-                <p class="mb-0"><small>100% <a href="#" class="link-underline">9 calificaciones</a></small></p>
+                <div><a href="" class="link-underline">{{vendedorNombre}} {{vendedorApellido}}</a></div>
+                <!-- <p class="mb-0"><small>100% <a href="#" class="link-underline">9 calificaciones</a></small></p> -->
+                <div *ngIf="calificacion != '';else noCalificacion">
+                    <span *ngFor="let estrella of calificacion" class="fa fa-star icon-c"></span>
+                </div>
+                <ng-template #noCalificacion>
+                    <span>No tiene calificación</span>
+                </ng-template>
             </div>
 
             <!-- Descripcion -->
