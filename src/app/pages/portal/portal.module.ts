@@ -26,6 +26,8 @@ import { HistorialComponent } from './historial/historial.component';
 import { HistorialComprasComponent } from './historial-Compras/historial-Compras.component';
 import { ConfirmDialogComponent } from './personal-components/confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { TimerComponentComponent } from './shared-components/timer-component/timer-component.component';
+import { SellerDetailProductComponent } from './seller-detail-product/seller-detail-product.component';
 import { DetailProductComponent } from './detail-product/detail-product.component';
 
 //modulos de terceros
@@ -57,6 +59,8 @@ import { HelpComponent } from './help/help.component';
     HistorialComponent,
     ConfirmDialogComponent,
     InfoDetailComponent,
+    TimerComponentComponent,
+    SellerDetailProductComponent,
     DetailProductComponent,
     MyProductsComponent,
     FavoritesComponent,

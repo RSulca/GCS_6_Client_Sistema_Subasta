@@ -91,46 +91,8 @@
         </div>
 
         <div class="col-12 col-md-4">
-            <app-info-detail [infoAuction]="infoAuction" typeUser="buyer"></app-info-detail>
+            <app-info-detail [infoAuction]="infoAuction" typeUser="seller"></app-info-detail>
         </div>
-    </div>
-
-    <div class="similares pt-5">
-        <div class="col-12">
-            <h2>Productos Similares</h2>
-        </div>
-        <owl-carousel-o [options]="productosSimilares">
-            <ng-template carouselSlide>
-              <div class="col mb-4">
-                <app-product-card></app-product-card>
-              </div>
-            </ng-template>
-            <ng-template carouselSlide>
-              <div class="col mb-4">
-                <app-product-card></app-product-card>
-              </div>
-            </ng-template>
-            <ng-template carouselSlide>
-              <div class="col mb-4">
-                <app-product-card></app-product-card>
-              </div>
-            </ng-template>
-            <ng-template carouselSlide>
-              <div class="col mb-4">
-                <app-product-card></app-product-card>
-              </div>
-            </ng-template>
-            <ng-template carouselSlide>
-              <div class="col mb-4">
-                <app-product-card></app-product-card>
-              </div>
-            </ng-template>
-            <ng-template carouselSlide>
-              <div class="col mb-4">
-                <app-product-card></app-product-card>
-              </div>
-            </ng-template>
-        </owl-carousel-o>
     </div>
 </div>
 
