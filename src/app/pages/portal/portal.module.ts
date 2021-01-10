@@ -26,7 +26,6 @@ import { HistorialComponent } from './historial/historial.component';
 import { HistorialComprasComponent } from './historial-Compras/historial-Compras.component';
 import { ConfirmDialogComponent } from './personal-components/confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { InfoDetailComponent } from './shared-components/info-detail/info-detail.component';
 import { TimerComponentComponent } from './shared-components/timer-component/timer-component.component';
 import { SellerDetailProductComponent } from './seller-detail-product/seller-detail-product.component';
 import { DetailProductComponent } from './detail-product/detail-product.component';
@@ -36,6 +35,10 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { MyProductsComponent } from './my-products/my-products.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { InfoDetailComponent } from './shared-components/info-detail/info-detail.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { HelpComponent } from './help/help.component';
+
 
 
 @NgModule({
@@ -60,7 +63,9 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     SellerDetailProductComponent,
     DetailProductComponent,
     MyProductsComponent,
-    HistorialComprasComponent
+    FavoritesComponent,
+    HelpComponent
+    
   ],
   imports: [
     CommonModule,

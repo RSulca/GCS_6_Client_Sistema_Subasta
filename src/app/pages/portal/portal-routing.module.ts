@@ -10,9 +10,10 @@ import { SellerDetailProductComponent } from './seller-detail-product/seller-det
 import { TermsComponent } from './terms-components/terms-components.component';
 import { TermsModalComponent } from './terms-components/terms-modal/terms-modal.component';
 import { MyProductsComponent } from './my-products/my-products.component';
-import { AyudaComponent } from './ayuda/ayuda.component';
 import { HistorialComprasComponent } from './historial-Compras/historial-Compras.component';
 
+import { FavoritesComponent } from './favorites/favorites.component';
+import { HelpComponent } from './help/help.component';
 
 export const portalRoutes: Routes = [
   {
@@ -24,8 +25,11 @@ export const portalRoutes: Routes = [
     component: HomePortalComponent
   },
   {
-    path: 'ayuda',
-    component: AyudaComponent
+    path: 'help',
+    component: HelpComponent
+  },{
+    path: 'favorites',
+    component: FavoritesComponent
   },
   {
     path: 'catalog',
