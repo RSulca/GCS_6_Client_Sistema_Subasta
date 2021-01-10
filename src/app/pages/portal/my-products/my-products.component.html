@@ -1,162 +1,146 @@
 <app-navbar-portal></app-navbar-portal>
-<div class="container mt-5 mb-5">
+<div class="m-5">
 
-    <div class="row">
-        <div class="col-md-4">
-            <h3 class="mb-3 mt-1"> <b>Mis productos</b> (aprobados)</h3>
-        </div>
-        <div class="col-md-8 text-center">
-            <h3 class="mb-3 mt-1 text-center">Información complementaria</h3>
-        </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h2 class="mb-3 mt-1"> <b>Subasta de mi producto</b></h2>
     </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-md-2">
+      <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#exampleModal1">
+        Holandesa
+      </button>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#exampleModal2">
+        Inglesa
+      </button>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#exampleModal3">
+        Asíncrono
+      </button>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-outline-primary btn-block " data-toggle="modal" data-target="#exampleModal4">
+        Síncrono
+      </button>
+    </div>
+  </div>
+
+
+  <div class="my_products mb-5">
     <div class="row">
-        <div class="col-md-4 mb-4">
-            <div class="navbar-search navbar-search-light form-inline mr-sm-3 mb-4" id="navbar-search-main">
-                <div class="form-group mb-0">
-                    <div class="input-group input-group-alternative input-group-merge">
-                        <div class="input-group-prepend"><span class="input-group-text"><i
-                                    class="fas fa-search"></i></span>
-                        </div>
-                        <input class="form-control" placeholder="Search" type="text" (keyup)="filtrar($event)">
-                    </div>
+      <div class="col-md-6 col-xl-6">
+        <div class="cat-prod">
+          <div class="">
+            <h2 class="cat-prod-h3">Categoría: {{product.category}}</h2>
+          </div>
+          <div class="row">
+
+            <div class="col-md-12">
+              <div class="form-group">
+                <div class="">
+                  <label for="">Título</label>
+                  <input type="text" class="form-control" name="" id="" placeholder="Título para subasta">
                 </div>
-            </div>
-            <div *ngIf="">
-                <p style="padding-left: 15px;">NO TIENE PRODUCTOS</p>
-
+              </div>
             </div>
 
-        </div>
-        <div class="col-md-2">
-            <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#exampleModal1">
-                Holandesa
-            </button>
-        </div>
-        <div class="col-md-2">
-            <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#exampleModal2">
-                Inglesa
-            </button>
-        </div>
-        <div class="col-md-2">
-            <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#exampleModal3">
-                Asíncrono
-            </button>
-        </div>
-        <div class="col-md-2">
-            <button type="button" class="btn btn-outline-primary btn-block " data-toggle="modal" data-target="#exampleModal4">
-                Síncrono
-            </button>
-        </div>
-    </div>
+            <div class="col-md-12 align-self-center">
+              <h6>Imagen destacada</h6>
+              <img *ngIf="product.imgs" [src]="product.imgs[0]" style="width: 620px;">
+            </div>
 
-
-    <div class="my_products mb-5">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
         <div class="row">
-            <div class="col-md-6 col-xl-6">
-                <div class="cat-prod">
-                    <div class="">
-                        <h2 class="cat-prod-h3">Categoría:</h2>
-                    </div>
-                    <div class="row">
-
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <div class="">
-                                    <label for="">Título</label>
-                                    <input type="text" class="form-control" name="" id="" placeholder="Título para subasta">
-                                </div>
-                            </div>
-                            <h5>Descripción</h5>
-                        </div>
-
-                        <div class="col-md-12 align-self-center">
-                            <p>imagen</p>
-                        </div>
-
-                    </div>
-                    <div class="form-group">
-                        <div class="col-xs-12 text-right">
-                            <button type="button" class="btn-send btn btn_enlace hvr-grow" id="">Detalles</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 col-xl-2">
-
-                <div class="form-group">
-                    <label for="tiposubasta">Tipo de Subasta</label>
-                    <select name="tiposubasta" id="tiposubasta" class="form-control">
-                        <option disabled selected hidden>Selecciona</option>
-                        <option value="">Inglesa</option>
-                        <option value="">Holandesa</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="modosubasta ">Modo de Subasta</label>
-                    <select name="modosubasta" id="modosubasta" class="form-control">
-                        <option disabled selected hidden>Selecciona</option>
-                        <option value="">Síncrono</option>
-                        <option value="">Asíncrono</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="moneda">Moneda</label>
-                    <select name="moneda" id="moneda" class="form-control">
-                        <option disabled selected hidden>Selecciona</option>
-                        <option value="">Soles</option>
-                        <option value="">Dólares</option>
-                        <option value="">Euros</option>
-                    </select>
-                </div>
-
-
-            </div>
-            <div class="col-md-2 col-xl-2">
-                <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Fecha de inicio</label>
-                    <input type="date" class="form-control form-control-alternative">
-
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Fecha de fin</label>
-                    <input type="date" class="form-control form-control-alternative">
-                </div>
-                <div class="form-group">
-                    <div class="">
-                        <label for="">Precio mínimo</label>
-                        <input type="text" class="form-control" name="" id="" placeholder="Precio base: dolares, soles o euros">
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-2 col-xl-2">
-                <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Hora de inicio</label>
-                    <input class="form-control" [ngxTimepicker]="picker" placeholder="- - : - -  AM/PM">
-                    <ngx-material-timepicker #picker></ngx-material-timepicker>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" for="input-last-name">Hora de fin</label>
-                    <input class="form-control" [ngxTimepicker]="picker2" placeholder="- - : - -  AM/PM">
-                    <ngx-material-timepicker #picker2></ngx-material-timepicker>
-                </div>
-                <div class="form-group">
-                    <div class="">
-                        <label for="">Precio base</label>
-                        <input type="text" class="form-control" name="" id="" placeholder="Precio base: dolares, soles o euros">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-xs-12 text-right">
-                        <button type="button" class="btn-send btn btn_enlace hvr-grow" id="">Subastar</button>
-                    </div>
-                </div>
-            </div>
+          <p>Informacion básica de la subasta</p>
         </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="tiposubasta">Tipo de Subasta</label>
+              <select name="tiposubasta" id="tiposubasta" class="form-control">
+                <option disabled selected hidden>Selecciona</option>
+                <option value="">Inglesa</option>
+                <option value="">Holandesa</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="modosubasta ">Modo de Subasta</label>
+              <select name="modosubasta" id="modosubasta" class="form-control">
+                <option disabled selected hidden>Selecciona</option>
+                <option value="">Síncrono</option>
+                <option value="">Asíncrono</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="moneda">Moneda</label>
+              <select name="moneda" id="moneda" class="form-control">
+                <option disabled selected hidden>Selecciona</option>
+                <option value="">Soles</option>
+                <option value="">Dólares</option>
+                <option value="">Euros</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <div class="">
+                <label for="">Precio mínimo</label>
+                <input type="text" class="form-control" name="" id="" placeholder="Precio base: dolares, soles o euros">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <div class="">
+                <label for="">Precio base</label>
+                <input type="text" class="form-control" name="" id="" placeholder="Precio base: dolares, soles o euros">
+              </div>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="row">
+          <p>Horario de la subasta</p>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="form-control-label" for="input-last-name">Fecha de inicio</label>
+              <input type="date" class="form-control form-control-alternative">
+
+            </div>
+            <div class="form-group">
+              <label class="form-control-label" for="input-last-name">Fecha de fin</label>
+              <input type="date" class="form-control form-control-alternative">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="form-control-label" for="input-last-name">Hora de inicio</label>
+              <input class="form-control" [ngxTimepicker]="picker" placeholder="- - : - -  AM/PM">
+              <ngx-material-timepicker #picker></ngx-material-timepicker>
+            </div>
+            <div class="form-group">
+              <label class="form-control-label" for="input-last-name">Hora de fin</label>
+              <input class="form-control" [ngxTimepicker]="picker2" placeholder="- - : - -  AM/PM">
+              <ngx-material-timepicker #picker2></ngx-material-timepicker>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <button type="button" class="btn btn-success btn-lg btn-block">Subastar</button>
+        </div>
+      </div>
     </div>
 
-
+  </div>
 
 
 </div>
@@ -166,100 +150,115 @@
 <!-- Holandesa -->
 
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel1">HOLANDESA</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>La <b>Subasta Holandesa</b> es un tipo de subasta en la que el subastador comienza subastando con un alto precio, que es rebajado hasta que algún participante está dispuesto a aceptar el precio del subastador, o hasta que se llega al precio
-                    de reserva, que es el precio mínimo aceptado para esa venta.</p>
-                <h3>Ejemplo</h3>
-                <p> Juan realiza una subasta Holandesa, el producto que Juan subastará sera un cuadro de arte, previamente debe haber sido aprobado por el supervisor de lo contrario no podrá realizar la subasta.
-                    <br> El producto subastado tendra un precio base de S/1000, en cierto tiempo esta cantidad irá disminuyendo (S/950, S/800, S/600) hasta que el primer invitado o persona interesada en el producto pueda darle en <b>PAGAR</b>, esta cantidad
-                    ira disminuyendo hasta un precio mínimo que estará en reserva, en caso llegue al monto de reserva la subasta puede ser reiniciada o cancelada. </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Entendido</button>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel1">HOLANDESA</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>La <b>Subasta Holandesa</b> es un tipo de subasta en la que el subastador comienza subastando con un alto
+          precio, que es rebajado hasta que algún participante está dispuesto a aceptar el precio del subastador, o
+          hasta que se llega al precio
+          de reserva, que es el precio mínimo aceptado para esa venta.</p>
+        <h3>Ejemplo</h3>
+        <p> Juan realiza una subasta Holandesa, el producto que Juan subastará sera un cuadro de arte, previamente debe
+          haber sido aprobado por el supervisor de lo contrario no podrá realizar la subasta.
+          <br> El producto subastado tendra un precio base de S/1000, en cierto tiempo esta cantidad irá disminuyendo
+          (S/950, S/800, S/600) hasta que el primer invitado o persona interesada en el producto pueda darle en
+          <b>PAGAR</b>, esta cantidad
+          ira disminuyendo hasta un precio mínimo que estará en reserva, en caso llegue al monto de reserva la subasta
+          puede ser reiniciada o cancelada. </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Entendido</button>
 
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <!-- Inglesa -->
 
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel2">INGLESA</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>La <b>Subasta Inglesa</b> es un tipo de subasta, cuya forma más común es la subasta de viva voz. El subastador abre la subasta con el anuncio de precio de apertura sugerido, un precio de salida o de reserva para el artículo en venta y
-                    luego acepta las ofertas cada vez más altas de los compradores con un posible interés en el tema.
-                </p>
-                <h3>Ejemplo</h3>
-                <p>Juan realiza una subasta Inglesa, el producto que Juan subastará sera un cuadro de arte, previamente debe haber sido aprobado por el supervisor de lo contrario no podrá realizar la subasta. <br> El producto subastado tendrá un precio base
-                    de S/1000, en cierto tiempo está cantidad puede ir aumentando (S/1050, S/1100, S/1200) solo si los clientes ofrecen una puja, esta acción terminará cuando termine la duración del evento. </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Entendido</button>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">INGLESA</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>La <b>Subasta Inglesa</b> es un tipo de subasta, cuya forma más común es la subasta de viva voz. El
+          subastador abre la subasta con el anuncio de precio de apertura sugerido, un precio de salida o de reserva
+          para el artículo en venta y
+          luego acepta las ofertas cada vez más altas de los compradores con un posible interés en el tema.
+        </p>
+        <h3>Ejemplo</h3>
+        <p>Juan realiza una subasta Inglesa, el producto que Juan subastará sera un cuadro de arte, previamente debe
+          haber sido aprobado por el supervisor de lo contrario no podrá realizar la subasta. <br> El producto subastado
+          tendrá un precio base
+          de S/1000, en cierto tiempo está cantidad puede ir aumentando (S/1050, S/1100, S/1200) solo si los clientes
+          ofrecen una puja, esta acción terminará cuando termine la duración del evento. </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Entendido</button>
 
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>
 <!-- Asincrono -->
 
 <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel3">ASÍNCRONO</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Una subasta en modo <b>ASÍNCRONO</b> se da cuando la subasta es programada para un cierto dia, al fijar esta subasta se proporcionará un Link mediante el cual el subastador compartirá con sus invitados o aquellas personas que estén interesados
-                    en el producto. </p>
-                <p>El día de la subastá se realizará a las 00:00 del dia programado, tendrá una duración de 24Hrs. </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Entendido</button>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel3">ASÍNCRONO</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Una subasta en modo <b>ASÍNCRONO</b> se da cuando la subasta es programada para un cierto dia, al fijar esta
+          subasta se proporcionará un Link mediante el cual el subastador compartirá con sus invitados o aquellas
+          personas que estén interesados
+          en el producto. </p>
+        <p>El día de la subastá se realizará a las 00:00 del dia programado, tendrá una duración de 24Hrs. </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Entendido</button>
 
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>
 <!-- Sincrono -->
 <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel4">SÍNCRONO</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Una subasta en modo <b>SÍNCRONO</b> se da cuando la subasta es cargada instantáneamente el dia de la publicación, al fijar esta subasta se proporcionará un Link mediante el cual el subastador compartirá con sus invitados o aquellas personas
-                    que estén interesados en el producto. </p>
-                <p>Esta subasta tendrá una duración de 4 días después de su publicación.. </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Entendido</button>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel4">SÍNCRONO</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Una subasta en modo <b>SÍNCRONO</b> se da cuando la subasta es cargada instantáneamente el dia de la
+          publicación, al fijar esta subasta se proporcionará un Link mediante el cual el subastador compartirá con sus
+          invitados o aquellas personas
+          que estén interesados en el producto. </p>
+        <p>Esta subasta tendrá una duración de 4 días después de su publicación.. </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Entendido</button>
 
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>
 
 

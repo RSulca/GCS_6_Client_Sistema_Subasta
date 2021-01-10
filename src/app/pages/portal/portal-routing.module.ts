@@ -1,16 +1,16 @@
 import { Routes } from '@angular/router';
 import { LoginGuardGuard } from 'src/app/guards/login-guard.guard';
 import { AccountComponent } from './account/account.component';
-import { AyudaComponent } from './ayuda/ayuda.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { DetailProductComponent } from './detail-product/detail-product.component';
 import { HistorialComponent } from './historial/historial.component';
-import { HistorialComprasComponent } from './historial-Compras/historial-Compras.component';
 import { HomePortalComponent } from './home-portal/home-portal.component';
 import { ProductRegisterComponent } from './product-register/product-register.component';
 import { TermsComponent } from './terms-components/terms-components.component';
 import { TermsModalComponent } from './terms-components/terms-modal/terms-modal.component';
 import { MyProductsComponent } from './my-products/my-products.component';
+import { AyudaComponent } from './ayuda/ayuda.component';
+import { HistorialComprasComponent } from './historial-Compras/historial-Compras.component';
 
 
 export const portalRoutes: Routes = [
@@ -35,7 +35,7 @@ export const portalRoutes: Routes = [
     component: DetailProductComponent
   },
   {
-    path: 'myproducts',
+    path: 'auction-create/:idProducto',
     component: MyProductsComponent
   },
   {
