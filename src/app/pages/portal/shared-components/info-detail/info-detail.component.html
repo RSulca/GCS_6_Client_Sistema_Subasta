@@ -6,15 +6,15 @@
         </div>
         <div class="card-body py-3">
             <h4 class="card-body-title mb-0">Puja actual S/ 50.00</h4>
-            <p class="mb-0">Sin precio de reserva</p>
+            <h4 class="card-body-title mb-0">Comprador: <span style="font-weight: 400;">lpachas</span></h4>
         </div>
-        <div class="card-body py-3">
+        <!-- <div class="card-body py-3">
             <h4 class="card-body-title mb-0">Siguiente puja mínima S/150</h4>
             <p class="mb-2">Las pujas excluyen la comisión de la subasta y los gastos (de envío).</p>
             <p class="mb-0"><small>Ubicación del vendedor: <b>Lima</b></small></p>
             <p class="mb-0"><small>Comisión de subasta: 9 % de la puja ganadora</small></p>
-        </div>
-        <div class="card-body py-3">
+        </div> -->
+        <div class="card-body py-3" *ngIf="typeUser == 'buyer'">
             <h4 class="card-body-title mb-1">Puja rápida</h4>
             <div class="row mx-0 mb-3">
                 <button class="btn btn-primary font-5 col">S/50</button>
@@ -47,6 +47,13 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="card-body py-3" *ngIf="typeUser == 'seller'">
+            <h4 class="card-body-title mb-1">Opciones de subasta</h4>
+            <div class="row mx-0 mb-3">
+                <button class="btn btn-danger font-5 col">Detener</button>
+                <button class="btn btn-warning font-5 col">Suspender</button>
+            </div>
         </div>
     </div>
     <div class="card card-detalle">
