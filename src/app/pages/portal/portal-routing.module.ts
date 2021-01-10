@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { LoginGuardGuard } from 'src/app/guards/login-guard.guard';
 import { AccountComponent } from './account/account.component';
-import { AyudaComponent } from './ayuda/ayuda.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { DetailProductComponent } from './detail-product/detail-product.component';
 import { HistorialComponent } from './historial/historial.component';
@@ -12,7 +11,8 @@ import { SellerDetailProductComponent } from './seller-detail-product/seller-det
 import { TermsComponent } from './terms-components/terms-components.component';
 import { TermsModalComponent } from './terms-components/terms-modal/terms-modal.component';
 import { MyProductsComponent } from './my-products/my-products.component';
-
+import { FavoritesComponent } from './favorites/favorites.component';
+import { HelpComponent } from './help/help.component';
 
 export const portalRoutes: Routes = [
   {
@@ -24,8 +24,11 @@ export const portalRoutes: Routes = [
     component: HomePortalComponent
   },
   {
-    path: 'ayuda',
-    component: AyudaComponent
+    path: 'help',
+    component: HelpComponent
+  },{
+    path: 'favorites',
+    component: FavoritesComponent
   },
   {
     path: 'catalog',
