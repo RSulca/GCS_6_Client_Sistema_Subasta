@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { SubastaService } from 'src/app/services/subasta.service';
+import { ActivatedRoute } from '@angular/router';
+import { WebSocketService } from '../../../services/web-socket.service';
 
 @Component({
   selector: 'app-detail-product',
@@ -47,15 +49,33 @@ export class DetailProductComponent implements OnInit {
   vendedorNombre : string;
   vendedorApellido : string;
   calificacion: number[];
+  idSubasta:string;
 
-  constructor(private clienteService: ClienteService, private subastaService: SubastaService) { }
-
+  constructor(private _socket:WebSocketService, private activatedRoute:ActivatedRoute, private clienteService: ClienteService, private subastaService: SubastaService) {
+    this.idSubasta = '';
+    this.activatedRoute.params.subscribe(data => {
+      const idSubasta = data['idSubasta'];
+      this.idSubasta = idSubasta;
+      this.obtenerSubasta(idSubasta);
+    });
+    console.log(this.idSubasta);
+  }
+  
   ngOnInit(): void {
-    this.obtenerSubasta('5ffb41bfaa080c1cc00ef1e0');
     this.clienteService.obtenerCalificacionVendendor().subscribe(data => {
       this.calificacion = Array(data['promedio']);
       console.log(this.calificacion);
     });
+    this._socket.listen(this.idSubasta).subscribe((res:any) => {
+      console.log(res);
+    });
+  }
+
+  avisar(name: string) {
+    console.log(name);
+    this._socket.emit(this.idSubasta, {
+      message: `Holaaa soy ${name}`
+    })
   }
 
   obtenerSubasta(id: string){

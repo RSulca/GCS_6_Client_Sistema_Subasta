@@ -36,7 +36,7 @@ export const portalRoutes: Routes = [
     component: CatalogoComponent
   },
   {
-    path: 'buyer',
+    path: 'buyer/:idSubasta',
     component: DetailProductComponent
   },
   {

@@ -10,20 +10,21 @@ export class WebSocketService {
 
   socket: any;
   readonly uri: string = environment.SOCKET_ENDPOINT;
+  webSocket:WebSocket;
 
-  constructor() { 
+  constructor() {
     this.socket = io(this.uri);
   }
 
-  listen(eventName: string){
-    return new Observable((subscriber) =>{
-      this.socket.on(eventName, (data) => {
+  listen(eventName: string) {
+    return new Observable((subscriber) => {
+      this.socket.on(eventName, (data: any) => {
         subscriber.next(data);
       })
     })
   }
 
-  emit(eventName: string, data: any){
+  emit(eventName: string, data: any) {
     this.socket.emit(eventName, data);
   }
 
