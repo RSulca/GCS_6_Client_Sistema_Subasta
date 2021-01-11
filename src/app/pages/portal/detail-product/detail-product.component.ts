@@ -67,7 +67,7 @@ export class DetailProductComponent implements OnInit {
   }
 
   obtenerSubasta(id: string) {
-    this.subastaService.obtenerSubasta(id)
+    this.subastaService.obtenerSubasta(id) 
       .subscribe(data => {
         this.nombreProducto = data['subasta'].producto['name'];
         this.imagenesProducto = data['subasta'].producto['imgs'];
