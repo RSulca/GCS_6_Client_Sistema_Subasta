@@ -1,15 +1,10 @@
 <app-navbar-portal></app-navbar-portal>
 
 <div class="px-3 px-lg-5 py-4">
-    <!-- En caso no haya iniciado sesion -->
-    <div class="col-12 alert-session mb-4">
-        Necesitas <a [routerLink]="['../login']" class="link-underline">Iniciar sesión</a> o <a [routerLink]="['../register']" class="link-underline">Crear una cuenta</a> antes de pujar.
-    </div>
-
     <div class="row mx-0 mx-md-2">
         <div class="col-12 col-md-8">
             <h2 class="titulo-producto">{{nombreProducto}}</h2>
-            <div (click)="avisar(nombreProducto)" class="btn btn-success">Avisar</div>
+            <!-- <div (click)="avisar(nombreProducto)" class="btn btn-success">Avisar</div> -->
             <!-- Carousel de imagenes -->
             <div class="p-1">
                 <owl-carousel-o [options]="customOptions">
@@ -18,16 +13,6 @@
                             <img src="{{imagen}}" class="img-fluid">
                         </div>
                     </ng-template>
-                    <!-- <ng-template carouselSlide>
-                        <div class="col">
-                            <img src="https://i.blogs.es/9638f5/osete/840_560.jpg" class="img-fluid">
-                        </div>
-                    </ng-template>
-                    <ng-template carouselSlide>
-                        <div class="col">
-                            <img src="https://i.blogs.es/9638f5/osete/840_560.jpg" class="img-fluid">
-                        </div>
-                    </ng-template> -->
                 </owl-carousel-o>
             </div>
 
@@ -99,7 +84,7 @@
         </div>
 
         <div class="col-12 col-md-4">
-            <app-info-detail [infoAuction]="infoAuction" typeUser="buyer"></app-info-detail>
+            <app-info-detail [endAuction]="endAuction" [endDay]="endDayAuction" [idSubasta]="idSubasta" [precioBase]="precioBase" [precioBaseTemporal]="precioBase" typeUser="buyer"></app-info-detail>
         </div>
     </div>
 

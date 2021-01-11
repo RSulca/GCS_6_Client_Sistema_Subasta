@@ -17,8 +17,8 @@ export class ProductCardComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.subasta = this.data;
-      this.image = this.data.producto.imgs[0];
-      this.image2 = this.data.producto.imgs[1];
+      this.image = this.data['producto'].imgs[0];
+      this.image2 = this.data['producto'].imgs[1];
     }, 500);
   }
 

@@ -2,13 +2,17 @@
     <div class="card card-detalle mb-3">
         <div class="card-header bg-warning">
             <h4 class="card-titulo">Cierra en
-                <app-timer-component [endDate]="infoAuction.endAuction"></app-timer-component>
+                <app-timer-component [endDate]="endAuction" [endDay]="endDay"></app-timer-component>
             </h4>
-            <p class="card-subtitulo">Todavía no has pujado por este lote.</p>
+            <!-- <p class="card-subtitulo">Todavía no has pujado por este lote.</p> -->
         </div>
         <div class="card-body py-3">
-            <h4 class="card-body-title mb-0">Puja actual S/ 50.00</h4>
-            <h4 class="card-body-title mb-0">Comprador: <span style="font-weight: 400;">lpachas</span></h4>
+            <h4 class="card-body-title mb-0">Puja actual: <span style="font-weight: 400;">{{pujaActualTemporal}}</span></h4>
+            <h4 class="card-body-title mb-0">Comprador: <span style="font-weight: 400;">{{compradorTemporal}}</span></h4>
+        </div>
+        <div class="card-body py-3">
+            <h4 class="card-body-title mb-0">Precio actual: <span style="font-weight: 400;">{{precioActualTemporal}}</span></h4>
+            <h4 class="card-body-title mb-0">Precio base: <span style="font-weight: 400;">{{precioBase}}</span></h4>
         </div>
         <!-- <div class="card-body py-3">
             <h4 class="card-body-title mb-0">Siguiente puja mínima S/150</h4>
@@ -19,47 +23,33 @@
         <div class="card-body py-3" *ngIf="typeUser == 'buyer'">
             <h4 class="card-body-title mb-1">Puja rápida</h4>
             <div class="row mx-0 mb-3">
-                <button class="btn btn-primary font-5 col">S/50</button>
-                <button class="btn btn-primary font-5 col">S/55</button>
-                <button class="btn btn-primary font-5 col">S/60</button>
+                <button class="btn btn-primary font-5 col" (click)="puja50()">S/50</button>
+                <button class="btn btn-primary font-5 col" (click)="puja55()">S/55</button>
+                <button class="btn btn-primary font-5 col" (click)="puja60()">S/60</button>
             </div>
             <h4 class="card-body-title mb-1">Pujar directamente</h4>
-            <div class="d-flex mx-0">
-                <input type="text" name="" id="" class="form-control mr-2" placeholder="S/">
-                <button class="btn btn-primary font-5 col">Pujar</button>
-            </div>
+            <form [formGroup]="pujaForm">
+                <div class="d-flex mx-0">
+                    <input type="number" class="form-control mr-2" placeholder="S/" formControlName="valorPuja">
+                    <button class="btn btn-primary font-5 col" (click)="pujaDirecta()">Pujar</button>
+                </div>
+            </form>
         </div>
-        <div class="card-body py-3">
-            <table class="table tabla-pujas">
+        <div class="card-body py-3" >
+            <table class="table tabla-pujas fixed_header">
                 <tbody>
-                    <tr>
-                        <td>Pujador 4</td>
-                        <td>01-12-2020 16:15:40</td>
-                        <td>S/40</td>
+                    <tr *ngFor="let puj of arrayPujas">
+                        <td>{{puj.name}}</td>
+                        <td>{{puj.dia | date:'dd-mm-yyyy'}} {{puj.hora}}</td>
+                        <td>S/{{puj.monto}}</td>
                     </tr>
-                    <tr>
-                        <td><b>Pujador 3</b></td>
-                        <td><b>	04-12-2020 16:15:40</b></td>
-                        <td><b>S/50</b></td>
-                    </tr>
-                    <tr>
-                        <td>Pujador 2</td>
-                        <td>03-12-2020 16:15:40</td>
-                        <td>S/45</td>
-                    </tr>
-                    <tr>
-                        <td>Pujador 1</td>
-                        <td>01-12-2020 16:15:40</td>
-                        <td>S/40</td>
-                    </tr>
-
                 </tbody>
             </table>
         </div>
         <div class="card-body py-3" *ngIf="typeUser == 'seller'">
             <h4 class="card-body-title mb-1">Opciones de subasta</h4>
             <div class="row mx-0 mb-3">
-                <button class="btn btn-danger font-5 col">Detener</button>
+                <button class="btn btn-danger font-5 col" (click)="finalizar()">Detener</button>
                 <button class="btn btn-warning font-5 col">Suspender</button>
             </div>
         </div>

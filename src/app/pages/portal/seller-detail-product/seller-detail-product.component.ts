@@ -23,15 +23,20 @@ export class SellerDetailProductComponent implements OnInit {
     nav: true
   }
 
-  infoAuction: object = {
-    endAuction: '2020-12-31 05:00:00'
-  };
+  
+  //infoAuction: object = {
+   // endAuction: '2020-12-31 01:00:00'
+   //endAuction: '   01:00:00'
+  //};
 
   nombreProducto: string;
   imagenesProducto = [];
   vendedor: string;
   calificacion: number[];
   idSubasta: string;
+  precioBase: number;
+  endAuction: any;
+  endDayAuction: any;
 
   constructor(private _socket: WebSocketService, private activatedRoute: ActivatedRoute, private clienteService: ClienteService, private subastaService: SubastaService) {
     this.idSubasta = '';
@@ -40,7 +45,6 @@ export class SellerDetailProductComponent implements OnInit {
       this.idSubasta = idSubasta;
       this.obtenerSubasta(idSubasta);
     });
-    console.log(this.idSubasta);
     this.clienteService.obtenerCalificacionVendendor().subscribe(data => {
       this.calificacion = Array(data['promedio']);
       console.log(this.calificacion);
@@ -49,9 +53,9 @@ export class SellerDetailProductComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this._socket.listen(this.idSubasta).subscribe((res:any) => {
-      console.log(res);
-    });
+    // this._socket.listen(this.idSubasta).subscribe((res:any) => {
+    //   console.log(res);
+    // });
   }
 
   avisar(name: string) {
@@ -66,6 +70,10 @@ export class SellerDetailProductComponent implements OnInit {
       .subscribe(data => {
         this.nombreProducto = data['subasta'].producto['name'];
         this.imagenesProducto = data['subasta'].producto['imgs'];
+        this.precioBase = data['subasta'].precio_base;
+        this.endAuction = data['subasta'].hora_fin;
+        this.endDayAuction = data['subasta'].fecha_fin;
+       console.log(data['subasta']);
       })
   }
 

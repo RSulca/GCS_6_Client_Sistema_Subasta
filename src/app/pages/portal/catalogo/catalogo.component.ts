@@ -34,14 +34,14 @@ export class CatalogoComponent implements OnInit {
     this.activateRoute.params.subscribe(data => {
       const category = data['categoryName'];
       this.subastaService.subastasPorCategoria(category).subscribe((data: any) => {
-        this.subastas = data.results
+        this.subastas = data['results']
       })
     })
   }
 
   goToBuyer(subasta:any){
-    console.log(subasta)
-    this.router.navigate(['buyer',subasta._id])
+
+    this.router.navigate(['/buyer',subasta._id])
   }
 
 }

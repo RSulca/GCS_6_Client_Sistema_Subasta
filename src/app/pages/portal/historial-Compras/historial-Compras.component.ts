@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { SubastaService } from 'src/app/services/subasta.service';
 
 @Component({
@@ -18,12 +19,13 @@ export class HistorialComprasComponent implements OnInit {
   modalRef: BsModalRef;
   subastaCalificar: any;
 
-  constructor(private fb: FormBuilder, private subastaService: SubastaService, private modalService: BsModalService) {
+  constructor(private fb: FormBuilder, private subastaService: SubastaService, private modalService: BsModalService, private ls: LocalStorageService) {
     this.initForm();
    }
 
   ngOnInit(): void {
-    this.obtenerCompras('5fb957eddfe0ce3d1497bd88');
+    let usuario = JSON.parse(this.ls.getData('user'));
+    this.obtenerCompras(usuario._id);
   }
 
   get valorCalificacion(){

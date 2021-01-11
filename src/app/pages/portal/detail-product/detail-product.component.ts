@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { SubastaService } from 'src/app/services/subasta.service';
 import { ActivatedRoute } from '@angular/router';
@@ -40,9 +40,9 @@ export class DetailProductComponent implements OnInit {
     nav: true
   }
 
-  infoAuction: object = {
-    endAuction: '2020-12-31 05:00:00'
-  };
+  // infoAuction: object = {
+  //   endAuction: '2020-12-31 05:00:00'
+  // };
 
   nombreProducto: string;
   imagenesProducto = [];
@@ -50,7 +50,10 @@ export class DetailProductComponent implements OnInit {
   vendedorApellido: string;
   calificacion: number[];
   idSubasta:string;
+  precioBase: number;
   subasta:any;
+  endAuction: any;
+  endDayAuction: any;
 
   constructor(private _socket:WebSocketService, private activatedRoute:ActivatedRoute, private clienteService: ClienteService, private subastaService: SubastaService) {
     this.idSubasta = '';
@@ -59,7 +62,6 @@ export class DetailProductComponent implements OnInit {
       this.idSubasta = idSubasta;
       this.obtenerSubasta(idSubasta);
     });
-    console.log(this.idSubasta);
   }
   
   ngOnInit(): void {
@@ -85,7 +87,10 @@ export class DetailProductComponent implements OnInit {
         this.nombreProducto = data['subasta'].producto['name'];
         this.imagenesProducto = data['subasta'].producto['imgs'];
         this.vendedorNombre = data['subasta'].vendedor['name'];
-        this.vendedorApellido = data['subasta'].vendedor['lastname']
+        this.vendedorApellido = data['subasta'].vendedor['lastname'];
+        this.precioBase = data['subasta'].precio_base;
+        this.endAuction = data['subasta'].hora_fin;
+        this.endDayAuction = data['subasta'].fecha_fin;
         this.subasta = data;
         console.log(this.subasta);
       })
