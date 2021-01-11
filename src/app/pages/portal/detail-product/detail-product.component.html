@@ -21,7 +21,7 @@
                 <p class="mb-0"><small>VENDEDOR</small></p>
                 <div><a href="" class="link-underline">{{vendedorNombre}} {{vendedorApellido}}</a></div>
                 <!-- <p class="mb-0"><small>100% <a href="#" class="link-underline">9 calificaciones</a></small></p> -->
-                <div *ngIf="calificacion != '';else noCalificacion">
+                <div *ngIf="calificacion.length !== 0;else noCalificacion">
                     <span *ngFor="let estrella of calificacion" class="fa fa-star icon-c"></span>
                 </div>
                 <ng-template #noCalificacion>

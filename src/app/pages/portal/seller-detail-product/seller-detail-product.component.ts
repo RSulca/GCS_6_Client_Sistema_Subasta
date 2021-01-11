@@ -32,7 +32,7 @@ export class SellerDetailProductComponent implements OnInit {
   nombreProducto: string;
   imagenesProducto = [];
   vendedor: string;
-  calificacion: number[];
+  calificacion: number[] = [];
   idSubasta: string;
   precioBase: number;
   endAuction: any;

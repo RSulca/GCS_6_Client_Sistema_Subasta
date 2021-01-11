@@ -11,8 +11,6 @@ import { NotifierService } from 'src/app/services/notifier.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FooterPortalComponent } from './shared-components/footer-portal/footer-portal.component';
-import { NavbarPortalComponent } from './shared-components/navbar-portal/navbar-portal.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { TermsModalComponent } from './terms-components/terms-modal/terms-modal.component';
 import { ProductCardComponent } from './shared-components/product-card/product-card.component';
@@ -29,16 +27,19 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { TimerComponentComponent } from './shared-components/timer-component/timer-component.component';
 import { SellerDetailProductComponent } from './seller-detail-product/seller-detail-product.component';
 import { DetailProductComponent } from './detail-product/detail-product.component';
+import { FooterPortalComponent } from './shared-components/footer-portal/footer-portal.component';
+import { NavbarPortalComponent } from './shared-components/navbar-portal/navbar-portal.component';
 
 //modulos de terceros
-import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { MyProductsComponent } from './my-products/my-products.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { InfoDetailComponent } from './shared-components/info-detail/info-detail.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { HelpComponent } from './help/help.component';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ComponentsModule } from '../../components/components.module';
 
 
 
@@ -49,8 +50,6 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     CatalogoComponent,
     // LoginComponent,
     // RegisterComponent,
-    FooterPortalComponent,
-    NavbarPortalComponent,
     TermsComponent,
     TermsModalComponent,
     ProductRegisterComponent,
@@ -66,8 +65,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     DetailProductComponent,
     MyProductsComponent,
     FavoritesComponent,
-    HelpComponent
-    
+    HelpComponent,
+    FooterPortalComponent,
+    NavbarPortalComponent
   ],
   imports: [
     CommonModule,
@@ -83,18 +83,18 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     NgxMaterialTimepickerModule,
     NgxPaginationModule,
     ModalModule.forRoot(),
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ComponentsModule
   ],
-  exports:[
+  exports: [
     FooterPortalComponent,
-    NavbarPortalComponent
-    
+    NavbarPortalComponent,
   ],
   providers: [
     NotifierService,
     LocalStorageService
   ],
-  entryComponents:[
+  entryComponents: [
     ConfirmDialogComponent
   ]
 })

@@ -48,7 +48,7 @@ export class DetailProductComponent implements OnInit {
   imagenesProducto = [];
   vendedorNombre: string;
   vendedorApellido: string;
-  calificacion: number[];
+  calificacion: number[] = [];
   idSubasta:string;
   precioBase: number;
   subasta:any;
