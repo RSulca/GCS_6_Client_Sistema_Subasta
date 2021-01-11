@@ -105,38 +105,14 @@
         <div class="col-12">
             <h2>Productos Similares</h2>
         </div>
-        <owl-carousel-o [options]="productosSimilares">
-            <ng-template carouselSlide>
+        <!---Poner cuando se consuma el servicio de subastas -->
+        <!-- <owl-carousel-o [options]="productosSimilares">
+            <ng-template carouselSlide *ngFor="let subasta of subastas"> 
               <div class="col mb-4">
-                <app-product-card></app-product-card>
-              </div>
+                <app-product-card [data]="subasta"></app-product-card>
+            </div>
             </ng-template>
-            <ng-template carouselSlide>
-              <div class="col mb-4">
-                <app-product-card></app-product-card>
-              </div>
-            </ng-template>
-            <ng-template carouselSlide>
-              <div class="col mb-4">
-                <app-product-card></app-product-card>
-              </div>
-            </ng-template>
-            <ng-template carouselSlide>
-              <div class="col mb-4">
-                <app-product-card></app-product-card>
-              </div>
-            </ng-template>
-            <ng-template carouselSlide>
-              <div class="col mb-4">
-                <app-product-card></app-product-card>
-              </div>
-            </ng-template>
-            <ng-template carouselSlide>
-              <div class="col mb-4">
-                <app-product-card></app-product-card>
-              </div>
-            </ng-template>
-        </owl-carousel-o>
+        </owl-carousel-o> -->
     </div>
 </div>
 

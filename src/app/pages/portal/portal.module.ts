@@ -38,6 +38,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { InfoDetailComponent } from './shared-components/info-detail/info-detail.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { HelpComponent } from './help/help.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -81,7 +82,8 @@ import { HelpComponent } from './help/help.component';
     MatDialogModule,
     NgxMaterialTimepickerModule,
     NgxPaginationModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    MatProgressSpinnerModule
   ],
   exports:[
     FooterPortalComponent,

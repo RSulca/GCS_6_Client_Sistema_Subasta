@@ -27,7 +27,7 @@ export class SubastaService {
 
   }
 
-  obtenerSubasta(id: string){
+  obtenerSubasta(id: string) {
     const url = `${environment.API_SUBASTA}/api/subasta/${id}`;
     return this.http.get<Subasta[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
   }
@@ -35,6 +35,12 @@ export class SubastaService {
   finalizarSubasta(idSubasta: string, precioPagado: number, idComprador: string) {
     const url = `${environment.API_SUBASTA}/api/subasta/finalizar//${idSubasta}`;
     return this.http.put<Subasta[]>(url, { precioPagado, idComprador }, { headers: { 'x-token': this.ls.getData('token') } });
+  }
+
+  subastasPorCategoria(categoryName: any) {
+    const url = `${environment.API_SUBASTA}/api/subasta/category/${categoryName}`;
+    return this.http.get(url);
+
   }
 
 }

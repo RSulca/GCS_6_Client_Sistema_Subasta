@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-product-card',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductCardComponent implements OnInit {
 
+  @Input('') data: any;
+  subasta: any = {};
+  image: any = null;
+
   constructor() { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.subasta = this.data;
+      this.image = this.data.producto.imgs[0];
+    }, 500);
   }
 
 }

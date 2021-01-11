@@ -32,11 +32,11 @@ export const portalRoutes: Routes = [
     component: FavoritesComponent
   },
   {
-    path: 'catalog',
+    path: 'catalog/:categoryName',
     component: CatalogoComponent
   },
   {
-    path: 'buyer',
+    path: 'buyer/:idSubasta',
     component: DetailProductComponent
   },
   {

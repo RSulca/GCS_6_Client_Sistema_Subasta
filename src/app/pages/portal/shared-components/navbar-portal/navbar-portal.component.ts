@@ -14,7 +14,7 @@ export class NavbarPortalComponent implements OnInit {
   categories: any[] = [];
   isLogged = false;
 
-  constructor(private categoryService: CategoriaService,private router:Router, public loginService: LoginService) {
+  constructor(private categoryService: CategoriaService, private router: Router, public loginService: LoginService) {
     //console.log(this.loginService.isLogged())
   }
 
@@ -35,9 +35,13 @@ export class NavbarPortalComponent implements OnInit {
     })
   }
 
-  goToSeller(){
+  goToSeller() {
     this.router.navigate(['seller'])
     localStorage.removeItem('productoMod')
+  }
+
+  goToCatalog(category: any) {
+    this.router.navigate(['catalog', category.name])
   }
 
 }
