@@ -1,87 +1,51 @@
 <app-navbar-portal></app-navbar-portal>
 
 <div class="container-fluid px-lg-5 py-4">
-    <nav aria-label="breadcrumbt">
-        <ol class="breadcrumb bg-transparent px-0 pb-0 mb-0">
-            <li class="breadcrumb-item"><a href="#" class="text-dark">Subastón</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Arte</li>
-        </ol>
-    </nav>
-    <h2 class="title-catalog text-dark">Arte</h2>
-    <p class="font-6">Subastas que cierran pronto</p>
+  <nav aria-label="breadcrumbt">
+    <ol class="breadcrumb bg-transparent px-0 pb-0 mb-0">
+      <li class="breadcrumb-item"><a href="#" class="text-dark">Subastón</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Arte</li>
+    </ol>
+  </nav>
+  <h2 class="title-catalog text-dark">Arte</h2>
+  <p class="font-6">Subastas que cierran pronto</p>
 
-    <div class="mx-0">
-        <owl-carousel-o [options]="customOptions">
-            <ng-template carouselSlide>
-                <div class="col mb-4">
-                    <app-product-card></app-product-card>
-                </div>
-            </ng-template>
-            <ng-template carouselSlide>
-                <div class="col mb-4">
-                    <app-product-card></app-product-card>
-                </div>
-            </ng-template>
-            <ng-template carouselSlide>
-                <div class="col mb-4">
-                    <app-product-card></app-product-card>
-                </div>
-            </ng-template>
-            <ng-template carouselSlide>
-                <div class="col mb-4">
-                    <app-product-card></app-product-card>
-                </div>
-            </ng-template>
-            <ng-template carouselSlide>
-                <div class="col mb-4">
-                    <app-product-card></app-product-card>
-                </div>
-            </ng-template>
-            <ng-template carouselSlide>
-                <div class="col mb-4">
-                    <app-product-card></app-product-card>
-                </div>
-            </ng-template>
-        </owl-carousel-o>
+  <div class="mx-0">
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide *ngFor="let subasta of subastas">
+        <div class="col mb-4">
+          <app-product-card [data]="subasta" (click)="goToBuyer(subasta)"></app-product-card>
+        </div>
+      </ng-template>
+
+    </owl-carousel-o>
+  </div>
+
+  <div class="content-catalogue mt-5">
+    <div class="col-12">
+      <p class="font-6 text-dark">100 Resultados</p>
+      <div class="filterCatalogue">
+        <button class="btn btn-outline-dark">Precio de reserva</button>
+        <button class="btn btn-outline-dark">Fecha final</button>
+        <button class="btn btn-outline-dark">Estado</button>
+      </div>
+      <div class="py-2 mb-4">
+        <span class="mr-2"><small>Ver como:</small></span>
+        <button class="btn p-0"><i class="fas fa-list-ul"></i></button>
+        <button class="btn p-0 text-dark"><i class="fas fa-th"></i></button>
+      </div>
     </div>
 
-    <div class="content-catalogue mt-5">
-        <div class="col-12">
-            <p class="font-6 text-dark">100 Resultados</p>
-            <div class="filterCatalogue">
-                <button class="btn btn-outline-dark">Precio de reserva</button>
-                <button class="btn btn-outline-dark">Fecha final</button>
-                <button class="btn btn-outline-dark">Estado</button>
-            </div>
-            <div class="py-2 mb-4">
-                <span class="mr-2"><small>Ver como:</small></span>
-                <button class="btn p-0"><i class="fas fa-list-ul"></i></button>
-                <button class="btn p-0 text-dark"><i class="fas fa-th"></i></button>
-            </div>
-        </div>
-
-        <div class="row mx-0">
-            <div class="col-12 col-md-3 mb-4">
-                <app-product-card></app-product-card>
-            </div>
-            <div class="col-12 col-md-3 mb-4">
-                <app-product-card></app-product-card>
-            </div>
-            <div class="col-12 col-md-3 mb-4">
-                <app-product-card></app-product-card>
-            </div>
-            <div class="col-12 col-md-3 mb-4">
-                <app-product-card></app-product-card>
-            </div>
-            <div class="col-12 col-md-3 mb-4">
-                <app-product-card></app-product-card>
-            </div>
-        </div>
-
-        <div class="col-12 d-flex justify-content-center mt-5">
-            <!-- <ngb-pagination [collectionSize]="100" [(page)]="page" [maxSize]="2" [boundaryLinks]="false"></ngb-pagination> -->
-        </div>
+    <div class="row mx-0">
+      <div class="col-12 col-md-3 mb-4" *ngFor="let subasta of subastas">
+        <app-product-card [data]="subasta"></app-product-card>
+      </div>
     </div>
+
+    <div class="col-12 d-flex justify-content-center mt-5">
+      <!-- <ngb-pagination [collectionSize]="100" [(page)]="page" [maxSize]="2" [boundaryLinks]="false"></ngb-pagination> -->
+    </div>
+  </div>
 </div>
 
 <app-footer-portal></app-footer-portal>

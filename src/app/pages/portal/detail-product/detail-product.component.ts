@@ -39,17 +39,18 @@ export class DetailProductComponent implements OnInit {
     },
     nav: true
   }
-  
+
   infoAuction: object = {
     endAuction: '2020-12-31 05:00:00'
   };
 
-  nombreProducto : string;
+  nombreProducto: string;
   imagenesProducto = [];
-  vendedorNombre : string;
-  vendedorApellido : string;
+  vendedorNombre: string;
+  vendedorApellido: string;
   calificacion: number[];
   idSubasta:string;
+  subasta:any;
 
   constructor(private _socket:WebSocketService, private activatedRoute:ActivatedRoute, private clienteService: ClienteService, private subastaService: SubastaService) {
     this.idSubasta = '';
@@ -78,15 +79,25 @@ export class DetailProductComponent implements OnInit {
     })
   }
 
-  obtenerSubasta(id: string){
-    this.subastaService.obtenerSubasta(id)
+  obtenerSubasta(id: string) {
+    this.subastaService.obtenerSubasta(id) 
       .subscribe(data => {
         this.nombreProducto = data['subasta'].producto['name'];
         this.imagenesProducto = data['subasta'].producto['imgs'];
         this.vendedorNombre = data['subasta'].vendedor['name'];
         this.vendedorApellido = data['subasta'].vendedor['lastname']
+        this.subasta = data;
+        console.log(this.subasta);
       })
   }
+
+  //pasarle la categoria de la subasta que esta actuaelemnte para que me lsita las subastas de esa categoria y mostrarlas en el 
+  //html linea 108
+  // obtenerSubastasSimilares() {
+  //   this.subastaService.subastasPorCategoria(category).subscribe((data: any) => {
+  //     this.subastas = data.results
+  //   })
+  // }
 
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from 'src/app/services/categoria.service';
 import { NotifierService } from 'src/app/services/notifier.service';
+import { SubastaService } from 'src/app/services/subasta.service';
 import { WebSocketService } from 'src/app/services/web-socket.service';
 
 @Component({
@@ -30,7 +31,8 @@ export class HomePortalComponent implements OnInit {
     nav: true
   }
 
-  constructor(private categoryService: CategoriaService, private webSocketService: WebSocketService, private nf: NotifierService) { }
+  constructor(private categoryService: CategoriaService, private webSocketService: WebSocketService,private subastaService:SubastaService, 
+    private nf: NotifierService) { }
 
   ngOnInit(): void {
     localStorage.removeItem('productoMod');
@@ -52,4 +54,8 @@ export class HomePortalComponent implements OnInit {
       this.categoriesSimple = this.categories.filter(c => c.color)
     })
   }
+
+  // getSubastas(){
+  //   this.subastaService.
+  // }
 }
