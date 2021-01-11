@@ -2,10 +2,10 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 
 
-.card--1 .card__img,
+/*.card--1 .card__img,
 .card--1 .card__img--hover {
   background-image: url('https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
-}
+}*/
 
 .card__like {
   width: 18px;

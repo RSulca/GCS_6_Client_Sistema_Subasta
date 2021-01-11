@@ -10,6 +10,7 @@ export class ProductCardComponent implements OnInit {
   @Input('') data: any;
   subasta: any = {};
   image: any = null;
+  image2: any = null;
 
   constructor() { }
 
@@ -17,6 +18,7 @@ export class ProductCardComponent implements OnInit {
     setTimeout(() => {
       this.subasta = this.data;
       this.image = this.data.producto.imgs[0];
+      this.image2 = this.data.producto.imgs[1];
     }, 500);
   }
 
