@@ -35,8 +35,9 @@ export class ClienteService {
     return this.http.get<number>(url, { headers: { 'x-token': this.ls.getData('token') } });
   }
 
-  obtenerCalificacionVendendor(){
-    const url = `${environment.API_SUBASTA}/api/cliente/obtenerCalificacionVendedor`;
+  obtenerCalificacionVendendor(idSubasta: string){
+    console.log('aaaaa' + idSubasta);
+    const url = `${environment.API_SUBASTA}/api/cliente/obtenerCalificacionVendedor/${idSubasta}`;
     return this.http.get<number>(url, { headers: { 'x-token': this.ls.getData('token') } });
   }
 

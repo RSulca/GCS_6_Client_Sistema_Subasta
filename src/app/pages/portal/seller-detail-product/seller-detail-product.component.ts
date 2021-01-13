@@ -45,9 +45,8 @@ export class SellerDetailProductComponent implements OnInit {
       this.idSubasta = idSubasta;
       this.obtenerSubasta(idSubasta);
     });
-    this.clienteService.obtenerCalificacionVendendor().subscribe(data => {
+    this.clienteService.obtenerCalificacionVendendor(this.idSubasta).subscribe(data => {
       this.calificacion = Array(data['promedio']);
-      console.log(this.calificacion);
     });
     
   }

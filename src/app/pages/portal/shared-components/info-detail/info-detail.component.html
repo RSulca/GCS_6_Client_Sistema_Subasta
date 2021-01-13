@@ -39,7 +39,7 @@
             <table class="table tabla-pujas fixed_header">
                 <tbody>
                     <tr *ngFor="let puj of arrayPujas">
-                        <td>{{puj.name}}</td>
+                        <td>{{puj.comprador.name}}</td>
                         <td>{{puj.dia | date:'dd-mm-yyyy'}} {{puj.hora}}</td>
                         <td>S/{{puj.monto}}</td>
                     </tr>

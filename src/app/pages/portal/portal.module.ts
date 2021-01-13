@@ -40,6 +40,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { HelpComponent } from './help/help.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ComponentsModule } from '../../components/components.module';
+import { ProductsComponent } from './products/products.component';
 
 
 
@@ -67,7 +68,8 @@ import { ComponentsModule } from '../../components/components.module';
     FavoritesComponent,
     HelpComponent,
     FooterPortalComponent,
-    NavbarPortalComponent
+    NavbarPortalComponent,
+    ProductsComponent
   ],
   imports: [
     CommonModule,

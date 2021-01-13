@@ -44,6 +44,7 @@ export class InfoDetailComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.obtenerPujasSubasta();
     this.usuario = JSON.parse(this.ls.getData('user'));
     this.webSocketService.listen(this.idSubasta).subscribe((data)=>{
       console.log(data)
@@ -69,7 +70,7 @@ export class InfoDetailComponent implements OnInit {
       }else{
         const dialogRef = this.dialog.open(ConfirmDialogComponent, {
           width: '400px',
-          data: `El compradador ${data['name']} pago el monto de: ${data['precio']}`,
+          data: `SUBASTA FINALIZADA.El compradador ${data['name']} pago el monto de: ${data['precio']}`,
         });
         dialogRef.afterClosed().subscribe(result => {
           this.router.navigate(['/history']);
@@ -87,6 +88,14 @@ export class InfoDetailComponent implements OnInit {
       valorPuja : ['', [Validators.required]],
     })
   }
+
+  obtenerPujasSubasta(){
+    this.subastaService.obtenerPujasSubasta(this.idSubasta).subscribe((data: any) => {
+      this.arrayPujas = data['pujas'];
+     console.log(data['pujas']);
+    })
+  }
+
 
   puja50(){
     const monto = 50;

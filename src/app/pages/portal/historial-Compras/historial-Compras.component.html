@@ -37,13 +37,17 @@
                                                         <div class="title2">
                                                             <span>{{c.titulo}}</span>
                                                         </div>
-                                                        <div class="description mt-2">
+                                                        <div class="title">
+                                                            <span><strong>Producto</strong></span>
+                                                        </div>
+                                                        <div class="title2">
+                                                            <span>{{c.producto.name}}</span>
+                                                        </div>
+                                                        <div class="title">
                                                             <span><strong>Precio</strong></span>
                                                         </div>
-                                                        <div class="description2" style="text-align: justify;">
-                                                            <span>
-                                  {{c.moneda}} {{c.precio_pagado}}
-                                </span>
+                                                        <div class="title2">
+                                                            <span>{{c.moneda}} {{c.precio_pagado}}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -55,6 +59,9 @@
                                                         </div>
                                                         <div class="title2">
                                                             <span>{{c.vendedor.name}}</span>
+                                                        </div>
+                                                        <div class="title2">
+                                                            <span>{{c.vendedor.dni}}</span>
                                                         </div>
                                                         <div class="title2">
                                                             <span>{{c.vendedor.email}}</span>

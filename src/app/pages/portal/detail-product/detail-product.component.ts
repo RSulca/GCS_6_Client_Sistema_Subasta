@@ -65,9 +65,8 @@ export class DetailProductComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.clienteService.obtenerCalificacionVendendor().subscribe(data => {
+    this.clienteService.obtenerCalificacionVendendor(this.idSubasta).subscribe(data => {
       this.calificacion = Array(data['promedio']);
-      console.log(this.calificacion);
     });
     this._socket.listen(this.idSubasta).subscribe((res:any) => {
       console.log(res);

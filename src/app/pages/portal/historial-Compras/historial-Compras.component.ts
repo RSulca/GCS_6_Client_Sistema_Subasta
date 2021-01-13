@@ -63,6 +63,20 @@ export class HistorialComprasComponent implements OnInit {
     }
   }
 
+  buscarPorProductoYVendedor(filter: string) {
+    this.subastaService.buscarPorProductoYVendedor(filter).subscribe((data: any) => {
+      this.compras = data['subastas'];
+    })
+  }
+
+  filtrar(event: any) {
+    if (event.target.value == '') {
+      this.buscarPorProductoYVendedor('all')
+    } else {
+      this.buscarPorProductoYVendedor(event.target.value);
+    }
+  }
+
  convierteArray = (cantidad: number): Array<number> => {
     return Array(cantidad);
   }
