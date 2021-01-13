@@ -2,7 +2,6 @@ import { Component, OnInit, Output } from '@angular/core';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { SubastaService } from 'src/app/services/subasta.service';
 import { ActivatedRoute } from '@angular/router';
-import { WebSocketService } from '../../../services/web-socket.service';
 
 @Component({
   selector: 'app-detail-product',
@@ -49,18 +48,16 @@ export class DetailProductComponent implements OnInit {
   vendedorNombre: string;
   vendedorApellido: string;
   calificacion: number[] = [];
-  idSubasta:string;
   precioBase: number;
   subasta:any;
+  idSubasta: string;
   endAuction: any;
   endDayAuction: any;
 
-  constructor(private _socket:WebSocketService, private activatedRoute:ActivatedRoute, private clienteService: ClienteService, private subastaService: SubastaService) {
-    this.idSubasta = '';
+  constructor(private activatedRoute:ActivatedRoute, private clienteService: ClienteService, private subastaService: SubastaService) {
     this.activatedRoute.params.subscribe(data => {
-      const idSubasta = data['idSubasta'];
-      this.idSubasta = idSubasta;
-      this.obtenerSubasta(idSubasta);
+      this.idSubasta = data['idSubasta'];
+      this.obtenerSubasta(this.idSubasta);
     });
   }
   
@@ -68,16 +65,6 @@ export class DetailProductComponent implements OnInit {
     this.clienteService.obtenerCalificacionVendendor(this.idSubasta).subscribe(data => {
       this.calificacion = Array(data['promedio']);
     });
-    this._socket.listen(this.idSubasta).subscribe((res:any) => {
-      console.log(res);
-    });
-  }
-
-  avisar(name: string) {
-    console.log(name);
-    this._socket.emit(this.idSubasta, {
-      message: `Holaaa soy ${name}`
-    })
   }
 
   obtenerSubasta(id: string) {
@@ -91,7 +78,6 @@ export class DetailProductComponent implements OnInit {
         this.endAuction = data['subasta'].hora_fin;
         this.endDayAuction = data['subasta'].fecha_fin;
         this.subasta = data;
-        console.log(this.subasta);
       })
   }
 

@@ -40,7 +40,7 @@
                 <tbody>
                     <tr *ngFor="let puj of arrayPujas">
                         <td>{{puj.comprador.name}}</td>
-                        <td>{{puj.dia | date:'dd-mm-yyyy'}} {{puj.hora}}</td>
+                        <td>{{puj.dia | date: 'dd-MM-yyyy'}} {{puj.hora}}</td>
                         <td>S/{{puj.monto}}</td>
                     </tr>
                 </tbody>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-card',
@@ -12,7 +13,7 @@ export class ProductCardComponent implements OnInit {
   image: any = null;
   image2: any = null;
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -21,5 +22,11 @@ export class ProductCardComponent implements OnInit {
       this.image2 = this.data['producto'].imgs[1];
     }, 500);
   }
+
+  goToBuyer(subasta:any){
+
+    this.router.navigate(['/buyer',subasta._id])
+  }
+
 
 }

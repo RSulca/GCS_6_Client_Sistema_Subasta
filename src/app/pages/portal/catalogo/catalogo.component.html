@@ -14,7 +14,8 @@
     <owl-carousel-o [options]="customOptions">
       <ng-template carouselSlide *ngFor="let subasta of subastas">
         <div class="col mb-4">
-          <app-product-card [data]="subasta" (click)="goToBuyer(subasta)"></app-product-card>
+          <app-product-card [data]="subasta"></app-product-card>
+          <!-- <input type="button" value="presionar" (click)="goToBuyer(subasta)"> -->
         </div>
       </ng-template>
 

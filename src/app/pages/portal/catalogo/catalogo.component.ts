@@ -28,7 +28,7 @@ export class CatalogoComponent implements OnInit {
 
   subastas: any[] = [];
 
-  constructor(private subastaService: SubastaService,private router:Router, private activateRoute: ActivatedRoute) { }
+  constructor(private subastaService: SubastaService, private activateRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activateRoute.params.subscribe(data => {
@@ -37,11 +37,6 @@ export class CatalogoComponent implements OnInit {
         this.subastas = data['results']
       })
     })
-  }
-
-  goToBuyer(subasta:any){
-
-    this.router.navigate(['/buyer',subasta._id])
   }
 
 }
