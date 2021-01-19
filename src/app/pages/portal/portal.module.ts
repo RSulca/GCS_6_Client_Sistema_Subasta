@@ -29,6 +29,7 @@ import { SellerDetailProductComponent } from './seller-detail-product/seller-det
 import { DetailProductComponent } from './detail-product/detail-product.component';
 import { FooterPortalComponent } from './shared-components/footer-portal/footer-portal.component';
 import { NavbarPortalComponent } from './shared-components/navbar-portal/navbar-portal.component';
+import { ConfirmDialog2Component } from './personal-components/comfirm-dialog2/confirm-dialog2.component';
 
 //modulos de terceros
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
@@ -69,7 +70,8 @@ import { ProductsComponent } from './products/products.component';
     HelpComponent,
     FooterPortalComponent,
     NavbarPortalComponent,
-    ProductsComponent
+    ProductsComponent,
+    ConfirmDialog2Component
   ],
   imports: [
     CommonModule,
