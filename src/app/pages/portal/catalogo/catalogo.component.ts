@@ -35,8 +35,6 @@ export class CatalogoComponent implements OnInit {
       const category = data['categoryName'];
       this.subastaService.subastasPorCategoria(category).subscribe((data: any) => {
         this.subastas = data['results']
-        console.log('aaaaaaaaaa')
-        console.log(this.subastas);
       })
     })
   }
