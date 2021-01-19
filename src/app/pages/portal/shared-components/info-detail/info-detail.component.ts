@@ -7,7 +7,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { WebSocketService } from 'src/app/services/web-socket.service';
 import { PujaTemporal } from 'src/app/models/request/pujaTemporal.model';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { ConfirmDialogComponent } from 'src/app/pages/portal/personal-components/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialog2Component } from 'src/app/pages/portal/personal-components/comfirm-dialog2/confirm-dialog2.component';
 
 @Component({
   selector: 'app-info-detail',
@@ -48,7 +48,7 @@ export class InfoDetailComponent implements OnInit {
           
           this.arrayPujas = data['pujas'];
       }else{
-        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        const dialogRef = this.dialog.open(ConfirmDialog2Component, {
           width: '400px',
           data: `SUBASTA FINALIZADA. El ganador de la subasta es el usuario: ${data['name']} pagando el precio total de: ${data['precio']}`,
         });
@@ -85,14 +85,14 @@ export class InfoDetailComponent implements OnInit {
     })
   }
 
-  puja55(){
-    const monto = 55;
+  puja100(){
+    const monto = 100;
     this.subastaService.pujar(this.idSubasta, monto).subscribe((data: any) => {
     })
   }
 
-  puja60(){
-    const monto = 60;
+  puja150(){
+    const monto = 150;
     this.subastaService.pujar(this.idSubasta, monto).subscribe((data: any) => {
     })
   }
