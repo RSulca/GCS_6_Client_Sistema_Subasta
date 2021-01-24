@@ -10,6 +10,7 @@ export class PortalComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

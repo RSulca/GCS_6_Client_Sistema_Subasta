@@ -1,11 +1,22 @@
 import { Routes } from '@angular/router';
+import { LoginGuardGuard } from 'src/app/guards/login-guard.guard';
 import { AccountComponent } from './account/account.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
+<<<<<<< HEAD
+=======
+import { DetailProductComponent } from './detail-product/detail-product.component';
+import { HistorialComponent } from './historial/historial.component';
+>>>>>>> develop
 import { HomePortalComponent } from './home-portal/home-portal.component';
 import { ProductRegisterComponent } from './product-register/product-register.component';
+import { SellerDetailProductComponent } from './seller-detail-product/seller-detail-product.component';
 import { TermsComponent } from './terms-components/terms-components.component';
 import { TermsModalComponent } from './terms-components/terms-modal/terms-modal.component';
+import { MyProductsComponent } from './my-products/my-products.component';
+import { HistorialComprasComponent } from './historial-Compras/historial-Compras.component';
 
+import { FavoritesComponent } from './favorites/favorites.component';
+import { HelpComponent } from './help/help.component';
 
 export const portalRoutes: Routes = [
   {
@@ -17,12 +28,42 @@ export const portalRoutes: Routes = [
     component: HomePortalComponent
   },
   {
-    path: 'catalog',
+    path: 'help',
+    component: HelpComponent
+  },{
+    path: 'favorites',
+    component: FavoritesComponent
+  },
+  {
+    path: 'catalog/:categoryName',
     component: CatalogoComponent
+  },
+  {
+    path: 'buyer/:idSubasta',
+    component: DetailProductComponent
+  },
+  {
+    path: 'seller-product/:idSubasta',
+    component: SellerDetailProductComponent
+  },
+  {
+    path: 'auction-create/:idProducto',
+    component: MyProductsComponent
+  },
+  {
+    path: 'history',
+    canActivate: [LoginGuardGuard],
+    component: HistorialComponent
+  },
+  {
+    path: 'historial-compras',
+    canActivate: [LoginGuardGuard],
+    component: HistorialComprasComponent
   },
   {
     path: 'account',
     component: AccountComponent,
+    canActivate: [LoginGuardGuard],
     children: [
       {
         path: '',
@@ -47,6 +88,7 @@ export const portalRoutes: Routes = [
   {
     path: 'seller',
     component: ProductRegisterComponent,
+    canActivate: [LoginGuardGuard],
     children: [
       {
         path: '',

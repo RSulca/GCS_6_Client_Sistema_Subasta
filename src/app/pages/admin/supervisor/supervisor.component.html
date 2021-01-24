@@ -12,44 +12,44 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form [formGroup]="registroSupervisorForm">
+                    <form [formGroup]="registroSupervisorForm" (submit)="submit()">
                         <div class="form-row">
                           <div class="form-group col-md-6" style="display: none;">
                             <label for="inputEmail4">ID</label>
-                            <input type="_id" class="form-control" id="inputID" [(ngModel)]="supervisor.id" formControlName="id" placeholder="ID">
+                            <input type="text" class="form-control" formControlName="id">
                           </div>
-                          <div class="form-group col-md-6">
+                          <div class="form-group col-md-6" [ngClass]="{'has-danger' : email.errors && email.touched,'has-success': !email.errors}">
                             <label for="inputEmail4">Correo</label>
-                            <input type="email" class="form-control" id="inputEmail4"  [(ngModel)]="supervisor.email" formControlName="correo" placeholder="Correo">
+                            <input type="email" class="form-control" formControlName="email"> 
                           </div>
-                          <div class="form-group col-md-6">
+                          <div class="form-group col-md-6" [ngClass]="{'has-danger' : password.errors && password.touched,'has-success': !password.errors}">
                             <label for="inputPassword4">Password</label>
-                            <input type="password" class="form-control" id="inputPassword4"  [(ngModel)]="supervisor.password" formControlName="password" placeholder="Password">
+                            <input type="text" class="form-control" formControlName="password" [readonly]="isReadonly">
                           </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" [ngClass]="{'has-danger' : name.errors && name.touched,'has-success': !name.errors}">
                           <label for="inputNombres">Nombres</label>
-                          <input type="text" class="form-control" id="inputNombres" [(ngModel)]="supervisor.name" formControlName="nombres" placeholder="Nombres">
+                          <input type="text" class="form-control" formControlName="name">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" [ngClass]="{'has-danger' : lastname.errors && lastname.touched,'has-success': !lastname.errors}">
                           <label for="inputApellidos">Apellidos</label>
-                          <input type="text" class="form-control" id="inputApellidos" [(ngModel)]="supervisor.lastname" formControlName="apellidos" placeholder="Apellidos">
+                          <input type="text" class="form-control" formControlName="lastname">
                         </div>
                         <div class="form-row">
-                          <div class="form-group col-md-6">
+                          <div class="form-group col-md-6" [ngClass]="{'has-danger' : dni.errors && dni.touched,'has-success': !dni.errors}">
                             <label for="inputDNI">DNI</label>
-                            <input type="text" class="form-control" id="inputDNI" [(ngModel)]="supervisor.dni" formControlName="dni" placeholder="DNI">
+                            <input type="text" class="form-control" formControlName="dni">
                           </div>
-                          <div class="form-group col-md-6">
+                          <div class="form-group col-md-6" [ngClass]="{'has-danger' : category.errors && category.touched,'has-success': !category.errors}">
                             <label for="inputCategoria">Categoría</label>
-                            <select id="inputCategoria" class="form-control" [(ngModel)]="supervisor.category" formControlName="categoria">
-                              <option selected>Escojer...</option>
-                              <option>...</option>
+                            <select class="form-control" formControlName="category">
+                              <option value="" selected disabled hidden>Escoja una...</option>
+                              <option *ngFor="let categoria of categorias">{{categoria.name}}</option>
                             </select>
                           </div>
                         </div>
-                        <button (click)="registrar()" class="btn btn-primary">Registrar</button>
-                        <button (click)="limpiar()" class="btn btn-info">Limpiar</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="registroSupervisorForm.invalid">Registrar</button>
+                        <button type="button" (click)="limpiar()" class="btn btn-info">Limpiar</button>
                       </form>
                 </div>
             </div>
@@ -74,8 +74,8 @@
                   <th scope="col">Categoría</th>
                   <th scope="col">Correo</th>
                   <th scope="col">Estado</th>
-                  <th scope="col">Modificar</th>
-                  <th scope="col">Inhabilitar</th>
+                  <th scope="col">Acción</th>
+                  <th scope="col">Acción</th>
                 </tr>
               </thead>
               <tbody>
@@ -85,9 +85,18 @@
                   <td>{{supervisor.lastname}}</td>
                   <td>{{supervisor.category}}</td>
                   <td>{{supervisor.email}}</td>
-                  <td>{{supervisor.state}}</td>
+                  <!-- <td>{{supervisor.state}}</td> -->
+                  <td *ngIf="supervisor.state">Habilitado</td>
+                  <td *ngIf="!supervisor.state">Inhabilitado</td>
                   <td><button (click)="actualizar(supervisor)" class="btn btn-warning">Modificar</button></td>
-                  <td><button (click)="eliminar" class="btn btn-danger">Inhabilitar</button></td>     
+                  <div *ngIf="supervisor.state; else eliminado;">
+                    <td><button (click)="inhabilitar(supervisor._id)" class="btn btn-danger">Inhabilitar</button></td>   
+                  </div>
+                  <ng-template #eliminado>
+                    <div>
+                      <td><button (click)="habilitar(supervisor._id)" class="btn btn-success">Habilitar</button></td>   
+                    </div>
+                  </ng-template>
                 </tr>
               </tbody>
             </table>

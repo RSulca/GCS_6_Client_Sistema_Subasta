@@ -1,0 +1,39 @@
+<app-navbar-portal></app-navbar-portal>
+<div class="container mt-5 mb-5">
+
+    <div class="row mx-0">
+        <div class="col-12 col-md-3">
+            <div class="p-4 bg-white p-3 box-ccc menu-tabs">
+                <h3 class="text-dark title-page">Vendedor</h3>
+                <hr class="mt-4">
+                <p>Martyn1973 <span class="particular">PARTICULAR</span></p>
+                <p>100% <span class="calificacion">9 calificaciones</span></p>
+            </div>
+            <div class="p-4 bg-white p-3 box-ccc menu-tabs">
+                <h2 class="text-dark title-page">Lotes</h2>
+                <hr class="mt-4">
+                <p routerLinkActive="active"><a [routerLink]="['']" class="text-dark lote">Todos los lotes (9)</a></p>
+                <p routerLinkActive="active"><a [routerLink]="['']" class="text-dark lote">Subasta de Panini (9)</a></p>
+            </div>
+        </div>
+        <div class="col-12 col-md-9">
+            <div class="p-4 bg-white box-ccc">
+                <h1>Lotes que ofrece Martyn1973</h1>
+                <div class="row mx-0">
+                    <div class="col-md-4">
+                        <app-product-card></app-product-card>
+                    </div>
+                    <div class="col-md-4">
+                        <app-product-card></app-product-card>
+                    </div>
+                    <div class="col-md-4">
+                        <app-product-card></app-product-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<app-footer-portal></app-footer-portal>

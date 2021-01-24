@@ -1,0 +1,59 @@
+label {
+    color: #525f7f;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.my_products {
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, .5);
+}
+
+.my_products {
+    padding: 3rem;
+}
+
+.cat-prod {
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, .5);
+}
+
+.cat-prod {
+    padding: 1rem;
+}
+
+.cat-prod-h3 {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.cat-prod {
+    height: 100%;
+}
+
+.timepicker__header[_ngcontent-egb-c154] {
+    background-color: #1b4bad !important;
+}
+
+.timepicker-button[_ngcontent-egb-c165] {
+    color: #1b4bad !important;
+}
+
+.clock-face__number[_ngcontent-egb-c164]>span.active[_ngcontent-egb-c164] {
+    background-color: #1b4bad !important;
+    color: var(--clock-face-time-active-color);
+}
+
+[_nghost-bqd-c154] {
+    --body-background-color: #fff;
+    --primary-font-family: 'Roboto', sans-serif;
+    --button-color: #1b4bad !important;
+    --dial-active-color: #fff;
+    --dial-inactive-color: rgba(255, 255, 255, .5);
+    --dial-background-color: #1b4bad !important;
+    --dial-editable-active-color: #1b4bad !important;
+    --dial-editable-background-color: #fff;
+    --clock-face-time-active-color: #fff;
+    --clock-face-time-inactive-color: #6c6c6c;
+    --clock-face-inner-time-inactive-color: #929292;
+    --clock-face-time-disabled-color: #c5c5c5;
+    --clock-face-background-color: #f0f0f0;
+    --clock-hand-color: #1b4bad !important;
+}

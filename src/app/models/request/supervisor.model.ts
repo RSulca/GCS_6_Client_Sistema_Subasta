@@ -5,6 +5,13 @@ export class Supervisor{
     lastname:String;
     dni:String;
     email:String;
-    password:String;
-    category:String;
+    password?:String;
+    category?:String;
+    state?:boolean;
+    bornDate?:String;
+    phoneNumber?:String;
+    address?:String;
+    college?:String;
+    studies?:String;
+
 }

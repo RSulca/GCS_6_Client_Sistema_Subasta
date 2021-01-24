@@ -1,0 +1,27 @@
+<div class="contenido">
+  <div class="row">
+    <div class="col-md-6">
+      <h4 class="heading-small text-muted mb-4">Foto de perfil de usuario</h4>
+    </div>
+    <div class="col-md-6" align="end">
+      <button (click)="goToUbigeo()" class="btn btn-primary btn-sm">
+        Siguiente <i class="ni ni-bold-right"></i>
+      </button>
+    </div>
+  </div>
+  <div class="cuerpo">
+    <div class="row">
+      <div class="col-md-6">
+        <span>Foto de perfil actual</span>
+        <div class="mt-4">
+          <img [src]="loginService.usuario.img" class="rounded-circle w150 ">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <span>Nueva foto de perfil <input type="file" (change)="seleccionImage($event.target.files[0])">
+        </span>
+        <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150 rounded-circle">
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,24 +1,59 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { LocalStorageService } from './local-storage.service';
-@Injectable()
+import { Router } from '@angular/router';
+@Injectable({
+  providedIn: 'root'
+})
 export class LoginService {
 
-  constructor(private http: HttpClient, private ls: LocalStorageService) { }
+  private loggedIn = new BehaviorSubject<boolean>(false);
 
+  usuario: any = {};
+  token: any = {};
+  rol: any = {};
+
+  constructor(private http: HttpClient, private router: Router, private ls: LocalStorageService) {
+    this.loadStorage();
+    this.loggedIn = new BehaviorSubject<boolean>(this.tokenAvailable());
+  }
+
+  get isLogged(): Observable<boolean> {
+    return this.loggedIn.asObservable(); // {2}
+  }
+  private tokenAvailable(): boolean {
+    return !!this.ls.getData('token');
+  }
+
+  loadStorage() {
+    if (this.ls.getData('token')) {
+      this.token = this.ls.getData('token');
+      this.usuario = JSON.parse(this.ls.getData('user'));
+      this.rol = this.ls.getData('rol');
+    } else {
+      this.token = '';
+      this.usuario = null;
+      this.rol = '';
+    }
+  }
 
   loginGoogle(token: string) {
     const url = `${environment.API_SUBASTA}/api/auth/google`;
     return this.http.post(url, { token: token }).pipe(
       map((data: any) => {
+        console.log(data)
         this.saveStorage(data);
+        this.loggedIn.next(true);
         return data;
+      }),
+      catchError(err => {
+        return throwError(err.error.message);
       })
-    );
 
+    );
   }
 
 
@@ -32,6 +67,7 @@ export class LoginService {
     return this.http.post(url, data).pipe(
       map((data: any) => {
         this.saveStorage(data);
+        this.loggedIn.next(true);
         return data;
       }),
       catchError(err => {
@@ -45,8 +81,8 @@ export class LoginService {
     const url = `${environment.API_SUBASTA}/api/register`;
     return this.http.post(url, data).pipe(
       map((data: any) => {
-        this.ls.setData('token', data.token);
-        this.ls.setData('client', JSON.stringify(data.user))
+        this.saveStorage(data);
+        this.loggedIn.next(true);
         return data;
       }),
       catchError(err => {
@@ -55,9 +91,29 @@ export class LoginService {
     );
   }
 
+  logout(): void {
+    this.usuario = null;
+    this.token = '';
+
+    this.ls.removeData('token');
+    this.ls.removeData('user');
+    this.ls.removeData('rol');
+
+    this.router.navigate(['/login']);
+    this.loggedIn.next(false);
+
+
+  }
+
   saveStorage(data: any) {
     this.ls.setData('token', data.token);
-    this.ls.setData('client', JSON.stringify(data.user))
+    this.ls.setData('rol', data.role);
+    this.ls.setData('user', JSON.stringify(data.user))
+
+    this.usuario = data.user;
+    this.token = data.token;
+    this.rol = data.role;
   }
+
 
 }

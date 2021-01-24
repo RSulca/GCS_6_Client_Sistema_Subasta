@@ -1,4 +1,4 @@
-<div class="container m-4">
+<div class="container py-4">
   <div class="titulo">
     <div class="row">
       <div class="col-md-6">
@@ -13,5 +13,35 @@
     <p>Para que podamos hacernos una idea de tu lote, introduce todos los datos necesarios con la mayor precisión
       posible. De esta manera, agilizarás la revisión del experto y aumentarás las probabilidades de búsqueda de tu
       lote, atrayendo así a más pujadores.</p>
+  </div>
+
+  <div class="datosProducto col-12 col-md-6 px-0">
+    <!-- <span *ngIf="descriptionForm.get('columns').value.length > 0; else bloque3"> -->
+    <span *ngIf="descriptionForm.get('columns').value.length > 0">
+      <form [formGroup]="descriptionForm">
+        <div formArrayName="columns">
+          <div *ngFor="let column of columns.controls; let i = index;" [formGroupName]="i">
+            <div class="form-group">
+              <div *ngIf="categoryFormSelected.campos[i]=='fechaCreacion', else inputProducto1">
+                <label class="font-6">{{categoryFormSelected.camposPlaceholder[i]}}</label>
+                <input type="date" class="form-control" formControlName="{{categoryFormSelected.campos[i]}}">
+              </div>
+              <ng-template #inputProducto1>
+                <div *ngIf="categoryFormSelected.campos[i]=='resumen', else inputProducto2">
+                  <label class="font-6">{{categoryFormSelected.camposPlaceholder[i]}}</label>
+                  <textarea cols="30" rows="10" class="form-control" formControlName="{{categoryFormSelected.campos[i]}}"></textarea>
+                </div>
+              </ng-template>
+              <ng-template #inputProducto2>
+                <div>
+                  <label class="font-6">{{categoryFormSelected.camposPlaceholder[i]}}</label>
+                  <input type="text" class="form-control" formControlName="{{categoryFormSelected.campos[i]}}">
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </form>
+    </span>
   </div>
 </div>

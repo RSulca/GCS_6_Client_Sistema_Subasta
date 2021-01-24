@@ -1,0 +1,37 @@
+.alert-session{
+    padding: 1rem 1rem 1rem 3rem;
+    border: 1px solid #CD5E0B;
+    border-left: 5px solid #CD5E0B;
+    background-image: url('../../../../assets/img/icons/common/alert-icon.svg');
+    background-position: 1rem 1rem;
+    background-repeat: no-repeat;
+}
+.titulo-producto{
+    color: #000;
+    font-size: 2.5rem;
+    line-height: normal;
+}
+.accordion-button{
+    width: 100%;
+    text-align: left;
+    padding: .8rem 1rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #000;
+}
+.accordion-button span{
+    float: right;
+}
+.accordion-button[aria-expanded=true] .fa-chevron-up{
+    display: inline-block;
+}
+.accordion-button[aria-expanded=false] .fa-chevron-down{
+    display: inline-block;
+}
+.body-accordion{
+    font-size: 1rem;
+}
+
+.icon-c {
+    color: orange;
+}

@@ -1,0 +1,130 @@
+<app-navbar-portal></app-navbar-portal>
+
+<div class="px-3 px-lg-5 py-4">
+    <div class="row mx-0 mx-md-2">
+        <div class="col-12 col-md-8">
+            <h2 class="titulo-producto">{{nombreProducto}}</h2>
+            <!-- <div (click)="avisar(nombreProducto)" class="btn btn-success">Avisar</div> -->
+            <!-- Carousel de imagenes -->
+            <div class="p-1">
+                <owl-carousel-o [options]="customOptions">
+                    <ng-template carouselSlide *ngFor="let imagen of imagenesProducto">
+                        <div class="col">
+                            <img src="{{imagen}}" class="img-fluid">
+                        </div>
+                    </ng-template>
+                </owl-carousel-o>
+            </div>
+
+            <!-- Usuario -->
+            <div class="p-3">
+                <p class="mb-0"><small>VENDEDOR</small></p>
+                <div><a href="" class="link-underline">{{vendedorNombre}} {{vendedorApellido}}</a></div>
+                <!-- <p class="mb-0"><small>100% <a href="#" class="link-underline">9 calificaciones</a></small></p> -->
+                <div *ngIf="calificacion.length !== 0;else noCalificacion">
+                    <span *ngFor="let estrella of calificacion" class="fa fa-star icon-c"></span>
+                </div>
+                <ng-template #noCalificacion>
+                    <span>No tiene calificación</span>
+                </ng-template>
+            </div>
+
+            <!-- Descripcion -->
+            <div class="accordion p-3 accordionDescripcion">
+                <div class="card">
+                    <div class="card-header p-0" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link accordion-button collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Descripción <span><i class="fas fa-chevron-up d-hidden mx-0"></i><i class="fas fa-chevron-down mx-0 d-hidden"></i></span>
+                        </button>
+                        </h2>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
+                        <div class="card-body">
+                            <h4 class="card-body-title mb-0">Nombre del producto en subasta</h4>
+                            <p>En perfecto estado</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel officiis tempora nam odio in consequuntur, provident magnam at maxime. Ipsum.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header p-0" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link accordion-button collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Detalles del Producto <span><i class="fas fa-chevron-up d-hidden mx-0"></i><i class="fas fa-chevron-down mx-0 d-hidden"></i></span>
+                        </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
+                        <div class="card-body">
+                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
+                                tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header p-0" id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link accordion-button collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Vendedor <span><i class="fas fa-chevron-up d-hidden mx-0"></i><i class="fas fa-chevron-down mx-0 d-hidden"></i></span>
+                        </button>
+                        </h2>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
+                        <div class="card-body body-accordion">
+                            <div class="mb-2"><a href="" class="link-underline">Usuario123</a></div>
+                            <p>Miembro de Subastón desde 22 abril 2017</p>
+                            <p class="font-5 text-dark mb-0">Reseñas (en los últimos 12 meses)</p>
+                            <p class="mb-0">Puntuación de valoraciones: 100%</p>
+                            <p class="mb-4">Número de valoraciones: 9</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <app-info-detail [endAuction]="endAuction" [endDay]="endDayAuction" [idSubasta]="idSubasta" [precioBase]="precioBase" [precioBaseTemporal]="precioBase" typeUser="buyer"></app-info-detail>
+        </div>
+    </div>
+
+    <!-- <div class="similares pt-5">
+        <div class="col-12">
+            <h2>Productos Similares</h2>
+        </div>
+        <owl-carousel-o [options]="productosSimilares">
+            <ng-template carouselSlide>
+                <div class="col mb-4">
+                    <app-product-card></app-product-card>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide>
+                <div class="col mb-4">
+                    <app-product-card></app-product-card>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide>
+                <div class="col mb-4">
+                    <app-product-card></app-product-card>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide>
+                <div class="col mb-4">
+                    <app-product-card></app-product-card>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide>
+                <div class="col mb-4">
+                    <app-product-card></app-product-card>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide>
+                <div class="col mb-4">
+                    <app-product-card></app-product-card>
+                </div>
+            </ng-template>
+        </owl-carousel-o> -->
+    <!-- </div> -->
+</div> 
+
+<app-footer-portal></app-footer-portal>

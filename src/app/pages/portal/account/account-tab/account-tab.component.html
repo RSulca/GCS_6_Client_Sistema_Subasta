@@ -1,23 +1,66 @@
-<div class="p-0">
-    <h2 class="row">Cuenta</h2>
+<form [formGroup]="basicForm">
     <div class="row">
-        <h3 class="col-8">Nombre de usuario</h3>
-        <h3 class="col-4">user-39e45ea</h3>
+        <div class="col-md-6">
+            <h4 class="heading-small text-muted mb-4">Informacion basica del usuario</h4>
+        </div>
+        <div class="col-md-6" align="end">
+            <button (click)="goToPhoto()" class="btn btn-primary btn-sm">
+        Siguiente <i class="ni ni-bold-right"></i>
+      </button>
+        </div>
     </div>
-    <div class="row">
-        <h3 class="col-8">Direcciones de correo electrónico</h3>
-        <h3 class="col-4">user-39e45ea</h3>
+    <div class="pl-lg-4">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="input-username">Nombres</label>
+                    <input type="text" class="form-control form-control-alternative" placeholder="Username" value="lucky.jesse" formControlName="name">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="input-email">Correo electronico</label>
+                    <input [attr.disabled]="loginService.usuario.email ? '' : null" type="email" id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com" formControlName="email">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="input-first-name">Apellidos</label>
+                    <input type="text" class="form-control form-control-alternative" placeholder="First name" value="Lucky" formControlName="lastname">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="input-last-name">DNI</label>
+                    <input [attr.disabled]="loginService.usuario.dni ? '' : null" maxlength="8" type="text" id="input-last-name" class="form-control form-control-alternative" formControlName="dni">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="input-first-name">Numero de telefono</label>
+                    <input type="text" maxlength="9" class="form-control form-control-alternative" placeholder="Telefono" formControlName="phone">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="form-control-label" for="input-last-name">Fecha de nacimiento</label>
+                    <input type="date" class="form-control form-control-alternative" formControlName="bornDate">
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="row">
-        <h3 class="col-8">Contraseña</h3>
-        <h3 class="col-4">user-39e45ea</h3>
+    <hr>
+    <h4 class="heading-small text-muted mb-4" *ngIf="!loginService.usuario.google">Datos de cuenta</h4>
+    <div class="row" *ngIf="!loginService.usuario.google">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label class="form-control-label" for="input-username">Contraseña</label>
+                <input type="password" id="input-username" class="form-control form-control-alternative" placeholder="Username" formControlName="password">
+            </div>
+        </div>
     </div>
-    <div class="row">
-        <h3 class="col-8">Idioma</h3>
-        <h3 class="col-4">user-39e45ea</h3>
-    </div>
-    <div class="row">
-        <h3 class="col-8">Moneda de pujas</h3>
-        <h3 class="col-4">user-39e45ea</h3>
-    </div>
-</div>
+</form>

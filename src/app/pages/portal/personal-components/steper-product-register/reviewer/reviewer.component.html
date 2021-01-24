@@ -1,11 +1,38 @@
-<div class="container m-4">
-  <div class="titulo">
-    <div class="row">
-      <div class="col-md-6">
-        <h2>Vista previa</h2>
-      </div>
+<div class="container py-4">
+    <div class="titulo">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Vista previa</h2>
+            </div>
+            <div class="col-md-6" align="end">
+                <button (click)="goToSubmit()" class="btn btn-primary btn-sm">
+          {{edit?'Reenviar producto':'Enviar producto a revision'}} <i class="ni ni-bold-right"></i>
+        </button>
+            </div>
+        </div>
+        <p>Echa un último vistazo a todo antes de enviar el lote. Después, se enviará a nuestros expertos para su revisión.
+        </p>
     </div>
-    <p>Echa un último vistazo a todo antes de enviar el lote. Después, se enviará a nuestros expertos para su revisión.</p>
-  </div>
 
+    <div class="review">
+        <div class="card card-review col-12 col-md-8 px-0 mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-3 align-self-center">
+                    <img [src]="imagenTemp" alt="" class="img-fluid" *ngIf="imagenTemp;else bloque">
+                    <ng-template #bloque>
+                        <p class="noImg">No seleccionaste ninguna imagen.</p>
+                    </ng-template>
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-between align-items-baseline">
+                            <span>{{categoryTemp}}</span>
+                            <a (click)="goToStart()" class="btn btn-link p-1"><i class="fas fa-pencil-alt"></i> Editar</a>
+                        </h5>
+                        <p class="card-text">{{summary}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ProductEmiterService } from 'src/app/services/product-emiter.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDetailComponent implements OnInit {
 
-  constructor() { }
+  categorySelected: any = '';
+
+  constructor(private categoryEmitter: ProductEmiterService) { }
 
   ngOnInit(): void {
   }
+
+
 
 }
