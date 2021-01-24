@@ -67,7 +67,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                 </div>
-                <input class="form-control" placeholder="Dni" type="text" formControlName="dni">
+                <input class="form-control" placeholder="Dni" type="number" formControlName="dni">
               </div>
             </div>
             <div class="form-group"
@@ -114,7 +114,7 @@
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary mt-4"><i
+              <button type="submit" [routerLink]="['./login']" [disabled]="registerForm.invalid" class="btn btn-primary mt-4"><i
                   *ngIf="process"></i> Create
                 account</button>
             </div>
