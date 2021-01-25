@@ -17,14 +17,16 @@ export const ROUTES1: RouteInfo[] = [
 
 export const ROUTES2: RouteInfo[] = [
   { path: '/supervisor/productos', title: 'Productos',  icon:'ni-money-coins text-blue', class: '' },
-  { path: '/supervisor/productos/historial', title: 'Historial',  icon:'fa fa-book text-yellow', class: '' }
+  { path: '/supervisor/productos/historial', title: 'Historial',  icon:'fa fa-book text-yellow', class: '' },
+  { path: '/supervisor/productos/reporte', title: 'Reporte',  icon:'far fa-chart-bar text-red', class: '' }
 ];
 
 export const ROUTES3: RouteInfo[] = [
   { path: '/supervisor', title: 'Supervisor',  icon: 'ni-tv-2 text-primary', class: '' },
   { path: '/supervisor/perfil', title: 'Perfil',  icon:'ni-single-02 text-green', class: '' },
   { path: '/supervisor/productos', title: 'Productos',  icon:'ni-money-coins text-blue', class: '' },
-  { path: '/supervisor/productos/historial', title: 'Historial de Productos',  icon:'fa fa-book text-yellow', class: '' }
+  { path: '/supervisor/productos/historial', title: 'Historial de Productos',  icon:'fa fa-book text-yellow', class: '' },
+  { path: '/supervisor/productos/reporte', title: 'Reporte de subastas',  icon:'far fa-chart-bar text-red', class: '' }
 ];
 
 @Component({

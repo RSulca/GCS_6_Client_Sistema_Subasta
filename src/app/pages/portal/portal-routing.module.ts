@@ -2,11 +2,8 @@ import { Routes } from '@angular/router';
 import { LoginGuardGuard } from 'src/app/guards/login-guard.guard';
 import { AccountComponent } from './account/account.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
-<<<<<<< HEAD
-=======
 import { DetailProductComponent } from './detail-product/detail-product.component';
 import { HistorialComponent } from './historial/historial.component';
->>>>>>> develop
 import { HomePortalComponent } from './home-portal/home-portal.component';
 import { ProductRegisterComponent } from './product-register/product-register.component';
 import { SellerDetailProductComponent } from './seller-detail-product/seller-detail-product.component';

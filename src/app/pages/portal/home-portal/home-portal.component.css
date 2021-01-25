@@ -3,12 +3,6 @@
     grid-template-columns: 70% 0% 30%;
 }
 
-<<<<<<< HEAD
-.grid2 > div{
-    height: 135px;
-    padding: 1rem;
-}
-=======
 .grid5 {
     display: grid;
     grid-template-columns: 70% 30%;
@@ -18,7 +12,7 @@
     height: 135px;
     padding: 1rem;
 }
->>>>>>> develop
+
 .grid2 div p {
     font-size: 1.2rem;
     color: #000;

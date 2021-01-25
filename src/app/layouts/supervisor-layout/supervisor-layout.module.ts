@@ -15,8 +15,10 @@ import { SupervisorProductoRechazoDetalleComponent } from '../../pages/superviso
 import { SupervisorProductoSubsanarDetalleComponent } from '../../pages/supervisor/supervisor-producto-subsanar-detalle/supervisor-producto-subsanar-detalle.component';
 import { SupervisorProductoHistorialComponent } from '../../pages/supervisor/supervisor-producto-historial/supervisor-producto-historial.component';
 import { SupervisorProductoHistorialDetalleComponent } from '../../pages/supervisor/supervisor-producto-historial-detalle/supervisor-producto-historial-detalle.component';
+import { SupervisorProductoReporteComponent } from '../../pages/supervisor/supervisor-producto-reporte/supervisor-producto-reporte.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { NgImageSliderModule } from 'ng-image-slider';
     HttpClientModule,
     NgbModule,
     ClipboardModule,
-    NgImageSliderModule
+    NgImageSliderModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
     SupervisorDashboardComponent,
@@ -39,6 +42,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
     SupervisorProductoSubsanarDetalleComponent,
     SupervisorProductoHistorialComponent,
     SupervisorProductoHistorialDetalleComponent,
+    SupervisorProductoReporteComponent
   ],
   entryComponents: [
     SupervisorProductoDetalleComponent, 
