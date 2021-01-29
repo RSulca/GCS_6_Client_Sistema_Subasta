@@ -34,7 +34,7 @@
             <div class="col-lg-6">
                 <div class="form-group">
                     <label class="form-control-label" for="input-last-name">DNI</label>
-                    <input [attr.disabled]="loginService.usuario.dni ? '' : null" minlength="8" maxlength="8" type="number" id="input-last-name" class="form-control form-control-alternative" formControlName="dni">
+                    <input [attr.disabled]="loginService.usuario.dni ? '' : null" minlength="8" maxlength="8" type="text" id="input-last-name" class="form-control form-control-alternative" formControlName="dni">
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
             <div class="col-lg-6">
                 <div class="form-group">
                     <label class="form-control-label" for="input-first-name">Numero de telefono</label>
-                    <input type="number" maxlength="9" class="form-control form-control-alternative" placeholder="Telefono" formControlName="phone">
+                    <input type="number" maxlength="9" class="form-control form-control-alternative" placeholder="Telefono" formControlName="phone" (keypress)="validarTelefono ($event)">
                 </div>
             </div>
             <div class="col-lg-6">

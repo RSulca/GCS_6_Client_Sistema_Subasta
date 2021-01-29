@@ -1,11 +1,13 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { UserEmiterService } from 'src/app/services/user-emiter.service';
 import { UserService } from 'src/app/services/user.service';
-
+interface ErrorValidate {
+  [s: string]: boolean;
+}
 @Component({
   selector: 'app-account-tab',
   templateUrl: './account-tab.component.html',
@@ -43,11 +45,27 @@ export class AccountTabComponent implements OnInit {
       })
     })
   }
+  validarTelefono(evento: any) {
+    /* evento.value = evento.value.replace(/[^0-9]/g, ""); */
+    if (evento.charCode >= 48 && evento.charCode <= 57) {
+      return true;
+    }
+    return false;
+  }
+  
+  validarCampo(control: FormControl): ErrorValidate {
+    if (control.value?.trim() === "") {
+      return {
+        validarCampo: true,
+      };
+    }
 
+    return null;
+  }
   initForm() {
     this.basicForm = this.fb.group({
-      name: ['', [Validators.required]],
-      lastname: ['', [Validators.required]],
+      name: ['', [Validators.required, this.validarCampo]],
+      lastname: ['', [Validators.required, this.validarCampo]],
       dni: ['', []],
       password: ['', [Validators.required]],
       phone: ['', []],
