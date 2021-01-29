@@ -67,7 +67,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                 </div>
-                <input class="form-control" placeholder="Dni" type="number" formControlName="dni">
+                <input class="form-control" placeholder="Dni" type="text" formControlName="dni" (keypress)="validarDni($event)">
               </div>
             </div>
             <div class="form-group"
