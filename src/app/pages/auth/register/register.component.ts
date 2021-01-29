@@ -1,11 +1,16 @@
 import { group } from "@angular/animations";
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from "@angular/forms";
 import { LoginService } from "src/app/services/login.service";
 import { NotifierService } from "src/app/services/notifier.service";
 import { ClientReq } from "../../../models/request/client.model";
 interface ErrorValidate {
-  [s:string]: boolean
+  [s: string]: boolean;
 }
 
 @Component({
@@ -32,7 +37,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group(
       {
         names: ["", [Validators.required, this.validarCampo]],
-        surnames: ["", [Validators.required]],
+        surnames: ["", [Validators.required, this.validarCampo]],
         dni: [
           "",
           [
@@ -101,12 +106,11 @@ export class RegisterComponent implements OnInit {
 
   validarDni(evento: any) {
     /* evento.value = evento.value.replace(/[^0-9]/g, ""); */
-    if(evento.charCode >= 48 && evento.charCode <= 57){
+    if (evento.charCode >= 48 && evento.charCode <= 57) {
       return true;
-     }
-     return false;
+    }
+    return false;
   }
-
 
   validarCampo(control: FormControl): ErrorValidate {
     if (control.value?.trim() === "") {
@@ -118,7 +122,6 @@ export class RegisterComponent implements OnInit {
     return null;
   }
 
-  
   populateRequest() {
     this.clientRequest.name = this.registerForm.controls["names"].value;
     this.clientRequest.lastname = this.registerForm.controls["surnames"].value;
