@@ -98,9 +98,17 @@
                   formControlName="password2">
               </div>
             </div>
-            <div class="text-muted font-italic"><small>Contraseña segura: <span
-                  class="text-success font-weight-700">Segura</span></small></div>
+            <div class="text-muted font-italic"><small>Contraseña segura: <span *ngIf="seguro"
+                  class="text-success font-weight-700">Segura</span><span *ngIf="!seguro"
+                  class="text-danger font-weight-700">Insegura</span></small></div>
             <div class="row my-4">
+            <div class="text-muted font-italic mb-4">
+              <small>Minimo 8 caracteres, al menos una letra mayúscula
+                al menos una letra minúscula, 
+                al menos un dígito, 
+                no espacios en blanco y 
+                al menos 1 caracter especial.</small>
+            </div>
               <div class="col-12">
                 <div class="custom-control custom-control-alternative custom-checkbox">
                   <input class="custom-control-input" id="customCheckRegister" type="checkbox"

@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   process: boolean = false;
   clientRequest: ClientReq = new ClientReq();
-
+  seguro: boolean = false;
   constructor(
     private fb: FormBuilder,
     private nf: NotifierService,
@@ -52,11 +52,11 @@ export class RegisterComponent implements OnInit {
           [Validators.required, Validators.email],
           Validators.nullValidator,
         ],
-        password: ["", [Validators.required]],
+        password: ["", [Validators.required, this.validarPassword]],
         password2: ["", [Validators.required]],
         conditions: [false, [Validators.required]],
       },
-      { validators: this.areEquals("password", "password2") }
+      { validators: [this.areEquals("password", "password2"), this.validarPassword("password")] }
     );
   }
 
@@ -120,6 +120,31 @@ export class RegisterComponent implements OnInit {
     }
 
     return null;
+  }
+
+  /* validarPassword(control: FormControl): ErrorValidate {
+    if (control.value?.length >= 8) {
+        this.seguro = true;
+        console.log(this.seguro)
+        return {
+          validarPassword: true
+        }      
+    }
+    return null;
+  } */
+  validarPassword(pass1: any) {
+    return (group: FormGroup) => {
+      let password1 = group.controls[pass1].value;
+      let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){7,}$/;
+      if (regex.test(password1)) {
+        this.seguro = true
+        return null;  
+      }
+      this.seguro = false;
+      return {
+        validarPassword: true,
+      };
+    };
   }
 
   populateRequest() {
