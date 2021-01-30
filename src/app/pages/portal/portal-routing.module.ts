@@ -14,6 +14,7 @@ import { HistorialComprasComponent } from './historial-Compras/historial-Compras
 
 import { FavoritesComponent } from './favorites/favorites.component';
 import { HelpComponent } from './help/help.component';
+import { RecordCustomersComponent } from './record-customers/record-customers.component';
 
 export const portalRoutes: Routes = [
   {
@@ -56,6 +57,11 @@ export const portalRoutes: Routes = [
     path: 'historial-compras',
     canActivate: [LoginGuardGuard],
     component: HistorialComprasComponent
+  },
+  {
+    path: 'record-customers',
+    canActivate: [LoginGuardGuard],
+    component: RecordCustomersComponent
   },
   {
     path: 'account',

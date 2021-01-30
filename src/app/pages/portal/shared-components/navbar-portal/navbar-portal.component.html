@@ -44,7 +44,7 @@
 
             </h3>
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" [routerLink]="['../account']">
               <div *ngIf="!loginService.usuario.firstEntry ;else bloque3">
                 Cuenta
@@ -64,6 +64,11 @@
             <a class="dropdown-item" [routerLink]="['../historial-compras']">
               <div>
                 Historial de compras
+              </div>
+            </a>
+            <a class="dropdown-item" [routerLink]="['../record-customers']">
+              <div>
+                Historial de clientes
               </div>
             </a>
             <a class="dropdown-item" (click)="onLogout()">Cerrar Sesion</a>

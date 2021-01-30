@@ -1,0 +1,86 @@
+<app-navbar-portal></app-navbar-portal>
+
+<div class="container-fluid px-lg-8 py-4">
+
+    <h1 class="text-dark">Historial de Clientes</h1>
+
+    <div class="my-container">
+        <div class="row">
+            <div class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
+                <div class="form-group mb-0">
+                    <div class="input-group input-group-alternative input-group-merge">
+                        <div class="input-group-prepend"><span class="input-group-text"><i
+                                    class="fas fa-search"></i></span></div>
+                        <input class="form-control" placeholder="Buscar" type="text" (keyup)="applyFilter($event)">
+                    </div>
+                </div>
+            </div>
+            <!-- <div *ngIf="compras.length === 0 ; else templateProducto">
+                <p style="padding-left: 15px;">NO TIENE PRODUCTOS VENDIDOS</p>
+            </div> -->
+        </div>
+        <div class="p-3 mt-3 mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                </ng-container>
+
+                <!-- Nombre Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <!-- Apellidos Column -->
+                <ng-container matColumnDef="weight">
+                    <th mat-header-cell *matHeaderCellDef> Apellidos </th>
+                    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                </ng-container>
+
+                <!-- Category Column -->
+                <ng-container matColumnDef="category">
+                    <th mat-header-cell *matHeaderCellDef> Categoría </th>
+                    <td mat-cell *matCellDef="let element"> Arte </td>
+                </ng-container>
+
+                <!-- Producto Column -->
+                <ng-container matColumnDef="symbol">
+                    <th mat-header-cell *matHeaderCellDef> Producto </th>
+                    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                </ng-container>
+
+                <!-- Image Column -->
+                <ng-container matColumnDef="image">
+                    <th mat-header-cell *matHeaderCellDef> Imagen </th>
+                    <td mat-cell *matCellDef="let element"> <img src="https://cdn-3.expansion.mx/dims4/default/ff2963a/2147483647/strip/true/crop/967x514+0+0/resize/800x425!/quality/90/?url=https%3A%2F%2Fcherry-brightspot.s3.amazonaws.com%2F22%2Fc7%2F897891c14d6e9adc254d689759d5%2Fsand.JPG" width="50px"> </td>
+                </ng-container>
+
+                <!-- Fecha Column -->
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                    <td mat-cell *matCellDef="let element"> 01/01/2021 </td>
+                </ng-container>
+
+                <!-- Monto Column -->
+                <ng-container matColumnDef="monto">
+                    <th mat-header-cell *matHeaderCellDef> Monto(S/) </th>
+                    <td mat-cell *matCellDef="let element"> 100.00 </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                </tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+        </div>
+    </div>
+</div>
+
+<app-footer-portal></app-footer-portal>

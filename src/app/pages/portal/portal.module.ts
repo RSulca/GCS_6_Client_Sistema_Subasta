@@ -30,19 +30,21 @@ import { DetailProductComponent } from './detail-product/detail-product.componen
 import { FooterPortalComponent } from './shared-components/footer-portal/footer-portal.component';
 import { NavbarPortalComponent } from './shared-components/navbar-portal/navbar-portal.component';
 import { ConfirmDialog2Component } from './personal-components/comfirm-dialog2/confirm-dialog2.component';
+import { RecordCustomersComponent } from './record-customers/record-customers.component';
+import { ProductsComponent } from './products/products.component';
+import { InfoDetailComponent } from './shared-components/info-detail/info-detail.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { HelpComponent } from './help/help.component';
 
 //modulos de terceros
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { MyProductsComponent } from './my-products/my-products.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
-import { InfoDetailComponent } from './shared-components/info-detail/info-detail.component';
-import { FavoritesComponent } from './favorites/favorites.component';
-import { HelpComponent } from './help/help.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ComponentsModule } from '../../components/components.module';
-import { ProductsComponent } from './products/products.component';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -71,7 +73,8 @@ import { ProductsComponent } from './products/products.component';
     FooterPortalComponent,
     NavbarPortalComponent,
     ProductsComponent,
-    ConfirmDialog2Component
+    ConfirmDialog2Component,
+    RecordCustomersComponent
   ],
   imports: [
     CommonModule,
@@ -88,7 +91,9 @@ import { ProductsComponent } from './products/products.component';
     NgxPaginationModule,
     ModalModule.forRoot(),
     MatProgressSpinnerModule,
-    ComponentsModule
+    ComponentsModule,
+    MatTableModule,
+    MatPaginatorModule 
   ],
   exports: [
     FooterPortalComponent,

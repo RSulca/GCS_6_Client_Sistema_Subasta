@@ -21,4 +21,9 @@ export class ReporteService {
         return this.http.get(url, { headers: { 'x-token': this.ls.getData('token') } });
     }
 
+    getCustomersXUser() {
+        const url = `${environment.API_SUBASTA}/api/reportes/compradores`;
+        return this.http.get(url, { headers: { 'x-token': this.ls.getData('token') } });
+    }
+
 }
