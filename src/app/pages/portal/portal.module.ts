@@ -45,6 +45,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ComponentsModule } from '../../components/components.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { DatePipe } from '@angular/common'
 
 
 @NgModule({
@@ -101,7 +102,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
   ],
   providers: [
     NotifierService,
-    LocalStorageService
+    LocalStorageService,
+    DatePipe
   ],
   entryComponents: [
     ConfirmDialogComponent

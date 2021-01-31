@@ -1,27 +1,14 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+import { MatTableDataSource } from '@angular/material/table';
+import { ReporteService } from 'src/app/services/reporte.service';
+import { DatePipe } from '@angular/common';
+//PDF
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { LOGO64 } from 'src/app/util/logoBase64';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-record-customers',
@@ -29,22 +16,25 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./record-customers.component.css']
 })
 export class RecordCustomersComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'category', 'symbol', 'image', 'date', 'monto'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ['position', 'name', 'lastname', 'category', 'product', 'image', 'date', 'total'];
+  dataSource = new MatTableDataSource([]);
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  enableSpinner: boolean = false;
+  customers = [];
 
-  constructor() { }
+  constructor(private reporteService: ReporteService, public datepipe: DatePipe) {
+    
+  }
 
   ngOnInit(): void {
-    
+    this.obtenerClientes();
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -54,5 +44,118 @@ export class RecordCustomersComponent implements OnInit, AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  obtenerClientes(): void {
+    this.enableSpinner = true;
+    this.reporteService.getCustomersXUser().subscribe((data: any) => {
+      this.enableSpinner = false;
+      let elementos = [];
+      data.data.forEach((el, index) => {
+        elementos.push({
+          position: index + 1,
+          name: el.comprador.name,
+          lastname: el.comprador.lastname,
+          category: el.producto.category,
+          product: el.producto.name,
+          image: el.producto.imgs[0],
+          date: el.fecha_fin,
+          total: el.precio_pagado
+        });
+      });
+      this.dataSource.data = elementos;
+      this.customers = elementos;
+    })
+  }
+
+  generatePdf() {
+    const documentDefinition = this.getDocumentDefinition();
+    pdfMake.createPdf(documentDefinition).open();
+  }
+
+  getDocumentDefinition() {
+    const datosUser = JSON.parse(localStorage.getItem('user'));
+    return {
+      content: [
+        {
+          image: LOGO64,
+          width: 75,
+          alignment : 'left'
+        },
+        {
+          text: 'Reporte de Clientes',
+          bold: true,
+          fontSize: 20,
+          alignment: 'center',
+          margin: [0, 0, 0, 20],
+          color: '#0033FF'
+        },
+        {
+          columns: [
+            [{
+              text: `Vendedor: ${datosUser.name} ${datosUser.lastname}`
+            },
+            {
+              text: `DNI: ${datosUser.dni}`
+            },
+            {
+              text: `Email: ${datosUser.email}`,
+              style: 'email'
+            }
+            ]
+          ]
+        },
+        this.getCustomersObject()
+      ],
+      styles: {
+        email: {
+          margin: [0, 0, 0, 20]
+        }
+      }
+    };
+  }
+
+  getCustomersObject() {
+    return {
+      table: {
+        widths: ['*', '*', '*', '*', '*', '*', '*'],
+        body: [
+          [{
+            text: 'N°',
+            style: 'tableHeader'
+          },
+          {
+            text: 'Nombre',
+            style: 'tableHeader'
+          },
+          {
+            text: 'Apellidos',
+            style: 'tableHeader'
+          },
+          {
+            text: 'Categoría',
+            style: 'tableHeader'
+          },
+          {
+            text: 'Producto',
+            style: 'tableHeader'
+          },
+          {
+            text: 'Fecha',
+            style: 'tableHeader'
+          },
+          {
+            text: 'Monto(S/)',
+            style: 'tableHeader'
+          }
+          ],
+          ...this.customers.map((ed, index) => {
+            let date =this.datepipe.transform(ed.date, 'dd-MM-yyyy');
+            return [index+1, ed.name, ed.lastname, ed.category, ed.product, date, ed.total];
+          })
+        ]
+      }
+    };
+  }
+
 
 }
