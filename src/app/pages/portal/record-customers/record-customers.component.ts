@@ -69,7 +69,7 @@ export class RecordCustomersComponent implements OnInit, AfterViewInit {
 
   generatePdf() {
     const documentDefinition = this.getDocumentDefinition();
-    pdfMake.createPdf(documentDefinition).open();
+    pdfMake.createPdf(documentDefinition).download();
   }
 
   getDocumentDefinition() {
