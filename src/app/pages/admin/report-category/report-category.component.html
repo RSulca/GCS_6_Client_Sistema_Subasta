@@ -1,0 +1,13 @@
+<div class="container-fluid mt--7">
+    <div class="p-3 content-bg-main">
+        <div>
+            <h2>Reporte de Categorías</h2>
+        </div>
+        <div class="contenedor-grafico">
+            <div class="d-flex justify-content-center" *ngIf="enableSpinner">
+                <mat-spinner diameter="60"></mat-spinner>
+            </div>
+            <canvas #barCanvas></canvas>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="container-fluid mt--7">
+    <div class="p-3 content-bg-main">
+        <div>
+            <h2>Reporte de productos por fecha</h2>
+            <form [formGroup]="formReporte" (submit)="mostrarGrafico()">
+                <div class="row">
+                    <div class="col d-flex mx-0 align-items-center">
+                        <label class="form-control-label mb-0 mr-2">Fecha de inicio</label>
+                        <input 
+                        type="date" 
+                        class="form-control form-date form-control-alternative" 
+                        [class.is-invalid]="fechaInicioNoValido"
+                        formControlName="fechaInicio"
+                        max="{{fechaActual | date:'yyyy-MM-dd'}}">
+                    </div>
+                    <div class="col d-flex mx-0 align-items-center">
+                        <label class="form-control-label mb-0 mr-2">Fecha de fin</label>
+                        <input 
+                        type="date" 
+                        class="form-control form-date form-control-alternative" 
+                        [class.is-invalid]="fechaFinNoValido"
+                        formControlName="fechaFin"
+                        max="{{fechaActual | date:'yyyy-MM-dd'}}">
+                    </div>
+                    <div class="col">
+                        <button 
+                        type="submit" 
+                        class="btn btn-primary"
+                        [disabled]="formReporte.invalid || fechaInicioNoValido || fechaFinNoValido">Buscar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="contenedor-grafico">
+            <div class="d-flex justify-content-center" *ngIf="enableSpinner">
+                <mat-spinner diameter="60"></mat-spinner>
+            </div>
+            <div class="text-center" *ngIf="noExistData">
+                <h2>No hay productos en este rango de fechas.</h2>
+            </div>
+            <canvas #doughnutCanvas></canvas>
+        </div>
+    </div>
+</div>
