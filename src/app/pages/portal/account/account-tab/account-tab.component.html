@@ -14,7 +14,7 @@
             <div class="col-lg-6">
                 <div class="form-group">
                     <label class="form-control-label" for="input-username">Nombres</label>
-                    <input type="text" class="form-control form-control-alternative" placeholder="Username" value="lucky.jesse" formControlName="name">
+                    <input type="text" class="form-control form-control-alternative" placeholder="Username" value="lucky.jesse" formControlName="name" [class.is-invalid]="basicForm.get('name').errors">
                 </div>
             </div>
             <div class="col-lg-6">
@@ -28,7 +28,7 @@
             <div class="col-lg-6">
                 <div class="form-group">
                     <label class="form-control-label" for="input-first-name">Apellidos</label>
-                    <input type="text" class="form-control form-control-alternative" placeholder="First name" value="Lucky" formControlName="lastname">
+                    <input type="text" class="form-control form-control-alternative" placeholder="First name" value="Lucky" formControlName="lastname" [class.is-invalid]="basicForm.get('lastname').errors">
                 </div>
             </div>
             <div class="col-lg-6">
