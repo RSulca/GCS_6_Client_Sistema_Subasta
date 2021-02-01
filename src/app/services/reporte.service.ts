@@ -26,4 +26,9 @@ export class ReporteService {
         return this.http.get(url, { headers: { 'x-token': this.ls.getData('token') } });
     }
 
+    getSubastasXUser() {
+        const url = `${environment.API_SUBASTA}/api/reportes/productosSubastados`;
+        return this.http.get(url, { headers: { 'x-token': this.ls.getData('token') } });
+    }
+
 }
