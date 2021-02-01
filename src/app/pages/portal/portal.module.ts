@@ -22,6 +22,7 @@ import { AccountModule } from './account/account.module';
 import { ProductRegisterComponent } from './product-register/product-register.component';
 import { HistorialComponent } from './historial/historial.component';
 import { HistorialComprasComponent } from './historial-Compras/historial-Compras.component';
+import { HistorialSubastasComponent } from './historial-subastas/historial-subastas.component'
 import { ConfirmDialogComponent } from './personal-components/confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TimerComponentComponent } from './shared-components/timer-component/timer-component.component';
@@ -45,8 +46,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ComponentsModule } from '../../components/components.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { DatePipe } from '@angular/common'
-
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -75,7 +75,8 @@ import { DatePipe } from '@angular/common'
     NavbarPortalComponent,
     ProductsComponent,
     ConfirmDialog2Component,
-    RecordCustomersComponent
+    RecordCustomersComponent,
+    HistorialSubastasComponent
   ],
   imports: [
     CommonModule,

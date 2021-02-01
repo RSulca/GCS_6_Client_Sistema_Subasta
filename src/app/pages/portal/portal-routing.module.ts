@@ -11,6 +11,7 @@ import { TermsComponent } from './terms-components/terms-components.component';
 import { TermsModalComponent } from './terms-components/terms-modal/terms-modal.component';
 import { MyProductsComponent } from './my-products/my-products.component';
 import { HistorialComprasComponent } from './historial-Compras/historial-Compras.component';
+import { HistorialSubastasComponent } from './historial-subastas/historial-subastas.component';
 
 import { FavoritesComponent } from './favorites/favorites.component';
 import { HelpComponent } from './help/help.component';
@@ -62,6 +63,11 @@ export const portalRoutes: Routes = [
     path: 'record-customers',
     canActivate: [LoginGuardGuard],
     component: RecordCustomersComponent
+  },
+  {
+    path: 'historial-subastas',
+    canActivate: [LoginGuardGuard],
+    component: HistorialSubastasComponent
   },
   {
     path: 'account',
