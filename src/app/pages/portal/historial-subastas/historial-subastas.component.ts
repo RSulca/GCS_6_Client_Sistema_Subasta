@@ -15,7 +15,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
   templateUrl: './historial-subastas.component.html',
   styleUrls: ['./historial-subastas.component.css']
 })
-export class HistorialSubastasComponent implements OnInit {
+export class HistorialSubastasComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['position', 'titulo', 'tipo', 'modo', 'fechaInicio', 'fechaFin', 'product', 'image', 'total', 'estado'];
   dataSource = new MatTableDataSource([]);
   @ViewChild(MatPaginator) paginator: MatPaginator;
