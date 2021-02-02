@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Ubigeo } from 'src/app/models/request/ubigeo.model';
 import { LoginService } from 'src/app/services/login.service';
 import { UbigeoService } from 'src/app/services/ubigeo.service';
 import { UserEmiterService } from 'src/app/services/user-emiter.service';
 import { UserService } from 'src/app/services/user.service';
-
+interface ErrorValidate {
+  [s: string]: boolean;
+}
 @Component({
   selector: 'app-address-tab',
   templateUrl: './address-tab.component.html',
@@ -48,10 +50,20 @@ export class AddressTabComponent implements OnInit {
       department: ['', [Validators.required]],
       province: ['', [Validators.required]],
       district: ['', [Validators.required]],
-      direction: ['', [Validators.required]],
+      direction: ['', [Validators.required, this.validarCampo]],
     });
   }
+  
+  validarCampo(control: FormControl): ErrorValidate {
+    if (control.value?.trim() === "") {
+      return {
+        validarCampo: true,
+      };
+    }
 
+    return null;
+  }
+  
   goToCard() {
     this.userInfoEmitter.addUbigeoInformation(this.ubigeoForm.value);
     this.router.navigate(['account/payment'])

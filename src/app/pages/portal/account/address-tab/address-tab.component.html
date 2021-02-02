@@ -15,7 +15,7 @@
         <div class="form-group">
           <label class="form-control-label" for="input-address">Direccion</label>
           <input id="input-address" class="form-control form-control-alternative" placeholder="Direccion..."
-            formControlName="direction" type="text">
+            formControlName="direction" type="text" [class.is-invalid]="ubigeoForm.get('direction').errors">
         </div>
       </div>
     </div>

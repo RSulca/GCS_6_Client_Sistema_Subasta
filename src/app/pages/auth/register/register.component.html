@@ -67,7 +67,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                 </div>
-                <input class="form-control" placeholder="Dni" type="text" formControlName="dni">
+                <input class="form-control" placeholder="Dni" type="text" formControlName="dni" (keypress)="validarDni($event)">
               </div>
             </div>
             <div class="form-group"
@@ -98,9 +98,17 @@
                   formControlName="password2">
               </div>
             </div>
-            <div class="text-muted font-italic"><small>Contraseña segura: <span
-                  class="text-success font-weight-700">Segura</span></small></div>
+            <div class="text-muted font-italic"><small>Contraseña segura: <span *ngIf="seguro"
+                  class="text-success font-weight-700">Segura</span><span *ngIf="!seguro"
+                  class="text-danger font-weight-700">Insegura</span></small></div>
             <div class="row my-4">
+            <div class="text-muted font-italic mb-4">
+              <small>Minimo 8 caracteres, al menos una letra mayúscula
+                al menos una letra minúscula, 
+                al menos un dígito, 
+                no espacios en blanco y 
+                al menos 1 caracter especial.</small>
+            </div>
               <div class="col-12">
                 <div class="custom-control custom-control-alternative custom-checkbox">
                   <input class="custom-control-input" id="customCheckRegister" type="checkbox"
@@ -114,7 +122,7 @@
               </div>
             </div>
             <div class="text-center">
-              <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary mt-4"><i
+              <button type="submit" [routerLink]="['./login']" [disabled]="registerForm.invalid" class="btn btn-primary mt-4"><i
                   *ngIf="process"></i> Create
                 account</button>
             </div>

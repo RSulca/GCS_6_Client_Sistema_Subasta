@@ -4,7 +4,9 @@ import { Router } from '@angular/router';
 import { NotifierService } from 'src/app/services/notifier.service';
 import { ProductEmiterService } from 'src/app/services/product-emiter.service';
 import { CATEGORIES_FORMS } from '../../../../../util/info-category';
-
+interface ErrorValidate {
+  [s: string]: boolean;
+}
 @Component({
   selector: 'app-product-data',
   templateUrl: './product-data.component.html',
@@ -76,6 +78,15 @@ export class ProductDataComponent implements OnInit {
 
   }
 
+  validarCampo(control: FormControl): ErrorValidate {
+    if (control.value?.trim() === "") {
+      return {
+        validarCampo: true,
+      };
+    }
+
+    return null;
+  }
   get columns(): FormArray {
     return this.descriptionForm.get('columns') as FormArray;
   }

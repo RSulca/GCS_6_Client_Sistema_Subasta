@@ -9,8 +9,10 @@
             <div class="p-1">
                 <owl-carousel-o [options]="customOptions">
                     <ng-template carouselSlide *ngFor="let imagen of imagenesProducto">
-                        <div class="col">
-                            <img src="{{imagen}}" class="img-fluid">
+                        <div class="row">
+                            <div class="col">
+                                <img src="{{imagen}}" class="img-fluid">
+                            </div>
                         </div>
                     </ng-template>
                 </owl-carousel-o>
@@ -34,40 +36,50 @@
                 <div class="card">
                     <div class="card-header p-0" id="headingOne">
                         <h2 class="mb-0">
-                            <button class="btn btn-link accordion-button collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Descripción <span><i class="fas fa-chevron-up d-hidden mx-0"></i><i class="fas fa-chevron-down mx-0 d-hidden"></i></span>
-                        </button>
+                            <button class="btn btn-link accordion-button collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Descripción <span><i class="fas fa-chevron-up d-hidden mx-0"></i><i
+                                        class="fas fa-chevron-down mx-0 d-hidden"></i></span>
+                            </button>
                         </h2>
                     </div>
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
                         <div class="card-body">
                             <h4 class="card-body-title mb-0">{{nombreProducto}}</h4>
                             <p>En perfecto estado</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel officiis tempora nam odio in consequuntur, provident magnam at maxime. Ipsum.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel officiis tempora nam odio in
+                                consequuntur, provident magnam at maxime. Ipsum.</p>
                         </div>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-header p-0" id="headingTwo">
                         <h2 class="mb-0">
-                            <button class="btn btn-link accordion-button collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Detalles del Producto <span><i class="fas fa-chevron-up d-hidden mx-0"></i><i class="fas fa-chevron-down mx-0 d-hidden"></i></span>
-                        </button>
+                            <button class="btn btn-link accordion-button collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Detalles del Producto <span><i class="fas fa-chevron-up d-hidden mx-0"></i><i
+                                        class="fas fa-chevron-down mx-0 d-hidden"></i></span>
+                            </button>
                         </h2>
                     </div>
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
                         <div class="card-body">
-                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
-                                tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                            <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+                                quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
+                                tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                                shoreditch et.</p>
                         </div>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-header p-0" id="headingThree">
                         <h2 class="mb-0">
-                            <button class="btn btn-link accordion-button collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Vendedor <span><i class="fas fa-chevron-up d-hidden mx-0"></i><i class="fas fa-chevron-down mx-0 d-hidden"></i></span>
-                        </button>
+                            <button class="btn btn-link accordion-button collapsed" type="button" data-toggle="collapse"
+                                data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Vendedor <span><i class="fas fa-chevron-up d-hidden mx-0"></i><i
+                                        class="fas fa-chevron-down mx-0 d-hidden"></i></span>
+                            </button>
                         </h2>
                     </div>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
@@ -83,7 +95,8 @@
             </div>
         </div>
         <div class="col-12 col-md-4">
-            <app-info-detail [endAuction]="endAuction" [endDay]="endDayAuction" [idSubasta]="idSubasta" [precioBase]="precioBase" [precioBaseTemporal]="precioBase" typeUser="seller"></app-info-detail>
+            <app-info-detail [endAuction]="endAuction" [endDay]="endDayAuction" [idSubasta]="idSubasta"
+                [precioBase]="precioBase" [precioBaseTemporal]="precioBase" typeUser="seller"></app-info-detail>
         </div>
     </div>
 </div>

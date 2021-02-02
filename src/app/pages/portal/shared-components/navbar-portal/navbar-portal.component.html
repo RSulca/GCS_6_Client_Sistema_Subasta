@@ -19,9 +19,9 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0 nav-search mx-lg-4">
-        <input class="form-control mr-sm-2 int-wh" type="search" placeholder="Buscar por marca, modelo, artista..."
+        <!--input class="form-control mr-sm-2 int-wh" type="search" placeholder="Buscar por marca, modelo, artista..."
           aria-label="Search">
-        <a href="#" class="form-search"><i class="fas fa-search"></i></a>
+        <a href="#" class="form-search"><i class="fas fa-search"></i></a-->
       </form>
       <a class="nav-link" href="#" tabindex="-1" aria-disabled="true" [routerLink]="['../seller']"
         (click)="goToSeller()">Vender</a>
@@ -55,18 +55,18 @@
                 </div>
               </ng-template>
             </a>
-            <a class="dropdown-item" [routerLink]="['../history']">
+            <a class="dropdown-item" [routerLink]="['/history']">
               <div>
                 Historial de productos
               </div>
               <div>en revision</div>
             </a>
-            <a class="dropdown-item" [routerLink]="['../historial-compras']">
+            <a class="dropdown-item" [routerLink]="['/historial-compras']">
               <div>
                 Historial de compras
               </div>
             </a>
-            <a class="dropdown-item" [routerLink]="['../record-customers']">
+            <a class="dropdown-item" [routerLink]="['/record-customers']">
               <div>
                 Historial de clientes
               </div>
@@ -81,7 +81,7 @@
         </li>
       </ul>
       <ng-template #bloque>
-        <button type="button" class="btn btn-primary" [routerLink]="['../login']">Iniciar sesión</button>
+        <button type="button" class="btn btn-primary" [routerLink]="['/login']">Iniciar sesión</button>
       </ng-template>
     </div>
   </nav>
