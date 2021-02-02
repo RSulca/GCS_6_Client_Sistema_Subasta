@@ -16,6 +16,11 @@ export class ClienteService {
     return this.http.get<ClientReq[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
   }
 
+  listarInhabilitados() {
+    const url = `${environment.API_SUBASTA}/api/cliente/listarInhabilitados`;
+    return this.http.get<ClientReq[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
+  }
+
   inhabilitar(id2: number) {
     const id = id2;
     const state = false;
@@ -39,6 +44,7 @@ export class ClienteService {
     const url = `${environment.API_SUBASTA}/api/cliente/obtenerCalificacionVendedor/${idSubasta}`;
     return this.http.get<number>(url, { headers: { 'x-token': this.ls.getData('token') } });
   }
+
 
 
 }
