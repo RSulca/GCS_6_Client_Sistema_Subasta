@@ -2,7 +2,7 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Chart from 'chart.js';
 import { ReporteService } from 'src/app/services/reporte.service';
-import { dateLimitValidator } from 'src/app/shared/date-limit.directive';
+//import { dateLimitValidator } from 'src/app/shared/date-limit.directive';
 
 @Component({
   selector: 'app-supervisor-producto-reporte',
@@ -13,7 +13,7 @@ export class SupervisorProductoReporteComponent implements AfterViewInit {
   @ViewChild('doughnutCanvas') doughnutCanvas;
   doughnutChart: any;
   formReporte: FormGroup;
-  fechaActual: Date = new Date();
+  //fechaActual: Date = new Date();
   enableSpinner: boolean = false;
   noExistData: boolean = false;
 
@@ -39,13 +39,12 @@ export class SupervisorProductoReporteComponent implements AfterViewInit {
 
   crearFormulario() {
     this.formReporte = this.fb.group({
-      fechaInicio: ['', [Validators.required, dateLimitValidator(this.fechaActual)]],
-      fechaFin: ['', [Validators.required, dateLimitValidator(this.fechaActual)]]
+      fechaInicio: ['', [Validators.required]],
+      fechaFin: ['', [Validators.required]]
     });
   }
 
   mostrarGrafico(): void {
-    console.log(this.formReporte);
     if (this.formReporte.invalid) {
       return Object.values(this.formReporte.controls).forEach(control => {
         if (control instanceof FormGroup) {
@@ -59,7 +58,6 @@ export class SupervisorProductoReporteComponent implements AfterViewInit {
     let fechaInicio = this.formReporte.value.fechaInicio;
     let fechaFin = this.formReporte.value.fechaFin;
     this.reporteService.productosXfechaSupervisor(fechaInicio, fechaFin).subscribe(data => {
-      console.log(data);
       this.enableSpinner = false;
       this.doughnutChartMethod(data);
     });

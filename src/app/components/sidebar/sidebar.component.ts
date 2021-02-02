@@ -15,7 +15,8 @@ export const ROUTES: RouteInfo[] = [
     { path: '/admin/supervisores', title: 'Supervisores',  icon:'fas fa-user-secret', class: '' },
     { path: '/admin/clientes', title: 'Clientes',  icon:'fas fa-user', class: '' },
     { path: '/admin/productos', title: 'Productos',  icon:'fas fa-gift', class: '' },
-    { path: '/admin/reportCategory', title: 'Reporte de Categorías',  icon:'far fa-chart-bar', class: '' }
+    { path: '/admin/reportCategory', title: 'Reporte de Categorías',  icon:'far fa-chart-bar', class: '' },
+    { path: '/admin/reportAmount', title: 'Reporte de Ingresos',  icon:'far fa-chart-bar', class: '' }
   //  { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' }
 ];
 

@@ -1,0 +1,17 @@
+.contenedor-grafico{
+    margin: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.content-bg-main{
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+    border-radius: .5rem;
+}
+.form-date{
+    width: auto;
+}
+table{
+    width: 100%;
+}

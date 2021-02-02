@@ -14,7 +14,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { ToastrModule } from 'ngx-toastr';
 import { ProductosComponent } from '../../pages/admin/productos/productos.component';
 import { ReportCategoryComponent } from 'src/app/pages/admin/report-category/report-category.component';
+import { ReportAmountComponent } from 'src/app/pages/admin/report-amount/report-amount.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   imports: [
@@ -25,15 +29,19 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HttpClientModule,
     NgbModule,
     ClipboardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   declarations: [
     DashboardComponent,
     SupervisorComponent,
     ClienteComponent,
     ProductosComponent,
-    ReportCategoryComponent
-  ]
+    ReportCategoryComponent,
+    ReportAmountComponent
+  ],
+  providers: [DatePipe]
 })
 
 export class AdminLayoutModule {}

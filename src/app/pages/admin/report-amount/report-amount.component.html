@@ -1,0 +1,93 @@
+<div class="container-fluid mt--7">
+    <div class="py-3 px-4 content-bg-main">
+        <div>
+            <h2>Reporte de ingresos por fecha</h2>
+            <form [formGroup]="formReporte" (submit)="mostrarTabla()">
+                <div class="row">
+                    <div class="col d-flex mx-0 align-items-center">
+                        <label class="form-control-label mb-0 mr-2">Fecha de inicio</label>
+                        <input 
+                        type="date" 
+                        class="form-control form-date form-control-alternative" 
+                        [class.is-invalid]="fechaInicioNoValido"
+                        formControlName="fechaInicio">
+                    </div>
+                    <div class="col d-flex mx-0 align-items-center">
+                        <label class="form-control-label mb-0 mr-2">Fecha de fin</label>
+                        <input 
+                        type="date" 
+                        class="form-control form-date form-control-alternative" 
+                        [class.is-invalid]="fechaFinNoValido"
+                        formControlName="fechaFin">
+                    </div>
+                    <div class="col">
+                        <button 
+                        type="submit" 
+                        class="btn btn-primary"
+                        [disabled]="formReporte.invalid || fechaInicioNoValido || fechaFinNoValido">Buscar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="contenedor-grafico">
+            <div class="d-flex justify-content-center mt-4" *ngIf="enableSpinner">
+                <mat-spinner diameter="60"></mat-spinner>
+            </div>
+            <div class="row mx-0" *ngIf="!enableSpinner">
+                <div class="col-12 col-md-8 order-1 order-md-0" *ngIf="!firstSearch">
+                    <div class="p-3 mat-elevation-z8 mb-3">
+                        <table mat-table [dataSource]="dataSource" matSort>
+            
+                            <ng-container matColumnDef="position">
+                                <th mat-header-cell *matHeaderCellDef> No. </th>
+                                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                            </ng-container>
+            
+                            <ng-container matColumnDef="title">
+                                <th mat-header-cell *matHeaderCellDef> Título </th>
+                                <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+                            </ng-container>
+            
+                            <ng-container matColumnDef="mode">
+                                <th mat-header-cell *matHeaderCellDef> Modo </th>
+                                <td mat-cell *matCellDef="let element"> {{element.mode}} </td>
+                            </ng-container>
+            
+                            <ng-container matColumnDef="type">
+                                <th mat-header-cell *matHeaderCellDef> Tipo </th>
+                                <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+                            </ng-container>
+            
+                            <ng-container matColumnDef="base_price">
+                                <th mat-header-cell *matHeaderCellDef class="text-right"> Precio Base (S/) </th>
+                                <td mat-cell *matCellDef="let element" class="text-right"> {{element.base_price}} </td>
+                            </ng-container>
+            
+                            <ng-container matColumnDef="price_paid">
+                                <th mat-header-cell *matHeaderCellDef class="text-right"> Precio Pagado (S/) </th>
+                                <td mat-cell *matCellDef="let element" class="text-right"> {{element.price_paid}} </td> 
+                            </ng-container>
+            
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            
+                            <tr class="mat-row" *matNoDataRow>
+                                <td class="mat-cell" colspan="4" *ngIf="subastas.length == 0">No tienes productos en este rango de fechas.</td>
+                            </tr>
+                        </table>
+                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 order-0 order-md-1" *ngIf="!firstSearch">
+                    <div class="card border-primary shadow">
+                      <div class="card-body">
+                        <h2 class="card-title text-center mb-3">Resumen</h2>
+                        <p class="card-text mb-0 d-flex justify-content-between"><span>Productos vendidos:</span> <span>{{subastas.length}}</span></p>
+                        <p class="card-text d-flex justify-content-between"><span>Monto recaudado:</span> <span>{{total | currency:'S/'}}</span></p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -16,6 +16,11 @@ export class ReporteService {
         return this.http.get<Supervisor[]>(url, { headers: { 'x-token': this.ls.getData('token') } });
     }
 
+    getAuctionXDate(fechaInicio: string, fechaFin: string) {
+        const url = `${environment.API_SUBASTA}/api/reportes/monto/${fechaInicio}/${fechaFin}`;
+        return this.http.get(url, { headers: { 'x-token': this.ls.getData('token') } });
+    }
+
     getCountXCategories() {
         const url = `${environment.API_SUBASTA}/api/reportes/totalProductsByCategory`;
         return this.http.get(url, { headers: { 'x-token': this.ls.getData('token') } });

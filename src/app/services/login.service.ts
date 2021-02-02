@@ -44,7 +44,6 @@ export class LoginService {
     const url = `${environment.API_SUBASTA}/api/auth/google`;
     return this.http.post(url, { token: token }).pipe(
       map((data: any) => {
-        console.log(data)
         this.saveStorage(data);
         this.loggedIn.next(true);
         return data;

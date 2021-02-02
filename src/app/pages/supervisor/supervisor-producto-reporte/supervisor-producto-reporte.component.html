@@ -10,8 +10,7 @@
                         type="date" 
                         class="form-control form-date form-control-alternative" 
                         [class.is-invalid]="fechaInicioNoValido"
-                        formControlName="fechaInicio"
-                        max="{{fechaActual | date:'yyyy-MM-dd'}}">
+                        formControlName="fechaInicio">
                     </div>
                     <div class="col d-flex mx-0 align-items-center">
                         <label class="form-control-label mb-0 mr-2">Fecha de fin</label>
@@ -19,8 +18,7 @@
                         type="date" 
                         class="form-control form-date form-control-alternative" 
                         [class.is-invalid]="fechaFinNoValido"
-                        formControlName="fechaFin"
-                        max="{{fechaActual | date:'yyyy-MM-dd'}}">
+                        formControlName="fechaFin">
                     </div>
                     <div class="col">
                         <button 

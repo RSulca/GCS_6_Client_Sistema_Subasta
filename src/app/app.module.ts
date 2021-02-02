@@ -45,7 +45,6 @@ import { DatePipe } from 'src/app/util/dateFormatPipe';
     AdminLayoutComponent,
     AuthLayoutComponent,
     SupervisorLayoutComponent
-    
   ],
   providers: [
     SupervisorService,

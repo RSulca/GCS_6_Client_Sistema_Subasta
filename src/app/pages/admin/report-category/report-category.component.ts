@@ -24,7 +24,6 @@ export class ReportCategoryComponent implements AfterViewInit, OnInit {
   getDataCategories(): void {
     this.enableSpinner = true;
     this.reporteService.getCountXCategories().subscribe(data => {
-      console.log(data);
       this.barChartMethod(data);
     });
   }
