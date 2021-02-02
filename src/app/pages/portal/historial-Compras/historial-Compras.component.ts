@@ -59,6 +59,7 @@ export class HistorialComprasComponent implements OnInit {
       this.subastaService.calificarSubasta(this.subastaCalificar._id, this.calificarSubastaForm.get('valorCalificacion').value, this.calificarSubastaForm.get('mensajeCalificacion').value).subscribe((data: any) => {
         this.modalRef.hide();
         this.estrellas = Array(data['subasta'].calificacion);
+        window.location.reload();
       })
     }
   }
